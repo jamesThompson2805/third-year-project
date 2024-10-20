@@ -26,6 +26,7 @@ vector<float> parse_tsv(std::string filename, int max_lines=-1)
     split(str_floats, line, boost::is_any_of("\t"));
 
     for (auto str : str_floats) {
+      if (str == "NaN") continue; // skip Nan values
       parsed.emplace_back( std::stof(str) );
     }
     curr_line++;

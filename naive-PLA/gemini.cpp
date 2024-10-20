@@ -1,4 +1,11 @@
+
+#include "../R-Tree/RTreeTemplate/RTree.h"
 #include "./naive_pla.cpp"
+
+#include <functional>
+#include <algorithm>
+#include <array>
+using std::array;
 
 /*
  * Gemini Framework to answer Simularity Search
@@ -9,41 +16,56 @@
  * Then apply R*-Tree for fast retrieval of MBR's and hence the relevant areas of the sequence to look adjacent
 */
 
-typedef std::vector<float> Sequence;
+typedef array<int, 2> IntPair;
 
-FloatPair efficienterRegression(const float* const start, const float* const end)
+// Euclidean distance
+template <int FEATURE_DIM>
+class GeminiNaive {
+private:
+  RTree<IntPair, float, FEATURE_DIM> m_rtree;
+  vector<float> m_series;
+  std::function< vector<array<float, FEATURE_DIM>>( vector<float> )> m_dim_reduct;
+
+public:
+  GeminiNaive(const vector<array<float, FEATURE_DIM>>& series);
+
+  vector<IntPair> candidate_similar_subseq(const array<float, FEATURE_DIM>& query, float epsilon);
+};
+
+template <int FEATURE_DIM>
+GeminiNaive<FEATURE_DIM>::GeminiNaive(const vector<array<float, FEATURE_DIM>>& series)
 {
-  if (end-start<=0) return {0.0, 0.0};  
-  int size = end-start+1;
-
-  float x_mean = (size-1.0) / 2.0; 
-  float y_mean = std::accumulate(start, end, 0) / (float) size;
-
-  auto calc_residual = [&y_mean](float yi) { return yi - y_mean; };
-
-  float b=0;
-  float sqr_x_res=0;
-  for (int i=0; i<size; ++i) {
-    b += (i - x_mean) * calc_residual( *(start+i) );
-    sqr_x_res += (i-x_mean)*(i-x_mean);
+  for (int i=0; i<series.size(); ++i) {
+    const auto& arr = series.at(i);
+    m_rtree.Insert(arr, arr, {i,i});
   }
-  b /= sqr_x_res;
-  float a = y_mean - (b*x_mean);
-
-  return {a,b};
 }
 
-vector<FloatPair> mapToFeatureSpace(const Sequence& seq, int w)
+// will use a feature of euclidean space: 
+template <int FEATURE_DIM>
+vector<IntPair> GeminiNaive<FEATURE_DIM>::candidate_similar_subseq(const array<float, FEATURE_DIM>& query, float epsilon)
 {
+  if (epsilon < 0.0) return {};
+  array<float, FEATURE_DIM> min;
+  array<float, FEATURE_DIM> max;
+  std::transform(query.cbegin(), query.cend(), min.begin(),[&](const auto& f){return f-epsilon;});
+  std::transform(query.cbegin(), query.cend(), max.begin(),[&](const auto& f){return f+epsilon;});
+  vector<IntPair> candidates;
 
+  auto retrieve = [&candidates](const IntPair& p){ candidates.emplace_back(candidates); return true;};
+  m_rtree.Search(min, max, retrieve);
 
 }
 
 
 
-int main()
+
+
+
+/* int main()
 {
 
 
   return 0;
 }
+*/

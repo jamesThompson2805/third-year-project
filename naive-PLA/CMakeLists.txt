@@ -17,4 +17,3 @@ endif()
 
 add_executable(${PROJECT_NAME} naive_pla.cpp)
 target_link_libraries(${PROJECT_NAME} PUBLIC matplot)
-
