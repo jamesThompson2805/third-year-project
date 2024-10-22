@@ -1,14 +1,10 @@
 #include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
 #include <boost/algorithm/string.hpp>
 
+#include "tsv_parsing.h"
+
+using namespace tsv_parsing;
 using boost::algorithm::split;
-using std::vector;
-
-
-namespace tsv_reader {
 
 vector<float> parse_tsv(std::string filename, int max_lines=-1)
 {
@@ -34,5 +30,3 @@ vector<float> parse_tsv(std::string filename, int max_lines=-1)
 
   return parsed;
 }
-
-};

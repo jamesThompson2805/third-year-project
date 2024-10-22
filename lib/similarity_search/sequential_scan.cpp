@@ -1,11 +1,9 @@
-#include <vector>
-#include <iostream>
+#include "sequential_scan.h"
 
 using std::vector;
 
 
-namespace seq_scan {
-float mse_l2(const float* const s1start, const float* const s2start, unsigned int len)
+float seq_scan::mse_l2(const float* const s1start, const float* const s2start, unsigned int len)
 {
   float mse = 0;
   for (int i=0; i < len; ++i) {
@@ -14,7 +12,7 @@ float mse_l2(const float* const s1start, const float* const s2start, unsigned in
   return mse;
 }
 
-vector<int> find_similar_subseq_indexes(const vector<float>& series, const vector<float>& query, float epsilon)
+vector<int> seq_scan::find_similar_subseq_indexes(const vector<float>& series, const vector<float>& query, float epsilon)
 {
   if (series.size() <= query.size()) return {0};
   if (epsilon < 0) return {};
@@ -27,5 +25,3 @@ vector<int> find_similar_subseq_indexes(const vector<float>& series, const vecto
   }
   return similar_subseqs;
 }
-
-};

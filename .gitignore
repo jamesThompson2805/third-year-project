@@ -32,8 +32,9 @@
 *.app
 
 # Folders to exclude
-UCRArchive_2018/
-R-Tree/
+external/
 .ccls-cache/
 
-naive-PLA/build/
+bld/
+compile_commands.json
+.cache
