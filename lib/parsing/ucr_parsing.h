@@ -1,9 +1,9 @@
 #include <string>
 #include <vector>
-#include "./tsv_parsing.h"
-
 
 namespace ucr_parsing {
+
+  std::vector<float> parse_tsv(std::string filename, int max_lines);
 
   enum DatasetType { TEST, TRAIN, TEST_APPEND_TRAIN };
 

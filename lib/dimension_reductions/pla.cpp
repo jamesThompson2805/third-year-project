@@ -1,7 +1,6 @@
-#include "naive_pla.h"
+#include "pla.h"
 
 #include <numeric>
-#include <algorithm>
 
 using std::vector;
 

@@ -1,15 +1,14 @@
 #include <iostream>
+#include <string>
+#include <vector>
+using std::vector;
 
-#include "random_walk.h"
+#include "ucr_parsing.h"
 
 int main()
 {
-  UnifFunctor uni;
-  RandomWalk walk(uni);
+  vector<std::string> datasets = ucr_parsing::parse_folder_names("external/data/UCRArchive_2018/");
 
-  walk.gen_steps(100);
-
-  std::cout << walk.get_walk().front() << std::endl;
-
+  std::cout << datasets[0] << std::endl;
   return 0;
 }
