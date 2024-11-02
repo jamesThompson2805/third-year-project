@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cmake --build bld --target third_year_testing
+pushd bld 
+ctest --rerun-failed --output-on-failure
+popd

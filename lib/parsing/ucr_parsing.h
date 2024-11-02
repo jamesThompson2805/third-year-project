@@ -1,3 +1,6 @@
+#ifndef UCR_PARSING_H
+#define UCR_PARSING_H
+
 #include <string>
 #include <vector>
 
@@ -11,3 +14,5 @@ namespace ucr_parsing {
 
   std::vector<std::string> parse_folder_names(std::string directory_path);
 };
+
+#endif

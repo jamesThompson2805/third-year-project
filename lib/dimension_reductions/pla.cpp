@@ -20,6 +20,7 @@ vector<vector<float>> pla::chunk_series(vector<float> series, unsigned int chunk
   return chunked;
 }
 
+// for a + tb
 FloatPair pla::regression(const float* const start, const float* const end)
 {
   if (end-start<0) return {0.0, 0.0};  
@@ -44,11 +45,37 @@ FloatPair pla::regression(const float* const start, const float* const end)
 }
 
 // w is num items compressed to a linear function
-vector<FloatPair> pla::sliding_window_regression( const vector<float> series, unsigned int w)
+vector<FloatPair> pla::sliding_window_regression( const vector<float>& series, unsigned int w)
 {
   vector<FloatPair> r_pairs;
   for (int i=0; i<series.size() - w; ++i) {
     r_pairs.emplace_back( regression( series.data() + i, series.data() + i + w ) );
   }
   return r_pairs;
+}
+
+vector<FloatPair> pla::chunk_regression( const vector<float>& series, unsigned int interval_size)
+{
+  vector<FloatPair> r_pairs;
+  for (int i=0; i<series.size(); i+=interval_size) {
+    if (i+interval_size >= series.size()) {
+      r_pairs.emplace_back( regression( series.data()+i, series.data()+series.size()-1 ) );
+    } else {
+      r_pairs.emplace_back( regression( series.data()+i, series.data()+i+interval_size-1 ) );
+    }
+  }
+  return r_pairs;
+}
+
+float pla::pla_mse(const vector<float> &series, unsigned int interval_size)
+{
+  vector<FloatPair> pla_series = pla::chunk_regression(series, interval_size);
+
+  float mse = 0.0;
+  float pla_estimate = 0.0;
+  for (int i=0; i< series.size(); ++i) {
+    pla_estimate = pla_series[i / interval_size][0] + pla_series[i / interval_size][1] * (i%interval_size);
+    mse += (series[i] - pla_estimate) * (series[i] - pla_estimate);
+  }
+  return mse / series.size();
 }

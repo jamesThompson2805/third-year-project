@@ -1,8 +1,5 @@
 #include "paa.h"
 
-
-#include <string>
-#include <algorithm>
 using std::vector;
 
 float paa::get_mean(const float* const first, const float* const last)
@@ -24,8 +21,8 @@ vector<float> paa::paa(const vector<float>& series, unsigned int interval_size)
 
   int num_full_intervals = (series.size() / interval_size);
   for (int i=0; i<num_full_intervals; ++i) {
-    int start_pos = i*num_full_intervals;
-    int end_pos = start_pos + interval_size;
+    int start_pos = i*interval_size;
+    int end_pos = start_pos + interval_size - 1;
     paa_vec.emplace_back( get_mean(series.data() + start_pos, series.data() + end_pos) );
   }
   
@@ -35,4 +32,15 @@ vector<float> paa::paa(const vector<float>& series, unsigned int interval_size)
     paa_vec.emplace_back( get_mean( series.data() + start_pos, series.data() + end_pos) );
   }
   return paa_vec;
+}
+
+float paa::paa_mse(const vector<float>& series, unsigned int interval_size)
+{
+  vector<float> paa_series = paa::paa(series, interval_size);
+  float mse = 0;
+  for (int i=0; i<series.size(); ++i) {
+    float diff = (series[i] - paa_series[ i / interval_size ]);
+    mse += diff * diff;
+  }
+  return mse / series.size();
 }

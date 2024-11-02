@@ -1,3 +1,6 @@
+#ifndef RANDOM_WALK_H
+#define RANDOM_WALK_H
+
 #include <random>
 #include <functional>
 #include <deque>
@@ -71,3 +74,5 @@ public:
     return m_dis(m_gen);
   }
 };
+
+#endif

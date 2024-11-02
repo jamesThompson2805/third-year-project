@@ -43,7 +43,7 @@ vector<float> ucr_parsing::parse_ucr_dataset(std::string dataset_name, std::stri
     vector<float> test = parse_tsv( ""+dataset_loc + dataset_name + "/" + dataset_name + "_TEST.tsv");
     vector<float> train = parse_tsv( ""+dataset_loc + dataset_name + "/" + dataset_name + "_TRAIN.tsv");
     test.insert( test.end(), train.begin(), train.end());
-    return train;
+    return test;
   }
 }
 

@@ -1,3 +1,6 @@
+#ifndef SEQUENTIAL_SCAN_H
+#define SEQUENTIAL_SCAN_H
+
 #include <vector>
 #include <iostream>
 
@@ -7,3 +10,5 @@ float mse_l2(const float* const s1start, const float* const s2start, unsigned in
 
 std::vector<int> find_similar_subseq_indexes(const std::vector<float>& series, const std::vector<float>& query, float epsilon);
 };
+
+#endif
