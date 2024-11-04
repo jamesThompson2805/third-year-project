@@ -1,6 +1,8 @@
 #ifndef DAC_CURVE_FITTING_H
 #define DAC_CURVE_FITTING_H
 
+//Algorithms used and adapted from paper "Approximate Queries and Representations for Large Data Sequences"
+//
 #include <vector>
 #include <tuple>
 
