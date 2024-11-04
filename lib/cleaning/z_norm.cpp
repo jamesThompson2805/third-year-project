@@ -8,17 +8,15 @@
 
 using std::vector;
 
-void z_norm::z_normalise(vector<float> &series)
+void z_norm::z_normalise(vector<double> &series)
 {
-  float n = series.size();
-  float mean = std::accumulate(series.begin(), series.end(), 0.0) / n;  
-  float var = 0;
-  for (const float &f : series) {
+  double n = series.size();
+  double mean = std::accumulate(series.begin(), series.end(), 0.0) / n;  
+  double var = 0;
+  for (const double &f : series) {
     var += (f-mean)*(f-mean); 
   }
-  float stddev = std::sqrt( var );
+  double stddev = std::sqrt( var );
 
-  std::cout << mean << " : " << stddev << std::endl;
-
-  std::transform(series.begin(), series.end(), series.begin(), [&](float& f){ return (f - mean) / stddev; } );
+  std::transform(series.begin(), series.end(), series.begin(), [&](double& f){ return (f - mean) / stddev; } );
 }

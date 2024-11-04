@@ -3,11 +3,11 @@
 #include <vector>
 
 namespace paa {
-  float get_mean(const float* const first, const float* const last);
+  double get_mean(const double* const first, const double* const last);
 
-  std::vector<float> paa(const std::vector<float>& series, unsigned int interval_size);
+  std::vector<double> paa(const std::vector<double>& series, unsigned int interval_size);
 
-  float paa_mse(const std::vector<float>& series, unsigned int interval_size); 
+  double paa_mse(const std::vector<double>& series, unsigned int interval_size); 
 }
 
 #endif

@@ -5,13 +5,13 @@
 #include <string>
 
 struct Series {
-  const std::vector<float>& series;
+  const std::vector<double>& series;
   std::string name;
 };
 
 struct Line {
-  std::vector<float>& x;
-  std::vector<float>& y;
+  std::vector<double>& x;
+  std::vector<double>& y;
   std::string name;
 };
 

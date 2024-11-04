@@ -4,11 +4,14 @@
 #include <vector>
 #include <tuple>
 
+#include "pla.h"
+
 namespace dac_curve_fitting {
 
-  std::vector<std::tuple<float, unsigned int>> dac_constant( const std::vector<float>& s, float epsilon); 
+  std::vector<std::tuple<double, unsigned int>> dac_constant( const std::vector<double>& s, double epsilon); 
+  std::vector<std::tuple<double, unsigned int>> dac_constant_intervals( const std::vector<double>& s, unsigned int num_intervals); 
 
-  std::vector<std::tuple<float, float, unsigned int>> dac_linear( const float* const s_start, const float* const s_end, unsigned int max_num_intervals);
+  std::vector<std::tuple<DoublePair, unsigned int>> dac_linear( const std::vector<double>& s, double epsilon);
 
 }
 

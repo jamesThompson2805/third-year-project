@@ -4,20 +4,20 @@
 #include <array>
 #include <vector>
 
-typedef std::array<float, 2> FloatPair;
+typedef std::array<double, 2> DoublePair;
 
 namespace pla {
-std::vector<std::vector<float>> chunk_series(std::vector<float> series, unsigned int chunk_size);
+std::vector<std::vector<double>> chunk_series(std::vector<double> series, unsigned int chunk_size);
 
 
-FloatPair regression(const float* const start, const float* const end);
+DoublePair regression(const double* const start, const double* const end);
 
 // w is num items compressed to a linear function
-std::vector<FloatPair> sliding_window_regression( const std::vector<float>& series, unsigned int w);
+std::vector<DoublePair> sliding_window_regression( const std::vector<double>& series, unsigned int w);
 
-std::vector<FloatPair> chunk_regression( const std::vector<float>& series, unsigned int interval_size);
+std::vector<DoublePair> chunk_regression( const std::vector<double>& series, unsigned int interval_size);
 
-float pla_mse(const std::vector<float>& series, unsigned int interval_size);
+double pla_mse(const std::vector<double>& series, unsigned int interval_size);
 
 };
 

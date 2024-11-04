@@ -6,36 +6,36 @@
 #include "ucr_parsing.h"
 #include "paa.h"
 #include "pla.h"
+#include "dac_curve_fitting.h"
 #include "z_norm.h"
 
 #include "plotting/series_plotting.h"
 
 #include "plotting/plot_dimreduct_paa.cpp"
+#include "plotting/plot_dimreduct_pla.cpp"
 
 using std::vector, std::string;
 
 int main()
 {
+  using namespace ucr_parsing;
+
   string ucr_datasets_loc = "external/data/UCRArchive_2018/";
-  vector<string> datasets = ucr_parsing::parse_folder_names("external/data/UCRArchive_2018/");
+  vector<string> datasets = parse_folder_names(ucr_datasets_loc);
 
-  std::cout << datasets[0] << std::endl;
+  vector<double> dataset = parse_ucr_dataset(datasets[100], ucr_datasets_loc,  DatasetType::TEST);
+  z_norm::z_normalise(dataset);
 
-  vector<float> x;
-  for (int j=1; j<=30; ++j) x.push_back(j);
+  plot_paa_mse(datasets, ucr_datasets_loc, 0, 10, 100);
+  plot_pla_mse(datasets, ucr_datasets_loc, 0, 10, 100);
 
-  vector<Line> lines;
-  for (int i=0; i<20; ++i) {
-    vector<float> dataset_i_mse;
-    vector<float> dataset_i = ucr_parsing::parse_ucr_dataset(datasets[i], ucr_datasets_loc, ucr_parsing::DatasetType::TEST_APPEND_TRAIN);
-    z_norm::z_normalise(dataset_i);
-    for (int j=1; j<=30; ++j) {
-      dataset_i_mse.push_back( paa::paa_mse(dataset_i, j) );
-    }
-    lines.push_back( { x, dataset_i_mse, "dataset " + std::to_string(i) } );
-  }
-  PlotLabels pl = {"comparison of paa on first 20 datasets", "interval size", "MSE error"};
-  plot_lines( lines, pl);
+  plot_paa_subseq_series_comparison(dataset, datasets[100], 3, 0, 100);
+  plot_pla_subseq_series_comparison(dataset, datasets[100], 3, 0, 100);
+  plot_apaa_subseq_series_comparison(dataset, datasets[100], 0.00005, 0, 100);
+  plot_apla_subseq_series_comparison(dataset, datasets[100], 0.00005, 0, 100);
 
+  
   return 0;
 }
+
+

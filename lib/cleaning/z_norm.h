@@ -4,7 +4,7 @@
 #include <vector>
 
 namespace z_norm {
-  void z_normalise(std::vector<float>& series);
+  void z_normalise(std::vector<double>& series);
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "series_plotting.h"
 
 #include "gnuplot-iostream.h"
+#include "plotting_constants.h"
 #include <boost/tuple/tuple.hpp>
 
 using std::vector;
@@ -41,8 +42,9 @@ void plot_many_series(vector<Series>& vs)
     }
   }
   Gnuplot gp;
-  gp << "set terminal x11\n";
-  gp << "set term x11 size 1280 800 \n";
+  using namespace gp_constants;
+  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
+  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Plot of multiple time series \n";
@@ -72,8 +74,9 @@ void plot_series_diff(Series& s1, Series& s2)
     ++i;
   }
   Gnuplot gp;
-  gp << "set terminal x11\n";
-  gp << "set term x11 size 1280 800 \n";
+  using namespace gp_constants;
+  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
+  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Comparison of series " << s1.name << " and " << s2.name << "'\n";
@@ -91,8 +94,9 @@ void plot_lines(vector<Line> lines, PlotLabels pl)
   if (lines.size() ==0) return;
 
   Gnuplot gp;
-  gp << "set terminal x11\n";
-  gp << "set term x11 size 1280 800 \n";
+  using namespace gp_constants;
+  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
+  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
   gp << "set xlabel '" << pl.xlabel << "'\n";
   gp << "set ylabel '" << pl.ylabel << "'\n";
   gp << "set title '" << pl.title << "'\n";

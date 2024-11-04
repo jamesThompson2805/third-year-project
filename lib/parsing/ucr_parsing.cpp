@@ -7,22 +7,22 @@
 using boost::algorithm::split;
 using std::vector;
 
-vector<float> ucr_parsing::parse_tsv(std::string filename, int max_lines=-1)
+vector<double> ucr_parsing::parse_tsv(std::string filename, int max_lines=-1)
 {
   std::ifstream ifs(filename);
   std::string line;
-  vector<std::string> str_floats;
+  vector<std::string> str_doubles;
   int curr_line = 0;
 
-  vector<float> parsed;
+  vector<double> parsed;
 
   while (getline(ifs, line)) {
 
     if ( (curr_line >= max_lines) && max_lines > -1) break;
     
-    split(str_floats, line, boost::is_any_of("\t"));
+    split(str_doubles, line, boost::is_any_of("\t"));
 
-    for (auto str : str_floats) {
+    for (auto str : str_doubles) {
       if (str == "NaN") continue; // skip Nan values
       parsed.emplace_back( std::stof(str) );
     }
@@ -32,7 +32,7 @@ vector<float> ucr_parsing::parse_tsv(std::string filename, int max_lines=-1)
   return parsed;
 }
 
-vector<float> ucr_parsing::parse_ucr_dataset(std::string dataset_name, std::string dataset_loc, DatasetType type)
+vector<double> ucr_parsing::parse_ucr_dataset(std::string dataset_name, std::string dataset_loc, DatasetType type)
 {
   std::string dataset_type;
   if (type == DatasetType::TEST) {
@@ -40,8 +40,8 @@ vector<float> ucr_parsing::parse_ucr_dataset(std::string dataset_name, std::stri
   } else if (type == DatasetType::TRAIN) {
     return parse_tsv(""+dataset_loc + dataset_name + "/" + dataset_name + "_TRAIN.tsv");
   } else {
-    vector<float> test = parse_tsv( ""+dataset_loc + dataset_name + "/" + dataset_name + "_TEST.tsv");
-    vector<float> train = parse_tsv( ""+dataset_loc + dataset_name + "/" + dataset_name + "_TRAIN.tsv");
+    vector<double> test = parse_tsv( ""+dataset_loc + dataset_name + "/" + dataset_name + "_TEST.tsv");
+    vector<double> train = parse_tsv( ""+dataset_loc + dataset_name + "/" + dataset_name + "_TRAIN.tsv");
     test.insert( test.end(), train.begin(), train.end());
     return test;
   }

@@ -4,10 +4,10 @@
 
 using std::vector;
 
-vector<vector<float>> pla::chunk_series(vector<float> series, unsigned int chunk_size)
+vector<vector<double>> pla::chunk_series(vector<double> series, unsigned int chunk_size)
 {
-  vector<vector<float>> chunked;
-  vector<float> chunk;
+  vector<vector<double>> chunked;
+  vector<double> chunk;
   int num_chunks = (series.size() / chunk_size) + (series.size()%chunk_size>0);
   for (int i=0; i<num_chunks; ++i) {
     chunk.clear();
@@ -21,42 +21,42 @@ vector<vector<float>> pla::chunk_series(vector<float> series, unsigned int chunk
 }
 
 // for a + tb
-FloatPair pla::regression(const float* const start, const float* const end)
+DoublePair pla::regression(const double* const start, const double* const end)
 {
   if (end-start<0) return {0.0, 0.0};  
   if (end-start==0) return {*start, 0.0};
   int size = end-start+1;
 
-  float x_mean = (size-1.0) / 2.0; 
-  float y_mean = std::accumulate(start, end+1, 0) / (float) size;
+  double x_mean = (size-1.0) / 2.0; 
+  double y_mean = std::accumulate(start, end+1, 0.0) / (double) size;
 
-  auto calc_residual = [&y_mean](float yi) { return yi - y_mean; };
+  auto calc_residual = [&y_mean](double yi) { return yi - y_mean; };
 
-  float b=0;
-  float sqr_x_res=0;
+  double b=0;
+  double sqr_x_res=0;
   for (int i=0; i<size; ++i) {
     b += (i - x_mean) * calc_residual( *(start+i) );
     sqr_x_res += (i-x_mean)*(i-x_mean);
   }
-  b /= sqr_x_res;
-  float a = y_mean - (b*x_mean);
+  b =  b / sqr_x_res;
+  double a = y_mean - b*x_mean;
 
   return {a,b};
 }
 
 // w is num items compressed to a linear function
-vector<FloatPair> pla::sliding_window_regression( const vector<float>& series, unsigned int w)
+vector<DoublePair> pla::sliding_window_regression( const vector<double>& series, unsigned int w)
 {
-  vector<FloatPair> r_pairs;
+  vector<DoublePair> r_pairs;
   for (int i=0; i<series.size() - w; ++i) {
     r_pairs.emplace_back( regression( series.data() + i, series.data() + i + w ) );
   }
   return r_pairs;
 }
 
-vector<FloatPair> pla::chunk_regression( const vector<float>& series, unsigned int interval_size)
+vector<DoublePair> pla::chunk_regression( const vector<double>& series, unsigned int interval_size)
 {
-  vector<FloatPair> r_pairs;
+  vector<DoublePair> r_pairs;
   for (int i=0; i<series.size(); i+=interval_size) {
     if (i+interval_size >= series.size()) {
       r_pairs.emplace_back( regression( series.data()+i, series.data()+series.size()-1 ) );
@@ -67,12 +67,12 @@ vector<FloatPair> pla::chunk_regression( const vector<float>& series, unsigned i
   return r_pairs;
 }
 
-float pla::pla_mse(const vector<float> &series, unsigned int interval_size)
+double pla::pla_mse(const vector<double> &series, unsigned int interval_size)
 {
-  vector<FloatPair> pla_series = pla::chunk_regression(series, interval_size);
+  vector<DoublePair> pla_series = pla::chunk_regression(series, interval_size);
 
-  float mse = 0.0;
-  float pla_estimate = 0.0;
+  double mse = 0.0;
+  double pla_estimate = 0.0;
   for (int i=0; i< series.size(); ++i) {
     pla_estimate = pla_series[i / interval_size][0] + pla_series[i / interval_size][1] * (i%interval_size);
     mse += (series[i] - pla_estimate) * (series[i] - pla_estimate);
