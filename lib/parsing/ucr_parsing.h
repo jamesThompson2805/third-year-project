@@ -7,6 +7,7 @@
 namespace ucr_parsing {
 
   std::vector<double> parse_tsv(std::string filename, int max_lines);
+  std::vector<double> parse_ucr_tsv(std::string filename, int max_lines);
 
   enum DatasetType { TEST, TRAIN, TEST_APPEND_TRAIN };
 

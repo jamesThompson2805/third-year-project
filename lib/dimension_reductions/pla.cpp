@@ -54,8 +54,9 @@ vector<DoublePair> pla::sliding_window_regression( const vector<double>& series,
   return r_pairs;
 }
 
-vector<DoublePair> pla::chunk_regression( const vector<double>& series, unsigned int interval_size)
+vector<DoublePair> pla::chunk_regression( const vector<double>& series, unsigned int num_params)
 {
+  unsigned int interval_size = (2*series.size() / num_params) + ( (2*series.size()) % num_params != 0);
   vector<DoublePair> r_pairs;
   for (int i=0; i<series.size(); i+=interval_size) {
     if (i+interval_size >= series.size()) {
@@ -67,9 +68,10 @@ vector<DoublePair> pla::chunk_regression( const vector<double>& series, unsigned
   return r_pairs;
 }
 
-double pla::pla_mse(const vector<double> &series, unsigned int interval_size)
+double pla::pla_mse(const vector<double> &series, unsigned int num_params)
 {
-  vector<DoublePair> pla_series = pla::chunk_regression(series, interval_size);
+  vector<DoublePair> pla_series = pla::chunk_regression(series, num_params);
+  unsigned int interval_size = (2*series.size() / num_params) + ( (2*series.size()) % num_params != 0);
 
   double mse = 0.0;
   double pla_estimate = 0.0;

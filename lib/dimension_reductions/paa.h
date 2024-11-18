@@ -5,9 +5,9 @@
 namespace paa {
   double get_mean(const double* const first, const double* const last);
 
-  std::vector<double> paa(const std::vector<double>& series, unsigned int interval_size);
+  std::vector<double> paa(const std::vector<double>& series, unsigned int num_params);
 
-  double paa_mse(const std::vector<double>& series, unsigned int interval_size); 
+  double paa_mse(const std::vector<double>& series, unsigned int num_params); 
 }
 
 #endif

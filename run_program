@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cmake --build bld --target third_year_project
+./bld/third_year_project

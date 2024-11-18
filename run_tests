@@ -2,5 +2,6 @@
 
 cmake --build bld --target third_year_testing
 pushd bld 
+ctest
 ctest --rerun-failed --output-on-failure
 popd

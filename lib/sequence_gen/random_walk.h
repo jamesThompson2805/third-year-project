@@ -26,10 +26,11 @@ private:
   std::uniform_real_distribution<> m_dis;
 
 public:
-  UnifFunctor() 
+  UnifFunctor(unsigned int seed=0) 
   {
     std::random_device rd;
     m_gen = std::mt19937(rd());
+    m_gen.seed(seed);
     m_dis = std::uniform_real_distribution<>(-1.0, 1.0); 
   }
   
@@ -44,10 +45,11 @@ private:
   std::normal_distribution<> m_dis;
 
 public:
-  NormalFunctor() 
+  NormalFunctor(unsigned int seed=0) 
   {
     std::random_device rd;
     m_gen = std::mt19937(rd());
+    m_gen.seed(seed);
     m_dis = std::normal_distribution<>(0.0, 1.0); 
   }
   
@@ -62,10 +64,11 @@ private:
   std::cauchy_distribution<> m_dis;
 
 public:
-  CauchyFunctor() 
+  CauchyFunctor(unsigned int seed=0) 
   {
     std::random_device rd;
     m_gen = std::mt19937(rd());
+    m_gen.seed(seed);
     m_dis = std::cauchy_distribution<>(0.0, 1.0); 
   }
   

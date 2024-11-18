@@ -27,7 +27,9 @@ target_link_libraries(${PROJECT_NAME} PUBLIC gnuplot_iostream)
 
 find_package(GTest REQUIRED)
 set(TEST_NAME "third_year_testing")
-add_executable(${TEST_NAME} tst/dimension_reductions/dac_curve_fitting_test.cpp)
+add_executable(${TEST_NAME}
+  tst/dimension_reductions/dac_curve_fitting_test.cpp
+  tst/dimension_reductions/double_window_test.cpp)
 target_link_libraries( ${TEST_NAME} PUBLIC GTest::gtest_main)
 target_link_libraries(${TEST_NAME} PUBLIC my_sequence_gen)
 target_link_libraries(${TEST_NAME} PUBLIC my_parsing)

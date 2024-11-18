@@ -124,5 +124,3 @@ vector<tuple<DoublePair, unsigned int>> dac_curve_fitting::dac_linear( const vec
   std::sort(curves.begin(), curves.end(), [](const auto& tp1, const auto& tp2) { return std::get<1>(tp1) < std::get<1>(tp2); });
   return curves;
 }
-
-

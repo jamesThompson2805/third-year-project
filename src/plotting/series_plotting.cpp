@@ -16,8 +16,8 @@ void plot_series(Series& s1)
     ++i;
   }
   Gnuplot gp;
-  gp << "set terminal x11\n";
-  gp << "set term x11 size 1280 800 \n";
+  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
+  gp << "set output 'img/"<<s1.name<<".png' \n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Plot of series " << s1.name << "'\n";
@@ -81,8 +81,8 @@ void plot_series_diff(Series& s1, Series& s2)
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Comparison of series " << s1.name << " and " << s2.name << "'\n";
   gp << "plot '-' dt 3 with yerrorlines title 'difference'"
-     << ", '-' with lines title '" << s1.name << "'"
-     << ", '-' with lines title '" << s2.name << "'\n";
+     << ", '-' with lines lt rgb 'blue' lw 1.2 title '" << s1.name << "'"
+     << ", '-' with lines lt rgb 'red' lw 1.2 title '" << s2.name << "'\n";
   gp.send1d( boost::make_tuple( x1, y1, err1, err2 ) );
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );

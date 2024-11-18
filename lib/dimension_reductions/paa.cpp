@@ -13,11 +13,12 @@ double paa::get_mean(const double* const first, const double* const last)
   return sum / (last - first + 1);
 }
 
-vector<double> paa::paa(const vector<double>& series, unsigned int interval_size)
+vector<double> paa::paa(const vector<double>& series, unsigned int num_params)
 {
   if (series.size() == 0) return {};
 
   vector<double> paa_vec;
+  unsigned int interval_size = (series.size() / num_params) + (series.size() % num_params != 0);
 
   int num_full_intervals = (series.size() / interval_size);
   for (int i=0; i<num_full_intervals; ++i) {
@@ -34,9 +35,10 @@ vector<double> paa::paa(const vector<double>& series, unsigned int interval_size
   return paa_vec;
 }
 
-double paa::paa_mse(const vector<double>& series, unsigned int interval_size)
+double paa::paa_mse(const vector<double>& series, unsigned int num_params)
 {
-  vector<double> paa_series = paa::paa(series, interval_size);
+  vector<double> paa_series = paa::paa(series, num_params);
+  unsigned int interval_size = (series.size() / num_params) + (series.size() % num_params != 0);
   double mse = 0;
   for (int i=0; i<series.size(); ++i) {
     double diff = (series[i] - paa_series[ i / interval_size ]);
