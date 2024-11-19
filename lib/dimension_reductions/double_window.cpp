@@ -188,7 +188,6 @@ unsigned int greatest_differential_index(const double* const d1, const double* c
       max_diff = curr_diff;
       max_diff_index = start;
     } else if ( std::isnan(curr_diff)) {
-      std::cout << "whoops" << std::endl;
       continue;
     }
   }
@@ -224,18 +223,12 @@ vector<tuple<DoublePair, unsigned int>> d_w::simple_pla(const vector<double> &s,
       all_splits_too_small = false;
       curr_diff_index = greatest_differential_index(s.data() + splits[i][0], s.data() + splits[i][1], lw_size, rw_size);
 
-      std::cout << "	split " << splits[i][0] << " " << splits[i][1] << " best index: " << curr_diff_index << std::endl;
-      std::cout << "	its differential diff " << mean_differential_diff(s.data() + splits[i][0] + curr_diff_index, s.data() + splits[i][0] + curr_diff_index + lw_size + rw_size, lw_size, rw_size)
-<< std::endl;
-
       if ( double curr_diff = mean_differential_diff(s.data() + splits[i][0] + curr_diff_index, s.data() + splits[i][0] + curr_diff_index + lw_size + rw_size, lw_size, rw_size)
 	  ; !std::isnan(curr_diff) && curr_diff > max_diff) {
-	std::cout << "	Best split" << std::endl;
 	max_diff = curr_diff;
 	max_diff_split = i;
 	max_diff_index = curr_diff_index;
       } else if (std::isnan(curr_diff)) {
-	std::cout << splits[i][0] << " " << splits[i][1] << std::endl;
       }
     }
 
@@ -243,10 +236,6 @@ vector<tuple<DoublePair, unsigned int>> d_w::simple_pla(const vector<double> &s,
 
     // create a split at that location
     auto [l, r] = splits[max_diff_split];
-    std::cout << "current diff index: " << max_diff_index << std::endl;
-    std::cout << "splitting: (" << l << "," << r << ") into ";
-    std::cout << "(" << l << "," << l+max_diff_index + lw_size - 1 << ") and ";
-    std::cout << "(" << l+max_diff_index + lw_size << "," << r << ")" << std::endl;
     splits.erase( splits.begin() + max_diff_split);
     splits.insert( splits.begin() + max_diff_split, { l + max_diff_index + lw_size, r });
     splits.insert( splits.begin() + max_diff_split, { l , l + max_diff_index + lw_size -1 });
@@ -254,7 +243,6 @@ vector<tuple<DoublePair, unsigned int>> d_w::simple_pla(const vector<double> &s,
   
   vector<tuple<DoublePair, unsigned int>> v_paa;
   for (const auto [l, r] : splits) {
-    std::cout << l << " : " << r << std::endl;
     v_paa.push_back( { pla::regression(s.data() + l, s.data() + r), r});
    }
   return v_paa;
@@ -326,7 +314,6 @@ vector<tuple<DoublePair, unsigned int>> d_w::y_proj_pla(const vector<double> &s,
       if ( splits[i][1] - splits[i][0] < lw_size + rw_size) continue; // skip if the interval is too small to examine with the window
       all_splits_too_small = false;
       curr_diff_index = greatest_differential_int_index(s.data() + splits[i][0], s.data() + splits[i][1], lw_size, rw_size);
-      std::cout << splits[i][0] << " " << splits[i][1] << " : " << curr_diff_index << std::endl;
 
       if ( double curr_diff = differential_int_difference(s.data() + splits[i][0] + curr_diff_index, s.data() + splits[i][0] + curr_diff_index + lw_size + rw_size, lw_size, rw_size)
 	  ; !std::isnan(curr_diff) && curr_diff > max_diff) {
@@ -334,7 +321,6 @@ vector<tuple<DoublePair, unsigned int>> d_w::y_proj_pla(const vector<double> &s,
 	max_diff_split = i;
 	max_diff_index = curr_diff_index;
       } else if (std::isnan(curr_diff)) {
-	std::cout << splits[i][0] << " " << splits[i][1] << std::endl;
       }
     }
 
@@ -349,7 +335,6 @@ vector<tuple<DoublePair, unsigned int>> d_w::y_proj_pla(const vector<double> &s,
   
   vector<tuple<DoublePair, unsigned int>> v_paa;
   for (const auto [l, r] : splits) {
-    std::cout << l << " : " << r << std::endl;
     v_paa.push_back( { pla::regression(s.data() + l, s.data() + r), r});
    }
   return v_paa;

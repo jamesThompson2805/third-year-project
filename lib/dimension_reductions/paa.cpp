@@ -46,3 +46,25 @@ double paa::paa_mse(const vector<double>& series, unsigned int num_params)
   }
   return mse / series.size();
 }
+
+vector<double> paa::paa_to_seq(const std::vector<double> paa_s, unsigned int int_size)
+{
+  vector<double> seq;
+  for (const auto& d : paa_s) {
+    for (int i=0; i<int_size; ++i)
+      seq.emplace_back(d);
+  }
+  return seq;
+}
+
+vector<double> paa::apca_to_seq(const std::vector<std::tuple<double, unsigned int>> apca_seq)
+{
+  vector<double> seq;
+  int curr_index = 0;
+  for (const auto& [d, i] : apca_seq) {
+    for (; curr_index <= i; ++curr_index)
+      seq.emplace_back(d);
+    ++curr_index;
+  }
+  return seq;
+}

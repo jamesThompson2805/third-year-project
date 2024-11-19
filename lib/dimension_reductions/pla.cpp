@@ -81,3 +81,25 @@ double pla::pla_mse(const vector<double> &series, unsigned int num_params)
   }
   return mse / series.size();
 }
+
+vector<double> pla::pla_to_seq(const std::vector<DoublePair> pla_seq, unsigned int int_size)
+{
+  vector<double> seq;
+  for (const auto& [a,b] : pla_seq) {
+    for (int i=0; i<int_size; ++i)
+      seq.emplace_back( a + b* (double)i);
+  }
+  return seq;
+}
+
+vector<double> pla::apla_to_seq(const std::vector<std::tuple<DoublePair, unsigned int>> apla_seq)
+{
+  vector<double> seq;
+  int last_index = -1;
+  for (const auto& [dp, int_end] : apla_seq) {
+    for (int i=0; i+last_index+1 <= int_end; ++i)
+      seq.emplace_back(dp[0] + dp[1] * (double)i);
+    last_index = int_end;
+  }
+  return seq;
+}

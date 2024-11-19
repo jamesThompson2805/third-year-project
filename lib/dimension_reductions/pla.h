@@ -3,6 +3,7 @@
 
 #include <array>
 #include <vector>
+#include <tuple>
 
 typedef std::array<double, 2> DoublePair;
 
@@ -18,6 +19,9 @@ std::vector<DoublePair> sliding_window_regression( const std::vector<double>& se
 std::vector<DoublePair> chunk_regression( const std::vector<double>& series, unsigned int num_params);
 
 double pla_mse(const std::vector<double>& series, unsigned int interval_size);
+
+std::vector<double> pla_to_seq(const std::vector<DoublePair>, unsigned int int_size);
+std::vector<double> apla_to_seq(const std::vector< std::tuple<DoublePair, unsigned int>>);
 
 };
 

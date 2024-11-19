@@ -9,11 +9,14 @@
 #include "pla.h"
 #include "dac_curve_fitting.h"
 #include "z_norm.h"
+#include "mse.h"
 
 #include "plotting/series_plotting.h"
 
 #include "plotting/plot_dimreduct_paa.cpp"
 #include "plotting/plot_dimreduct_pla.cpp"
+
+#include "random_walk.h"
 
 using std::vector, std::string;
 
@@ -31,25 +34,59 @@ int main()
   }
   */
 
-  vector<double> dataset = parse_ucr_dataset(datasets[44], ucr_datasets_loc,  DatasetType::TRAIN);
-  dataset.resize(280);
+  unsigned int di = 25;
+  vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN);
+  // dataset.resize(280);
   z_norm::z_normalise(dataset);
-  Series s = {dataset, datasets[44]};
-  plot_series(s);
 
   // plot_paa_mse(datasets, ucr_datasets_loc, 0, 10, 100);
   // plot_pla_mse(datasets, ucr_datasets_loc, 0, 10, 100);
 
-  // plot_paa_subseq_series_comparison(dataset, datasets[100], 20, 0, 100);
-  // plot_pla_subseq_series_comparison(dataset, datasets[100], 20, 0, 100);
-  // plot_apaa_subseq_series_comparison(dataset, datasets[100], 0.00005, 0, 100);
+  // plot_paa_subseq_series_comparison(dataset, datasets[di], 20, 0, 100);
+  // plot_pla_subseq_series_comparison(dataset, datasets[di], 20, 0, 100);
+  // plot_apaa_subseq_series_comparison(dataset, datasets[di], 0.00005, 0, 100);
   // plot_apla_subseq_series_comparison(dataset, datasets[100], 0.00005, 0, 100);
 
-  
-  // plot_any_apaa_subseq( dataset, datasets[10], [](const vector<double>& s){ return d_w::simple_paa(s, 30, 2,2); }, 0, 89);
-  // plot_any_apla_subseq( dataset, datasets[10], [](const vector<double>& s){ return d_w::y_proj_pla(s, 72, 2,2); }, 0, 119);
-  //plot_any_apaa_subseq( dataset, datasets[10]+" for y proj", [](const vector<double>& s){ return d_w::y_proj_paa(s, 80, 10,10); }, 0, 400);
-  // plot_paa_subseq(dataset, datasets[10], 20, 0, 100);
+  // /*
+  dataset.resize(120);
+  plot_paa_subseq(dataset, datasets[di], 30, 0, 119);
+  plot_pla_subseq(dataset, datasets[di], 30, 0, 119);
+  std::cout << "PAA MSE: " 
+	    << mse::mse_between_seq(dataset,
+		paa::paa_to_seq(paa::paa(dataset, 30),4))
+	    << std::endl;
+  std::cout << "PLA MSE: " 
+	    << mse::mse_between_seq(dataset,
+		pla::pla_to_seq(pla::chunk_regression(dataset, 30),8))
+	    << std::endl;
+  // */
+
+  // /*
+  plot_any_apaa_subseq( dataset, datasets[di], [](const vector<double>& s){ return d_w::y_proj_paa(s, 30, 2,2); }, 0, 119);
+  plot_any_apla_subseq( dataset, datasets[di], [](const vector<double>& s){ return d_w::y_proj_pla(s, 30, 2,2); }, 0, 119);
+  std::cout << "APCA MSE: " 
+	    << mse::mse_between_seq(dataset,
+		paa::apca_to_seq(d_w::y_proj_paa(dataset, 30, 2, 2)))
+	    << std::endl;
+  std::cout << "APLA MSE: " 
+	    << mse::mse_between_seq(dataset,
+		pla::apla_to_seq(d_w::y_proj_pla(dataset, 30, 2, 2)))
+	    << std::endl;
+
+  // */
+
+  // /*
+  plot_any_apaa_subseq( dataset, datasets[di] + " for mean of window", [](const vector<double>& s){ return d_w::simple_paa(s, 30, 2,2); }, 0, 119);
+  plot_any_apla_subseq( dataset, datasets[di] + " for mean of window", [](const vector<double>& s){ return d_w::simple_pla(s, 30, 2,2); }, 0, 119);
+  std::cout << "APCA MSE: " 
+	    << mse::mse_between_seq(dataset,
+		paa::apca_to_seq(d_w::simple_paa(dataset, 30, 2, 2)))
+	    << std::endl;
+  std::cout << "APLA MSE: " 
+	    << mse::mse_between_seq(dataset,
+		pla::apla_to_seq(d_w::simple_pla(dataset, 30, 2, 2)))
+	    << std::endl;
+  // */
 
 
   return 0;

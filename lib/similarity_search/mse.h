@@ -4,6 +4,6 @@
 #include <vector>
 
 namespace mse {
-  float mse_between_seq(const std::vector<float>& s1, const std::vector<float>& s2);
+  double mse_between_seq(const std::vector<double>& s1, const std::vector<double>& s2);
 };
 #endif
