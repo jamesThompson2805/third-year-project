@@ -64,7 +64,6 @@ vector<double> paa::apca_to_seq(const std::vector<std::tuple<double, unsigned in
   for (const auto& [d, i] : apca_seq) {
     for (; curr_index <= i; ++curr_index)
       seq.emplace_back(d);
-    ++curr_index;
   }
   return seq;
 }

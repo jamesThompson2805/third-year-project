@@ -68,6 +68,11 @@ vector<DoublePair> pla::chunk_regression( const vector<double>& series, unsigned
   return r_pairs;
 }
 
+vector<DoublePair> pla::pla(const std::vector<double> &series, unsigned int num_params)
+{
+  return chunk_regression(series, num_params);
+};
+
 double pla::pla_mse(const vector<double> &series, unsigned int num_params)
 {
   vector<DoublePair> pla_series = pla::chunk_regression(series, num_params);

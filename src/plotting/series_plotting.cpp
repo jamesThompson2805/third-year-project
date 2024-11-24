@@ -1,8 +1,12 @@
 #include "series_plotting.h"
 
 #include "gnuplot-iostream.h"
+#include "mse.h"
 #include "plotting_constants.h"
 #include <boost/tuple/tuple.hpp>
+
+#include "ucr_parsing.h"
+#include "z_norm.h"
 
 using std::vector;
 
@@ -95,8 +99,10 @@ void plot_lines(vector<Line> lines, PlotLabels pl)
 
   Gnuplot gp;
   using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  // gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
+  // gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
+  gp << "set output 'img/drt_comparisons/"<<pl.title<<".png' \n";
   gp << "set xlabel '" << pl.xlabel << "'\n";
   gp << "set ylabel '" << pl.ylabel << "'\n";
   gp << "set title '" << pl.title << "'\n";
@@ -108,4 +114,57 @@ void plot_lines(vector<Line> lines, PlotLabels pl)
   for (int i=0; i<lines.size(); ++i) {
     gp.send1d( boost::make_tuple( lines[i].x, lines[i].y ) );
   }
+}
+
+void plot_ucr_drt_mse(const vector<std::string>& datasets
+		      , std::string datasets_loc
+		      , unsigned int ds_start
+		      , unsigned int ds_end
+		      , unsigned int max_num_params
+		      , std::function<std::vector<double> (const std::vector<double>&, unsigned int num_params)> drt)
+{
+  if (max_num_params < 5) return;
+
+  vector<double> x;
+  for (int j=4; j<=max_num_params; j+=100) x.push_back(j);
+
+  vector<Line> lines;
+  vector<vector<double>> datasets_mse(ds_end-ds_start+1);
+  for (int i=ds_start; i<=ds_end; ++i) {
+    vector<double> dataset_i = ucr_parsing::parse_ucr_dataset(datasets[i], datasets_loc, ucr_parsing::DatasetType::TRAIN);
+    z_norm::z_normalise(dataset_i);
+    for (int j=4; j<=max_num_params; j+=100) {
+      datasets_mse[i-ds_start].push_back( mse::mse_between_seq(dataset_i, drt(dataset_i, j)) );
+      std::cout << mse::mse_between_seq(dataset_i, drt(dataset_i,j)) << std::endl;
+    }
+    lines.push_back( { x, datasets_mse[i-ds_start], "dataset " + std::to_string(i) +": "+datasets[i] } );
+  }
+  PlotLabels pl = {"comparison of MSE for DRT on "+ std::to_string(ds_end-ds_start+1) +" datasets", "number of parameters", "MSE error"};
+  plot_lines( lines, pl);
+}
+
+void plot_ucr_drt_maxdev(const vector<std::string>& datasets
+		      , std::string datasets_loc
+		      , unsigned int ds_start
+		      , unsigned int ds_end
+		      , unsigned int max_num_params
+		      , std::function<std::vector<double> (const std::vector<double>&, unsigned int num_params)> drt)
+{
+  if (max_num_params < 5) return;
+
+  vector<double> x;
+  for (int j=4; j<=max_num_params; j+=100) x.push_back(j);
+
+  vector<Line> lines;
+  vector<vector<double>> datasets_mse(ds_end-ds_start+1);
+  for (int i=ds_start; i<=ds_end; ++i) {
+    vector<double> dataset_i = ucr_parsing::parse_ucr_dataset(datasets[i], datasets_loc, ucr_parsing::DatasetType::TRAIN);
+    z_norm::z_normalise(dataset_i);
+    for (int j=4; j<=max_num_params; j+=100) {
+      datasets_mse[i-ds_start].push_back( mse::maxdev_between_seq(dataset_i, drt(dataset_i, j)) );
+    }
+    lines.push_back( { x, datasets_mse[i-ds_start], "dataset " + std::to_string(i) +": "+datasets[i] } );
+  }
+  PlotLabels pl = {"comparison of maximum deviation for DRT on "+ std::to_string(ds_end-ds_start+1) +" datasets", "number of parameters", "MaxDev error"};
+  plot_lines( lines, pl);
 }

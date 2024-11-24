@@ -17,6 +17,7 @@ DoublePair regression(const double* const start, const double* const end);
 std::vector<DoublePair> sliding_window_regression( const std::vector<double>& series, unsigned int w);
 
 std::vector<DoublePair> chunk_regression( const std::vector<double>& series, unsigned int num_params);
+std::vector<DoublePair> pla( const std::vector<double>& series, unsigned int num_params);
 
 double pla_mse(const std::vector<double>& series, unsigned int interval_size);
 

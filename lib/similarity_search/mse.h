@@ -5,5 +5,6 @@
 
 namespace mse {
   double mse_between_seq(const std::vector<double>& s1, const std::vector<double>& s2);
+  double maxdev_between_seq(const std::vector<double>& s1, const std::vector<double>& s2);
 };
 #endif

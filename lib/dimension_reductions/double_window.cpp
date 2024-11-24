@@ -45,6 +45,7 @@ vector<tuple<double, unsigned int>> d_w::simple_paa(const vector<double> &s, uns
 
   if (lw_size == 0 || rw_size == 0 || num_params <= 1) return {};
   if (s.size() == 0 ) return {};
+  num_params = std::min( (unsigned int) s.size(), num_params);
   unsigned int num_ints = num_params/2;
   
   vector<array<unsigned int,2>> splits;
@@ -83,6 +84,7 @@ vector<tuple<double, unsigned int>> d_w::simple_paa(const vector<double> &s, uns
   for (const auto [l, r] : splits) {
     v_paa.push_back( { std::accumulate(s.data() + l, s.data() + r+1, 0.0) / (double) (r-l+1), r});
    }
+  std::sort(v_paa.begin(), v_paa.end(), [](auto a, auto b) { return std::get<1>(a) < std::get<1>(b); });
   return v_paa;
 }
 
@@ -119,6 +121,7 @@ vector<tuple<double, unsigned int>> d_w::y_proj_paa(const vector<double> &s, uns
 
   if (lw_size == 0 || rw_size == 0 || num_params <= 1) return {};
   if (s.size() == 0 ) return {};
+  num_params = std::min( (unsigned int) s.size(), num_params);
   unsigned int num_ints = num_params/2;
   
   vector<array<unsigned int,2>> splits;
@@ -181,10 +184,10 @@ unsigned int greatest_differential_index(const double* const d1, const double* c
 {
   if (d2-d1 < lw_size+rw_size || lw_size == 0 || rw_size == 0) return 0;
   double max_diff = 0.0;
-  unsigned int max_diff_index = 0;
+  unsigned int max_diff_index = 1;
   for (int start=1; start <= d2-d1-rw_size-lw_size+1; ++start) {
     if ( double curr_diff = mean_differential_diff(d1+start-1, d1+start+lw_size+rw_size-1, lw_size, rw_size)
-	  ; !std::isnan(curr_diff) && curr_diff > max_diff ) { 
+	  ; !std::isnan(curr_diff) && curr_diff >= max_diff ) { 
       max_diff = curr_diff;
       max_diff_index = start;
     } else if ( std::isnan(curr_diff)) {
@@ -200,6 +203,7 @@ vector<tuple<DoublePair, unsigned int>> d_w::simple_pla(const vector<double> &s,
 
   if (lw_size == 0 || rw_size == 0 || num_params <= 2) return {};
   if (s.size() == 0 ) return {};
+  num_params = std::min( (unsigned int) s.size(), num_params);
   unsigned int num_ints = num_params/3;
   
   vector<array<unsigned int,2>> splits;
@@ -292,6 +296,7 @@ vector<tuple<DoublePair, unsigned int>> d_w::y_proj_pla(const vector<double> &s,
 
   if (lw_size == 0 || rw_size == 0 || num_params <= 2) return {};
   if (s.size() == 0 ) return {};
+  num_params = std::min( (unsigned int) s.size(), num_params);
   unsigned int num_ints = num_params/3;
   
   vector<array<unsigned int,2>> splits;

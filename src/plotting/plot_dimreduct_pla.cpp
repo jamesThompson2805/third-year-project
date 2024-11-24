@@ -55,8 +55,10 @@ void plot_pla_subseq(const vector<double>& series, std::string data_name, unsign
 
   Gnuplot gp;
   using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  // gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
+  // gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
+  gp << "set output 'img/drt_comparisons/"<<data_name<<"_pla_subseq_"<<num_params<<"_params.png' \n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Plot of "<<data_name<<" against PLA approximation'\n";
@@ -123,8 +125,10 @@ void plot_dac_apla_subseq(const vector<double>& series, std::string data_name, d
 
   Gnuplot gp;
   using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  //gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
+  //gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
+  gp << "set output 'img/drt_comparisons/"<<data_name<<"_rec_apla_subseq_"<<epsilon<<"_deviation.png' \n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Plot of "<<data_name<<" against APLA approximation'\n";
@@ -173,8 +177,10 @@ void plot_any_apla_subseq(const vector<double>& series, std::string data_name
 
   Gnuplot gp;
   using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  //gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
+  //gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
+  gp << "set output 'img/drt_comparisons/"<<data_name<<"_apla_subseq.png' \n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Plot of "<<data_name<<" against APLA approximation'\n";

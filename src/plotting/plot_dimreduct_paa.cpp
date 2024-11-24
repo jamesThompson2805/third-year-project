@@ -55,8 +55,8 @@ void plot_paa_subseq(const vector<double>& series, std::string data_name, unsign
 
   Gnuplot gp;
   using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
+  gp << "set output 'img/drt_comparisons/"<<data_name<<"_paa_subseq_"<<num_params<<"_params.png' \n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Plot of series against PAA approximation'\n";
@@ -120,8 +120,10 @@ void plot_dac_apaa_subseq(const vector<double>& series, std::string data_name, d
 
   Gnuplot gp;
   using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  //gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
+  //gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
+  gp << "set output 'img/drt_comparisons/"<<data_name<<"_rec_apaa_subseq_"<<epsilon<<"_deviation.png' \n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Plot of "<<data_name<<" against APAA approximation'\n";
@@ -171,6 +173,8 @@ void plot_any_apaa_subseq(const vector<double>& series
   using namespace gp_constants;
   gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
   gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  // gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
+  // gp << "set output 'img/drt_comparisons/"<<data_name<<"_apaa_subseq.png' \n";
   gp << "set xlabel 'time'\n";
   gp << "set ylabel 'series val'\n";
   gp << "set title 'Plot of "<<data_name<<" against APAA approximation'\n";
