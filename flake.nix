@@ -15,7 +15,7 @@
         default = pkgs.mkShell.override
           {
             # Override stdenv in order to change compiler:
-            # stdenv = pkgs.clangStdenv;
+            stdenv = pkgs.clangStdenv;
           }
           {
             packages = with pkgs; [
@@ -24,6 +24,7 @@
               cmake
               gtest
 	      boost
+	      gnuplot
             ] ++ (if system == "aarch64-darwin" then [ ] else [ gdb ]);
           };
       });
