@@ -24,7 +24,8 @@ vector<double> ucr_parsing::parse_tsv(std::string filename, int max_lines=-1)
 
     for (auto str : str_doubles) {
       if (str == "NaN") continue; // skip Nan values
-      parsed.emplace_back( std::stof(str) );
+      if (str == "") continue; // skip empty values
+      parsed.emplace_back( std::stod(str) );
     }
     curr_line++;
   }
@@ -51,11 +52,12 @@ vector<double> ucr_parsing::parse_ucr_tsv(std::string filename, int max_lines=-1
     is_first_in_line = true;
     for (auto str : str_doubles) {
       if (str == "NaN") continue; // skip Nan values
+      if (str == "") continue; // skip empty values
       if (is_first_in_line) {
 	is_first_in_line = false;
 	continue; // skip first value, it denotes the classes of a time series file
       }
-      parsed.emplace_back( std::stof(str) );
+      parsed.emplace_back( std::stod(str) );
     }
     curr_line++;
   }

@@ -13,6 +13,8 @@
 #include "dac_curve_fitting.h"
 #include "exact_dp.h"
 
+#include "conv_double_window.h"
+
 #include "plotting/series_plotting.h"
 #include "plotting/plot_dimreduct_paa.cpp"
 #include "plotting/plot_dimreduct_pla.cpp"
@@ -37,7 +39,7 @@ int main()
 
   unsigned int di = 25;
   vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN);
-  dataset.resize(240);
+  dataset.resize(480);
   z_norm::z_normalise(dataset);
 
 
@@ -47,15 +49,29 @@ int main()
   auto d_w_apca_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq( d_w::simple_paa(s, num_params, 5, 5)); };
   auto d_w_proj_apca_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq( d_w::y_proj_paa(s, num_params, 5, 5)); };
 
-  auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq( d_w::simple_pla(s, num_params, 5, 5)); };
+  auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq( d_w::simple_pla(s, num_params, 3, 3)); };
   auto d_w_proj_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq( d_w::y_proj_pla(s, num_params, 5, 5)); };
 
-  auto exact_apaa_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq( exact_dp::exact_paa(s, num_params) ); }; 
-  auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq( exact_dp::exact_pla(s, num_params) ); }; 
+  auto exact_apaa_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq( exact_dp::min_mse_paa(s, num_params) ); }; 
+  auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq( exact_dp::min_mse_pla(s, num_params) ); }; 
 
-  //auto apaa = exact_dp::exact_paa(dataset, 30);
-  // plot_any_apaa_subseq( dataset, datasets[di], [](const vector<double>& s){ return exact_dp::exact_paa(s, 30); }, 0, 119);
-  plot_any_apla_subseq( dataset, datasets[di], [](const vector<double>& s){ return exact_dp::exact_pla(s, 30); }, 0, 119);
+  vector<double> ldist = { 1.0/3.0, 1.0/3.0, 1.0/3.0};
+  vector<double> rdist = { 0.0, 1.0/2.0, 1.0/2.0};
+  auto conv_apla_f = [&ldist, &rdist](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq( c_d_w::conv_pla(s, num_params, ldist, rdist) ); }; 
+
+  // auto apaa = exact_dp::exact_paa(dataset, 30);
+  string title_name = "test-apaa-against-exact";
+  string file_path = "img/";
+  string drt_name = "exact_apaa";
+  plot_any_apaa_subseq( dataset, datasets[di], [](const vector<double>& s){ return exact_dp::min_mse_paa(s, 30); }, 0, 119, drt_name, title_name, file_path);
+
+  RandomWalk walk( BernFunctor(0) ); 
+  walk.gen_steps(1000);
+  walk.save_walk("./walk1.tsv");
+  vector<double> dataset2 = parse_tsv("walk1.tsv",-1);
+
+  //plot_any_apla_subseq( dataset, datasets[di], [&ldist, &rdist](const vector<double>& s){ return d_w::simple_pla(s, 30, 3, 3); }, 0, 119);
   
+
   return 0;
 }

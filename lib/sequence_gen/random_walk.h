@@ -12,11 +12,13 @@ class RandomWalk {
 private:
   deque<double> m_walk;
   std::function< double() > m_gen_next_incr;
+  unsigned int num_steps;
 
 public:
   RandomWalk(std::function<double()> next_incr_generator);
   void gen_steps(unsigned int n);
   const deque<double>& get_walk();
+  void save_walk(std::string filename);
 };
 
 class BernFunctor{
