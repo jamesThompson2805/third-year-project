@@ -10,7 +10,7 @@
 
 using std::vector;
 
-void plot_series(Series& s1)
+void plot_series(Series& s1, std::string file_path)
 {
   vector<double> x,y;
   int i=0;
@@ -20,13 +20,16 @@ void plot_series(Series& s1)
     ++i;
   }
   Gnuplot gp;
-  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
-  gp << "set output 'img/"<<s1.name<<".png' \n";
+  gp << "set term pdfcairo enhanced color dashed font 'Verdana, 14' rounded size 32cm, 19.2cm\n";
+  gp << "set output '"<< file_path << s1.name <<".pdf' \n";
   gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series val'\n";
+  gp << "set ylabel 'series value'\n";
   gp << "set title 'Plot of series " << s1.name << "'\n";
-  gp << "plot '-' with lines title '" <<  s1.name << "'\n";
+  gp << "plot '-' with linespoints lt rgb 'blue' lw 1.2 pt 5 ps 0.5 title '" <<  s1.name << "'\n";
   gp.send1d( boost::make_tuple( x, y ) );
+
+  std::string command = "firefox '" + file_path + s1.name + ".pdf'";
+  system(command.c_str()); 
 }
 
 void plot_many_series(vector<Series>& vs)
@@ -64,7 +67,7 @@ void plot_many_series(vector<Series>& vs)
 
 int min(int x, int y) { if (x<y) return x; return y;}
 
-void plot_series_diff(Series& s1, Series& s2)
+void plot_series_diff(Series& s1, Series& s2, std::string file_path)
 {
   vector<double> x1,y1,x2,y2,err1,err2;
   int i=0;
@@ -78,18 +81,20 @@ void plot_series_diff(Series& s1, Series& s2)
     ++i;
   }
   Gnuplot gp;
-  using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
+  gp << "set term pdfcairo enhanced color dashed font 'Verdana, 14' rounded size 32cm, 19.2cm\n";
+  gp << "set output '"<< file_path << s1.name <<" and " << s2.name << ".pdf' \n";
   gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series val'\n";
-  gp << "set title 'Comparison of series " << s1.name << " and " << s2.name << "'\n";
-  gp << "plot '-' dt 3 with yerrorlines title 'difference'"
-     << ", '-' with lines lt rgb 'blue' lw 1.2 title '" << s1.name << "'"
-     << ", '-' with lines lt rgb 'red' lw 1.2 title '" << s2.name << "'\n";
+  gp << "set ylabel 'series values'\n";
+  gp << "set title 'Plot of series " << s1.name << " and series "<< s2.name <<"'\n";
+  gp << "plot '-' dt 3 lw 2 with yerrorlines title 'difference'"
+     << ", '-' with linespoints lt rgb 'blue' lw 1.2 pt 5 ps 0.5 title '" << s1.name << "'"
+     << ", '-' with linespoints lt rgb 'red' lw 1.2 pt 7 ps 0.5 title '" << s2.name << "'\n";
   gp.send1d( boost::make_tuple( x1, y1, err1, err2 ) );
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
+
+  std::string command = "firefox '" + file_path + s1.name + " and " + s2.name + ".pdf'";
+  system(command.c_str()); 
 }
 
 void plot_lines(vector<Line> lines, PlotLabels pl)

@@ -184,6 +184,6 @@ void plot_any_apaa_subseq(const vector<double>& series
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
 
-  std::string command = "firefox " + file_path + title_name + ".pdf";
+  std::string command = "firefox '" + file_path + title_name + ".pdf'";
   system(command.c_str()); 
 }

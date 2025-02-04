@@ -1,9 +1,10 @@
 #include "mse.h"
 
 #include <algorithm>
+#include <cmath>
 using std::vector;
 
-double mse::mse_between_seq(const vector<double>& s1, const vector<double>& s2)
+double mse::se_between_seq(const vector<double>& s1, const vector<double>& s2)
 {
   double mse = 0;
   for (int i=0; i<std::min( s1.size(), s2.size() ); ++i) {
@@ -11,6 +12,10 @@ double mse::mse_between_seq(const vector<double>& s1, const vector<double>& s2)
   }
   int n = std::min( s1.size(), s2.size());
   return mse / (double) std::max( 1, n );
+}
+double mse::mse_between_seq(const vector<double>& s1, const vector<double>& s2)
+{
+  return std::sqrt( mse::se_between_seq(s1, s2) );
 }
 
 double mse::maxdev_between_seq(const vector<double>& s1, const vector<double>& s2)

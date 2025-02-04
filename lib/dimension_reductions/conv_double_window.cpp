@@ -22,7 +22,7 @@ inline double score( const vector<double>& s, const vector<double>& l, const vec
   return score > 0 ? score : -1 * score;
 }
 
-vector<tuple<DoublePair, unsigned int>> c_d_w::conv_pla(const vector<double> &s, unsigned int num_params, vector<double>& l, vector<double>& r)
+vector<tuple<DoublePair, unsigned int>> c_d_w::conv_pla(const vector<double> &s, unsigned int num_params, const vector<double>& l, const vector<double>& r)
 {
   // TODO: consider all safety checks to ensure nonsense cannot be passed in
 

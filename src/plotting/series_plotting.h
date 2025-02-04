@@ -22,11 +22,11 @@ struct PlotLabels {
   std::string ylabel;
 };
 
-void plot_series(Series& s);
+void plot_series(Series& s, std::string filepath);
 
 void plot_many_series(std::vector<Series>& vs);
 
-void plot_series_diff(Series& s1, Series& s2);
+void plot_series_diff(Series& s1, Series& s2, std::string filepath);
 
 void plot_lines(std::vector<Line> ls, PlotLabels pl);
 
