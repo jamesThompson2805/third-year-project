@@ -2,6 +2,7 @@
 #define EVAL_CAPLA_H
 
 #include <vector>
+
 #include "general.h"
 
 /* What to assess for CAPLA
@@ -38,33 +39,10 @@
  */
 
 namespace capla_eval {
-double mse_of_method(const Seqd& s, unsigned int num_params, const Seqd& ldist, const Seqd& rdist);
-double maxdev_of_method(const Seqd& s, unsigned int num_params, const Seqd& ldist, const Seqd& rdist);
-double cputime_ms_of_method(const Seqd& s, unsigned int num_params, const Seqd& ldist, const Seqd& rdist);
-
-Seqd get_mse_over_sizes(const Seqd& s, Sequi sizes, unsigned int num_params, const Seqd& ldist, const Seqd& rdist);
-Seqd get_maxdev_over_sizes(const Seqd& s, Sequi sizes, unsigned int num_params, const Seqd& ldist, const Seqd& rdist);
-Seqd get_cputime_over_sizes(const Seqd& s, Sequi sizes, unsigned int num_params, const Seqd& ldist, const Seqd& rdist);
-
-Seqd get_mse_over_num_params(const Seqd& s, Sequi vec_params, const Seqd& ldist, const Seqd& rdist);
-Seqd get_maxdev_over_num_params(const Seqd& s, Sequi vec_params, const Seqd& ldist, const Seqd& rdist);
-Seqd get_cputime_over_num_params(const Seqd& s, Sequi vec_params, const Seqd& ldist, const Seqd& rdist);
-
-Seqd get_mse_over_window_window_sizes_method_mean(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-Seqd get_maxdev_over_window_window_sizes_method_mean(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-Seqd get_cputime_over_window_window_sizes_method_mean(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-
-Seqd get_mse_over_window_window_sizes_method_miss_start(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-Seqd get_maxdev_over_window_window_sizes_method_miss_start(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-Seqd get_cputime_over_window_window_sizes_method_miss_start(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-
-Seqd get_mse_over_window_window_sizes_method_tri(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-Seqd get_maxdev_over_window_window_sizes_method_tri(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-Seqd get_cputime_over_window_window_sizes_method_tri(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-
-Seqd get_mse_over_window_window_sizes_method_tri_miss_start(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-Seqd get_maxdev_over_window_window_sizes_method_tri_miss_start(const Seqd& s, Sequi window_sizes, unsigned int num_params);
-Seqd get_cputime_over_window_window_sizes_method_tri_miss_start(const Seqd& s, Sequi window_sizes, unsigned int num_params);
+  DRT generate_mean_DRT(unsigned int win_size);
+  DRT generate_mean_skip_one_DRT(unsigned int win_size);
+  DRT generate_tri_DRT(unsigned int win_size);
+  DRT generate_tri_skip_one_DRT(unsigned int win_size);
 };
 
 

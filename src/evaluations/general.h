@@ -26,6 +26,12 @@ namespace general_eval {
   Seqd get_mse_over_num_params(const Seqd& s, Sequi vec_params, DRT f);
   Seqd get_maxdev_over_num_params(const Seqd& s, Sequi vec_params, DRT f);
   Seqd get_cputime_over_num_params(const Seqd& s, Sequi vec_params, DRT f);
+
+  Seqd get_comp_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs, COMP comp);
+  Seqd get_mse_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs);
+  Seqd get_maxdev_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs);
+  Seqd get_cputime_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs);
+
 }
 
 

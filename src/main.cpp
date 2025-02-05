@@ -2,6 +2,7 @@
 #include <iterator>
 #include <string>
 #include <vector>
+#include <tuple>
 #include <algorithm>
 
 #include "ucr_parsing.h"
@@ -9,6 +10,8 @@
 #include "mse.h"
 
 #include "paa.h"
+#include "apca.h"
+
 #include "pla.h"
 #include "double_window.h"
 #include "dac_curve_fitting.h"
@@ -17,12 +20,10 @@
 #include "conv_double_window.h"
 
 #include "plotting/series_plotting.h"
-#include "plotting/plot_dimreduct_paa.cpp"
-#include "plotting/plot_dimreduct_pla.cpp"
 
 #include "random_walk.h"
 
-using std::vector, std::string;
+using std::vector, std::string, std::tuple;
 
 int main()
 {
@@ -63,6 +64,7 @@ int main()
   vector<double> rdist = { 0.0, 1.0/2.0, 1.0/2.0};
   auto conv_apla_f = [&ldist, &rdist](const vector<double>& s, unsigned int num_params){ return c_d_w::conv_pla(s, num_params, ldist, rdist); }; 
 
+  /*
   vector<double> mse_s;
   for (int j=4; j<=32; j*=2) {
     vector<double> ldist_test;
@@ -86,6 +88,13 @@ int main()
   }
   Series sa = { mse_s, "MSE for DW APLA" };
   plot_series(sa, "img/");
+  */
+
+  vector<double> test = { 7, 5, 5, 3, 2, 4, 4, 6 };
+  vector<tuple<double, unsigned int>> apca = apca::apca(test, 6);
+  for (auto [v,d] : apca) {
+    std::cout << v << " : " << d << std::endl;
+  }
 
   //RandomWalk walk( NormalFunctor(1) ); 
   //walk.gen_steps(30);

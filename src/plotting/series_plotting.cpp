@@ -2,6 +2,7 @@
 
 #include "gnuplot-iostream.h"
 #include "mse.h"
+#include "plot_types.h"
 #include "plotting_constants.h"
 #include <boost/tuple/tuple.hpp>
 
@@ -10,7 +11,7 @@
 
 using std::vector;
 
-void plot_series(Series& s1, std::string file_path)
+void plot::plot_series(Series& s1, PlotDetails p, Backend b)
 {
   vector<double> x,y;
   int i=0;
@@ -20,19 +21,15 @@ void plot_series(Series& s1, std::string file_path)
     ++i;
   }
   Gnuplot gp;
-  gp << "set term pdfcairo enhanced color dashed font 'Verdana, 14' rounded size 32cm, 19.2cm\n";
-  gp << "set output '"<< file_path << s1.name <<".pdf' \n";
-  gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series value'\n";
-  gp << "set title 'Plot of series " << s1.name << "'\n";
+  plot_setup::setup_gnuplot(gp, b, p);
   gp << "plot '-' with linespoints lt rgb 'blue' lw 1.2 pt 5 ps 0.5 title '" <<  s1.name << "'\n";
   gp.send1d( boost::make_tuple( x, y ) );
 
-  std::string command = "firefox '" + file_path + s1.name + ".pdf'";
-  system(command.c_str()); 
+  if (b == PDF)
+    plot_setup::open_pdf(p);
 }
 
-void plot_many_series(vector<Series>& vs)
+void plot::plot_many_series(vector<Series>& vs, PlotDetails p, Backend b)
 {
   if (vs.size() ==0) return;
 
@@ -49,12 +46,7 @@ void plot_many_series(vector<Series>& vs)
     }
   }
   Gnuplot gp;
-  using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
-  gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series val'\n";
-  gp << "set title 'Plot of multiple time series \n";
+  plot_setup::setup_gnuplot(gp, b, p);
   gp << "plot ";
   for (int i=0; i<vs.size()-1; ++i) {
     gp << "'-' with lines title '" <<  vs[i].name << "', ";
@@ -63,11 +55,14 @@ void plot_many_series(vector<Series>& vs)
   for (int i=0; i<vs.size(); ++i) {
     gp.send1d( boost::make_tuple( vx[i], vy[i] ) );
   }
+
+  if (b == PDF)
+    plot_setup::open_pdf(p);
 }
 
 int min(int x, int y) { if (x<y) return x; return y;}
 
-void plot_series_diff(Series& s1, Series& s2, std::string file_path)
+void plot::plot_series_diff(Series& s1, Series& s2, PlotDetails p, Backend b)
 {
   vector<double> x1,y1,x2,y2,err1,err2;
   int i=0;
@@ -81,11 +76,7 @@ void plot_series_diff(Series& s1, Series& s2, std::string file_path)
     ++i;
   }
   Gnuplot gp;
-  gp << "set term pdfcairo enhanced color dashed font 'Verdana, 14' rounded size 32cm, 19.2cm\n";
-  gp << "set output '"<< file_path << s1.name <<" and " << s2.name << ".pdf' \n";
-  gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series values'\n";
-  gp << "set title 'Plot of series " << s1.name << " and series "<< s2.name <<"'\n";
+  plot_setup::setup_gnuplot(gp, b, p);
   gp << "plot '-' dt 3 lw 2 with yerrorlines title 'difference'"
      << ", '-' with linespoints lt rgb 'blue' lw 1.2 pt 5 ps 0.5 title '" << s1.name << "'"
      << ", '-' with linespoints lt rgb 'red' lw 1.2 pt 7 ps 0.5 title '" << s2.name << "'\n";
@@ -93,24 +84,17 @@ void plot_series_diff(Series& s1, Series& s2, std::string file_path)
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
 
-  std::string command = "firefox '" + file_path + s1.name + " and " + s2.name + ".pdf'";
-  system(command.c_str()); 
+  if (b == PDF)
+    plot_setup::open_pdf(p);
 }
 
-void plot_lines(vector<Line> lines, PlotLabels pl)
+void plot::plot_lines(vector<Line> lines, PlotDetails p, Backend b)
 {
 
   if (lines.size() ==0) return;
 
   Gnuplot gp;
-  using namespace gp_constants;
-  // gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  // gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
-  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
-  gp << "set output 'img/drt_comparisons/"<<pl.title<<".png' \n";
-  gp << "set xlabel '" << pl.xlabel << "'\n";
-  gp << "set ylabel '" << pl.ylabel << "'\n";
-  gp << "set title '" << pl.title << "'\n";
+  plot_setup::setup_gnuplot(gp, b, p);
   gp << "plot ";
   for (int i=0; i<lines.size()-1; ++i) {
     gp << "'-' with lines title '" <<  lines[i].name << "', ";
@@ -119,8 +103,12 @@ void plot_lines(vector<Line> lines, PlotLabels pl)
   for (int i=0; i<lines.size(); ++i) {
     gp.send1d( boost::make_tuple( lines[i].x, lines[i].y ) );
   }
+
+  if (b == PDF)
+    plot_setup::open_pdf(p);
 }
 
+/*
 void plot_ucr_drt_mse(const vector<std::string>& datasets
 		      , std::string datasets_loc
 		      , unsigned int ds_start
@@ -173,3 +161,4 @@ void plot_ucr_drt_maxdev(const vector<std::string>& datasets
   PlotLabels pl = {"comparison of maximum deviation for DRT on "+ std::to_string(ds_end-ds_start+1) +" datasets", "number of parameters", "MaxDev error"};
   plot_lines( lines, pl);
 }
+*/

@@ -1,66 +1,42 @@
 #include "capla.h"
 
-#include <cmath>
-#include <algorithm>
-#include <functional>
-using std::vector;
 
 #include "pla.h"
-#include "mse.h"
 #include "conv_double_window.h"
 
-double capla_eval::mse_of_method(const Seq& s, unsigned int num_params, const Seq& ldist, const Seq& rdist)
+DRT capla_eval::generate_mean_DRT(unsigned int win_size)
 {
-  Seq capla = pla::apla_to_seq( c_d_w::conv_pla(s, num_params, ldist, rdist) );
-  return std::sqrt( mse::se_between_seq(s, capla) );
-}
-double capla_eval::maxdev_of_method(const Seq& s, unsigned int num_params, const Seq& ldist, const Seq& rdist)
-{
-  Seq capla = pla::apla_to_seq( c_d_w::conv_pla(s, num_params, ldist, rdist) );
-  return mse::maxdev_between_seq(s, capla);
+  Seqd l(win_size, 1/(double)win_size);
+  Seqd r(win_size, 1/(double)win_size);
+  return [&l, &r](const Seqd& s, unsigned int num_params){ return pla::apla_to_seq( c_d_w::conv_pla(s, num_params, l, r) ); };
 }
 
-
-Seq get_comp_over_sizes(const Seq& s, std::vector<unsigned int> sizes, unsigned int num_params, const Seq& ldist, const Seq& rdist, std::function<double(const Seq&, const Seq&)> comparison)
+DRT capla_eval::generate_mean_skip_one_DRT(unsigned int win_size)
 {
-  Seq comparisons;
-  Seq resized;
-  for (const auto& ui : sizes) {
-    resized.resize( ui );
-    std::copy_n(s.begin(), ui, resized.begin());
-    Seq capla = pla::apla_to_seq(c_d_w::conv_pla(resized, num_params, ldist, rdist));
-    comparisons.push_back( comparison(resized, capla) );
+  Seqd l(win_size, 1/(double)win_size);
+  Seqd r(win_size, 1/(double) (win_size-1) );
+  r[0] = 0.0;
+  return [&l, &r](const Seqd& s, unsigned int num_params){ return pla::apla_to_seq( c_d_w::conv_pla(s, num_params, l, r) ); };
+}
+
+DRT capla_eval::generate_tri_DRT(unsigned int win_size)
+{
+  Seqd l(win_size);
+  Seqd r(win_size);
+  for (int i=0; i<win_size; i++) {
+    l[i] = r[win_size -1 -i] = (double) 2*(i+1) / (double) (win_size * (win_size + 1));
   }
-  return comparisons;
-}
-Seq capla_eval::get_mse_over_sizes(const Seq& s, std::vector<unsigned int> sizes, unsigned int num_params, const Seq& ldist, const Seq& rdist)
-{
-  Seq a = get_comp_over_sizes(s, sizes, num_params, ldist, rdist, mse::se_between_seq);
-  std::for_each(a.begin(), a.end(), [](auto& d){ d=std::sqrt(d); });
-  return a;
-}
-Seq capla_eval::get_maxdev_over_sizes(const Seq& s, std::vector<unsigned int> sizes, unsigned int num_params, const Seq& ldist, const Seq& rdist)
-{
-  return get_comp_over_sizes(s, sizes, num_params, ldist, rdist, mse::maxdev_between_seq);
+  return [&l, &r](const Seqd& s, unsigned int num_params){ return pla::apla_to_seq( c_d_w::conv_pla(s, num_params, l, r) ); };
 }
 
-
-Seq get_comp_over_num_params(const Seq& s, std::vector<unsigned int> vec_params, const Seq& ldist, const Seq& rdist, std::function<double(const Seq&, const Seq&)> comp)
+DRT capla_eval::generate_tri_skip_one_DRT(unsigned int win_size)
 {
-  Seq comparisons;
-  for (const auto& ui : vec_params) {
-    Seq capla = pla::apla_to_seq(c_d_w::conv_pla(s, ui, ldist, rdist));
-    comparisons.push_back( comp(s, capla) );
+  Seqd l(win_size);
+  Seqd r(win_size);
+  for (int i=0; i<win_size; i++) {
+    l[i] = (double) 2*(i+1) / (double) (win_size * (win_size + 1));
+    r[win_size -1 -i] = (double) 2*(i+1) / (double) (win_size * (win_size - 1));
   }
-  return comparisons;
-}
-Seq get_mse_over_num_params(const Seq& s, std::vector<unsigned int> vec_params, const Seq& ldist, const Seq& rdist)
-{
-  Seq a = get_comp_over_num_params(s, vec_params, ldist, rdist, mse::se_between_seq);
-  std::for_each(a.begin(), a.end(), [](auto& d){ d=std::sqrt(d); });
-  return a;
-}
-Seq get_maxdev_over_num_params(const Seq& s, std::vector<unsigned int> vec_params, const Seq& ldist, const Seq& rdist)
-{
-  return get_comp_over_num_params(s, vec_params, ldist, rdist, mse::maxdev_between_seq);
+  r[0] = 0.0;
+  return [&l, &r](const Seqd& s, unsigned int num_params){ return pla::apla_to_seq( c_d_w::conv_pla(s, num_params, l, r) ); };
 }

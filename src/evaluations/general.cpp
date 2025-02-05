@@ -90,3 +90,29 @@ Seqd get_cputime_over_num_params(const Seqd& s, Sequi vec_params, DRT f) {
   }
   return timings;
 }
+
+Seqd general_eval::get_comp_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs, COMP comp)
+{
+  Seqd comparisons;
+  for (const auto& f : fs) {
+    Seqd reduced = f(s, num_params);
+    comparisons.push_back( comp(s, reduced) );
+  }
+  return comparisons;
+}
+Seqd general_eval::get_mse_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs)
+{
+  return general_eval::get_comp_over_DRTs(s, num_params, fs, mse::mse_between_seq);
+}
+Seqd general_eval::get_maxdev_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs)
+{
+  return general_eval::get_comp_over_DRTs(s, num_params, fs, mse::maxdev_between_seq);
+}
+Seqd get_cputime_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs) {
+
+  Seqd timings;
+  for (const auto& f : fs) {
+    timings.push_back( general_eval::cputime_ms_of_method(s, num_params, f) );
+  }
+  return timings;
+}
