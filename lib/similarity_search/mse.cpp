@@ -6,16 +6,15 @@ using std::vector;
 
 double mse::se_between_seq(const vector<double>& s1, const vector<double>& s2)
 {
-  double mse = 0;
+  double se = 0;
   for (int i=0; i<std::min( s1.size(), s2.size() ); ++i) {
-    mse += (s1[i] - s2[i]) * (s1[i] - s2[i]);
+    se += (s1[i] - s2[i]) * (s1[i] - s2[i]);
   }
-  int n = std::min( s1.size(), s2.size());
-  return mse / (double) std::max( 1, n );
+  return se;
 }
 double mse::mse_between_seq(const vector<double>& s1, const vector<double>& s2)
 {
-  return std::sqrt( mse::se_between_seq(s1, s2) );
+  return std::sqrt( mse::se_between_seq(s1, s2) ) / std::min( s1.size(), s2.size()) ;
 }
 
 double mse::maxdev_between_seq(const vector<double>& s1, const vector<double>& s2)

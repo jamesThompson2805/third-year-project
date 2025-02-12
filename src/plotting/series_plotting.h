@@ -13,20 +13,30 @@ struct Series {
 };
 
 struct Line {
-  std::vector<double>& x;
-  std::vector<double>& y;
+  std::vector<double> x;
+  std::vector<double> y;
   std::string name;
+};
+
+struct LineGenerator {
+  std::function< double(const std::vector<double>&, unsigned int) > result_gen;
+  std::string method_name;
 };
 
 
 namespace plot { 
-  void plot_series(Series& s, PlotDetails p, Backend b);
+  void plot_series(Series& s, PlotDetails p);
 
-  void plot_many_series(std::vector<Series>& vs, PlotDetails p, Backend b);
+  void plot_many_series(std::vector<Series>& vs, PlotDetails p);
 
-  void plot_series_diff(Series& s1, Series& s2, PlotDetails p, Backend b);
+  void plot_series_diff(Series& s1, Series& s2, PlotDetails p);
 
-  void plot_lines(std::vector<Line> ls, PlotDetails p, Backend b);
+  void plot_lines(std::vector<Line> ls, PlotDetails p);
+
+  void plot_lines_generated(const std::vector<double>&, std::vector<unsigned int>, std::vector<LineGenerator>, PlotDetails p);
+
+  void plot_lines_generated_ucr_average(const std::vector<std::string>& dataset_names, std::string dataset_filepath, unsigned int ds_size,
+					      std::vector<unsigned int>, std::vector<LineGenerator>, PlotDetails p);
 
   void plot_ucr_drt_mse(const std::vector<std::string>& datasets
 			, std::string datasets_loc

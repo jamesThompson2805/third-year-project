@@ -1,8 +1,8 @@
 #include "plot_types.h"
 
-void plot_setup::setup_gnuplot(Gnuplot &gp, Backend b, PlotDetails p)
+void plot_setup::setup_gnuplot(Gnuplot &gp, PlotDetails p)
 {
-  switch (b) {
+  switch (p.b) {
     case PDF:
       gp << "set term pdfcairo enhanced color dashed font 'Verdana, 14' rounded size 32cm, 19.2cm\n";
       gp << "set output '" << p.filepath + p.title <<".pdf'\n";
@@ -21,6 +21,8 @@ void plot_setup::setup_gnuplot(Gnuplot &gp, Backend b, PlotDetails p)
 
 void plot_setup::open_pdf(PlotDetails p)
 {
-  std::string command = "firefox '" + p.filepath + p.title + ".pdf'";
-  int a = system(command.c_str()); 
+  if (p.b == PDF) {
+    std::string command = "firefox '" + p.filepath + p.title + ".pdf'";
+    int a = system(command.c_str()); 
+  }
 }

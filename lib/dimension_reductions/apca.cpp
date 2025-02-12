@@ -20,10 +20,9 @@ vector<tuple<double, unsigned int>> apca::apca(const std::vector<double> &s, uns
   vector<vector<double>> pairwise_means;
   vector<vector<double>> pairwise_diffs;
   pairwise_means.push_back({});
-  pairwise_diffs.push_back({});
 
   // pad out with zeroes
-  pairwise_means[0].resize( 1 << (int) ceil( log2( (double) s.size()) ) );
+  pairwise_means[0].resize( 1 << (int) ceil( log2( (double) s.size()) ), 0.0 );
   copy(s.cbegin(), s.cend(), pairwise_means[0].begin());
 
   // calculate all pairwise differences and means
@@ -36,12 +35,6 @@ vector<tuple<double, unsigned int>> apca::apca(const std::vector<double> &s, uns
       pairwise_diffs[iback-1].push_back( (double)(pairwise_means[iback-1][i] - pairwise_means[iback-1][i+1]) / 2.0 );
     }
   }
-  for (auto& v : pairwise_diffs) { 
-    for (auto& d : v) {
-      std::cout << d << " ";
-    }
-    std::cout << std::endl;
-  }
 
   // grab only largest num_segments no. of coefficients 
   // note that index_f automatically normalises the indexed value
@@ -50,12 +43,12 @@ vector<tuple<double, unsigned int>> apca::apca(const std::vector<double> &s, uns
   auto comp = [](const tuple<double,int,int>& a, const tuple<double,int,int>& b){ return abs(std::get<0>(a)) > abs(std::get<0>(b)); };
 
   priority_queue<tuple<double,int,int>, vector<tuple<double,int,int>>, decltype(comp) > priQ(comp);
-  priQ.push( {pairwise_means.back()[0], 0, 0} ); // technically res0_value is also a DWT coefficient
+  priQ.push( {pairwise_means.back()[0], -1, -1} ); // technically res0_value is also a DWT coefficient
   pairwise_means.back()[0] = 0.0;
 
   for (int v=0; v<pairwise_diffs.size(); v++) {
     for (int i=0; i<pairwise_diffs[v].size(); i++) {
-      if ( abs(index_f(v,i)) >= abs(std::get<0>( priQ.top() )) || priQ.size() < num_segments ) {
+      if ( priQ.size() < num_segments || abs(index_f(v,i)) >= abs(std::get<0>( priQ.top() )) ) {
 	priQ.push( { index_f(v,i), v, i } );
 	if (priQ.size() > num_segments)
 	  priQ.pop();
@@ -65,19 +58,13 @@ vector<tuple<double, unsigned int>> apca::apca(const std::vector<double> &s, uns
   }
   // set values back only to chosen coefficients
   while (priQ.size() > 0) {
-    auto [d, v,i] = priQ.top();
+    auto [d,v,i] = priQ.top();
     priQ.pop();
-    if (v == 0 && i == 0) { // kept first DWT coefficient
+    if (v == -1 && i == -1) { // kept first DWT coefficient
       pairwise_means.back()[0] = d;
     } else {
       pairwise_diffs[v][i] = d * normal(v);
     }
-  }
-  for (auto& v : pairwise_diffs) { 
-    for (auto& d : v) {
-      std::cout << d << " ";
-    }
-    std::cout << std::endl;
   }
 
   // reconstruct approximation
@@ -86,12 +73,6 @@ vector<tuple<double, unsigned int>> apca::apca(const std::vector<double> &s, uns
       pairwise_means[v-1][2*i] = pairwise_means[v][i] + pairwise_diffs[v-1][i];
       pairwise_means[v-1][2*i+1] = pairwise_means[v][i] - pairwise_diffs[v-1][i];
     }
-  }
-  for (auto& v : pairwise_means) { 
-    for (auto& d : v) {
-      std::cout << d << " ";
-    }
-    std::cout << std::endl;
   }
 
   // find segments and form actual approximation
@@ -114,8 +95,8 @@ vector<tuple<double, unsigned int>> apca::apca(const std::vector<double> &s, uns
   while (apca.size() > num_segments) {
     double min_dist = 10000000.0;
     double min_ind = 0;
-    for (int segi=0; segi<apca.size()-1; segi++) {
-      if ( double dist = abs(std::get<0>( apca[segi] ) - std::get<0>( apca[segi] )); dist < min_dist ) {
+    for (int segi=0; segi<apca.size()-2; segi++) {
+      if ( double dist = abs(std::get<0>( apca[segi] ) - std::get<0>( apca[segi+1] )); dist < min_dist ) {
 	min_dist = dist;
 	min_ind = segi;
       }

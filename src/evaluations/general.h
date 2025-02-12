@@ -10,6 +10,15 @@ typedef std::vector<unsigned int> Sequi;
 typedef std::function<Seqd(const Seqd&, unsigned int)> DRT;
 typedef std::function<double(const Seqd&, const Seqd&)> COMP;
 
+/*
+ * Want to plot:
+ *  How one DRT does varying some parameter
+ *  How many DRTs do varying some parameter
+ *
+ *  How one DRT does varying some parameter averaged over many datasets
+ *  How many DRT do varying some parameter averaged over many datasets
+ */
+
 
 namespace general_eval {
   double comp_of_method(const Seqd& s, unsigned int num_params, DRT f, COMP comp);
@@ -31,6 +40,8 @@ namespace general_eval {
   Seqd get_mse_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs);
   Seqd get_maxdev_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs);
   Seqd get_cputime_over_DRTs(const Seqd& s, unsigned int num_params, std::vector<DRT> fs);
+
+
 
 }
 

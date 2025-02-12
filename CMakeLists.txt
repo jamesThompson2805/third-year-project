@@ -9,7 +9,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(${PROJECT_NAME} src/main.cpp
 			       src/plotting/series_plotting.cpp
-			       src/plotting/plot_types.cpp)
+			       src/plotting/plot_types.cpp
+			       src/evaluations/general.cpp)
 
 add_subdirectory(lib/sequence_gen)
 add_subdirectory(lib/parsing)

@@ -20,6 +20,7 @@
 #include "conv_double_window.h"
 
 #include "plotting/series_plotting.h"
+#include "evaluations/general.h"
 
 #include "random_walk.h"
 
@@ -40,16 +41,14 @@ int main()
   }
   */
 
-  /*
   unsigned int di = 25;
   vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN);
-  dataset.resize(480);
-  z_norm::z_normalise(dataset);
-  */
+  dataset.resize(400);
+  //z_norm::z_normalise(dataset);
 
 
-  auto paa_f = [](const vector<double>& s, unsigned int num_params){ return paa::paa(s, num_params), (s.size() / num_params) + (s.size() % num_params != 0); };
-  auto pla_f = [](const vector<double>& s, unsigned int num_params){ return pla::pla(s, num_params), (2*s.size() / num_params) + (2*s.size() % num_params != 0); };
+  auto paa_f = [](const vector<double>& s, unsigned int num_params){ return paa::paa_to_seq( paa::paa(s, num_params), (s.size() / num_params) + (s.size() % num_params != 0)); };
+  auto pla_f = [](const vector<double>& s, unsigned int num_params){ return pla::pla_to_seq(pla::pla(s, num_params), (2*s.size() / num_params) + (2*s.size() % num_params != 0)); };
 
   auto d_w_apca_f = [](const vector<double>& s, unsigned int num_params){ return d_w::simple_paa(s, num_params, 5, 5); };
   auto d_w_proj_apca_f = [](const vector<double>& s, unsigned int num_params){ return d_w::y_proj_paa(s, num_params, 5, 5); };
@@ -57,12 +56,25 @@ int main()
   auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return d_w::simple_pla(s, num_params, 3, 3); };
   auto d_w_proj_apla_f = [](const vector<double>& s, unsigned int num_params){ return d_w::y_proj_pla(s, num_params, 5, 5); };
 
-  auto exact_apaa_f = [](const vector<double>& s, unsigned int num_params){ return exact_dp::min_mse_paa(s, num_params); }; 
-  auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return exact_dp::min_mse_pla(s, num_params); }; 
+  auto exact_apaa_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq(exact_dp::min_mse_paa(s, num_params)); }; 
+  auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(exact_dp::min_mse_pla(s, num_params)); }; 
+
+  auto apca_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq(apca::apca(s, num_params)); };
 
   vector<double> ldist = { 1.0/3.0, 1.0/3.0, 1.0/3.0};
   vector<double> rdist = { 0.0, 1.0/2.0, 1.0/2.0};
   auto conv_apla_f = [&ldist, &rdist](const vector<double>& s, unsigned int num_params){ return c_d_w::conv_pla(s, num_params, ldist, rdist); }; 
+
+  PlotDetails p = { "title", "number of parameters", "mse", "no file path", X11 };
+  auto paa_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, paa_f); };
+  LineGenerator paa_gen = { paa_gen_f, "paa" };
+  auto apca_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, apca_f); };
+  LineGenerator apca_gen = { apca_gen_f, "apca" };
+  auto pla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, pla_f); };
+  LineGenerator pla_gen = { pla_gen_f, "pla" };
+  plot::plot_lines_generated(dataset, {10, 20, 30, 40, 50, 60, 70}, {paa_gen, apca_gen}, p);
+
+  
 
   /*
   vector<double> mse_s;
@@ -90,11 +102,6 @@ int main()
   plot_series(sa, "img/");
   */
 
-  vector<double> test = { 7, 5, 5, 3, 2, 4, 4, 6 };
-  vector<tuple<double, unsigned int>> apca = apca::apca(test, 6);
-  for (auto [v,d] : apca) {
-    std::cout << v << " : " << d << std::endl;
-  }
 
   //RandomWalk walk( NormalFunctor(1) ); 
   //walk.gen_steps(30);
@@ -102,6 +109,9 @@ int main()
   vector<double> dataset2 = parse_tsv("./tsv/testwalk1.tsv",-1);
   Series s = { dataset2, "Normal Walk" };
   // plot_series(s, "./img/");
+
+  vector<double> test = { 7, 5, 5, 3, 2, 4 };
+  //auto apca_test = apca::apca(test, 3);
 
   /*
   NormalFunctor noise(5, 0.0, 1.0);

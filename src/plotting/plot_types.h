@@ -16,10 +16,11 @@ struct PlotDetails {
   std::string xlabel;
   std::string ylabel;
   std::string filepath;
+  Backend b;
 };
 
 namespace plot_setup {
-  void setup_gnuplot(Gnuplot& gp, Backend b, PlotDetails p);
+  void setup_gnuplot(Gnuplot& gp, PlotDetails p);
   void open_pdf(PlotDetails p);
 }
 
