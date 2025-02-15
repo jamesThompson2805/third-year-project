@@ -7,7 +7,7 @@
 
 #include "ucr_parsing.h"
 #include "z_norm.h"
-#include "mse.h"
+#include "error_measures.h"
 
 #include "paa.h"
 #include "apca.h"
@@ -72,7 +72,10 @@ int main()
   LineGenerator apca_gen = { apca_gen_f, "apca" };
   auto pla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, pla_f); };
   LineGenerator pla_gen = { pla_gen_f, "pla" };
-  plot::plot_lines_generated(dataset, {10, 20, 30, 40, 50, 60, 70}, {paa_gen, apca_gen}, p);
+  //plot::plot_lines_generated(dataset, {10, 20, 30, 40, 50, 60, 70}, {paa_gen, apca_gen, pla_gen}, p);
+  
+
+
 
   
 
