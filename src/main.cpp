@@ -43,10 +43,10 @@ int main()
   }
   */
 
-  unsigned int di = 25;
+  unsigned int di = 26;
   vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN);
-  dataset.resize(400);
-  //z_norm::z_normalise(dataset);
+  dataset.resize(40000);
+  z_norm::z_normalise(dataset);
 
 
   auto paa_f = [](const vector<double>& s, unsigned int num_params){ return paa::paa_to_seq( paa::paa(s, num_params), (s.size() / num_params) + (s.size() % num_params != 0)); };
@@ -67,7 +67,8 @@ int main()
   vector<double> rdist = { 0.0, 1.0/2.0, 1.0/2.0};
   auto conv_apla_f = [&ldist, &rdist](const vector<double>& s, unsigned int num_params){ return c_d_w::conv_pla(s, num_params, ldist, rdist); }; 
 
-  // MSE Evaluation against parameters
+  /************************** MSE Evaluation against parameters *****************************/
+  { 
   PlotDetails p = { "title", "number of parameters", "mse", "no file path", X11 };
   // PAA
   auto paa_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, paa_f); };
@@ -109,7 +110,97 @@ int main()
 	, c_d_w_tri_gen
 	, c_d_w_tri_s1_gen
       }, p);
+  }
+
+  /************************** maxdev Evaluation against parameters *****************************/
+  {
+  PlotDetails p = { "title", "number of parameters", "maxdev", "no file path", X11 };
+  // PAA
+  auto paa_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, paa_f); };
+  LineGenerator paa_gen = { paa_gen_f, "paa" };
+  // APCA
+  auto apca_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, apca_f); };
+  LineGenerator apca_gen = { apca_gen_f, "apca" };
+  // PLA
+  auto pla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, pla_f); };
+  LineGenerator pla_gen = { pla_gen_f, "pla" };
+  // Double Window PLA and Proj
+  auto d_w_apla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, d_w_apla_f); };
+  LineGenerator d_w_apla_gen = { d_w_apla_gen_f, "double window pla" };
+  auto d_w_proj_apla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, d_w_proj_apla_f); };
+  LineGenerator d_w_proj_apla_gen = { d_w_proj_apla_gen_f, "projection pla" };
+  // CAPLA hypotheses
+  auto capla_mean_f =  capla_eval::generate_mean_DRT(5);
+  auto c_d_w_mean_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, capla_mean_f); };
+  LineGenerator c_d_w_mean_gen = { c_d_w_mean_gen_f, "mean double window pla" };
+  auto capla_tri_f =  capla_eval::generate_tri_DRT(5);
+  auto c_d_w_tri_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, capla_tri_f); };
+  LineGenerator c_d_w_tri_gen = { c_d_w_tri_gen_f, "Tri double window pla" };
+  auto capla_mean_s1_f =  capla_eval::generate_mean_skip_one_DRT(5);
+  auto c_d_w_mean_s1_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, capla_mean_s1_f); };
+  LineGenerator c_d_w_mean_s1_gen = { c_d_w_mean_s1_gen_f, "mean s1 double window pla" };
+  auto capla_tri_s1_f =  capla_eval::generate_tri_skip_one_DRT(5);
+  auto c_d_w_tri_s1_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, capla_tri_s1_f); };
+  LineGenerator c_d_w_tri_s1_gen = { c_d_w_tri_s1_gen_f, "Tri s1 double window pla" };
+  plot::plot_lines_generated(dataset
+      , {15, 30, 45, 60, 75, 90}
+      , {
+	paa_gen
+	, apca_gen
+	, pla_gen
+	, d_w_apla_gen
+	, d_w_proj_apla_gen
+	, c_d_w_mean_gen
+	, c_d_w_mean_s1_gen
+	, c_d_w_tri_gen
+	, c_d_w_tri_s1_gen
+      }, p);
+  }
   
+  /************************** time Evaluation against parameters *****************************/
+  {
+  PlotDetails p = { "title", "number of parameters", "time", "no file path", X11 };
+  // PAA
+  auto paa_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, paa_f); };
+  LineGenerator paa_gen = { paa_gen_f, "paa" };
+  // APCA
+  auto apca_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, apca_f); };
+  LineGenerator apca_gen = { apca_gen_f, "apca" };
+  // PLA
+  auto pla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, pla_f); };
+  LineGenerator pla_gen = { pla_gen_f, "pla" };
+  // Double Window PLA and Proj
+  auto d_w_apla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, d_w_apla_f); };
+  LineGenerator d_w_apla_gen = { d_w_apla_gen_f, "double window pla" };
+  auto d_w_proj_apla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, d_w_proj_apla_f); };
+  LineGenerator d_w_proj_apla_gen = { d_w_proj_apla_gen_f, "projection pla" };
+  // CAPLA hypotheses
+  auto capla_mean_f =  capla_eval::generate_mean_DRT(5);
+  auto c_d_w_mean_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, capla_mean_f); };
+  LineGenerator c_d_w_mean_gen = { c_d_w_mean_gen_f, "mean double window pla" };
+  auto capla_tri_f =  capla_eval::generate_tri_DRT(5);
+  auto c_d_w_tri_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, capla_tri_f); };
+  LineGenerator c_d_w_tri_gen = { c_d_w_tri_gen_f, "Tri double window pla" };
+  auto capla_mean_s1_f =  capla_eval::generate_mean_skip_one_DRT(5);
+  auto c_d_w_mean_s1_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, capla_mean_s1_f); };
+  LineGenerator c_d_w_mean_s1_gen = { c_d_w_mean_s1_gen_f, "mean s1 double window pla" };
+  auto capla_tri_s1_f =  capla_eval::generate_tri_skip_one_DRT(5);
+  auto c_d_w_tri_s1_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, capla_tri_s1_f); };
+  LineGenerator c_d_w_tri_s1_gen = { c_d_w_tri_s1_gen_f, "Tri s1 double window pla" };
+  plot::plot_lines_generated(dataset
+      , {15, 30, 45, 60, 75, 90}
+      , {
+	paa_gen
+	, apca_gen
+	, pla_gen
+	, d_w_apla_gen
+	, d_w_proj_apla_gen
+	, c_d_w_mean_gen
+	, c_d_w_mean_s1_gen
+	, c_d_w_tri_gen
+	, c_d_w_tri_s1_gen
+      }, p);
+  }
 
 
 

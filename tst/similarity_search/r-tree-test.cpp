@@ -28,11 +28,12 @@ double mbr_1d_point_dist(const std::vector<double>& q, const MBR1D& r)
   return 0.0;
 }
 
+
 TEST(RTree, RTreeInsert) {
   std::vector<double> nums;
   RTree<MBR1D, unsigned int> rtree(40, 10, area_1d, merge_1d, mbr_1d_point_dist); 
   
-  for (double i=0.0; i<=1'000'000; i+=0.5) {
+  for (double i=0.0; i<=100'000; i+=0.5) {
     nums.push_back(i);
   }
 
@@ -46,11 +47,24 @@ TEST(RTree, RTreeInsert) {
   std::vector<unsigned int> searched = rtree.sim_search(q, 1.0);
 
   for ( unsigned int i : searched ) {
-    std::cout << "index " << i << " result " << nums[i];
+    std::cout << "index " << i << " result " << nums[i] << " ";
   }
+  std::cout << std::endl;
+
   std::set<double> expected_els = { 10'000, 9999.5, 10'000.5, 9999, 10001 };
   std::set<double> result;
   std::for_each( searched.begin(), searched.end(), [&result, &nums](unsigned int i){ result.insert( nums[i] );});
 
+  auto retrieve = [](const unsigned int& n, const std::vector<double>& s){ return std::vector<std::array<const double*,2>>({{&s[n], &s[n]}}); };
+
+
+  for (auto& [lptr,rptr] : rtree.knn_search({10'000}, 10, retrieve, nums) ) {
+    std::cout << *lptr << " ";
+  }
+  std::cout << std::endl;
+  std::cout << rtree.pruning_power({10'000.3}, retrieve, nums) << std::endl;
+
+
   EXPECT_EQ(expected_els, result);
+  FAIL();
 }

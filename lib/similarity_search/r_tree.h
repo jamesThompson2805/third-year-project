@@ -9,6 +9,8 @@
 #include <queue>
 using std::queue;
 
+#include "error_measures.h"
+
 template <typename R, typename I>
 struct RTreeNode;
 
@@ -32,6 +34,8 @@ template <typename R>
 using FPtrAreaMerge = R (*)(const R&, const R&);
 template <typename R>
 using FPtrMBRDistSqr = double (*)(const std::vector<double>& q, const R&);
+template <typename I>
+using FPtrRetrievalMethod = std::vector<std::array<const double*, 2>> (*)(const I&, const std::vector<double>&);
 
 
 #include <iostream>
@@ -54,9 +58,13 @@ public:
     root = nullptr;
   }
 
+  unsigned int get_size_tree();
+
   void insert(R mbr, unsigned int st_index);
 
   std::vector<I> sim_search(const std::vector<double>& q, double epsilon);
+  std::vector<std::array<const double*, 2>> knn_search(const std::vector<double>& q, unsigned int k, FPtrRetrievalMethod<I> retrieve_f, const std::vector<double>& s);
+  double pruning_power(const std::vector<double>& q, FPtrRetrievalMethod<I> retrieve_f, const std::vector<double>& s);
 
 
   RTreeNode<R,I>* split_node(RTreeNode<R,I>* const node);
@@ -76,6 +84,7 @@ private:
   std::vector<const R*> get_entry_mbrs( const RTreeNode<R,I> *const n);
   R rebuild_mbr( const RTreeNode<R,I> *const n);
   unsigned int get_num_mbrs( const RTreeNode<R,I> *const n);
+  unsigned int get_size_tree(const RTreeNode<R,I>* node);
 
   void destroy_tree_from(RTreeNode<R,I>* node);
 };
@@ -91,12 +100,10 @@ void RTree<R,I>::destroy_tree_from(RTreeNode<R,I>* node)
   } else {
     queue<RTreeNode<R,I>*> q;
     q.push(node);
-    std::set<RTreeNode<R,I>*> seen;
 
     while (q.size() > 0) {
       RTreeNode<R,I>* next = q.front();
       q.pop();
-      seen.insert(next);
       if (next->entries.index() == 0) { // next is a leaf
 	destroy_tree_from(next);
 	continue;
@@ -107,7 +114,6 @@ void RTree<R,I>::destroy_tree_from(RTreeNode<R,I>* node)
       delete next;
     }
   }
-  stopNow: return;
 }
 
 
@@ -146,6 +152,38 @@ R RTree<R,I>::rebuild_mbr( const RTreeNode<R,I> *const n)
     mbr = merge_f( mbr, *rp );
   }
   return mbr;
+}
+
+template <typename R, typename I>
+unsigned int RTree<R,I>::get_size_tree(){
+  return get_size_tree(root);
+}
+
+template <typename R, typename I>
+unsigned int RTree<R,I>::get_size_tree(const RTreeNode<R,I>* node)
+{
+  if (node == nullptr) return 0;
+  unsigned int size = 1;
+  if (node->entries.index() == 0) { // leaf node
+    return size;
+  } else {
+    queue<const RTreeNode<R,I>*> q;
+    q.push(node);
+
+    while (q.size() > 0) {
+      const RTreeNode<R,I>* next = q.front();
+      q.pop();
+      if (next->entries.index() == 0) { // next is a leaf
+	size++;
+	continue;
+      }
+      for (RTreeNode<R,I>* entry : std::get<1>(next->entries)) {
+	size++;
+	q.push(entry);
+      }
+    }
+  }
+  return size;
 }
 
 /* *********************************** Insert definitions ******************* */
@@ -340,8 +378,6 @@ void RTree<R,I>::insert(R mbr, unsigned int st_index)
     root = new RTreeNode<R,I>(mbr, nullptr, std::vector<LeafEntry<R,I>>({{mbr,st_index}}) );
     return;
   }
-  if (st_index % 1000 == 0)
-    std::cout << "st: " << st_index << " " << std::endl;
   RTreeNode<R,I>* target_leaf = choose_leaf(mbr);
   std::vector<LeafEntry<R,I>>& entries = std::get<0>(target_leaf->entries);
   entries.push_back({mbr, st_index});
@@ -361,11 +397,6 @@ std::vector<I> RTree<R,I>::sim_search(const std::vector<double>& q, double epsil
 {
   epsilon = epsilon * epsilon;
   if (uncompr_point_dist_sqr_f(q, root->mbr) > epsilon) {
-    std::cout << root->mbr[0] << " " << root->mbr[1] << std::endl;
-    for ( RTreeNode<R,I>* n : std::get<1>(root->entries) ) {
-      std::cout <<"	" << n->mbr[0] << " " << n->mbr[1] << std::endl;
-    }
-
     return {};
   }
 
@@ -391,5 +422,112 @@ std::vector<I> RTree<R,I>::sim_search(const std::vector<double>& q, double epsil
   return results;
 }
 
+template <typename R, typename I>
+std::vector<std::array<const double*,2>> RTree<R,I>::knn_search(const std::vector<double>& q, unsigned int k, FPtrRetrievalMethod<I> retrieve_f, const std::vector<double>& s)
+{
+  typedef std::variant<const LeafEntry<R,I>*, const RTreeNode<R,I>*> QEntry;
+  auto entry_error = [this,&q](const QEntry& a) {
+    const R& ambr = a.index()==0 ? std::get<0>(a)->mbr : std::get<1>(a)->mbr;
+    return uncompr_point_dist_sqr_f(q,ambr);
+  };
+  auto cmp = [this,&q,&entry_error](const QEntry& a, const QEntry& b) {
+    return entry_error(a) > entry_error(b);
+  };
+  using std::vector, std::array;
+  auto ptr_error = [this,&q](const array<const double*,2>& s) { return error_measures::se_between_ptrs(q.data(), q.data()+q.size()-1,s[0],s[1]); };
+  auto leaf_cmp = [this,&q,&ptr_error](const array<const double*,2>& sa, const array<const double*,2>& sb) {
+    return ptr_error(sa) > ptr_error(sb);
+  };
+
+  std::priority_queue<QEntry, std::vector<QEntry>, decltype(cmp)> pri_q(cmp);
+  std::priority_queue<array<const double*,2>, std::vector<array<const double*,2>>, decltype(leaf_cmp)> candidates(leaf_cmp);
+  std::vector<array<const double*,2>> results;
+  pri_q.push( root );
+
+  while (pri_q.size() != 0) {
+    QEntry next = pri_q.top();
+    pri_q.pop();
+    while (candidates.size()!=0 && ptr_error(candidates.top()) <= entry_error(next) ) {
+      results.push_back( candidates.top() );
+      candidates.pop();
+      if (results.size() >= k) {
+	return results;
+      }
+    }
+
+    if (next.index() == 0) { // next is an entry
+      for (auto s : retrieve_f( std::get<0>(next)->st_index, s ) ) {
+	candidates.push(s);
+      }
+    } else {
+      const RTreeNode<R,I>* node = std::get<1>(next);
+      if (node->entries.index() == 0) { // next is a leaf node
+	for ( const LeafEntry<R,I>& l : std::get<0>(node->entries) ){
+	  pri_q.push(&l); // potential optimisation if you can retrieve the original DRT and use dist_LB
+	}
+      } else {
+	for ( const RTreeNode<R,I>* e : std::get<1>(node->entries) ){
+	  pri_q.push(e);
+	}
+      }
+    }
+  }
+  return results;
+}
+
+template <typename R, typename I>
+double RTree<R,I>::pruning_power(const std::vector<double>& q, FPtrRetrievalMethod<I> retrieve_f, const std::vector<double>& s)
+{
+  typedef std::variant<const LeafEntry<R,I>*, const RTreeNode<R,I>*> QEntry;
+  auto entry_error = [this,&q](const QEntry& a) {
+    const R& ambr = a.index()==0 ? std::get<0>(a)->mbr : std::get<1>(a)->mbr;
+    return uncompr_point_dist_sqr_f(q,ambr);
+  };
+  auto cmp = [this,&q,&entry_error](const QEntry& a, const QEntry& b) {
+    return entry_error(a) > entry_error(b);
+  };
+  using std::vector, std::array;
+  auto ptr_error = [this,&q](const array<const double*,2>& s) { return error_measures::se_between_ptrs(q.data(), q.data()+q.size()-1,s[0],s[1]); };
+  auto leaf_cmp = [this,&q,&ptr_error](const array<const double*,2>& sa, const array<const double*,2>& sb) {
+    return ptr_error(sa) > ptr_error(sb);
+  };
+
+  std::priority_queue<QEntry, std::vector<QEntry>, decltype(cmp)> pri_q(cmp);
+  pri_q.push( root );
+
+  array<const double*,2> min_index;
+  double min_actual_error = 100000000000000000;
+  double objects_scanned = 0.0;
+
+  while (pri_q.size() != 0) {
+    QEntry next = pri_q.top();
+    objects_scanned++;
+    pri_q.pop();
+    if (min_actual_error < entry_error(next) ) {
+      return objects_scanned / (double) get_size_tree();
+    }
+
+    if (next.index() == 0) { // next is an entry
+      for (auto s : retrieve_f( std::get<0>(next)->st_index, s ) ) {
+	if (ptr_error(s) < min_actual_error) {
+	  min_actual_error = ptr_error(s);
+	  min_index = s;
+	}
+      }
+    } else {
+      const RTreeNode<R,I>* node = std::get<1>(next);
+      if (node->entries.index() == 0) { // next is a leaf node
+	for ( const LeafEntry<R,I>& l : std::get<0>(node->entries) ){
+	  pri_q.push(&l); // potential optimisation if you can retrieve the original DRT and use dist_LB
+	}
+      } else {
+	for ( const RTreeNode<R,I>* e : std::get<1>(node->entries) ){
+	  pri_q.push(e);
+	}
+      }
+    }
+  }
+  return 1.0;
+}
 
 #endif

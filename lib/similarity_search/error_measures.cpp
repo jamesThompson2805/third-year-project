@@ -12,6 +12,14 @@ double error_measures::se_between_seq(const vector<double>& s1, const vector<dou
   }
   return se;
 }
+double error_measures::se_between_ptrs(const double* const s1_start, const double* const s1_end, const double* const s2_start, const double* const s2_end)
+{
+  double se = 0;
+  for (int i=0; i<=std::min( s1_end-s1_start, s2_end-s2_start ); ++i) {
+    se += ( s1_start[i] - s2_start[i]) * (s1_start[i] - s2_start[i]);
+  }
+  return se;
+}
 double error_measures::mse_between_seq(const vector<double>& s1, const vector<double>& s2)
 {
   return error_measures::se_between_seq(s1, s2) / std::min( s1.size(), s2.size()) ;
