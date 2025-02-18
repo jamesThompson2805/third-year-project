@@ -20,7 +20,9 @@
 #include "conv_double_window.h"
 
 #include "plotting/series_plotting.h"
+
 #include "evaluations/general.h"
+#include "evaluations/capla.h"
 
 #include "random_walk.h"
 
@@ -53,8 +55,8 @@ int main()
   auto d_w_apca_f = [](const vector<double>& s, unsigned int num_params){ return d_w::simple_paa(s, num_params, 5, 5); };
   auto d_w_proj_apca_f = [](const vector<double>& s, unsigned int num_params){ return d_w::y_proj_paa(s, num_params, 5, 5); };
 
-  auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return d_w::simple_pla(s, num_params, 3, 3); };
-  auto d_w_proj_apla_f = [](const vector<double>& s, unsigned int num_params){ return d_w::y_proj_pla(s, num_params, 5, 5); };
+  auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::simple_pla(s, num_params, 3, 3)); };
+  auto d_w_proj_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::y_proj_pla(s, num_params, 5, 5)); };
 
   auto exact_apaa_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq(exact_dp::min_mse_paa(s, num_params)); }; 
   auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(exact_dp::min_mse_pla(s, num_params)); }; 
@@ -65,14 +67,48 @@ int main()
   vector<double> rdist = { 0.0, 1.0/2.0, 1.0/2.0};
   auto conv_apla_f = [&ldist, &rdist](const vector<double>& s, unsigned int num_params){ return c_d_w::conv_pla(s, num_params, ldist, rdist); }; 
 
+  // MSE Evaluation against parameters
   PlotDetails p = { "title", "number of parameters", "mse", "no file path", X11 };
+  // PAA
   auto paa_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, paa_f); };
   LineGenerator paa_gen = { paa_gen_f, "paa" };
+  // APCA
   auto apca_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, apca_f); };
   LineGenerator apca_gen = { apca_gen_f, "apca" };
+  // PLA
   auto pla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, pla_f); };
   LineGenerator pla_gen = { pla_gen_f, "pla" };
-  //plot::plot_lines_generated(dataset, {10, 20, 30, 40, 50, 60, 70}, {paa_gen, apca_gen, pla_gen}, p);
+  // Double Window PLA and Proj
+  auto d_w_apla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, d_w_apla_f); };
+  LineGenerator d_w_apla_gen = { d_w_apla_gen_f, "double window pla" };
+  auto d_w_proj_apla_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, d_w_proj_apla_f); };
+  LineGenerator d_w_proj_apla_gen = { d_w_proj_apla_gen_f, "projection pla" };
+  // CAPLA hypotheses
+  auto capla_mean_f =  capla_eval::generate_mean_DRT(5);
+  auto c_d_w_mean_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, capla_mean_f); };
+  LineGenerator c_d_w_mean_gen = { c_d_w_mean_gen_f, "mean double window pla" };
+  auto capla_tri_f =  capla_eval::generate_tri_DRT(5);
+  auto c_d_w_tri_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, capla_tri_f); };
+  LineGenerator c_d_w_tri_gen = { c_d_w_tri_gen_f, "Tri double window pla" };
+  auto capla_mean_s1_f =  capla_eval::generate_mean_skip_one_DRT(5);
+  auto c_d_w_mean_s1_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, capla_mean_s1_f); };
+  LineGenerator c_d_w_mean_s1_gen = { c_d_w_mean_s1_gen_f, "mean s1 double window pla" };
+  auto capla_tri_s1_f =  capla_eval::generate_tri_skip_one_DRT(5);
+  auto c_d_w_tri_s1_gen_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, capla_tri_s1_f); };
+  LineGenerator c_d_w_tri_s1_gen = { c_d_w_tri_s1_gen_f, "Tri s1 double window pla" };
+  plot::plot_lines_generated(dataset
+      , {15, 30, 45, 60, 75, 90}
+      , {
+	paa_gen
+	, apca_gen
+	, pla_gen
+	, d_w_apla_gen
+	, d_w_proj_apla_gen
+	, c_d_w_mean_gen
+	, c_d_w_mean_s1_gen
+	, c_d_w_tri_gen
+	, c_d_w_tri_s1_gen
+      }, p);
   
 
 

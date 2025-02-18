@@ -1,7 +1,7 @@
 #include "series_plotting.h"
 
 #include "gnuplot-iostream.h"
-#include "mse.h"
+#include "error_measures.h"
 #include "plot_types.h"
 #include "plotting_constants.h"
 #include <algorithm>
@@ -119,9 +119,6 @@ void plot::plot_lines_generated(const std::vector<double>& s, std::vector<unsign
       y_vecs.back().push_back( y_f.result_gen(s,i) );
     }
     lines.push_back({x_d, y_vecs.back(), y_f.method_name});
-  }
-  for ( Line l : lines) {
-    std::cout << l.x.size() << " " << l.y.size() << " " << l.name << std::endl;
   }
   plot::plot_lines(lines, p);
 }

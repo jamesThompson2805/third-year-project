@@ -40,3 +40,5 @@ compile_commands.json
 .cache
 .direnv
 
+valgrind*
+

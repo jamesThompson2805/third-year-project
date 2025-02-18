@@ -1,7 +1,6 @@
 #ifndef EVAL_CAPLA_H
 #define EVAL_CAPLA_H
 
-#include <vector>
 
 #include "general.h"
 
