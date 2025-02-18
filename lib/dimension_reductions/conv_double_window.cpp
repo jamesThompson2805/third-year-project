@@ -9,6 +9,7 @@ using std::tuple;
 using std::priority_queue;
 
 #include <algorithm>
+#include <iostream>
 
 inline double score( const vector<double>& s, const vector<double>& l, const vector<double>& r, unsigned int i)
 {
@@ -24,8 +25,6 @@ inline double score( const vector<double>& s, const vector<double>& l, const vec
 
 vector<tuple<DoublePair, unsigned int>> c_d_w::conv_pla(const vector<double> &s, unsigned int num_params, const vector<double>& l, const vector<double>& r)
 {
-  // TODO: consider all safety checks to ensure nonsense cannot be passed in
-
   unsigned int ns = num_params / 3; // ns is number of segments
   
   auto cmp = [](tuple<unsigned int, double> l, tuple<unsigned int, double> r) { return std::get<1>(l) > std::get<1>(r); };

@@ -10,7 +10,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(${PROJECT_NAME} src/main.cpp
 			       src/plotting/series_plotting.cpp
 			       src/plotting/plot_types.cpp
-			       src/evaluations/general.cpp)
+			       src/evaluations/general.cpp
+			       src/evaluations/capla.cpp)
 
 add_subdirectory(lib/sequence_gen)
 add_subdirectory(lib/parsing)
@@ -30,6 +31,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC gnuplot_iostream)
 find_package(GTest REQUIRED)
 set(TEST_NAME "third_year_testing")
 add_executable(${TEST_NAME}
+  tst/similarity_search/r-tree-test.cpp
   tst/dimension_reductions/dac_curve_fitting_test.cpp
   tst/dimension_reductions/double_window_test.cpp)
 target_link_libraries( ${TEST_NAME} PUBLIC GTest::gtest_main)
