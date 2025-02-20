@@ -214,21 +214,20 @@ int main()
       , apla_bounds::mbr_merge<3>
       , apla_bounds::dist_to_mbr_sqr<3>);
   
-  //auto vec_of_mbrs = apla_bounds::vec_to_subseq_mbrs<3>(dataset,30,exact_dp::min_mse_pla);
+  auto vec_of_mbrs = apla_bounds::vec_to_subseq_mbrs<3>(dataset,30,exact_dp::min_mse_pla);
   
-  /*
   for (int i=0; i<vec_of_mbrs.size(); i++) {
     std::vector<double> query( dataset.begin()+i, dataset.begin()+30+i);
-    if ( apla_bounds::dist_to_mbr_sqr<3>(query, vec_of_mbrs[i]) != 0) {
+    if ( apla_bounds::dist_to_mbr_sqr<3>(query, vec_of_mbrs[i]) >= 1e-30) {
       std::cout << " i " << i << " wrong dist " << apla_bounds::dist_to_mbr_sqr<3>(query, vec_of_mbrs[i]) << std::endl;
     }
 
     r_tree.insert( vec_of_mbrs[i], i );
   }
-  */
   
 
-  std::vector<double> query0( dataset.begin()+22155, dataset.begin()+30+22155);
+  unsigned int t_ind = 11766;
+  std::vector<double> query0( dataset.begin()+t_ind, dataset.begin()+30+t_ind);
   for (int i=0; i<query0.size(); i++) { 
     std::cout << i << ": " << query0[i] << "	";
     if (i % 5 == 0)
@@ -238,7 +237,6 @@ int main()
   // std::cout << apla_bounds::dist_to_mbr_sqr<3>(query0, vec_of_mbrs[21600]) << std::endl;
   std::cout << apla_bounds::dist_to_mbr_sqr<3>(query0, apla_bounds::vec_to_mbr<3>(query0, exact_dp::min_mse_pla)) << std::endl;
 
-  /*
   auto retrieval_f = [](const unsigned int& i, const vector<double>& q) {
     return std::vector<std::array<const double*,2>>( {{ q.data()+i, q.data()+i+29 }} );
   };
@@ -247,7 +245,6 @@ int main()
     int diff = ptr1 - dataset.data();
     std::cout << "indexes : " << diff << std::endl;
   }
-  */
 
 
   

@@ -32,37 +32,45 @@ namespace apla_bounds {
     double min_b=  r.min_dp[0] + width*r.min_dp[1];
     double max_a = r.max_dp[0];
     double max_b=  r.max_dp[0] + width*r.max_dp[1];
-    return (min(r.max_dp[0],r.max_dp[1]) - max(r.min_dp[0],r.min_dp[1])) * width
-	   + (max(r.max_dp[0],r.max_dp[1]) - min(r.max_dp[0],r.max_dp[1])) * width * 0.5
-	   + (max(r.min_dp[0],r.min_dp[1]) - min(r.min_dp[0],r.min_dp[1])) * width * 0.5;
+    return (min(max_a,max_b) - max(min_a,min_b)) * width
+	   + (max(max_a,max_b) - min(max_a,max_b)) * width * 0.5
+	   + (max(min_a,min_b) - min(min_a,min_b)) * width * 0.5;
   }
-  // TODO : Check these to make sure they represent the maths correctly
   inline Region region_merge( const Region& r1, const Region& r2)
   {
     unsigned int min_i = min(r1.min_i, r2.min_i);
     unsigned int max_i = max(r1.max_i, r2.max_i);
-    double r1_lmax = ( (r1.max_dp[1] - r1.max_dp[0])/ double(r1.max_i - r1.min_i) )*(min_i - r1.min_i) + r1.max_dp[0];
-    double r1_rmax = ( (r1.max_dp[1] - r1.max_dp[0])/ double(r1.max_i - r1.min_i) )*(max_i - r1.min_i) + r1.max_dp[0];
-    double r2_lmax = ( (r2.max_dp[1] - r2.max_dp[0])/ double(r2.max_i - r2.min_i) )*(min_i - r2.min_i) + r2.max_dp[0];
-    double r2_rmax = ( (r2.max_dp[1] - r2.max_dp[0])/ double(r2.max_i - r2.min_i) )*(max_i - r2.min_i) + r2.max_dp[0];
+    if (max_i == min_i) return { { min(r1.min_dp[0],r2.min_dp[0]),0}
+			       , min_i
+			       , { max(r1.max_dp[0],r2.max_dp[0]),0}
+			       , max_i };
 
-    double r1_lmin = ( (r1.min_dp[1] - r1.min_dp[0])/ double(r1.min_i - r1.min_i) )*(min_i - r1.min_i) + r1.min_dp[0];
-    double r1_rmin = ( (r1.min_dp[1] - r1.min_dp[0])/ double(r1.min_i - r1.min_i) )*(min_i - r1.min_i) + r1.min_dp[0];
-    double r2_lmin = ( (r2.min_dp[1] - r2.min_dp[0])/ double(r2.min_i - r2.min_i) )*(min_i - r2.min_i) + r2.min_dp[0];
-    double r2_rmin = ( (r2.min_dp[1] - r2.min_dp[0])/ double(r2.min_i - r2.min_i) )*(min_i - r2.min_i) + r2.min_dp[0];
+    unsigned int min_i_rel_r1 = min_i - r1.min_i;
+    unsigned int max_i_rel_r1 = max_i - r1.min_i;
+    unsigned int min_i_rel_r2 = min_i - r2.min_i;
+    unsigned int max_i_rel_r2 = max_i - r2.min_i;
+
+    double r1_lmax = r1.max_dp[1]*min_i_rel_r1 + r1.max_dp[0];
+    double r1_rmax = r1.max_dp[1]*max_i_rel_r1 + r1.max_dp[0];
+    double r2_lmax = r2.max_dp[1]*min_i_rel_r2 + r2.max_dp[0];
+    double r2_rmax = r2.max_dp[1]*max_i_rel_r2 + r2.max_dp[0];
+
+    double r1_lmin = r1.min_dp[1]*min_i_rel_r1 + r1.min_dp[0];
+    double r1_rmin = r1.min_dp[1]*max_i_rel_r1 + r1.min_dp[0];
+    double r2_lmin = r2.min_dp[1]*min_i_rel_r2 + r2.min_dp[0];
+    double r2_rmin = r2.min_dp[1]*max_i_rel_r2 + r2.min_dp[0];
 
     double r_lmax = max( max(r1_lmax, r2_lmax), max(r1_lmin, r2_lmin) );
     double r_lmin = min( min(r1_lmax, r2_lmax), min(r1_lmin, r2_lmin) );
     double r_rmax = max( max(r1_rmax, r2_rmax), max(r1_rmin, r2_rmin) );
     double r_rmin = min( min(r1_rmax, r2_rmax), min(r1_rmin, r2_rmin) );
-    return { {r_lmin,r_rmin}, min_i , {r_lmax, r_rmax}, max_i};
+    return { {r_lmin, (r_rmin-r_lmin)/double(max_i-min_i)}, min_i , {r_lmax, (r_rmax-r_lmax)/double(max_i-min_i)}, max_i};
   }
 
   inline double dist_to_region_sqr( const double& qi, const Region& r, unsigned int global_offset)
   {
-    double r_min_est = ((r.min_dp[1] - r.min_dp[0])/double(r.max_i-r.min_i)) * (global_offset - r.min_i) + r.min_dp[0];
-    double r_max_est = ((r.max_dp[1] - r.max_dp[0])/double(r.max_i-r.min_i)) * (global_offset - r.min_i) + r.max_dp[0];
-    double eps = 1.e-30;
+    double r_min_est = r.min_dp[1] * (global_offset - r.min_i) + r.min_dp[0];
+    double r_max_est = r.max_dp[1] * (global_offset - r.min_i) + r.max_dp[0];
 
     if (qi < r_min_est) return (qi-r_min_est)*(qi-r_min_est);
     if (qi > r_max_est) return (qi-r_max_est)*(qi-r_max_est);
@@ -111,10 +119,6 @@ namespace apla_bounds {
 	active_end_i++;
       }
 
-      std::cout << " i " << i << " dist " << dist_to_regions_sqr(q[i], &mbr[0] + active_start_i, &mbr[0] + active_end_i, i)
-	  << " start i " << active_start_i
-	  << " end i " << active_end_i
-	  << std::endl;
       dist += dist_to_regions_sqr(q[i], &mbr[0] + active_start_i, &mbr[0] + active_end_i, i); 
 
     }
@@ -124,28 +128,30 @@ namespace apla_bounds {
   
   inline Region ptrs_to_region(const double* const start, const double* const end, unsigned int g_start_i)
   {
-    if (start == end) return { {*start, *start}, g_start_i, {*start, *start}, g_start_i };
+    if (start == end) return { {start[0], 0}, g_start_i, {start[0], 0}, g_start_i };
     DoublePair dp = pla::regression(start, end);
-    std::cout << " dp " << dp[0] << " : " << dp[1] << " width : " << end - start <<  std::endl;
-    int max_i = -1,  min_i = -1;
+    if (start+1 == end) return { {dp[0], dp[1]}, g_start_i, {dp[0], dp[1]}, g_start_i+1 };
+    //std::cout << " dp " << dp[0] << " : " << dp[1] << " width : " << end - start <<  std::endl;
+    int max_i = 0,  min_i = 0;
     double max_v = -1, min_v = -1;
     for (int i=0; i<=end-start; i++) {
       double dist_to_line_sqr = (dp[1]*i - start[i] +dp[0])*(dp[1]*i - start[i] +dp[0]) / std::abs( dp[1]*dp[1] + 1 ) ;
-      if ((max_i == -1 || dist_to_line_sqr > max_v) && start[i] > dp[0]+dp[1]*i) {
+      //std::cout << "		index : " << g_start_i + i <<" val " << start[i] << " dist to line " << dist_to_line_sqr << std::endl;	
+      if (dist_to_line_sqr > max_v && start[i] >= dp[0]+dp[1]*i) {
 	max_i = i;
 	max_v = dist_to_line_sqr;
       }
-      if ((min_i == -1 || dist_to_line_sqr > min_v) && start[i] < dp[0]+dp[1]*i) {
+      if (dist_to_line_sqr > min_v && start[i] <= dp[0]+dp[1]*i) {
 	min_i = i;
 	min_v = dist_to_line_sqr;
       }
     }
-    std::cout << "	chose min i : " << min_i << ", max i : " << max_i << std::endl;
+    //std::cout << "	chose min i : " << min_i << ", max i : " << max_i << std::endl;
     int width = end - start;
-    Region ret = { {start[min_i]-dp[1]*min_i, start[min_i]+dp[1]*(width-min_i)}
-		    , g_start_i
-		    , {start[max_i]-dp[1]*max_i, start[max_i]+dp[1]*(width-max_i)}
-		    , g_start_i+width };
+    Region ret = { {start[min_i]-dp[1]*min_i, dp[1]}
+		 , g_start_i
+		 , {start[max_i]-dp[1]*max_i, dp[1]}
+		 , g_start_i+width };
     return ret;
   }
   template <unsigned int S>
@@ -157,7 +163,7 @@ namespace apla_bounds {
     for ( int apla_i = 0; apla_i < S; apla_i++ ) {
       auto& [dp,end_i] = apla[apla_i];
       mbr[apla_i] = ptrs_to_region(q.data()+start_i, q.data()+end_i, start_i);
-      std::cout << mbr[apla_i].min_dp[0] << " " << mbr[apla_i].min_dp[1] << " " << mbr[apla_i].min_i << " " << mbr[apla_i].max_dp[0]<< " " << mbr[apla_i].max_dp[1]<< " " << mbr[apla_i].max_i << std::endl;
+      //std::cout << mbr[apla_i].min_dp[0] << " " << mbr[apla_i].min_dp[1] << " " << mbr[apla_i].min_i << " " << mbr[apla_i].max_dp[0]<< " " << mbr[apla_i].max_dp[1]<< " " << mbr[apla_i].max_i << std::endl;
       start_i = end_i+1;
     }
     return mbr;
