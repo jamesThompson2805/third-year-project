@@ -29,7 +29,7 @@ vector<tuple<DoublePair, unsigned int>> c_d_w::conv_pla(const vector<double> &s,
   
   auto cmp = [](tuple<unsigned int, double> l, tuple<unsigned int, double> r) { return std::get<1>(l) > std::get<1>(r); };
   priority_queue<tuple<unsigned int, double>, vector<tuple<unsigned int, double>>, decltype(cmp)> p_q(cmp);
-  for (int i=0; i<ns; i++) { // fill priority q with low score items
+  for (int i=0; i<ns-1; i++) { // fill priority q with low score items
     p_q.push( { 0, -1.0 } );
   }
 
@@ -82,11 +82,12 @@ vector<tuple<DoublePair, unsigned int>> c_d_w::conv_pla(const vector<double> &s,
       }
     }
   }
-  vector<unsigned int> split_indexes(ns);
-  for (int i=0; i<ns; i++){
+  vector<unsigned int> split_indexes(ns-1);
+  for (int i=0; i<ns-1; i++){
     split_indexes[i] = std::get<0>(p_q.top());
     p_q.pop();
   }
+  split_indexes.push_back(s.size() - 1);
   std::sort(split_indexes.begin(), split_indexes.end());
 
   vector<tuple<DoublePair, unsigned int>> apla(ns);

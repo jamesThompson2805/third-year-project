@@ -152,12 +152,20 @@ namespace apla_bounds {
 		 , g_start_i
 		 , {start[max_i]-dp[1]*max_i, dp[1]}
 		 , g_start_i+width };
+    for (int i=0; i<=end-start; i++) {
+      //std::cout <<"		index : " << i+g_start_i << " dist to region " << dist_to_region_sqr(start[i], ret, g_start_i+i) << std::endl;
+    }
     return ret;
   }
   template <unsigned int S>
   AplaMBR<S> vec_to_mbr(const std::vector<double>& q, pla::APLA_DRT f)
   {
     std::vector<std::tuple<DoublePair, unsigned int>> apla = f(q,3*S);
+    //std::cout << "apla end indexes ";
+    for (auto& [dp,i] : apla) {
+      //std::cout << i << "	";
+    }
+    //std::cout << std::endl;
     AplaMBR<S> mbr;
     int start_i = 0;
     for ( int apla_i = 0; apla_i < S; apla_i++ ) {

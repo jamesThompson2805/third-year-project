@@ -209,6 +209,7 @@ int main()
 
   /********************************** R Tree implementation **************************************/
   // choose to have 3 segments for subsequences of size 30
+  /**/
   RTree<apla_bounds::AplaMBR<3>, unsigned int> r_tree(40,10
       , apla_bounds::mbr_area<3>
       , apla_bounds::mbr_merge<3>
@@ -224,9 +225,26 @@ int main()
 
     r_tree.insert( vec_of_mbrs[i], i );
   }
+  /**/
+
+  RTree<apla_bounds::AplaMBR<3>, unsigned int> r_tree2(40,10
+      , apla_bounds::mbr_area<3>
+      , apla_bounds::mbr_merge<3>
+      , apla_bounds::dist_to_mbr_sqr<3>);
+  
+  auto vec2_of_mbrs = apla_bounds::vec_to_subseq_mbrs<3>(dataset,30,capla_eval::generate_mean_DRT_COMPR(4));
+  
+  for (int i=0; i<vec2_of_mbrs.size(); i++) {
+    std::vector<double> query( dataset.begin()+i, dataset.begin()+30+i);
+    if ( apla_bounds::dist_to_mbr_sqr<3>(query, vec2_of_mbrs[i]) >= 1e-30) {
+      std::cout << " i " << i << " wrong dist " << apla_bounds::dist_to_mbr_sqr<3>(query, vec2_of_mbrs[i]) << std::endl;
+    }
+
+    r_tree2.insert( vec2_of_mbrs[i], i );
+  }
   
 
-  unsigned int t_ind = 11766;
+  unsigned int t_ind = 0;
   std::vector<double> query0( dataset.begin()+t_ind, dataset.begin()+30+t_ind);
   for (int i=0; i<query0.size(); i++) { 
     std::cout << i << ": " << query0[i] << "	";
@@ -234,9 +252,9 @@ int main()
       std::cout << "\n";
   }
   std::cout << "\n" <<  std::endl;
-  // std::cout << apla_bounds::dist_to_mbr_sqr<3>(query0, vec_of_mbrs[21600]) << std::endl;
-  std::cout << apla_bounds::dist_to_mbr_sqr<3>(query0, apla_bounds::vec_to_mbr<3>(query0, exact_dp::min_mse_pla)) << std::endl;
+  std::cout << apla_bounds::dist_to_mbr_sqr<3>(query0, apla_bounds::vec_to_mbr<3>(query0, capla_eval::generate_mean_DRT_COMPR(4)) ) << std::endl;
 
+  /**/
   auto retrieval_f = [](const unsigned int& i, const vector<double>& q) {
     return std::vector<std::array<const double*,2>>( {{ q.data()+i, q.data()+i+29 }} );
   };
@@ -245,6 +263,13 @@ int main()
     int diff = ptr1 - dataset.data();
     std::cout << "indexes : " << diff << std::endl;
   }
+  std::cout << std::endl;
+  std::vector<std::array<const double*,2>> k_n2 = r_tree.knn_search(query0, 10, retrieval_f, dataset);
+  for (auto& [ptr1,ptr2] : k_n2) {
+    int diff = ptr1 - dataset.data();
+    std::cout << "indexes : " << diff << std::endl;
+  }
+  /**/
 
 
   

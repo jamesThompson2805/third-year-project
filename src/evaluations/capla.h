@@ -37,8 +37,12 @@
  *
  */
 
+#include "pla.h"
+using DRT_COMPR = std::function<std::vector<std::tuple<DoublePair, unsigned int>> (const Seqd&,unsigned int)>;
+
 namespace capla_eval {
   DRT generate_mean_DRT(unsigned int win_size);
+  DRT_COMPR generate_mean_DRT_COMPR(unsigned int win_size);
   DRT generate_mean_skip_one_DRT(unsigned int win_size);
   DRT generate_tri_DRT(unsigned int win_size);
   DRT generate_tri_skip_one_DRT(unsigned int win_size);

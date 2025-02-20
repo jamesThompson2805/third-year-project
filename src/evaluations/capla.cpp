@@ -10,6 +10,12 @@ DRT capla_eval::generate_mean_DRT(unsigned int win_size)
   Seqd r(win_size, 1/(double)win_size);
   return [l, r](const Seqd& s, unsigned int num_params){ return pla::apla_to_seq( c_d_w::conv_pla(s, num_params, l, r) ); };
 }
+DRT_COMPR capla_eval::generate_mean_DRT_COMPR(unsigned int win_size)
+{
+  Seqd l(win_size, 1/(double)win_size);
+  Seqd r(win_size, 1/(double)win_size);
+  return [l, r](const Seqd& s, unsigned int num_params){ return c_d_w::conv_pla(s, num_params, l, r); };
+}
 
 DRT capla_eval::generate_mean_skip_one_DRT(unsigned int win_size)
 {
