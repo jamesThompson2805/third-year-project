@@ -26,6 +26,10 @@
 
 #include "random_walk.h"
 
+#include "r_tree.h"
+#include "lower_bounds_apla.h"
+
+
 using std::vector, std::string, std::tuple;
 
 int main()
@@ -35,19 +39,17 @@ int main()
   string ucr_datasets_loc = "external/data/UCRArchive_2018/";
   vector<string> datasets = parse_folder_names(ucr_datasets_loc);
 
-  /*
+  /**
   for (int i=0; i<datasets.size(); i++) {
     vector<double> dataset = parse_ucr_dataset(datasets[i], ucr_datasets_loc,  DatasetType::TRAIN);
     z_norm::z_normalise(dataset);
-    std::cout << datasets[i] << " : " << dataset.size() << std::endl;
+    std::cout << i << " : " << datasets[i] << " : " << dataset.size() << std::endl;
   }
-  */
+  **/
 
-  unsigned int di = 26;
+  unsigned int di = 25;
   vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN);
-  dataset.resize(40000);
   z_norm::z_normalise(dataset);
-
 
   auto paa_f = [](const vector<double>& s, unsigned int num_params){ return paa::paa_to_seq( paa::paa(s, num_params), (s.size() / num_params) + (s.size() % num_params != 0)); };
   auto pla_f = [](const vector<double>& s, unsigned int num_params){ return pla::pla_to_seq(pla::pla(s, num_params), (2*s.size() / num_params) + (2*s.size() % num_params != 0)); };
@@ -67,7 +69,7 @@ int main()
   vector<double> rdist = { 0.0, 1.0/2.0, 1.0/2.0};
   auto conv_apla_f = [&ldist, &rdist](const vector<double>& s, unsigned int num_params){ return c_d_w::conv_pla(s, num_params, ldist, rdist); }; 
 
-  /************************** MSE Evaluation against parameters *****************************/
+  /************************** MSE Evaluation against parameters *****************************
   { 
   PlotDetails p = { "title", "number of parameters", "mse", "no file path", X11 };
   // PAA
@@ -111,8 +113,9 @@ int main()
 	, c_d_w_tri_s1_gen
       }, p);
   }
+  **************/
 
-  /************************** maxdev Evaluation against parameters *****************************/
+  /************************** maxdev Evaluation against parameters *****************************
   {
   PlotDetails p = { "title", "number of parameters", "maxdev", "no file path", X11 };
   // PAA
@@ -156,8 +159,9 @@ int main()
 	, c_d_w_tri_s1_gen
       }, p);
   }
-  
-  /************************** time Evaluation against parameters *****************************/
+  **************/
+
+  /************************** time Evaluation against parameters *****************************
   {
   PlotDetails p = { "title", "number of parameters", "time", "no file path", X11 };
   // PAA
@@ -201,7 +205,49 @@ int main()
 	, c_d_w_tri_s1_gen
       }, p);
   }
+  **************/
 
+  /********************************** R Tree implementation **************************************/
+  // choose to have 3 segments for subsequences of size 30
+  RTree<apla_bounds::AplaMBR<3>, unsigned int> r_tree(40,10
+      , apla_bounds::mbr_area<3>
+      , apla_bounds::mbr_merge<3>
+      , apla_bounds::dist_to_mbr_sqr<3>);
+  
+  //auto vec_of_mbrs = apla_bounds::vec_to_subseq_mbrs<3>(dataset,30,exact_dp::min_mse_pla);
+  
+  /*
+  for (int i=0; i<vec_of_mbrs.size(); i++) {
+    std::vector<double> query( dataset.begin()+i, dataset.begin()+30+i);
+    if ( apla_bounds::dist_to_mbr_sqr<3>(query, vec_of_mbrs[i]) != 0) {
+      std::cout << " i " << i << " wrong dist " << apla_bounds::dist_to_mbr_sqr<3>(query, vec_of_mbrs[i]) << std::endl;
+    }
+
+    r_tree.insert( vec_of_mbrs[i], i );
+  }
+  */
+  
+
+  std::vector<double> query0( dataset.begin()+22155, dataset.begin()+30+22155);
+  for (int i=0; i<query0.size(); i++) { 
+    std::cout << i << ": " << query0[i] << "	";
+    if (i % 5 == 0)
+      std::cout << "\n";
+  }
+  std::cout << "\n" <<  std::endl;
+  // std::cout << apla_bounds::dist_to_mbr_sqr<3>(query0, vec_of_mbrs[21600]) << std::endl;
+  std::cout << apla_bounds::dist_to_mbr_sqr<3>(query0, apla_bounds::vec_to_mbr<3>(query0, exact_dp::min_mse_pla)) << std::endl;
+
+  /*
+  auto retrieval_f = [](const unsigned int& i, const vector<double>& q) {
+    return std::vector<std::array<const double*,2>>( {{ q.data()+i, q.data()+i+29 }} );
+  };
+  std::vector<std::array<const double*,2>> k_nn = r_tree.knn_search(query0, 10, retrieval_f, dataset);
+  for (auto& [ptr1,ptr2] : k_nn) {
+    int diff = ptr1 - dataset.data();
+    std::cout << "indexes : " << diff << std::endl;
+  }
+  */
 
 
   

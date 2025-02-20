@@ -49,9 +49,17 @@ private:
   unsigned int max_entries;
   unsigned int min_entries;
 
+  unsigned int total_num_entries;
+
 public:
   RTree(unsigned int max_entries, unsigned int min_entries, FPtrArea<R> area_f, FPtrAreaMerge<R> merge_f, FPtrMBRDistSqr<R> p_dist_f)
-    : max_entries(max_entries), min_entries(min_entries), area_f(area_f), merge_f(merge_f), uncompr_point_dist_sqr_f(p_dist_f), root(nullptr) {}
+    : max_entries(max_entries)
+      , min_entries(min_entries)
+      , area_f(area_f)
+      , merge_f(merge_f)
+      , uncompr_point_dist_sqr_f(p_dist_f)
+      , root(nullptr)
+      , total_num_entries(0) {}
   ~RTree()
   {
     destroy_tree_from(root);
@@ -59,8 +67,9 @@ public:
   }
 
   unsigned int get_size_tree();
+  inline unsigned int get_num_leaves() { return total_num_entries; }
 
-  void insert(R mbr, unsigned int st_index);
+  void insert(R mbr, I st_index);
 
   std::vector<I> sim_search(const std::vector<double>& q, double epsilon);
   std::vector<std::array<const double*, 2>> knn_search(const std::vector<double>& q, unsigned int k, FPtrRetrievalMethod<I> retrieve_f, const std::vector<double>& s);
@@ -372,8 +381,9 @@ void RTree<R,I>::adjust_tree(RTreeNode<R,I>* node)
 }
 
 template <typename R, typename I>
-void RTree<R,I>::insert(R mbr, unsigned int st_index)
+void RTree<R,I>::insert(R mbr, I st_index)
 {
+  total_num_entries++;
   if (root == nullptr) {
     root = new RTreeNode<R,I>(mbr, nullptr, std::vector<LeafEntry<R,I>>({{mbr,st_index}}) );
     return;
@@ -501,13 +511,13 @@ double RTree<R,I>::pruning_power(const std::vector<double>& q, FPtrRetrievalMeth
 
   while (pri_q.size() != 0) {
     QEntry next = pri_q.top();
-    objects_scanned++;
     pri_q.pop();
     if (min_actual_error < entry_error(next) ) {
-      return objects_scanned / (double) get_size_tree();
+      return objects_scanned / (double) total_num_entries;
     }
 
     if (next.index() == 0) { // next is an entry
+      objects_scanned++;
       for (auto s : retrieve_f( std::get<0>(next)->st_index, s ) ) {
 	if (ptr_error(s) < min_actual_error) {
 	  min_actual_error = ptr_error(s);
