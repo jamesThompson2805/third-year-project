@@ -160,7 +160,7 @@ vector< tuple< double, unsigned int>> exact_dp::min_maxdev_paa( const vector<dou
   for (int w=0; w<s.size(); w++) {
     double mean = quick_mean( s.data(), s.data()+w);
     lline[w][1] = mean;
-    eps[w][1] = quick_se_with_mean( s.data(), s.data()+w, mean);
+    eps[w][1] = quick_maxdev_with_mean( s.data(), s.data()+w, mean);
     first_i[w][1] = 0;
   }
 
@@ -168,7 +168,7 @@ vector< tuple< double, unsigned int>> exact_dp::min_maxdev_paa( const vector<dou
     for (int w=t-1; w<s.size(); w++) {
       for (int a=t-2; a<w; a++) {
 	double mean_of_remaining = quick_mean( s.data()+a+1, s.data()+w );
-	double err = quick_maxdev_with_mean(s.data()+a+1, s.data()+w, mean_of_remaining) + eps[a][t-1];
+	double err = std::max(quick_maxdev_with_mean(s.data()+a+1, s.data()+w, mean_of_remaining), eps[a][t-1]);
 
 	if ( eps[w][t] == -1.0 || err < eps[w][t] ){
 	  lline[w][t] = mean_of_remaining;
@@ -203,6 +203,7 @@ inline double quick_maxdev_with_regress( const double *const f1, const double *c
   }
   return maxdev;
 }
+#include <iostream>
 vector< tuple< DoublePair, unsigned int>> exact_dp::min_maxdev_pla( const vector<double>& s, unsigned int num_params)
 {
   int num_segments = num_params/3;
@@ -221,7 +222,7 @@ vector< tuple< DoublePair, unsigned int>> exact_dp::min_maxdev_pla( const vector
     for (int w=t-1; w<s.size(); w++) {
       for (int a=t-2; a<w; a++) {
 	DoublePair line_of_remain = regress( s.data()+a+1, s.data()+w );
-	double err = quick_se_with_regress(s.data()+a+1, s.data()+w, line_of_remain) + eps[a][t-1];
+	double err = std::max( quick_maxdev_with_regress(s.data()+a+1, s.data()+w, line_of_remain), eps[a][t-1]);
 
 	if ( eps[w][t] == -1.0 || err < eps[w][t] ){
 	  lline[w][t] = line_of_remain;

@@ -12,6 +12,7 @@
 #include <math.h>
 
 #include "gnuplot-iostream.h"
+#include "plot_types.h"
 #include "plotting_constants.h"
 #include <boost/tuple/tuple.hpp>
 
@@ -23,7 +24,7 @@ using std::vector;
 using std::tuple;
 
 
-void plot_pla_subseq(const vector<double>& series, std::string data_name, unsigned int num_params, unsigned int start_pos, unsigned int end_pos)
+void plot_pla_subseq(const vector<double>& series, std::string data_name, unsigned int num_params, unsigned int start_pos, unsigned int end_pos, PlotDetails p)
 {
   if (start_pos >= end_pos) return;
   if (num_params <= 0) return;
@@ -54,20 +55,16 @@ void plot_pla_subseq(const vector<double>& series, std::string data_name, unsign
   }
 
   Gnuplot gp;
-  using namespace gp_constants;
-  // gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  // gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
-  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
-  gp << "set output 'img/drt_comparisons/"<<data_name<<"_pla_subseq_"<<num_params<<"_params.png' \n";
-  gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series val'\n";
-  gp << "set title 'Plot of "<<data_name<<" against PLA approximation'\n";
-  gp << "plot '-' dt 3 with yerrorlines title 'errors', '-' with lines lt rgb 'blue' lw 1.2 title '"<<data_name<<"', '-' with linespoints lt rgb 'red' lw 1.2 title 'PLA'\n";
-  gp.send1d( boost::make_tuple( x1, y1, err1, err2) );
+  plot_setup::setup_gnuplot(gp, p);
+  //gp << "plot '-' dt 3 with yerrorlines title 'errors', '-' with lines lt rgb 'blue' lw 1.2 title '"<<data_name<<"', '-' with linespoints lt rgb 'red' lw 1.2 title 'PLA'\n";
+  gp << "plot '-' with lines lt rgb 'blue' lw 4 title '"<<data_name<<"', '-' with lines lt rgb 'red' lw 4 title 'PLA'\n";
+  //gp.send1d( boost::make_tuple( x1, y1, err1, err2) );
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
+  plot_setup::open_pdf(p);
 }
 
+/*
 void plot_pla_mse(const vector<std::string>& datasets, std::string datasets_loc, int start, int end, int max_int_size)
 {
   vector<double> x;
@@ -137,10 +134,12 @@ void plot_dac_apla_subseq(const vector<double>& series, std::string data_name, d
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
 }
+*/
 
 void plot_any_apla_subseq(const vector<double>& series, std::string data_name
 			  , std::function<const vector<tuple<DoublePair, unsigned int>>(const vector<double>&)> apla_func
-			  , unsigned int start_pos, unsigned int end_pos)
+			  , unsigned int start_pos, unsigned int end_pos, std::string drt_name
+			  , PlotDetails p)
 {
   using std::tuple;
   if (start_pos >= end_pos) return;
@@ -149,7 +148,6 @@ void plot_any_apla_subseq(const vector<double>& series, std::string data_name
   std::copy(series.cbegin() + start_pos, series.cbegin() + end_pos + 1, subseq.begin());
 
   vector<tuple<DoublePair, unsigned int>> apla_subseq = apla_func(subseq);
-  std::cout << " APLA uses " << apla_subseq.size() << " intervals " << std::endl;
 
   vector<double> x1, x2, err1, err2, y1, y2;
   int i=0;
@@ -176,16 +174,11 @@ void plot_any_apla_subseq(const vector<double>& series, std::string data_name
   }
 
   Gnuplot gp;
-  using namespace gp_constants;
-  gp << "set terminal " << GNUPLOT_TERMINAL << "\n";
-  gp << "set term " << GNUPLOT_TERMINAL <<" size " << GNUPLOT_SIZE_X << " " << GNUPLOT_SIZE_Y << "\n";
-  // gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
-  // gp << "set output 'img/drt_comparisons/"<<data_name<<"_apla_subseq.png' \n";
-  gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series val'\n";
-  gp << "set title 'Plot of "<<data_name<<" against APLA approximation'\n";
-  gp << "plot '-' dt 3 with yerrorlines title 'errors', '-' with lines lt rgb 'blue' lw 1.2 title '"<<data_name<<"', '-' with linespoints lt rgb 'red' lw 1.2 title 'APLA'\n";
-  gp.send1d( boost::make_tuple( x1, y1, err1, err2) );
+  plot_setup::setup_gnuplot(gp, p);
+  //gp << "plot '-' dt 3 with yerrorlines title 'Errors', '-' with linespoints lt rgb 'blue' lw 1.2 pt 5 ps 0.5 title '"<<data_name<<"', '-' with linespoints lt rgb 'red' lw 1.2 pt 7 ps 0.5 title '"<< drt_name <<"'\n";
+  gp << "plot '-' with lines lt rgb 'blue' lw 4 title '"<<data_name<<"', '-' with lines lt rgb 'red' lw 4 title '"<< drt_name <<"'\n";
+  //gp.send1d( boost::make_tuple( x1, y1, err1, err2) );
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
+  plot_setup::open_pdf(p);
 }

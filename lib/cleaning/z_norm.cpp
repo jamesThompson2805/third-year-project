@@ -16,6 +16,7 @@ void z_norm::z_normalise(vector<double> &series)
   for (const double &f : series) {
     var += (f-mean)*(f-mean); 
   }
+  var /= n;
   double stddev = std::sqrt( var );
 
   std::transform(series.begin(), series.end(), series.begin(), [&](double& f){ return (f - mean) / stddev; } );

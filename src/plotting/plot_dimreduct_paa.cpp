@@ -12,6 +12,7 @@
 #include <tuple>
 
 #include "gnuplot-iostream.h"
+#include "plot_types.h"
 #include "plotting_constants.h"
 #include <boost/tuple/tuple.hpp>
 
@@ -23,7 +24,7 @@ using std::vector;
 using std::tuple;
 
 
-void plot_paa_subseq(const vector<double>& series, std::string data_name, unsigned int num_params, unsigned int start_pos, unsigned int end_pos)
+void plot_paa_subseq(const vector<double>& series, std::string data_name, unsigned int num_params, unsigned int start_pos, unsigned int end_pos, PlotDetails p)
 {
   if (start_pos >= end_pos) return;
   if (num_params <= 0) return;
@@ -32,7 +33,6 @@ void plot_paa_subseq(const vector<double>& series, std::string data_name, unsign
   std::copy(series.cbegin() + start_pos, series.cbegin() + end_pos + 1, subseq.begin());
 
   vector<double> paa_subseq = paa::paa(subseq, num_params);
-  std::cout << "PAA uses " << paa_subseq.size() << " intervals" << std::endl;
 
   unsigned int interval_size = (subseq.size() / paa_subseq.size()) + (subseq.size() % paa_subseq.size() != 0);
 
@@ -54,18 +54,16 @@ void plot_paa_subseq(const vector<double>& series, std::string data_name, unsign
   }
 
   Gnuplot gp;
-  using namespace gp_constants;
-  gp << "set term png size 1280 640 background 'white' enhanced font size 20 \n";
-  gp << "set output 'img/drt_comparisons/"<<data_name<<"_paa_subseq_"<<num_params<<"_params.png' \n";
-  gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series val'\n";
-  gp << "set title 'Plot of series against PAA approximation'\n";
-  gp << "plot '-' dt 3 with yerrorlines title 'errors', '-' with lines lt rgb 'blue' lw 1.2 title '"<<data_name<<"', '-' with linespoints lt rgb 'red' lw 1.2 title 'PAA'\n";
-  gp.send1d( boost::make_tuple( x1, y1, err1, err2) );
+  plot_setup::setup_gnuplot(gp, p);
+  //gp << "plot '-' dt 3 with yerrorlines title 'errors', '-' with lines lt rgb 'blue' lw 1.2 title '"<<data_name<<"', '-' with linespoints lt rgb 'red' lw 1.2 title 'PAA'\n";
+  gp << "plot '-' with lines lt rgb 'blue' lw 4 title '"<<data_name<<"', '-' with lines lt rgb 'red' lw 4 title 'PAA'\n";
+  //gp.send1d( boost::make_tuple( x1, y1, err1, err2) );
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
+  plot_setup::open_pdf(p);
 }
 
+/*
 void plot_paa_mse(const vector<std::string>& datasets, std::string datasets_loc, int start, int end, int max_int_size)
 {
   vector<double> x;
@@ -132,6 +130,7 @@ void plot_dac_apaa_subseq(const vector<double>& series, std::string data_name, d
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
 }
+*/
 
 void plot_any_apaa_subseq(const vector<double>& series
 			  , std::string data_name
@@ -139,8 +138,7 @@ void plot_any_apaa_subseq(const vector<double>& series
 			  , unsigned int start_pos
 			  , unsigned int end_pos
 			  , std::string drt_name
-			  , std::string title_name
-			  , std::string file_path)
+			  , PlotDetails p)
 {
   using std::tuple;
   if (start_pos >= end_pos) return;
@@ -149,7 +147,6 @@ void plot_any_apaa_subseq(const vector<double>& series
   std::copy(series.cbegin() + start_pos, series.cbegin() + end_pos + 1, subseq.begin());
 
   vector<tuple<double, unsigned int>> apaa_subseq = to_apaa(subseq);
-  std::cout << "APAA uses " << apaa_subseq.size() << " intervals" << std::endl;
 
   vector<double> x1, x2, err1, err2, y1, y2;
   int i=0;
@@ -173,17 +170,12 @@ void plot_any_apaa_subseq(const vector<double>& series
   }
 
   Gnuplot gp;
-  using namespace gp_constants;
-  gp << "set term pdfcairo enhanced color dashed font 'Verdana, 14' rounded size 32cm, 19.2cm\n";
-  gp << "set output '"<< file_path << title_name <<".pdf' \n";
-  gp << "set xlabel 'time'\n";
-  gp << "set ylabel 'series val'\n";
-  gp << "set title 'Plot of " << title_name << "'\n";
-  gp << "plot '-' dt 3 with yerrorlines title 'Errors', '-' with linespoints lt rgb 'blue' lw 1.2 pt 5 ps 0.5 title '"<<data_name<<"', '-' with linespoints lt rgb 'red' lw 1.2 pt 7 ps 0.5 title '"<< drt_name <<"'\n";
-  gp.send1d( boost::make_tuple( x1, y1, err1, err2) );
+  plot_setup::setup_gnuplot(gp, p);
+  //gp << "plot '-' dt 3 with yerrorlines title 'Errors', '-' with linespoints lt rgb 'blue' lw 1.2 pt 5 ps 0.5 title '"<<data_name<<"', '-' with linespoints lt rgb 'red' lw 1.2 pt 7 ps 0.5 title '"<< drt_name <<"'\n";
+  gp << "plot '-' with lines lt rgb 'blue' lw 4 title '"<<data_name<<"', '-' with lines lt rgb 'red' lw 4 title '"<< drt_name <<"'\n";
+  //gp.send1d( boost::make_tuple( x1, y1, err1, err2) );
   gp.send1d( boost::make_tuple( x1, y1 ) );
   gp.send1d( boost::make_tuple( x2, y2 ) );
 
-  std::string command = "firefox '" + file_path + title_name + ".pdf'";
-  system(command.c_str()); 
+  plot_setup::open_pdf(p);
 }

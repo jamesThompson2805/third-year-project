@@ -49,9 +49,9 @@ void plot::plot_many_series(vector<Series>& vs, PlotDetails p)
   plot_setup::setup_gnuplot(gp, p);
   gp << "plot ";
   for (int i=0; i<vs.size()-1; ++i) {
-    gp << "'-' with lines title '" <<  vs[i].name << "', ";
+    gp << "'-' with lines dt " << i+1 << " title '" <<  vs[i].name << "', ";
   }
-  gp << "'-' with lines title '" <<  vs.back().name << "'\n";
+  gp << "'-' with lines dt " << vs.size() << " title '" <<  vs.back().name << "'\n";
   for (int i=0; i<vs.size(); ++i) {
     gp.send1d( boost::make_tuple( vx[i], vy[i] ) );
   }
@@ -95,9 +95,9 @@ void plot::plot_lines(vector<Line> lines, PlotDetails p)
   plot_setup::setup_gnuplot(gp, p);
   gp << "plot ";
   for (int i=0; i<lines.size()-1; ++i) {
-    gp << "'-' with lines title '" <<  lines[i].name << "', ";
+    gp << "'-' with lines lw 4.0 dt " << i+1 << " title '" <<  lines[i].name << "', ";
   }
-  gp << "'-' with lines title '" <<  lines.back().name << "'\n";
+  gp << "'-' with lines lw 4.0 dt " << lines.size() << " title '" <<  lines.back().name << "'\n";
   for (int i=0; i<lines.size(); ++i) {
     gp.send1d( boost::make_tuple( lines[i].x, lines[i].y ) );
   }
@@ -137,7 +137,8 @@ void plot::plot_lines_generated_ucr_average(const std::vector<std::string>& data
     for (const std::string& d_name : dataset_names) {
       // construct the dataset
       vector<double> dataset = ucr_parsing::parse_ucr_dataset(d_name, dataset_filepath, ucr_parsing::DatasetType::TRAIN);
-      dataset.resize(ds_size);
+      if (ds_size > 0)
+	dataset.resize( std::min( (unsigned int) dataset.size(),ds_size) );
       z_norm::z_normalise(dataset);
 
       for (int yi=0; yi<y_gens.size(); yi++) {
@@ -145,7 +146,7 @@ void plot::plot_lines_generated_ucr_average(const std::vector<std::string>& data
 	y_vecs[yi].back() += y_f.result_gen(dataset,xi);
       }
     }
-    std::for_each(y_vecs.begin(), y_vecs.end(), [&dataset_names](auto& v){ v.back() / (double) dataset_names.size(); });
+    std::for_each(y_vecs.begin(), y_vecs.end(), [&dataset_names](auto& v){ v.back() /= (double) dataset_names.size(); });
   }
 
   for (int yi=0; yi<y_gens.size(); yi++) {

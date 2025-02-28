@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <chrono>
 
+#include <iostream>
+
 
 double general_eval::comp_of_method(const Seqd& s, unsigned int num_params, DRT f, COMP comp)
 {

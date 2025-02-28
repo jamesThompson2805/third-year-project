@@ -10,6 +10,10 @@
 
 typedef std::array<double, 2> DoublePair;
 
+typedef std::vector<double> Seqd;
+typedef std::vector<DoublePair> Seqdd;
+typedef std::vector<std::tuple<DoublePair,unsigned int>> Seqddt;
+
 namespace pla {
 std::vector<std::vector<double>> chunk_series(std::vector<double> series, unsigned int chunk_size);
 
