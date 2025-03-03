@@ -6,9 +6,10 @@
 
 
 namespace seq_scan {
-double mse_l2(const double* const s1start, const double* const s2start, unsigned int len);
+double l2_sqr(const double* const s1start, const double* const s2start, unsigned int len);
 
-std::vector<int> find_similar_subseq_indexes(const std::vector<double>& series, const std::vector<double>& query, double epsilon);
+std::vector<unsigned int> find_similar_subseq_indexes(const std::vector<double>& series, const std::vector<double>& query, double epsilon);
+std::vector<unsigned int> find_k_closest_indexes(const std::vector<double>& series, const std::vector<double>& query, unsigned int k);
 };
 
 #endif

@@ -3,10 +3,10 @@
 void plot_setup::setup_gnuplot(Gnuplot &gp, PlotDetails p)
 {
   double width = 32;
-  double height = 32;
+  double height = 19;
   switch (p.b) {
     case PDF:
-      gp << "set term pdfcairo enhanced color dashed font 'Verdana, 30' rounded size "<<width<<"cm, "<<height<<"cm\n";
+      gp << "set term pdfcairo enhanced color dashed font 'Verdana, 24' rounded size "<<width<<"cm, "<<height<<"cm\n";
       gp << "set output '" << p.filepath + p.title <<".pdf'\n";
       break;
     case SVG: 

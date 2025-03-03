@@ -28,6 +28,7 @@ namespace plot {
   void plot_series(Series& s, PlotDetails p);
 
   void plot_many_series(std::vector<Series>& vs, PlotDetails p);
+  void barplot_many_series(std::vector<Series>& vs, PlotDetails p);
 
   void plot_series_diff(Series& s1, Series& s2, PlotDetails p);
 

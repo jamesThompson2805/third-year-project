@@ -11,6 +11,7 @@ namespace bottom_up {
   using ERROR_F = double (*)(const double *const, const DoublePair&, unsigned int);
   double se( const double *const, const DoublePair&, unsigned int);
   Seqddt bottom_up(const Seqd&, double, ERROR_F);
+  Seqddt bottom_up_early_cutoff(const Seqd&, double, ERROR_F, unsigned int);
 };
 
 

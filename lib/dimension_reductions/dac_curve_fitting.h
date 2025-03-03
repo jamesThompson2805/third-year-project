@@ -14,7 +14,7 @@ namespace dac_curve_fitting {
   std::vector<std::tuple<double, unsigned int>> dac_constant_params( const std::vector<double>& s, unsigned int num_params); 
 
   std::vector<std::tuple<DoublePair, unsigned int>> dac_linear( const std::vector<double>& s, double epsilon);
-  std::vector<std::tuple<double, unsigned int>> dac_linear_params( const std::vector<double>& s, unsigned int num_params); 
+  std::vector<std::tuple<DoublePair, unsigned int>> dac_linear_early_cutoff( const std::vector<double>& s, double epsilon, unsigned int num_seg);
 
 }
 

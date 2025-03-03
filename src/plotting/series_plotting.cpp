@@ -10,6 +10,8 @@
 #include "ucr_parsing.h"
 #include "z_norm.h"
 
+#include "pgbar.hpp"
+
 using std::vector;
 
 void plot::plot_series(Series& s1, PlotDetails p)
@@ -57,6 +59,31 @@ void plot::plot_many_series(vector<Series>& vs, PlotDetails p)
   }
 
   plot_setup::open_pdf(p);
+}
+
+void plot::barplot_many_series(std::vector<Series> &vs, PlotDetails p)
+{
+  if (vs.size() == 0) return;
+
+  Gnuplot gp;
+  plot_setup::setup_gnuplot(gp, p);
+
+  gp << "set style line 2 lc rgb 'black' lt 1 lw 1\n";
+  gp << "set style data histogram\n";
+  gp << "set style histogram cluster gap 1\n";
+  gp << "set style fill pattern border -1\n";
+  gp << "set boxwidth 0.9\n";
+  gp << "set xtics format ''\n";
+  gp << "set grid ytics\n";
+
+  gp << "plot ";
+  for (int i=0; i<vs.size()-1; ++i) {
+    gp << "'-' title '" <<  vs[i].name << "' ls 2, ";
+  }
+  gp << "'-' title '" <<  vs.back().name << "' ls 2\n";
+  for (int i=0; i<vs.size(); ++i) {
+    gp.send1d( boost::make_tuple( vs[i].series ) );
+  }
 }
 
 int min(int x, int y) { if (x<y) return x; return y;}
@@ -129,14 +156,28 @@ void plot::plot_lines_generated_ucr_average(const std::vector<std::string>& data
   vector<double> x_d(x.size());
   std::transform(x.begin(), x.end(), x_d.begin(), [](unsigned int& i){ return (double) i;}); 
 
+  pgbar::ProgressBar<> bar { pgbar::option::Remains( "-" ),
+                             pgbar::option::Filler( "=" ),
+                             pgbar::option::Style( pgbar::config::CharBar::Entire ),
+                             pgbar::option::RemainsColor( "#A52A2A" ),
+                             pgbar::option::FillerColor( 0x0099FF ),
+                             pgbar::option::InfoColor( pgbar::color::Yellow ),
+                             pgbar::option::Tasks( x.size() * dataset_names.size() ) };
   vector<vector<double>> y_vecs(y_gens.size());
   vector<Line> lines;
   for (unsigned int xi : x) {
     std::for_each(y_vecs.begin(), y_vecs.end(), [](auto& v){ v.push_back(.0); });
 
+    int num_used_datasets=dataset_names.size();
     for (const std::string& d_name : dataset_names) {
+      bar.tick();
       // construct the dataset
       vector<double> dataset = ucr_parsing::parse_ucr_dataset(d_name, dataset_filepath, ucr_parsing::DatasetType::TRAIN);
+      if (ds_size > dataset.size()) {
+	num_used_datasets--;
+	continue;
+      }
+
       if (ds_size > 0)
 	dataset.resize( std::min( (unsigned int) dataset.size(),ds_size) );
       z_norm::z_normalise(dataset);
@@ -146,7 +187,7 @@ void plot::plot_lines_generated_ucr_average(const std::vector<std::string>& data
 	y_vecs[yi].back() += y_f.result_gen(dataset,xi);
       }
     }
-    std::for_each(y_vecs.begin(), y_vecs.end(), [&dataset_names](auto& v){ v.back() /= (double) dataset_names.size(); });
+    std::for_each(y_vecs.begin(), y_vecs.end(), [&num_used_datasets](auto& v){ v.back() /= (double) num_used_datasets; });
   }
 
   for (int yi=0; yi<y_gens.size(); yi++) {

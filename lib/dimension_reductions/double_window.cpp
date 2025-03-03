@@ -245,11 +245,11 @@ vector<tuple<DoublePair, unsigned int>> d_w::simple_pla(const vector<double> &s,
     splits.insert( splits.begin() + max_diff_split, { l , l + max_diff_index + lw_size -1 });
   }
   
-  vector<tuple<DoublePair, unsigned int>> v_paa;
+  vector<tuple<DoublePair, unsigned int>> v_pla;
   for (const auto [l, r] : splits) {
-    v_paa.push_back( { pla::regression(s.data() + l, s.data() + r), r});
+    v_pla.push_back( { pla::regression(s.data() + l, s.data() + r), r});
    }
-  return v_paa;
+  return v_pla;
 }
 
 // for x_0, .., x_n, calculates the difference in interval sizes from proj( dx_1, .., dx_lw_size) added proj( dx_lw_size+1, dx_rw_size+lw_size)
@@ -258,17 +258,17 @@ inline double differential_int_difference(const double* const d1, const double* 
   if (lw_size == 0 || rw_size == 0 || d2-d1 != lw_size+rw_size) {
     return std::numeric_limits<double>::quiet_NaN(); 
   }
-  double min1 = 100.0, max1 = -100.0;
-  double min2 = 100.0, max2 = -100.0;
+  double min1 = 1e30, max1 = -1e30;
+  double min2 = 1e30, max2 = -1e30;
   double curr;
   for (int i=0; i<lw_size; ++i) {
-    curr = *(d1+i+1) - *(d1+i);
+    curr = d1[i+1] - d1[i];
     if (curr > max1) max1=curr;
     if (curr < min1) min1=curr;
     
   }
   for (int i=0; i<rw_size; ++i) {
-    curr = *(d1+lw_size+i+1) - *(d1+lw_size+i);
+    curr = d1[lw_size+i+1] - d1[lw_size+i];
     if (curr > max2) max2=curr;
     if (curr < min2) min2=curr;
   }
@@ -310,7 +310,7 @@ vector<tuple<DoublePair, unsigned int>> d_w::y_proj_pla(const vector<double> &s,
   while (splits.size() < num_ints) {
     // find location of greatest difference in mean for each split
     // and find maximum difference overall
-    max_diff = 0.0;
+    max_diff = -1e30;
     max_diff_split = 0;
     max_diff_index = 0;
     curr_diff_index = 0;
@@ -329,7 +329,9 @@ vector<tuple<DoublePair, unsigned int>> d_w::y_proj_pla(const vector<double> &s,
       }
     }
 
-    if (all_splits_too_small) break;
+    if (all_splits_too_small) {
+      break;
+    }
 
     // create a split at that location
     auto [l, r] = splits[max_diff_split];
@@ -338,10 +340,10 @@ vector<tuple<DoublePair, unsigned int>> d_w::y_proj_pla(const vector<double> &s,
     splits.insert( splits.begin() + max_diff_split, { l , l + max_diff_index + lw_size -1 });
   }
   
-  vector<tuple<DoublePair, unsigned int>> v_paa;
+  vector<tuple<DoublePair, unsigned int>> v_pla;
   for (const auto [l, r] : splits) {
-    v_paa.push_back( { pla::regression(s.data() + l, s.data() + r), r});
-   }
-  return v_paa;
+    v_pla.push_back( { pla::regression(s.data() + l, s.data() + r), r});
+  }
+  return v_pla;
 }
 

@@ -26,6 +26,8 @@ target_link_libraries(${PROJECT_NAME} PUBLIC my_cleaning)
 
 add_subdirectory(external/libs/gnuplot-iostream)
 target_link_libraries(${PROJECT_NAME} PUBLIC gnuplot_iostream)
+add_subdirectory(external/libs/pgbar)
+target_link_libraries(${PROJECT_NAME} PUBLIC konvt_pgbar)
 
 
 find_package(GTest REQUIRED)

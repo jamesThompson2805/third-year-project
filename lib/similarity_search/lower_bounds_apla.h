@@ -38,17 +38,17 @@ namespace apla_bounds {
   }
   inline Region region_merge( const Region& r1, const Region& r2)
   {
-    unsigned int min_i = min(r1.min_i, r2.min_i);
-    unsigned int max_i = max(r1.max_i, r2.max_i);
+    int min_i = min(r1.min_i, r2.min_i);
+    int max_i = max(r1.max_i, r2.max_i);
     if (max_i == min_i) return { { min(r1.min_dp[0],r2.min_dp[0]),0}
-			       , min_i
+			       , (unsigned int) min_i
 			       , { max(r1.max_dp[0],r2.max_dp[0]),0}
-			       , max_i };
+			       , (unsigned int) max_i };
 
-    unsigned int min_i_rel_r1 = min_i - r1.min_i;
-    unsigned int max_i_rel_r1 = max_i - r1.min_i;
-    unsigned int min_i_rel_r2 = min_i - r2.min_i;
-    unsigned int max_i_rel_r2 = max_i - r2.min_i;
+    int min_i_rel_r1 = min_i - r1.min_i;
+    int max_i_rel_r1 = max_i - r1.min_i;
+    int min_i_rel_r2 = min_i - r2.min_i;
+    int max_i_rel_r2 = max_i - r2.min_i;
 
     double r1_lmax = r1.max_dp[1]*min_i_rel_r1 + r1.max_dp[0];
     double r1_rmax = r1.max_dp[1]*max_i_rel_r1 + r1.max_dp[0];
@@ -64,7 +64,7 @@ namespace apla_bounds {
     double r_lmin = min( min(r1_lmax, r2_lmax), min(r1_lmin, r2_lmin) );
     double r_rmax = max( max(r1_rmax, r2_rmax), max(r1_rmin, r2_rmin) );
     double r_rmin = min( min(r1_rmax, r2_rmax), min(r1_rmin, r2_rmin) );
-    return { {r_lmin, (r_rmin-r_lmin)/double(max_i-min_i)}, min_i , {r_lmax, (r_rmax-r_lmax)/double(max_i-min_i)}, max_i};
+    return { {r_lmin, (r_rmin-r_lmin)/double(max_i-min_i)}, (unsigned int) min_i , {r_lmax, (r_rmax-r_lmax)/double(max_i-min_i)}, (unsigned int) max_i};
   }
 
   inline double dist_to_region_sqr( const double& qi, const Region& r, unsigned int global_offset)

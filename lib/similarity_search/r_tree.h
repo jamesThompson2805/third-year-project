@@ -67,6 +67,7 @@ public:
   }
 
   unsigned int get_size_tree();
+  unsigned int get_size_leaves();
   inline unsigned int get_num_leaves() { return total_num_entries; }
 
   void insert(R mbr, I st_index);
@@ -94,6 +95,7 @@ private:
   R rebuild_mbr( const RTreeNode<R,I> *const n);
   unsigned int get_num_mbrs( const RTreeNode<R,I> *const n);
   unsigned int get_size_tree(const RTreeNode<R,I>* node);
+  unsigned int get_size_leaves(const RTreeNode<R,I>* node);
 
   void destroy_tree_from(RTreeNode<R,I>* node);
 };
@@ -167,6 +169,10 @@ template <typename R, typename I>
 unsigned int RTree<R,I>::get_size_tree(){
   return get_size_tree(root);
 }
+template <typename R, typename I>
+unsigned int RTree<R,I>::get_size_leaves(){
+  return get_size_leaves(root);
+}
 
 template <typename R, typename I>
 unsigned int RTree<R,I>::get_size_tree(const RTreeNode<R,I>* node)
@@ -188,6 +194,32 @@ unsigned int RTree<R,I>::get_size_tree(const RTreeNode<R,I>* node)
       }
       for (RTreeNode<R,I>* entry : std::get<1>(next->entries)) {
 	size++;
+	q.push(entry);
+      }
+    }
+  }
+  return size;
+}
+
+template <typename R, typename I>
+unsigned int RTree<R,I>::get_size_leaves(const RTreeNode<R,I>* node)
+{
+  if (node == nullptr) return 0;
+  unsigned int size = 1;
+  if (node->entries.index() == 0) { // leaf node
+    return size;
+  } else {
+    queue<const RTreeNode<R,I>*> q;
+    q.push(node);
+
+    while (q.size() > 0) {
+      const RTreeNode<R,I>* next = q.front();
+      q.pop();
+      if (next->entries.index() == 0) { // next is a leaf
+	size+=std::get<0>(next->entries).size();
+	continue;
+      }
+      for (RTreeNode<R,I>* entry : std::get<1>(next->entries)) {
 	q.push(entry);
       }
     }
@@ -227,7 +259,7 @@ RTreeNode<R,I>* RTree<R,I>::choose_leaf_from(const R& mbr, RTreeNode<R,I>* node)
 template <typename R, typename I>
 std::array<unsigned int, 2> RTree<R,I>::quad_pick_seeds(const std::vector<const R*>& mbrs)
 {
-  double max_d = -1;
+  double max_d = -1e30;
   unsigned int i1, i2;
 
   for (unsigned int i=0; i<mbrs.size(); i++) {
@@ -273,11 +305,14 @@ RTreeNode<R,I>* RTree<R,I>::split_node(RTreeNode<R,I>* node)
   std::vector<const R*> mbrs = get_entry_mbrs(node);
 
   std::array<unsigned int, 2> seeds = quad_pick_seeds(mbrs);
+  //std::cout << " got here afterall" << std::endl;
+  //std::cout << seeds[0] << " " << seeds[1] << std::endl;
   std::set<unsigned int> g0 = {seeds[0]}, g1 = {seeds[1]};
   R g0mbr = *mbrs[seeds[0]], g1mbr = *mbrs[seeds[1]];
 
   int num_remaining = get_num_mbrs(node) - 2;
 
+  // allocate all entries to either of the seeds preserving the minimum entries per node requirement
   while (g0.size() < max_entries && g1.size() < max_entries && g0.size()+num_remaining > min_entries && g1.size()+num_remaining > min_entries) {
     unsigned int next_i = quad_pick_next_node(mbrs, g0, g0mbr, g1, g1mbr);
     if (next_i == -1) break; // exhausted all numbers
@@ -359,7 +394,7 @@ RTreeNode<R,I>* RTree<R,I>::split_node(RTreeNode<R,I>* node)
 	entries[n]->parent = g1node;
     } // change child entries to have new parent
     node->entries = g0entries;
-    node->mbr = g0mbr; // adjust node's mbr to reflect its current entriesk
+    node->mbr = g0mbr; // adjust node's mbr to reflect its current entries
 
     std::get<1>(node->parent->entries).push_back( g1node ); // add g1node to parent
     return g1node;
@@ -388,16 +423,22 @@ void RTree<R,I>::insert(R mbr, I st_index)
     root = new RTreeNode<R,I>(mbr, nullptr, std::vector<LeafEntry<R,I>>({{mbr,st_index}}) );
     return;
   }
+
   RTreeNode<R,I>* target_leaf = choose_leaf(mbr);
+  //std::cout << "	got leaf"<<std::endl;
   std::vector<LeafEntry<R,I>>& entries = std::get<0>(target_leaf->entries);
   entries.push_back({mbr, st_index});
   target_leaf->mbr = merge_f( target_leaf->mbr, mbr );
 
   RTreeNode<R,I>* twin_node = nullptr;
   if (entries.size() > max_entries) {
+    //std::cout << "	splitting"<<std::endl;
     twin_node = split_node(target_leaf);
+    //std::cout << "	splitted"<<std::endl;
   }
+  //std::cout << "	adjusting"<<std::endl;
   adjust_tree(target_leaf);
+  //std::cout << "	adjusted"<<std::endl;
     
 }
 /* *************************** R Tree Search methods ************************* */
@@ -419,13 +460,15 @@ std::vector<I> RTree<R,I>::sim_search(const std::vector<double>& q, double epsil
     nodes.pop();
     if (next->entries.index() == 0) {
       for (const LeafEntry<R,I>& l : std::get<0>(next->entries)) {
-	if (uncompr_point_dist_sqr_f(q, l.mbr) <= epsilon)
+	if (uncompr_point_dist_sqr_f(q, l.mbr) <= epsilon) {
 	  results.push_back(l.st_index);
+	}
       }
     } else {
       for (const RTreeNode<R,I>* const n : std::get<1>(next->entries)) {
-	if (uncompr_point_dist_sqr_f(q, n->mbr) <= epsilon)
+	if (uncompr_point_dist_sqr_f(q, n->mbr) <= epsilon) {
 	  nodes.push(n);
+	}
       }
     }
   }
@@ -440,8 +483,12 @@ std::vector<std::array<const double*,2>> RTree<R,I>::knn_search(const std::vecto
     const R& ambr = a.index()==0 ? std::get<0>(a)->mbr : std::get<1>(a)->mbr;
     return uncompr_point_dist_sqr_f(q,ambr);
   };
-  auto cmp = [this,&q,&entry_error](const QEntry& a, const QEntry& b) {
+  auto cmp_qentry = [this,&q,&entry_error](const QEntry& a, const QEntry& b) {
     return entry_error(a) > entry_error(b);
+  };
+  typedef std::tuple<QEntry, double> QDEntry;
+  auto cmp = [this,&q,&entry_error](const QDEntry& a, const QDEntry& b) {
+    return std::get<1>(a) > std::get<1>(b);
   };
   using std::vector, std::array;
   auto ptr_error = [this,&q](const array<const double*,2>& s) { return error_measures::se_between_ptrs(q.data(), q.data()+q.size()-1,s[0],s[1]); };
@@ -449,10 +496,10 @@ std::vector<std::array<const double*,2>> RTree<R,I>::knn_search(const std::vecto
     return ptr_error(sa) > ptr_error(sb);
   };
 
-  std::priority_queue<QEntry, std::vector<QEntry>, decltype(cmp)> pri_q(cmp);
+  std::priority_queue<QDEntry, std::vector<QDEntry>, decltype(cmp)> pri_q(cmp);
   std::priority_queue<array<const double*,2>, std::vector<array<const double*,2>>, decltype(leaf_cmp)> candidates(leaf_cmp);
   std::vector<array<const double*,2>> results;
-  pri_q.push( root );
+  pri_q.push( { root, entry_error(root) } );
 
   while (pri_q.size() != 0) {
     QEntry next = pri_q.top();
