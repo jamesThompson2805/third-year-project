@@ -12,6 +12,7 @@ typedef std::array<double, 2> DoublePair;
 
 typedef std::vector<double> Seqd;
 typedef std::vector<DoublePair> Seqdd;
+typedef std::vector<unsigned int> Sequi;
 typedef std::vector<std::tuple<DoublePair,unsigned int>> Seqddt;
 
 namespace pla {
@@ -19,6 +20,7 @@ std::vector<std::vector<double>> chunk_series(std::vector<double> series, unsign
 
 
 DoublePair regression(const double* const start, const double* const end);
+double regression_thru_point(double first_point, const double* const start, const double* const end);
 
 // w is num items compressed to a linear function
 std::vector<DoublePair> sliding_window_regression( const std::vector<double>& series, unsigned int w);

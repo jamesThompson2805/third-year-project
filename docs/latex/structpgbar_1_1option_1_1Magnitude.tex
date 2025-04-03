@@ -1,0 +1,24 @@
+\doxysection{pgbar\+::option\+::Magnitude Struct Reference}
+\hypertarget{structpgbar_1_1option_1_1Magnitude}{}\label{structpgbar_1_1option_1_1Magnitude}\index{pgbar::option::Magnitude@{pgbar::option::Magnitude}}
+
+
+{\ttfamily \#include $<$pgbar.\+hpp$>$}
+
+
+
+\doxysubsection{Detailed Description}
+A wrapper that stores the base magnitude for unit scaling in formatted output.
+
+Defines the threshold at which values are converted to higher-\/order units (e.\+g. 1000 -\/\texorpdfstring{$>$}{>} "{}1k"{}, 1000000 -\/\texorpdfstring{$>$}{>} "{}1\+M"{}).
+
+The effective range is between 1 and 65535.
+
+
+\begin{DoxyItemize}
+\item A zero value implies no scaling (raw numeric display).
+\item Typical usage\+: 1000 (decimal) or 1024 (binary) scaling. 
+\end{DoxyItemize}
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

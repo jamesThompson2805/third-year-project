@@ -9,7 +9,6 @@ using std::tuple;
 using std::priority_queue;
 
 #include <algorithm>
-#include <iostream>
 
 inline double score( const vector<double>& s, const vector<double>& l, const vector<double>& r, unsigned int i)
 {

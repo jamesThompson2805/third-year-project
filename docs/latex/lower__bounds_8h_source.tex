@@ -1,0 +1,35 @@
+\doxysection{lower\+\_\+bounds.\+h}
+\hypertarget{lower__bounds_8h_source}{}\label{lower__bounds_8h_source}\index{lib/similarity\_search/lower\_bounds.h@{lib/similarity\_search/lower\_bounds.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LOWER\_BOUNDS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LOWER\_BOUNDS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ Seqddt;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ std::vector<double>\ Seqd;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRegion}{Region}}\ \{}
+\DoxyCodeLine{00013\ \ \ DoublePair\ min\_dp;}
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_i;}
+\DoxyCodeLine{00015\ \ \ DoublePair\ max\_dp;}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_i;}
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ std::vector<Region>\ PlaMbr;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }lower\_bounds\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{double}\ dist\_pla\_lb\_sqr(\textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ Seqddt\&\ s);}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{double}\ dist\_pla\_lb(\textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ Seqddt\&\ s);}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{double}\ dist\_mbr\_lb\_sqr(\textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ PlaMbr\&\ r);}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{double}\ dist\_mbr\_lb(\textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ PlaMbr\&\ r);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

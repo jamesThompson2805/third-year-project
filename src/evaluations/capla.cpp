@@ -1,5 +1,10 @@
 #include "capla.h"
 
+/**
+ * @file capla.cpp
+ * @brief File implementing functions of capla.h
+ */
+
 
 #include "pla.h"
 #include "conv_double_window.h"

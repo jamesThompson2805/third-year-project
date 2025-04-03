@@ -1,0 +1,112 @@
+\doxysection{pla Namespace Reference}
+\hypertarget{namespacepla}{}\label{namespacepla}\index{pla@{pla}}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{APLA\+\_\+\+DRT}} = std\+::function$<$ std\+::vector$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int$>$$>$(const std\+::vector$<$double$>$\&, unsigned int)$>$
+\item 
+{\footnotesize template$<$unsigned int NS$>$ }\\using \mbox{\hyperlink{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4}{APLA}} = std\+::array$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}},unsigned int$>$,NS$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespacepla_a54deab779fcb06a1e40fddadb3575e58}{chunk\+\_\+series}} (std\+::vector$<$ double $>$ series, unsigned int chunk\+\_\+size)
+\item 
+\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \mbox{\hyperlink{namespacepla_acf95cd1dd69140bbfa8f0a677c36fcdb}{regression}} (const double \texorpdfstring{$\ast$}{*}const start, const double \texorpdfstring{$\ast$}{*}const end)
+\item 
+double \mbox{\hyperlink{namespacepla_a317cb9110bf6260a914e2c683297f8ad}{regression\+\_\+thru\+\_\+point}} (double first\+\_\+point, const double \texorpdfstring{$\ast$}{*}const start, const double \texorpdfstring{$\ast$}{*}const end)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{namespacepla_af6438fa7ac15f2e620352db7cc5c2984}{sliding\+\_\+window\+\_\+regression}} (const std\+::vector$<$ double $>$ \&series, unsigned int w)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{namespacepla_a3ae7e9fb7afda5d688edb8bc50c6deab}{chunk\+\_\+regression}} (const std\+::vector$<$ double $>$ \&series, unsigned int num\+\_\+params)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{namespacepla_ad4a679bfb7ce04a858c4354da743727d}{pla}} (const std\+::vector$<$ double $>$ \&series, unsigned int num\+\_\+params)
+\item 
+double \mbox{\hyperlink{namespacepla_abc6491b74ce05f48e3bd54e0ec5e6514}{pla\+\_\+mse}} (const std\+::vector$<$ double $>$ \&series, unsigned int interval\+\_\+size)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepla_afe5dd11aadc38e9c3a562860e0a00d25}{pla\+\_\+to\+\_\+seq}} (const std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$, unsigned int int\+\_\+size)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepla_ab32753f980424f3e0a740e4c2da1dcc9}{apla\+\_\+to\+\_\+seq}} (const std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$)
+\item 
+{\footnotesize template$<$unsigned int NS$>$ }\\std\+::vector$<$ \mbox{\hyperlink{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4}{APLA}}$<$ NS $>$ $>$ \mbox{\hyperlink{namespacepla_ac82c30c4f0758c7fc125822ce389542c}{apla\+\_\+drt\+\_\+on\+\_\+subseqs}} (const std\+::vector$<$ double $>$ \&q, unsigned int subseq\+\_\+size, \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{APLA\+\_\+\+DRT}} f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4}\label{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4} 
+\index{pla@{pla}!APLA@{APLA}}
+\index{APLA@{APLA}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{APLA}{APLA}}
+{\footnotesize\ttfamily template$<$unsigned int NS$>$ \\
+using \mbox{\hyperlink{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4}{pla\+::\+APLA}} = std\+::array$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}},unsigned int$>$,NS$>$}
+
+\Hypertarget{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}\label{namespacepla_a6a3d8a0f973d3b199407f277870e4c00} 
+\index{pla@{pla}!APLA\_DRT@{APLA\_DRT}}
+\index{APLA\_DRT@{APLA\_DRT}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{APLA\_DRT}{APLA\_DRT}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{pla\+::\+APLA\+\_\+\+DRT}} = std\+::function$<$ std\+::vector$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int$>$$>$(const std\+::vector$<$double$>$\&, unsigned int)$>$}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacepla_ac82c30c4f0758c7fc125822ce389542c}\label{namespacepla_ac82c30c4f0758c7fc125822ce389542c} 
+\index{pla@{pla}!apla\_drt\_on\_subseqs@{apla\_drt\_on\_subseqs}}
+\index{apla\_drt\_on\_subseqs@{apla\_drt\_on\_subseqs}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{apla\_drt\_on\_subseqs()}{apla\_drt\_on\_subseqs()}}
+{\footnotesize\ttfamily template$<$unsigned int NS$>$ \\
+std\+::vector$<$ \mbox{\hyperlink{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4}{APLA}}$<$ NS $>$ $>$ pla\+::apla\+\_\+drt\+\_\+on\+\_\+subseqs (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{q,  }\item[{unsigned int}]{subseq\+\_\+size,  }\item[{\mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{APLA\+\_\+\+DRT}}}]{f }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_ab32753f980424f3e0a740e4c2da1dcc9}\label{namespacepla_ab32753f980424f3e0a740e4c2da1dcc9} 
+\index{pla@{pla}!apla\_to\_seq@{apla\_to\_seq}}
+\index{apla\_to\_seq@{apla\_to\_seq}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{apla\_to\_seq()}{apla\_to\_seq()}}
+{\footnotesize\ttfamily vector$<$ double $>$ pla\+::apla\+\_\+to\+\_\+seq (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$}]{apla\+\_\+seq }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_a3ae7e9fb7afda5d688edb8bc50c6deab}\label{namespacepla_a3ae7e9fb7afda5d688edb8bc50c6deab} 
+\index{pla@{pla}!chunk\_regression@{chunk\_regression}}
+\index{chunk\_regression@{chunk\_regression}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{chunk\_regression()}{chunk\_regression()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ pla\+::chunk\+\_\+regression (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{series,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_a54deab779fcb06a1e40fddadb3575e58}\label{namespacepla_a54deab779fcb06a1e40fddadb3575e58} 
+\index{pla@{pla}!chunk\_series@{chunk\_series}}
+\index{chunk\_series@{chunk\_series}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{chunk\_series()}{chunk\_series()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ pla\+::chunk\+\_\+series (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{series,  }\item[{unsigned int}]{chunk\+\_\+size }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_ad4a679bfb7ce04a858c4354da743727d}\label{namespacepla_ad4a679bfb7ce04a858c4354da743727d} 
+\index{pla@{pla}!pla@{pla}}
+\index{pla@{pla}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{pla()}{pla()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ pla\+::pla (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{series,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_abc6491b74ce05f48e3bd54e0ec5e6514}\label{namespacepla_abc6491b74ce05f48e3bd54e0ec5e6514} 
+\index{pla@{pla}!pla\_mse@{pla\_mse}}
+\index{pla\_mse@{pla\_mse}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{pla\_mse()}{pla\_mse()}}
+{\footnotesize\ttfamily double pla\+::pla\+\_\+mse (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{series,  }\item[{unsigned int}]{interval\+\_\+size }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_afe5dd11aadc38e9c3a562860e0a00d25}\label{namespacepla_afe5dd11aadc38e9c3a562860e0a00d25} 
+\index{pla@{pla}!pla\_to\_seq@{pla\_to\_seq}}
+\index{pla\_to\_seq@{pla\_to\_seq}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{pla\_to\_seq()}{pla\_to\_seq()}}
+{\footnotesize\ttfamily vector$<$ double $>$ pla\+::pla\+\_\+to\+\_\+seq (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$}]{pla\+\_\+seq,  }\item[{unsigned int}]{int\+\_\+size }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_acf95cd1dd69140bbfa8f0a677c36fcdb}\label{namespacepla_acf95cd1dd69140bbfa8f0a677c36fcdb} 
+\index{pla@{pla}!regression@{regression}}
+\index{regression@{regression}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{regression()}{regression()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} pla\+::regression (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{start,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{end }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_a317cb9110bf6260a914e2c683297f8ad}\label{namespacepla_a317cb9110bf6260a914e2c683297f8ad} 
+\index{pla@{pla}!regression\_thru\_point@{regression\_thru\_point}}
+\index{regression\_thru\_point@{regression\_thru\_point}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{regression\_thru\_point()}{regression\_thru\_point()}}
+{\footnotesize\ttfamily double pla\+::regression\+\_\+thru\+\_\+point (\begin{DoxyParamCaption}\item[{double}]{first\+\_\+point,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{start,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{end }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacepla_af6438fa7ac15f2e620352db7cc5c2984}\label{namespacepla_af6438fa7ac15f2e620352db7cc5c2984} 
+\index{pla@{pla}!sliding\_window\_regression@{sliding\_window\_regression}}
+\index{sliding\_window\_regression@{sliding\_window\_regression}!pla@{pla}}
+\doxysubsubsection{\texorpdfstring{sliding\_window\_regression()}{sliding\_window\_regression()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ pla\+::sliding\+\_\+window\+\_\+regression (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{series,  }\item[{unsigned int}]{w }\end{DoxyParamCaption})}
+

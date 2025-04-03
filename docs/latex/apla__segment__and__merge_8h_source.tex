@@ -1,0 +1,32 @@
+\doxysection{apla\+\_\+segment\+\_\+and\+\_\+merge.\+h}
+\hypertarget{apla__segment__and__merge_8h_source}{}\label{apla__segment__and__merge_8h_source}\index{lib/dimension\_reductions/apla\_segment\_and\_merge.h@{lib/dimension\_reductions/apla\_segment\_and\_merge.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ APLA\_SEGMENT\_AND\_MERGE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ APLA\_SEGMENT\_AND\_MERGE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ Seqddt;}
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ std::vector<double>\ Seqd;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }segmerge\ \{}
+\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{void}\ merge\_1(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr);}
+\DoxyCodeLine{00013\ \ \ \textcolor{keywordtype}{void}\ merge\_k(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{void}\ merge\_to\_dim(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{void}\ segment\_1(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr);}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{void}\ segment\_k(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{void}\ segment\_to\_dim(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00018\ \ \ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ maxdev\_merge\_1(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr);}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{void}\ maxdev\_merge\_k(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ maxdev\_segment\_1(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr);}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{void}\ maxdev\_segment\_k(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

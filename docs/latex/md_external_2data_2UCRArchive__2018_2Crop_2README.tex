@@ -1,0 +1,57 @@
+\chapter{Crop}
+\hypertarget{md_external_2data_2UCRArchive__2018_2Crop_2README}{}\label{md_external_2data_2UCRArchive__2018_2Crop_2README}\index{Crop@{Crop}}
+\label{md_external_2data_2UCRArchive__2018_2Crop_2README_autotoc_md40}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2Crop_2README_autotoc_md40}%
+ The new generation Earth Observation (EO) satellites have been imaging the Earth frequently, completely and at high resolution. This introduces unprecedented opportunities to monitor the dynamics of any regions on our planet over time and revealing the constant flux that underpins the bigger picture of our World.
+
+This data set is a subset of a bigger data set \mbox{[}1\mbox{]}, which originally comes from 46 geometrically and radiometrically corrected images taken by FORMOSAT-\/2 satellite. These images are corrected such that every pixel corresponds to the same geographic area on Earth. Each pixel represents an area of 64 square meter; with 1 million pixels per image, this results in an area of 64 square kilometer per image. Each geographic area (a pixel) forms a time series of length of 46, showing the temporal evolution of that area.
+
+There are 24 classes corresponding to what the land covers.
+
+Class label -\/ class name in French\+: English translation
+
+
+\begin{DoxyItemize}
+\item Class 1 -\/ mais\+: corn
+\item Class 2 -\/ ble\+: wheat
+\item Class 3 -\/ bati dense\+: dense building
+\item Class 4 -\/ bati indu\+: built indu
+\item Class 5 -\/ bati diffus\+: diffuse building
+\item Class 6 -\/ prairie temporaire\+: temporary meadow
+\item Class 7 -\/ feuillus\+: hardwood
+\item Class 8 -\/ friche\+: wasteland
+\item Class 9 -\/ jachere\+: jachere
+\item Class 10 -\/ soja\+: soy
+\item Class 11 -\/ eau\+: water
+\item Class 12 -\/ pre\+: pre
+\item Class 13 -\/ resineux\+: softwood
+\item Class 14 -\/ tournesol\+: sunflower
+\item Class 15 -\/ sorgho\+: sorghum
+\item Class 16 -\/ eucalyptus\+: eucalyptus
+\item Class 17 -\/ colza\+: rapeseed
+\item Class 18 -\/ mais ensillage\+: but drilling
+\item Class 19 -\/ orge\+: barley
+\item Class 20 -\/ pois\+: peas
+\item Class 21 -\/ peupliers\+: poplars
+\item Class 22 -\/ surface minerale\+: mineral surface
+\item Class 23 -\/ graviere\+: gravel
+\item Class 24 -\/ lac\+: lake
+\end{DoxyItemize}
+
+Train size\+: 7200
+
+Test size\+: 16800
+
+Number of classes\+: 24
+
+Missing value\+: No
+
+Time series length\+: 46
+
+There is nothing to infer from the order of examples in the train and test set.
+
+Data created by\+: C.\+W. Tan, G.\+I. Webb and F. Petitjean (see \mbox{[}1\mbox{]}, \mbox{[}2\mbox{]}). Data edited by Hoang Anh Dau.
+
+\mbox{[}1\mbox{]} Tan, Chang Wei, Geoffrey I. Webb, and François Petitjean. "{}\+Indexing and classifying gigabytes of time series under time warping."{} Proceedings of the 2017 SIAM International Conference on Data Mining. Society for Industrial and Applied Mathematics, 2017.
+
+\mbox{[}2\mbox{]} \href{http://bit.ly/SDM2017}{\texttt{ http\+://bit.\+ly/\+SDM2017}} 

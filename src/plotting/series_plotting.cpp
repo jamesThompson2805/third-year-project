@@ -1,9 +1,13 @@
 #include "series_plotting.h"
 
+/**
+ * @file series_plotting.cpp
+ * @brief Implementations of functions defined in series_plotting.h .
+ */
+
 #include "gnuplot-iostream.h"
 #include "error_measures.h"
 #include "plot_types.h"
-#include "plotting_constants.h"
 #include <algorithm>
 #include <boost/tuple/tuple.hpp>
 
@@ -25,7 +29,7 @@ void plot::plot_series(Series& s1, PlotDetails p)
   }
   Gnuplot gp;
   plot_setup::setup_gnuplot(gp, p);
-  gp << "plot '-' with linespoints lt rgb 'blue' lw 1.2 pt 5 ps 0.5 title '" <<  s1.name << "'\n";
+  gp << "plot '-' with lines lt rgb 'blue' lw 1.2 title '" <<  s1.name << "'\n";
   gp.send1d( boost::make_tuple( x, y ) );
 
   plot_setup::open_pdf(p);
@@ -120,11 +124,15 @@ void plot::plot_lines(vector<Line> lines, PlotDetails p)
 
   Gnuplot gp;
   plot_setup::setup_gnuplot(gp, p);
+  gp << "set key off\n";
   gp << "plot ";
-  for (int i=0; i<lines.size()-1; ++i) {
-    gp << "'-' with lines lw 4.0 dt " << i+1 << " title '" <<  lines[i].name << "', ";
+  gp << "'-' with lines lt rgb 'blue' lw 4.0 title '" <<  lines[0].name << "', ";
+  for (int i=1; i<lines.size()-1; ++i) {
+    //gp << "'-' with lines lw 4.0 dt " << i+1 << " title '" <<  lines[i].name << "', ";
+    gp << "'-' with lines lt rgb 'red' lw 4.0 title '" <<  lines[i].name << "', ";
   }
-  gp << "'-' with lines lw 4.0 dt " << lines.size() << " title '" <<  lines.back().name << "'\n";
+  //gp << "'-' with lines lw 4.0 dt " << lines.size() << " title '" <<  lines.back().name << "'\n";
+  gp << "'-' with lines lt rgb 'red' lw 4.0 title '" <<  lines.back().name << "'\n";
   for (int i=0; i<lines.size(); ++i) {
     gp.send1d( boost::make_tuple( lines[i].x, lines[i].y ) );
   }
@@ -197,57 +205,3 @@ void plot::plot_lines_generated_ucr_average(const std::vector<std::string>& data
   plot::plot_lines(lines, p);
 }
 
-/*
-void plot_ucr_drt_mse(const vector<std::string>& datasets
-		      , std::string datasets_loc
-		      , unsigned int ds_start
-		      , unsigned int ds_end
-		      , unsigned int max_num_params
-		      , std::function<std::vector<double> (const std::vector<double>&, unsigned int num_params)> drt)
-{
-  if (max_num_params < 5) return;
-
-  vector<double> x;
-  for (int j=4; j<=max_num_params; j+=100) x.push_back(j);
-
-  vector<Line> lines;
-  vector<vector<double>> datasets_mse(ds_end-ds_start+1);
-  for (int i=ds_start; i<=ds_end; ++i) {
-    vector<double> dataset_i = ucr_parsing::parse_ucr_dataset(datasets[i], datasets_loc, ucr_parsing::DatasetType::TRAIN);
-    z_norm::z_normalise(dataset_i);
-    for (int j=4; j<=max_num_params; j+=100) {
-      datasets_mse[i-ds_start].push_back( mse::mse_between_seq(dataset_i, drt(dataset_i, j)) );
-      std::cout << mse::mse_between_seq(dataset_i, drt(dataset_i,j)) << std::endl;
-    }
-    lines.push_back( { x, datasets_mse[i-ds_start], "dataset " + std::to_string(i) +": "+datasets[i] } );
-  }
-  PlotLabels pl = {"comparison of MSE for DRT on "+ std::to_string(ds_end-ds_start+1) +" datasets", "number of parameters", "MSE error"};
-  plot_lines( lines, pl);
-}
-
-void plot_ucr_drt_maxdev(const vector<std::string>& datasets
-		      , std::string datasets_loc
-		      , unsigned int ds_start
-		      , unsigned int ds_end
-		      , unsigned int max_num_params
-		      , std::function<std::vector<double> (const std::vector<double>&, unsigned int num_params)> drt)
-{
-  if (max_num_params < 5) return;
-
-  vector<double> x;
-  for (int j=4; j<=max_num_params; j+=100) x.push_back(j);
-
-  vector<Line> lines;
-  vector<vector<double>> datasets_mse(ds_end-ds_start+1);
-  for (int i=ds_start; i<=ds_end; ++i) {
-    vector<double> dataset_i = ucr_parsing::parse_ucr_dataset(datasets[i], datasets_loc, ucr_parsing::DatasetType::TRAIN);
-    z_norm::z_normalise(dataset_i);
-    for (int j=4; j<=max_num_params; j+=100) {
-      datasets_mse[i-ds_start].push_back( mse::maxdev_between_seq(dataset_i, drt(dataset_i, j)) );
-    }
-    lines.push_back( { x, datasets_mse[i-ds_start], "dataset " + std::to_string(i) +": "+datasets[i] } );
-  }
-  PlotLabels pl = {"comparison of maximum deviation for DRT on "+ std::to_string(ds_end-ds_start+1) +" datasets", "number of parameters", "MaxDev error"};
-  plot_lines( lines, pl);
-}
-*/

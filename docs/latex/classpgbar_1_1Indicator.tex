@@ -1,0 +1,77 @@
+\doxysection{pgbar\+::Indicator Class Reference}
+\hypertarget{classpgbar_1_1Indicator}{}\label{classpgbar_1_1Indicator}\index{pgbar::Indicator@{pgbar::Indicator}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a42f949e82383a9012c82a9b7da493258}\label{classpgbar_1_1Indicator_a42f949e82383a9012c82a9b7da493258} 
+{\bfseries Indicator} (\mbox{\hyperlink{classpgbar_1_1Indicator}{Indicator}} \&\&) noexcept
+\item 
+\Hypertarget{classpgbar_1_1Indicator_ad108f3f6c883867a4394e1a2cd2c580e}\label{classpgbar_1_1Indicator_ad108f3f6c883867a4394e1a2cd2c580e} 
+\mbox{\hyperlink{classpgbar_1_1Indicator}{Indicator}} \& {\bfseries operator=} (\mbox{\hyperlink{classpgbar_1_1Indicator}{Indicator}} \&\&rhs) \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a545443e12d1db2518ef4bc04f00e7633}\label{classpgbar_1_1Indicator_a545443e12d1db2518ef4bc04f00e7633} 
+virtual \mbox{\hyperlink{classpgbar_1_1Indicator}{Indicator}} \& {\bfseries tick} () \&=0
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a03d32a6985b759e03c8ddd4261c56c49}\label{classpgbar_1_1Indicator_a03d32a6985b759e03c8ddd4261c56c49} 
+virtual \mbox{\hyperlink{classpgbar_1_1Indicator}{Indicator}} \& {\bfseries tick} (\+\_\+\+\_\+details\+::types\+::\+Size next\+\_\+step) \&=0
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a9f1cb70caabf2079d6bbf75ad884e605}\label{classpgbar_1_1Indicator_a9f1cb70caabf2079d6bbf75ad884e605} 
+virtual \mbox{\hyperlink{classpgbar_1_1Indicator}{Indicator}} \& {\bfseries tick\+\_\+to} (\+\_\+\+\_\+details\+::types\+::\+Size percentage) \&=0
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a6c09103879bb0325efeb36ff15fe77be}\label{classpgbar_1_1Indicator_a6c09103879bb0325efeb36ff15fe77be} 
+virtual void {\bfseries reset} ()=0
+\item 
+\Hypertarget{classpgbar_1_1Indicator_aba40d1c139a265fa73dd3fb723b9b8a1}\label{classpgbar_1_1Indicator_aba40d1c139a265fa73dd3fb723b9b8a1} 
+virtual void {\bfseries reset} (bool final\+\_\+mesg)=0
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a33683c31430269fc26bd64075ef0b1cb}\label{classpgbar_1_1Indicator_a33683c31430269fc26bd64075ef0b1cb} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD bool {\bfseries is\+\_\+running} () const noexcept
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a0825738cc4142fa1983e66441bcc1b76}\label{classpgbar_1_1Indicator_a0825738cc4142fa1983e66441bcc1b76} 
+void {\bfseries wait} () const
+\item 
+\Hypertarget{classpgbar_1_1Indicator_aea5dc0edf4b83c9438b2f5e2a83404e9}\label{classpgbar_1_1Indicator_aea5dc0edf4b83c9438b2f5e2a83404e9} 
+{\footnotesize template$<$class Rep , class Period $>$ }\\bool {\bfseries wait\+\_\+for} (const std\+::chrono\+::duration$<$ Rep, Period $>$ \&time\+\_\+duration) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a1a3c04d5a6fa54849591f5f5c316d894}\label{classpgbar_1_1Indicator_a1a3c04d5a6fa54849591f5f5c316d894} 
+enum class {\bfseries state} \+: uint8\+\_\+t \{ \newline
+{\bfseries Begin}
+, {\bfseries Refresh1}
+, {\bfseries Refresh2}
+, {\bfseries Finish}
+, \newline
+{\bfseries Stopped}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a04d702c5a64534a63deb67477f93535d}\label{classpgbar_1_1Indicator_a04d702c5a64534a63deb67477f93535d} 
+void {\bfseries unlock\+\_\+reset} (bool final\+\_\+mesg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1Indicator_ab8a3c5a5389a947015adbd42d2fbb2e5}\label{classpgbar_1_1Indicator_ab8a3c5a5389a947015adbd42d2fbb2e5} 
+std\+::atomic$<$ state $>$ {\bfseries state\+\_\+}
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a6fa5457fc4f79d48c8e665490686ceb2}\label{classpgbar_1_1Indicator_a6fa5457fc4f79d48c8e665490686ceb2} 
+\mbox{\hyperlink{classpgbar_1_1____details_1_1render_1_1Renderer}{\+\_\+\+\_\+details\+::render\+::\+Renderer}} {\bfseries executor\+\_\+}
+\item 
+\Hypertarget{classpgbar_1_1Indicator_af777ed0d7d8f5c43c737f119f68d3546}\label{classpgbar_1_1Indicator_af777ed0d7d8f5c43c737f119f68d3546} 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point {\bfseries zero\+\_\+point\+\_\+}
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a092bb813b41eeb0db9edfa50c36179af}\label{classpgbar_1_1Indicator_a092bb813b41eeb0db9edfa50c36179af} 
+\+\_\+\+\_\+details\+::types\+::\+Size {\bfseries max\+\_\+bar\+\_\+size\+\_\+}
+\item 
+\Hypertarget{classpgbar_1_1Indicator_a63524e469bebbdeb5cda7d2098ce0f25}\label{classpgbar_1_1Indicator_a63524e469bebbdeb5cda7d2098ce0f25} 
+bool {\bfseries final\+\_\+mesg\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

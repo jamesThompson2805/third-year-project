@@ -1,0 +1,27 @@
+\doxysection{dac\+\_\+curve\+\_\+fitting.\+h}
+\hypertarget{dac__curve__fitting_8h_source}{}\label{dac__curve__fitting_8h_source}\index{lib/dimension\_reductions/dac\_curve\_fitting.h@{lib/dimension\_reductions/dac\_curve\_fitting.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DAC\_CURVE\_FITTING\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DAC\_CURVE\_FITTING\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//Algorithms\ used\ and\ adapted\ from\ paper\ "{}Approximate\ Queries\ and\ Representations\ for\ Large\ Data\ Sequences"{}}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }dac\_curve\_fitting\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ std::vector<std::tuple<double,\ unsigned\ int>>\ dac\_constant(\ \textcolor{keyword}{const}\ std::vector<double>\&\ s,\ \textcolor{keywordtype}{double}\ epsilon);\ }
+\DoxyCodeLine{00014\ \ \ std::vector<std::tuple<double,\ unsigned\ int>>\ dac\_constant\_params(\ \textcolor{keyword}{const}\ std::vector<double>\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ dac\_linear(\ \textcolor{keyword}{const}\ std::vector<double>\&\ s,\ \textcolor{keywordtype}{double}\ epsilon);}
+\DoxyCodeLine{00017\ \ \ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ dac\_linear\_early\_cutoff(\ \textcolor{keyword}{const}\ std::vector<double>\&\ s,\ \textcolor{keywordtype}{double}\ epsilon,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_seg);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

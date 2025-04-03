@@ -1,0 +1,70 @@
+\doxysection{pgbar\+::scope\+::Iter\+Span\texorpdfstring{$<$}{<} I \texorpdfstring{$>$}{>}\+::iterator Class Reference}
+\hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator}\index{pgbar::scope::IterSpan$<$ I $>$::iterator@{pgbar::scope::IterSpan$<$ I $>$::iterator}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a22067d11ed724fc2265c2388a3f1c1f4}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a22067d11ed724fc2265c2388a3f1c1f4} 
+using {\bfseries iterator\+\_\+category} = std\+::forward\+\_\+iterator\+\_\+tag
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_af3aa9bfec99fc27f9aa1a4882afe25da}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_af3aa9bfec99fc27f9aa1a4882afe25da} 
+using {\bfseries value\+\_\+type} = typename std\+::iterator\+\_\+traits$<$I$>$\+::value\+\_\+type
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_aca3ed6d6e8177bf0c819c13d52ea7137}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_aca3ed6d6e8177bf0c819c13d52ea7137} 
+using {\bfseries difference\+\_\+type} = void
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_aac9144cfaca7afe0a90ad0eee15702c2}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_aac9144cfaca7afe0a90ad0eee15702c2} 
+using {\bfseries pointer} = typename std\+::iterator\+\_\+traits$<$I$>$\+::pointer
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a19b27ed5ee2eb3bde8d2ad840bd9e468}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a19b27ed5ee2eb3bde8d2ad840bd9e468} 
+using {\bfseries reference} = typename std\+::iterator\+\_\+traits$<$I$>$\+::reference
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_ab5b05a4fd12d3bb0f95d5139794037c1}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_ab5b05a4fd12d3bb0f95d5139794037c1} 
+constexpr {\bfseries iterator} (I startpoint) noexcept(std\+::is\+\_\+nothrow\+\_\+move\+\_\+constructible$<$ I $>$\+::value)
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_af7fcac8e06c2a8f08704a7cef8e65ffb}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_af7fcac8e06c2a8f08704a7cef8e65ffb} 
+constexpr {\bfseries iterator} (const \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \&)=default
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a7ac4ed271ad9ed3f024db1cc16284822}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a7ac4ed271ad9ed3f024db1cc16284822} 
+constexpr {\bfseries iterator} (\mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \&\&)=default
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a9d49bb20c98babe266277b734529b0a8}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a9d49bb20c98babe266277b734529b0a8} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX14\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \& {\bfseries operator=} (const \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \&) \&=default
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a353032abf050499fd5c49bda30b3cabb}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a353032abf050499fd5c49bda30b3cabb} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX14\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \& {\bfseries operator=} (\mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \&\&) \&=default
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a8acdad7ebaf5fa55247a3e06bdad441a}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a8acdad7ebaf5fa55247a3e06bdad441a} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN \+\_\+\+\_\+\+PGBAR\+\_\+\+CXX14\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \& {\bfseries operator++} () \&noexcept(noexcept(++std\+::declval$<$ I $>$()))
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a50e70e579459c3f6d01c0c8e7c7ba464}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a50e70e579459c3f6d01c0c8e7c7ba464} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN \+\_\+\+\_\+\+PGBAR\+\_\+\+CXX14\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} {\bfseries operator++} (int) \&noexcept(std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible$<$ \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} $>$\+::value \&\&noexcept(++std\+::declval$<$ I $>$()))
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a7146c641adfaced6ea9a512dba239c96}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a7146c641adfaced6ea9a512dba239c96} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN \+\_\+\+\_\+\+PGBAR\+\_\+\+CXX14\+\_\+\+CNSTXPR reference {\bfseries operator\texorpdfstring{$\ast$}{*}} () noexcept
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_aa98f0a97d50840e3702f98d954620af3}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_aa98f0a97d50840e3702f98d954620af3} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN \+\_\+\+\_\+\+PGBAR\+\_\+\+CXX17\+\_\+\+CNSTXPR pointer {\bfseries operator-\/$>$} () noexcept
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_ab0d3ea33e8deee824a471a6117ff6763}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_ab0d3ea33e8deee824a471a6117ff6763} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN constexpr bool {\bfseries operator==} (const I \&lhs) const noexcept
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a75234ccd7e4fb6183a69a86bd3b79c84}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a75234ccd7e4fb6183a69a86bd3b79c84} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN constexpr bool {\bfseries operator!=} (const I \&lhs) const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a628f6be2451a11d8260562a0aa7a0d76}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a628f6be2451a11d8260562a0aa7a0d76} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD friend \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN constexpr bool {\bfseries operator==} (const \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \&a, const \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \&b) noexcept
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a4819e90163574d51d5beae851a79a2c3}\label{classpgbar_1_1scope_1_1IterSpan_1_1iterator_a4819e90163574d51d5beae851a79a2c3} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD friend \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN constexpr bool {\bfseries operator!=} (const \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \&a, const \mbox{\hyperlink{classpgbar_1_1scope_1_1IterSpan_1_1iterator}{iterator}} \&b) noexcept
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

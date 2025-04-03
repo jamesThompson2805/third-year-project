@@ -1,0 +1,43 @@
+\doxysection{pgbar\+::\+\_\+\+\_\+details\+::concurrent\+::Shared\+Mutex Class Reference}
+\hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex}{}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex}\index{pgbar::\_\_details::concurrent::SharedMutex@{pgbar::\_\_details::concurrent::SharedMutex}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a62e65327a3f582d7d2619646e4b1d62f}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a62e65327a3f582d7d2619646e4b1d62f} 
+{\bfseries Shared\+Mutex} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex}{Self}} \&)=delete
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_ab4e537b7a9c60c46b442dedccf365fd7}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_ab4e537b7a9c60c46b442dedccf365fd7} 
+\mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex}{Self}} \& {\bfseries operator=} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex}{Self}} \&) \&=delete
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_ac58b366b228f2d78537bcef1a5d5790f}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_ac58b366b228f2d78537bcef1a5d5790f} 
+void {\bfseries lock} () \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_ab805268e35a762841c85ee363d04664b}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_ab805268e35a762841c85ee363d04664b} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD bool {\bfseries try\+\_\+lock} () \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_ad30d382eb236aed4ac3bacd51313ee00}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_ad30d382eb236aed4ac3bacd51313ee00} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN void {\bfseries unlock} () \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a03f2fd091d237468e36602ae16bf447c}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a03f2fd091d237468e36602ae16bf447c} 
+void {\bfseries lock\+\_\+shared} () \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a6910d8213b40b1c5be18f1e07a971557}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a6910d8213b40b1c5be18f1e07a971557} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD bool {\bfseries try\+\_\+lock\+\_\+shared} () \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a0a16d6ef05e0c3eaf927e7c63b5a27d8}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a0a16d6ef05e0c3eaf927e7c63b5a27d8} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN void {\bfseries unlock\+\_\+shared} () \&noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a27bb05f300d8bcde4da074fb106bddbb}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a27bb05f300d8bcde4da074fb106bddbb} 
+std\+::atomic$<$ types\+::\+Size $>$ {\bfseries num\+\_\+readers\+\_\+}
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a52fe2fdcbd2e1afcff2f1c765c00ba93}\label{classpgbar_1_1____details_1_1concurrent_1_1SharedMutex_a52fe2fdcbd2e1afcff2f1c765c00ba93} 
+\mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1Mutex}{Mutex}} {\bfseries writer\+\_\+mtx\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,73 @@
+\chapter{Semg\+Hand data sets}
+\hypertarget{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README}{}\label{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README}\index{SemgHand data sets@{SemgHand data sets}}
+\label{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README_autotoc_md190}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README_autotoc_md190}%
+ The data are surface electromyography (s\+EMG) signal, which captures electric activity of groups of muscle at rest or during activity. Data collection involves five healthy subjects conducting six movements of hand grasps. Collection device is Delsys\textquotesingle{} 2-\/channel EMG system.
+
+We extract the power spectrum from the raw data to make three data sets.\hypertarget{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README_autotoc_md191}{}\doxysection{\texorpdfstring{Semg\+Hand\+Subject\+Ch2}{Semg\+Hand\+Subject\+Ch2}}\label{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README_autotoc_md191}
+We use data of channel 2 only. Classes correspond to subjects.
+
+
+\begin{DoxyItemize}
+\item Class 1\+: Female 1
+\item Class 2\+: Female 2
+\item Class 3\+: Female 3
+\item Class 4\+: Male 1
+\item Class 5\+: Male 2
+\end{DoxyItemize}
+
+Train size\+: 450
+
+Test size\+: 450
+
+Number of classes\+: 5
+
+Missing value\+: No
+
+Time series length\+: 1500\hypertarget{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README_autotoc_md192}{}\doxysection{\texorpdfstring{Semg\+Hand\+Movement\+Ch2}{Semg\+Hand\+Movement\+Ch2}}\label{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README_autotoc_md192}
+We use data of channel 2 only. Classes correspond to movements of hand grasps.
+
+
+\begin{DoxyItemize}
+\item Class 1\+: Cylindrical
+\item Class 2\+: Hook
+\item Class 3\+: Tip
+\item Class 4\+: Palmar
+\item Class 5\+: Spherical
+\item Class 6\+: Lateral
+\end{DoxyItemize}
+
+Train size\+: 450
+
+Test size\+: 450
+
+Number of classes\+: 6
+
+Missing value\+: No
+
+Time series length\+: 1500\hypertarget{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README_autotoc_md193}{}\doxysection{\texorpdfstring{Semg\+Hand\+Gender\+Ch2}{Semg\+Hand\+Gender\+Ch2}}\label{md_external_2data_2UCRArchive__2018_2SemgHandGenderCh2_2README_autotoc_md193}
+We use data of channel 2 only. Classes correspond to genders.
+
+
+\begin{DoxyItemize}
+\item Class 1\+: Female
+\item Class 2\+: Male
+\end{DoxyItemize}
+
+Train size\+: 300
+
+Test size\+: 600
+
+Number of classes\+: 2
+
+Missing value\+: No
+
+Time series length\+: 1500
+
+There is nothing to infer from the order of examples in the train and test set.
+
+Data created by Sapsanis, Christos, et al. (see \mbox{[}1\mbox{]}, \mbox{[}2\mbox{]}. Data edited by Chin-\/\+Chia Michael Yeh.
+
+\mbox{[}1\mbox{]} Sapsanis, Christos, et al. "{}\+Improving EMG based classification of basic hand movements using EMD."{} Engineering in Medicine and Biology Society (EMBC), 2013 35th Annual International Conference of the IEEE. IEEE, 2013.
+
+\mbox{[}2\mbox{]} “\+UCI Machine Learning Repository\+: SEMG for Basic Hand Movements Data Set.\+” UCI Machine Learning Repository, URL archive.\+ics.\+uci.\+edu/ml/datasets/s\+EMG+for+\+Basic+\+Hand+movements. 

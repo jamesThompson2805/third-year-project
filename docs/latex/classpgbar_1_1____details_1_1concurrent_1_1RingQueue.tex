@@ -1,0 +1,52 @@
+\doxysection{pgbar\+::\+\_\+\+\_\+details\+::concurrent\+::Ring\+Queue\texorpdfstring{$<$}{<} T, Capacity \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue}{}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue}\index{pgbar::\_\_details::concurrent::RingQueue$<$ T, Capacity $>$@{pgbar::\_\_details::concurrent::RingQueue$<$ T, Capacity $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a0aaf33e1f613996767e910809ccd004d}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a0aaf33e1f613996767e910809ccd004d} 
+{\bfseries Ring\+Queue} (const T \&\+\_\+\+\_\+value, types\+::\+Size \+\_\+\+\_\+n=1) noexcept(std\+::is\+\_\+nothrow\+\_\+copy\+\_\+assignable$<$ T $>$\+::value)
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_acd996331470216560ea041545f7fdac1}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_acd996331470216560ea041545f7fdac1} 
+{\bfseries Ring\+Queue} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1RingQueue}{Self}} \&rhs)=delete
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_abeeb427d2875a6f155d55a42902ae8f3}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_abeeb427d2875a6f155d55a42902ae8f3} 
+\mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1RingQueue}{Self}} \& {\bfseries operator=} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1RingQueue}{Self}} \&rhs) \&=delete
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_ae83a3b4cceefed810f65c6b576683410}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_ae83a3b4cceefed810f65c6b576683410} 
+bool {\bfseries push} (T item) \&noexcept(std\+::is\+\_\+nothrow\+\_\+move\+\_\+assignable$<$ T $>$\+::value)
+\item 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD T \mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a79506b43831cfb1eff831b9ece7a8139}{pop}} () noexcept(std\+::is\+\_\+nothrow\+\_\+default\+\_\+constructible$<$ T $>$\+::value \&\&std\+::is\+\_\+nothrow\+\_\+move\+\_\+assignable$<$ T $>$\+::value)
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a7413404e94342ece99bede471c7a53e6}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a7413404e94342ece99bede471c7a53e6} 
+void {\bfseries clear} () \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a3a4d28a76d6e2d5db201ee457525a0c0}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a3a4d28a76d6e2d5db201ee457525a0c0} 
+void {\bfseries drop} () noexcept(std\+::is\+\_\+nothrow\+\_\+default\+\_\+constructible$<$ T $>$\+::value \&\&std\+::is\+\_\+nothrow\+\_\+move\+\_\+assignable$<$ T $>$\+::value \&\&std\+::is\+\_\+nothrow\+\_\+destructible$<$ T $>$\+::value)
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a672d82fdccbcbd52a884e975c399446c}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a672d82fdccbcbd52a884e975c399446c} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN bool {\bfseries full} () const noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_aef68d98323df877d0f6caf8d2ae3719b}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_aef68d98323df877d0f6caf8d2ae3719b} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN bool {\bfseries empty} () const noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_ac5b9ad83d74b53ecd7ba400599e90532}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_ac5b9ad83d74b53ecd7ba400599e90532} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN types\+::\+Size {\bfseries size} () const noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a1dc58cfc4e0c665be9566f265953d9d6}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a1dc58cfc4e0c665be9566f265953d9d6} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN \+\_\+\+\_\+\+PGBAR\+\_\+\+CNSTEVAL types\+::\+Size {\bfseries capacity} () const noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a79506b43831cfb1eff831b9ece7a8139}\label{classpgbar_1_1____details_1_1concurrent_1_1RingQueue_a79506b43831cfb1eff831b9ece7a8139} 
+\index{pgbar::\_\_details::concurrent::RingQueue$<$ T, Capacity $>$@{pgbar::\_\_details::concurrent::RingQueue$<$ T, Capacity $>$}!pop@{pop}}
+\index{pop@{pop}!pgbar::\_\_details::concurrent::RingQueue$<$ T, Capacity $>$@{pgbar::\_\_details::concurrent::RingQueue$<$ T, Capacity $>$}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily template$<$typename T , types\+::\+Size Capacity$>$ \\
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD T \mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1RingQueue}{pgbar\+::\+\_\+\+\_\+details\+::concurrent\+::\+Ring\+Queue}}$<$ T, Capacity $>$\+::pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Remove and return the oldest item from the queue. If the queue is empty, return a default-\/constructed value. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,37 @@
+\doxysection{Line\+Generator Struct Reference}
+\hypertarget{structLineGenerator}{}\label{structLineGenerator}\index{LineGenerator@{LineGenerator}}
+
+
+Struct stores a method for plotting approximations that vary according to some unsigned int parameter.  
+
+
+
+
+{\ttfamily \#include $<$series\+\_\+plotting.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structLineGenerator_a84b3f14e7368fabe7551bceaf942768e}\label{structLineGenerator_a84b3f14e7368fabe7551bceaf942768e} 
+std\+::function$<$ double(const std\+::vector$<$ double $>$ \&, unsigned int) {\bfseries result\+\_\+gen} )
+\item 
+\Hypertarget{structLineGenerator_a4b718d918c7d2b4bd786cd2ddf3ba737}\label{structLineGenerator_a4b718d918c7d2b4bd786cd2ddf3ba737} 
+std\+::string {\bfseries method\+\_\+name}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct stores a method for plotting approximations that vary according to some unsigned int parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result\+\_\+gen} & Is a function that provides better or worse approximations of the passed in series based on parameter unsigned int. \\
+\hline
+{\em method\+\_\+name} & Is the name you want associated with the function. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/plotting/\mbox{\hyperlink{series__plotting_8h}{series\+\_\+plotting.\+h}}\end{DoxyCompactItemize}

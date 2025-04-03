@@ -1,0 +1,71 @@
+\doxysection{ucr\+\_\+parsing Namespace Reference}
+\hypertarget{namespaceucr__parsing}{}\label{namespaceucr__parsing}\index{ucr\_parsing@{ucr\_parsing}}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007}{Dataset\+Type}} \{ \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007a28b9fd0a75dfdbca47bb1c979c43fa4f}{TEST}}
+, \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007a6d3224c10a527075e6b60f78d712d138}{TRAIN}}
+, \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007adf3057719c6de1b6f477cf4736104566}{TEST\+\_\+\+APPEND\+\_\+\+TRAIN}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespaceucr__parsing_af0a300b2e11f171b7dbf84b0f2202b4a}{parse\+\_\+tsv}} (std\+::string filename, int max\+\_\+lines)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespaceucr__parsing_a7f83f51cca900bc942bebace94f45477}{parse\+\_\+ucr\+\_\+tsv}} (std\+::string filename, int max\+\_\+lines)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespaceucr__parsing_acd47505fda04ce823e57d1aceb8b27ce}{parse\+\_\+ucr\+\_\+dataset}} (std\+::string dataset\+\_\+name, std\+::string dataset\+\_\+loc, \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007}{Dataset\+Type}} type)
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespaceucr__parsing_a6b08f2d0265a2a010a5e280742c7fc00}{parse\+\_\+folder\+\_\+names}} (std\+::string directory\+\_\+path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007}\label{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007} 
+\index{ucr\_parsing@{ucr\_parsing}!DatasetType@{DatasetType}}
+\index{DatasetType@{DatasetType}!ucr\_parsing@{ucr\_parsing}}
+\doxysubsubsection{\texorpdfstring{DatasetType}{DatasetType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007}{ucr\+\_\+parsing\+::\+Dataset\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST@{TEST}!ucr\_parsing@{ucr\_parsing}}\index{ucr\_parsing@{ucr\_parsing}!TEST@{TEST}}}\Hypertarget{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007a28b9fd0a75dfdbca47bb1c979c43fa4f}\label{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007a28b9fd0a75dfdbca47bb1c979c43fa4f} 
+TEST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TRAIN@{TRAIN}!ucr\_parsing@{ucr\_parsing}}\index{ucr\_parsing@{ucr\_parsing}!TRAIN@{TRAIN}}}\Hypertarget{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007a6d3224c10a527075e6b60f78d712d138}\label{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007a6d3224c10a527075e6b60f78d712d138} 
+TRAIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST\_APPEND\_TRAIN@{TEST\_APPEND\_TRAIN}!ucr\_parsing@{ucr\_parsing}}\index{ucr\_parsing@{ucr\_parsing}!TEST\_APPEND\_TRAIN@{TEST\_APPEND\_TRAIN}}}\Hypertarget{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007adf3057719c6de1b6f477cf4736104566}\label{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007adf3057719c6de1b6f477cf4736104566} 
+TEST\+\_\+\+APPEND\+\_\+\+TRAIN&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceucr__parsing_a6b08f2d0265a2a010a5e280742c7fc00}\label{namespaceucr__parsing_a6b08f2d0265a2a010a5e280742c7fc00} 
+\index{ucr\_parsing@{ucr\_parsing}!parse\_folder\_names@{parse\_folder\_names}}
+\index{parse\_folder\_names@{parse\_folder\_names}!ucr\_parsing@{ucr\_parsing}}
+\doxysubsubsection{\texorpdfstring{parse\_folder\_names()}{parse\_folder\_names()}}
+{\footnotesize\ttfamily vector$<$ std\+::string $>$ ucr\+\_\+parsing\+::parse\+\_\+folder\+\_\+names (\begin{DoxyParamCaption}\item[{std\+::string}]{directory\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceucr__parsing_af0a300b2e11f171b7dbf84b0f2202b4a}\label{namespaceucr__parsing_af0a300b2e11f171b7dbf84b0f2202b4a} 
+\index{ucr\_parsing@{ucr\_parsing}!parse\_tsv@{parse\_tsv}}
+\index{parse\_tsv@{parse\_tsv}!ucr\_parsing@{ucr\_parsing}}
+\doxysubsubsection{\texorpdfstring{parse\_tsv()}{parse\_tsv()}}
+{\footnotesize\ttfamily vector$<$ double $>$ ucr\+\_\+parsing\+::parse\+\_\+tsv (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{int}]{max\+\_\+lines = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceucr__parsing_acd47505fda04ce823e57d1aceb8b27ce}\label{namespaceucr__parsing_acd47505fda04ce823e57d1aceb8b27ce} 
+\index{ucr\_parsing@{ucr\_parsing}!parse\_ucr\_dataset@{parse\_ucr\_dataset}}
+\index{parse\_ucr\_dataset@{parse\_ucr\_dataset}!ucr\_parsing@{ucr\_parsing}}
+\doxysubsubsection{\texorpdfstring{parse\_ucr\_dataset()}{parse\_ucr\_dataset()}}
+{\footnotesize\ttfamily vector$<$ double $>$ ucr\+\_\+parsing\+::parse\+\_\+ucr\+\_\+dataset (\begin{DoxyParamCaption}\item[{std\+::string}]{dataset\+\_\+name,  }\item[{std\+::string}]{dataset\+\_\+loc,  }\item[{\mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007}{Dataset\+Type}}}]{type }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceucr__parsing_a7f83f51cca900bc942bebace94f45477}\label{namespaceucr__parsing_a7f83f51cca900bc942bebace94f45477} 
+\index{ucr\_parsing@{ucr\_parsing}!parse\_ucr\_tsv@{parse\_ucr\_tsv}}
+\index{parse\_ucr\_tsv@{parse\_ucr\_tsv}!ucr\_parsing@{ucr\_parsing}}
+\doxysubsubsection{\texorpdfstring{parse\_ucr\_tsv()}{parse\_ucr\_tsv()}}
+{\footnotesize\ttfamily vector$<$ double $>$ ucr\+\_\+parsing\+::parse\+\_\+ucr\+\_\+tsv (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{int}]{max\+\_\+lines = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+

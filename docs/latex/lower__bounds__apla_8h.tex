@@ -1,0 +1,67 @@
+\doxysection{lib/similarity\+\_\+search/lower\+\_\+bounds\+\_\+apla.h File Reference}
+\hypertarget{lower__bounds__apla_8h}{}\label{lower__bounds__apla_8h}\index{lib/similarity\_search/lower\_bounds\_apla.h@{lib/similarity\_search/lower\_bounds\_apla.h}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structapla__bounds_1_1Region}{apla\+\_\+bounds\+::\+Region}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceapla__bounds}{apla\+\_\+bounds}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\using \mbox{\hyperlink{lower__bounds__apla_8h_a300ccf16bbc252b2a1c26a3525626f7f}{Apla\+Pt}} = std\+::array$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int$>$,S$>$
+\item 
+typedef std\+::vector$<$ double $>$ \mbox{\hyperlink{lower__bounds__apla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\using \mbox{\hyperlink{namespaceapla__bounds_aaf0249ec44d4389eb686c08b044f8765}{apla\+\_\+bounds\+::\+Apla\+MBR}} = std\+::array$<$\mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}, S$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespaceapla__bounds_a87166e319f0d76d736e08677ee44903c}{apla\+\_\+bounds\+::region\+\_\+area}} (const \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}} \&r)
+\item 
+\mbox{\hyperlink{structapla__bounds_1_1Region}{Region}} \mbox{\hyperlink{namespaceapla__bounds_abdcc600dfae926c1bf68b7a068099a67}{apla\+\_\+bounds\+::region\+\_\+merge}} (const \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}} \&r1, const \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}} \&r2)
+\item 
+double \mbox{\hyperlink{namespaceapla__bounds_a36a8e851dddf94226d6e5002586e2ed3}{apla\+\_\+bounds\+::dist\+\_\+to\+\_\+region\+\_\+sqr}} (const double \&qi, const \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}} \&r, unsigned int global\+\_\+offset)
+\item 
+double \mbox{\hyperlink{namespaceapla__bounds_a1c2f80f1b1ed60089ce402fc04ca6fea}{apla\+\_\+bounds\+::dist\+\_\+to\+\_\+regions\+\_\+sqr}} (const double \&qi, const \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}} \texorpdfstring{$\ast$}{*}const rstart, const \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}} \texorpdfstring{$\ast$}{*}const rend, unsigned int global\+\_\+offset)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\double \mbox{\hyperlink{namespaceapla__bounds_ab06dc8fad148ed5207e06767e0739bef}{apla\+\_\+bounds\+::mbr\+\_\+area}} (const \mbox{\hyperlink{namespaceapla__bounds_aaf0249ec44d4389eb686c08b044f8765}{Apla\+MBR}}$<$ S $>$ \&mbr)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\\mbox{\hyperlink{namespaceapla__bounds_aaf0249ec44d4389eb686c08b044f8765}{Apla\+MBR}}$<$ S $>$ \mbox{\hyperlink{namespaceapla__bounds_a2db27f8c06fecff0bd1a19cd95e1da9f}{apla\+\_\+bounds\+::mbr\+\_\+merge}} (const \mbox{\hyperlink{namespaceapla__bounds_aaf0249ec44d4389eb686c08b044f8765}{Apla\+MBR}}$<$ S $>$ \&mbr1, const \mbox{\hyperlink{namespaceapla__bounds_aaf0249ec44d4389eb686c08b044f8765}{Apla\+MBR}}$<$ S $>$ \&mbr2)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\double \mbox{\hyperlink{namespaceapla__bounds_a23bacc956ed90bf9e04bca707db17552}{apla\+\_\+bounds\+::dist\+\_\+to\+\_\+mbr\+\_\+sqr}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{namespaceapla__bounds_aaf0249ec44d4389eb686c08b044f8765}{Apla\+MBR}}$<$ S $>$ \&mbr)
+\item 
+\mbox{\hyperlink{structapla__bounds_1_1Region}{Region}} \mbox{\hyperlink{namespaceapla__bounds_a3e5340b3e347dd10e79500532f961dd8}{apla\+\_\+bounds\+::ptrs\+\_\+to\+\_\+region}} (const double \texorpdfstring{$\ast$}{*}const start, const double \texorpdfstring{$\ast$}{*}const end, unsigned int g\+\_\+start\+\_\+i)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\\mbox{\hyperlink{namespaceapla__bounds_aaf0249ec44d4389eb686c08b044f8765}{Apla\+MBR}}$<$ S $>$ \mbox{\hyperlink{namespaceapla__bounds_a18678a7d9d73451fe2cc8f9f8fa83478}{apla\+\_\+bounds\+::vec\+\_\+to\+\_\+mbr}} (const std\+::vector$<$ double $>$ \&q, \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{pla\+::\+APLA\+\_\+\+DRT}} f)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\std\+::vector$<$ \mbox{\hyperlink{namespaceapla__bounds_aaf0249ec44d4389eb686c08b044f8765}{Apla\+MBR}}$<$ S $>$ $>$ \mbox{\hyperlink{namespaceapla__bounds_ac47c3b7ea4820955ef0e1abdc019cf72}{apla\+\_\+bounds\+::vec\+\_\+to\+\_\+subseq\+\_\+mbrs}} (const std\+::vector$<$ double $>$ \&q, unsigned int subseq\+\_\+size, \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{pla\+::\+APLA\+\_\+\+DRT}} f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{lower__bounds__apla_8h_a300ccf16bbc252b2a1c26a3525626f7f}\label{lower__bounds__apla_8h_a300ccf16bbc252b2a1c26a3525626f7f} 
+\index{lower\_bounds\_apla.h@{lower\_bounds\_apla.h}!AplaPt@{AplaPt}}
+\index{AplaPt@{AplaPt}!lower\_bounds\_apla.h@{lower\_bounds\_apla.h}}
+\doxysubsubsection{\texorpdfstring{AplaPt}{AplaPt}}
+{\footnotesize\ttfamily template$<$unsigned int S$>$ \\
+using \mbox{\hyperlink{lower__bounds__apla_8h_a300ccf16bbc252b2a1c26a3525626f7f}{Apla\+Pt}} = std\+::array$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int$>$,S$>$}
+
+\Hypertarget{lower__bounds__apla_8h_a5d3953cd3e75718fc534b351149f9f98}\label{lower__bounds__apla_8h_a5d3953cd3e75718fc534b351149f9f98} 
+\index{lower\_bounds\_apla.h@{lower\_bounds\_apla.h}!Seqd@{Seqd}}
+\index{Seqd@{Seqd}!lower\_bounds\_apla.h@{lower\_bounds\_apla.h}}
+\doxysubsubsection{\texorpdfstring{Seqd}{Seqd}}
+{\footnotesize\ttfamily typedef std\+::vector$<$double$>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}}
+

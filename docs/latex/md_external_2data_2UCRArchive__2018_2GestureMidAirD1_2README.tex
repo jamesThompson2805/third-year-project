@@ -1,0 +1,76 @@
+\chapter{Gesture\+Mid\+Air data sets}
+\hypertarget{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README}{}\label{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README}\index{GestureMidAir data sets@{GestureMidAir data sets}}
+\label{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README_autotoc_md85}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README_autotoc_md85}%
+ Data contain 3D hand trajectories collected with Leap Motion device. There are 13 subjects, each performs 26 interface-\/command gestures. Each gesture is encoded as a sequence of 3D points, representing the position of the dominant-\/hand forefinger.
+
+There are 26 classes corresponding to unique gestures. See Fig. 1 of \mbox{[}2\mbox{]} for the list of gestures and their visualisation.
+
+
+\begin{DoxyItemize}
+\item Class 1\+: arc3\+Dleft
+\item Class 2\+: arc3\+Dright
+\item Class 3\+: caret
+\item Class 4\+: check
+\item Class 5\+: circle
+\item Class 6\+: curly-\/bracket-\/left
+\item Class 7\+: curly-\/bracket-\/right
+\item Class 8\+: delete
+\item Class 9\+: left-\/swipe
+\item Class 10\+: pigtail
+\item Class 11\+: poly3\+Dxyz
+\item Class 12\+: poly3\+Dxzy
+\item Class 13\+: poly3\+Dyxz
+\item Class 14\+: poly3\+Dyzx
+\item Class 15\+: poly3\+Dzxy
+\item Class 16\+: poly3\+Dzyx
+\item Class 17\+: rectangle
+\item Class 18\+: right-\/swipe
+\item Class 19\+: spiral
+\item Class 20\+: square-\/bracket-\/left
+\item Class 21\+: square-\/bracket-\/right
+\item Class 22\+: star
+\item Class 23\+: triangle
+\item Class 24\+: v
+\item Class 25\+: x
+\item Class 26\+: zig-\/zag
+\end{DoxyItemize}
+
+We make three data sets out of these data. We follow the original paper (see \mbox{[}2\mbox{]}) and use data of 8 subjects for training and 5 subjects for testing. Data of a same subjects do not appear in both train and test set.\hypertarget{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README_autotoc_md86}{}\doxysection{\texorpdfstring{Gesture\+Mid\+Air\+D1}{Gesture\+Mid\+Air\+D1}}\label{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README_autotoc_md86}
+Train size\+: 208
+
+Test size\+: 130
+
+Missing value\+: No
+
+Number of classses\+: 26
+
+Time series length\+: Vary\hypertarget{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README_autotoc_md87}{}\doxysection{\texorpdfstring{Gesture\+Mid\+Air\+D2}{Gesture\+Mid\+Air\+D2}}\label{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README_autotoc_md87}
+Train size\+: 208
+
+Test size\+: 130
+
+Missing value\+: No
+
+Number of classses\+: 26
+
+Time series length\+: Vary\hypertarget{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README_autotoc_md88}{}\doxysection{\texorpdfstring{Gesture\+Mid\+Air\+D3}{Gesture\+Mid\+Air\+D3}}\label{md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README_autotoc_md88}
+Train size\+: 208
+
+Test size\+: 130
+
+Missing value\+: No
+
+Number of classses\+: 26
+
+Time series length\+: Vary
+
+There is nothing to infer from the order of examples in the train and test set.
+
+We pad NaN to the end of each time series to the length of the longest time series.
+
+Data created by Fabio M. Caputo et al. (see \mbox{[}1\mbox{]}, \mbox{[}2\mbox{]}). Data edited by Hoang Anh Dau.
+
+\mbox{[}1\mbox{]} \href{https://github.com/giach68/gesturesCodes}{\texttt{ https\+://github.\+com/giach68/gestures\+Codes}}
+
+\mbox{[}2\mbox{]} Caputo, Fabio M., et al. “\+Comparing 3D trajectories for simple mid-\/air gesture recognition.\+” \+Computers \& Graphics 73 (2018)\+: 17-\/25. 

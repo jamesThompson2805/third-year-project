@@ -1,0 +1,23 @@
+\doxysection{double\+\_\+window.\+h}
+\hypertarget{lib_2dimension__reductions_2double__window_8h_source}{}\label{lib_2dimension__reductions_2double__window_8h_source}\index{lib/dimension\_reductions/double\_window.h@{lib/dimension\_reductions/double\_window.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DOUBLE\_WINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DOUBLE\_WINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }d\_w\ \{}
+\DoxyCodeLine{00010\ \ \ std::vector<std::tuple<double,unsigned\ int>>\ simple\_paa(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ lw\_size,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ rw\_size);}
+\DoxyCodeLine{00011\ \ \ std::vector<std::tuple<double,unsigned\ int>>\ y\_proj\_paa(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ lw\_size,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ rw\_size);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ std::vector<std::tuple<DoublePair,unsigned\ int>>\ simple\_pla(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ lw\_size,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ rw\_size);}
+\DoxyCodeLine{00014\ \ \ std::vector<std::tuple<DoublePair,unsigned\ int>>\ y\_proj\_pla(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ lw\_size,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ rw\_size);}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

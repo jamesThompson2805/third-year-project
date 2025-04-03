@@ -1,0 +1,38 @@
+\doxysection{src/evaluations/capla.h File Reference}
+\hypertarget{capla_8h}{}\label{capla_8h}\index{src/evaluations/capla.h@{src/evaluations/capla.h}}
+
+
+Header file for helpful functions for utilising the Change\+In\+Slope sliding window technique.  
+
+
+{\ttfamily \#include "{}general.\+h"{}}\newline
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacecapla__eval}{capla\+\_\+eval}}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespacecapla__eval}{capla\+\_\+eval} is the namespace holding functions that return functions given parameters for how to construct the \textquotesingle{}windows\textquotesingle{}. For more details about CAPLA, please read the paper also found in the Git\+Hub repository. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{capla_8h_ae01166a5b5e32fca34d1365517c5bb8f}\label{capla_8h_ae01166a5b5e32fca34d1365517c5bb8f} 
+using {\bfseries DRT\+\_\+\+COMPR} = std\+::function$<$std\+::vector$<$std\+::tuple$<$Double\+Pair, unsigned int$>$$>$ (const Seqd\&,unsigned int)$>$
+\begin{DoxyCompactList}\small\item\em type definition for a function that takes a series and number of parameters and returns a valid Adaptive PLA approximation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} \mbox{\hyperlink{namespacecapla__eval_aaae207f8d7d4971389e6808ed1822b1c}{capla\+\_\+eval\+::generate\+\_\+mean\+\_\+\+DRT}} (unsigned int win\+\_\+size)
+\item 
+\mbox{\hyperlink{capla_8h_ae01166a5b5e32fca34d1365517c5bb8f}{DRT\+\_\+\+COMPR}} \mbox{\hyperlink{namespacecapla__eval_abb6fc6d07bb85bdcf6838eda4734de53}{capla\+\_\+eval\+::generate\+\_\+mean\+\_\+\+DRT\+\_\+\+COMPR}} (unsigned int win\+\_\+size)
+\item 
+\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} \mbox{\hyperlink{namespacecapla__eval_a59837a837a82c29b1f22eb132affb315}{capla\+\_\+eval\+::generate\+\_\+mean\+\_\+skip\+\_\+one\+\_\+\+DRT}} (unsigned int win\+\_\+size)
+\item 
+\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} \mbox{\hyperlink{namespacecapla__eval_a4146cd72f536c304bc6948a0e08aa7ad}{capla\+\_\+eval\+::generate\+\_\+tri\+\_\+\+DRT}} (unsigned int win\+\_\+size)
+\item 
+\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} \mbox{\hyperlink{namespacecapla__eval_a842648886fa818adc852c89ee4b0f0a9}{capla\+\_\+eval\+::generate\+\_\+tri\+\_\+skip\+\_\+one\+\_\+\+DRT}} (unsigned int win\+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for helpful functions for utilising the Change\+In\+Slope sliding window technique. 
+

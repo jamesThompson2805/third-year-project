@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['save_5fwalk_0',['save_walk',['../classRandomWalk.html#ad23570f7cc551e415eb65cba123cb95c',1,'RandomWalk']]],
+  ['score_1',['score',['../conv__double__window_8cpp.html#a626fa20ca74d6dd144fe29caef816b25',1,'conv_double_window.cpp']]],
+  ['se_2',['se',['../namespacebottom__up.html#a8cf79da540a5816497434ec4edb900ab',1,'bottom_up']]],
+  ['se_5fbetween_5fptrs_3',['se_between_ptrs',['../namespaceerror__measures.html#ad82e403463b71adfd8c735c82999db41',1,'error_measures']]],
+  ['se_5fbetween_5fseq_4',['se_between_seq',['../namespaceerror__measures.html#aab210685ae87e5cbe7c4c13f14aa8efd',1,'error_measures']]],
+  ['segment_5f1_5',['segment_1',['../namespacesegmerge.html#a62dd1710f7bc31617f46fd3a72871155',1,'segmerge']]],
+  ['segment_5fk_6',['segment_k',['../namespacesegmerge.html#a0840de794865d86f88de3ba422299e2d',1,'segmerge']]],
+  ['segment_5fto_5fdim_7',['segment_to_dim',['../namespacesegmerge.html#a7e2f34f54b29362bd04797382db7a43e',1,'segmerge']]],
+  ['setup_5fgnuplot_8',['setup_gnuplot',['../namespaceplot__setup.html#a99c39622a998034091a69ef49d403326',1,'plot_setup']]],
+  ['sim_5fsearch_9',['sim_search',['../classRTree.html#a3f17d051df33e1ff819680500e1f420e',1,'RTree']]],
+  ['sim_5fsearch_5fexact_10',['sim_search_exact',['../classRTree.html#a4fd4f559b224d20ae204b2c6e83e256a',1,'RTree']]],
+  ['simple_5fpaa_11',['simple_paa',['../namespaced__w.html#aa3391ca8796478ad0956bd8a8c6bd805',1,'d_w']]],
+  ['simple_5fpla_12',['simple_pla',['../namespaced__w.html#ad080ec6e5355d97523f0b45c532a2fc4',1,'d_w']]],
+  ['slide_13',['slide',['../namespaceswing.html#adb5f90a6408d9e74ab50b5684091962d',1,'swing']]],
+  ['sliding_5fwindow_5fregression_14',['sliding_window_regression',['../namespacepla.html#af6438fa7ac15f2e620352db7cc5c2984',1,'pla']]],
+  ['split_5fnode_15',['split_node',['../classRTree.html#a48efff6097e2b92ff8fbe376844561cc',1,'RTree']]],
+  ['sqr_16',['sqr',['../lower__bounds_8cpp.html#a80bf148d4743e580871735454976f631',1,'lower_bounds.cpp']]],
+  ['swing_17',['swing',['../namespaceswing.html#a67382ec4d48e68ce20d62a6c3d3ce565',1,'swing']]],
+  ['swing_5fcompr_18',['swing_compr',['../namespaceswing.html#a1a084dbba070beb6485f42b8bfe600ff',1,'swing']]]
+];

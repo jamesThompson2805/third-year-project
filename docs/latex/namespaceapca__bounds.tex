@@ -1,0 +1,87 @@
+\doxysection{apca\+\_\+bounds Namespace Reference}
+\hypertarget{namespaceapca__bounds}{}\label{namespaceapca__bounds}\index{apca\_bounds@{apca\_bounds}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\using \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}} = std\+::array$<$\mbox{\hyperlink{structapca__bounds_1_1Region}{Region}}, S$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespaceapca__bounds_ab014a408fff1361f7f796111d0b28b64}{region\+\_\+area}} (const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&r)
+\item 
+\mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \mbox{\hyperlink{namespaceapca__bounds_a5060e0810d538a25526e50df39018945}{region\+\_\+merge}} (const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&r1, const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&r2)
+\item 
+double \mbox{\hyperlink{namespaceapca__bounds_a84fae0abf1a26b9427f720700829b203}{dist\+\_\+to\+\_\+region\+\_\+sqr}} (const double \&qi, const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&r, unsigned int global\+\_\+offset)
+\item 
+double \mbox{\hyperlink{namespaceapca__bounds_ab97cd67a3dbe9f56a83a93d22970f0d4}{dist\+\_\+to\+\_\+regions\+\_\+sqr}} (const double \&qi, const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \texorpdfstring{$\ast$}{*}const rstart, const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \texorpdfstring{$\ast$}{*}const rend, unsigned int global\+\_\+offset)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\double \mbox{\hyperlink{namespaceapca__bounds_ab6893bd3da8191cd5da032c91eccd127}{mbr\+\_\+area}} (const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&mbr)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\\mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \mbox{\hyperlink{namespaceapca__bounds_a743c07a2f762cb5cc9bf8bd1cd95fb1d}{mbr\+\_\+merge}} (const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&mbr1, const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&mbr2)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\double \mbox{\hyperlink{namespaceapca__bounds_a5045f86f0fb53f19d174c0d55587e6c6}{dist\+\_\+to\+\_\+mbr\+\_\+sqr}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&mbr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}\label{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa} 
+\index{apca\_bounds@{apca\_bounds}!ApcaMBR@{ApcaMBR}}
+\index{ApcaMBR@{ApcaMBR}!apca\_bounds@{apca\_bounds}}
+\doxysubsubsection{\texorpdfstring{ApcaMBR}{ApcaMBR}}
+{\footnotesize\ttfamily template$<$unsigned int S$>$ \\
+using \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{apca\+\_\+bounds\+::\+Apca\+MBR}} = std\+::array$<$\mbox{\hyperlink{structapca__bounds_1_1Region}{Region}}, S$>$}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceapca__bounds_a5045f86f0fb53f19d174c0d55587e6c6}\label{namespaceapca__bounds_a5045f86f0fb53f19d174c0d55587e6c6} 
+\index{apca\_bounds@{apca\_bounds}!dist\_to\_mbr\_sqr@{dist\_to\_mbr\_sqr}}
+\index{dist\_to\_mbr\_sqr@{dist\_to\_mbr\_sqr}!apca\_bounds@{apca\_bounds}}
+\doxysubsubsection{\texorpdfstring{dist\_to\_mbr\_sqr()}{dist\_to\_mbr\_sqr()}}
+{\footnotesize\ttfamily template$<$unsigned int S$>$ \\
+double apca\+\_\+bounds\+::dist\+\_\+to\+\_\+mbr\+\_\+sqr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{q,  }\item[{const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&}]{mbr }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceapca__bounds_a84fae0abf1a26b9427f720700829b203}\label{namespaceapca__bounds_a84fae0abf1a26b9427f720700829b203} 
+\index{apca\_bounds@{apca\_bounds}!dist\_to\_region\_sqr@{dist\_to\_region\_sqr}}
+\index{dist\_to\_region\_sqr@{dist\_to\_region\_sqr}!apca\_bounds@{apca\_bounds}}
+\doxysubsubsection{\texorpdfstring{dist\_to\_region\_sqr()}{dist\_to\_region\_sqr()}}
+{\footnotesize\ttfamily double apca\+\_\+bounds\+::dist\+\_\+to\+\_\+region\+\_\+sqr (\begin{DoxyParamCaption}\item[{const double \&}]{qi,  }\item[{const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&}]{r,  }\item[{unsigned int}]{global\+\_\+offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespaceapca__bounds_ab97cd67a3dbe9f56a83a93d22970f0d4}\label{namespaceapca__bounds_ab97cd67a3dbe9f56a83a93d22970f0d4} 
+\index{apca\_bounds@{apca\_bounds}!dist\_to\_regions\_sqr@{dist\_to\_regions\_sqr}}
+\index{dist\_to\_regions\_sqr@{dist\_to\_regions\_sqr}!apca\_bounds@{apca\_bounds}}
+\doxysubsubsection{\texorpdfstring{dist\_to\_regions\_sqr()}{dist\_to\_regions\_sqr()}}
+{\footnotesize\ttfamily double apca\+\_\+bounds\+::dist\+\_\+to\+\_\+regions\+\_\+sqr (\begin{DoxyParamCaption}\item[{const double \&}]{qi,  }\item[{const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \texorpdfstring{$\ast$}{*}const}]{rstart,  }\item[{const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \texorpdfstring{$\ast$}{*}const}]{rend,  }\item[{unsigned int}]{global\+\_\+offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespaceapca__bounds_ab6893bd3da8191cd5da032c91eccd127}\label{namespaceapca__bounds_ab6893bd3da8191cd5da032c91eccd127} 
+\index{apca\_bounds@{apca\_bounds}!mbr\_area@{mbr\_area}}
+\index{mbr\_area@{mbr\_area}!apca\_bounds@{apca\_bounds}}
+\doxysubsubsection{\texorpdfstring{mbr\_area()}{mbr\_area()}}
+{\footnotesize\ttfamily template$<$unsigned int S$>$ \\
+double apca\+\_\+bounds\+::mbr\+\_\+area (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&}]{mbr }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceapca__bounds_a743c07a2f762cb5cc9bf8bd1cd95fb1d}\label{namespaceapca__bounds_a743c07a2f762cb5cc9bf8bd1cd95fb1d} 
+\index{apca\_bounds@{apca\_bounds}!mbr\_merge@{mbr\_merge}}
+\index{mbr\_merge@{mbr\_merge}!apca\_bounds@{apca\_bounds}}
+\doxysubsubsection{\texorpdfstring{mbr\_merge()}{mbr\_merge()}}
+{\footnotesize\ttfamily template$<$unsigned int S$>$ \\
+\mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ apca\+\_\+bounds\+::mbr\+\_\+merge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&}]{mbr1,  }\item[{const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&}]{mbr2 }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceapca__bounds_ab014a408fff1361f7f796111d0b28b64}\label{namespaceapca__bounds_ab014a408fff1361f7f796111d0b28b64} 
+\index{apca\_bounds@{apca\_bounds}!region\_area@{region\_area}}
+\index{region\_area@{region\_area}!apca\_bounds@{apca\_bounds}}
+\doxysubsubsection{\texorpdfstring{region\_area()}{region\_area()}}
+{\footnotesize\ttfamily double apca\+\_\+bounds\+::region\+\_\+area (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespaceapca__bounds_a5060e0810d538a25526e50df39018945}\label{namespaceapca__bounds_a5060e0810d538a25526e50df39018945} 
+\index{apca\_bounds@{apca\_bounds}!region\_merge@{region\_merge}}
+\index{region\_merge@{region\_merge}!apca\_bounds@{apca\_bounds}}
+\doxysubsubsection{\texorpdfstring{region\_merge()}{region\_merge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} apca\+\_\+bounds\+::region\+\_\+merge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&}]{r1,  }\item[{const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&}]{r2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

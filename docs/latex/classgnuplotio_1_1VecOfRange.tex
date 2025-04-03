@@ -1,0 +1,49 @@
+\doxysection{gnuplotio\+::Vec\+Of\+Range\texorpdfstring{$<$}{<} RT \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classgnuplotio_1_1VecOfRange}{}\label{classgnuplotio_1_1VecOfRange}\index{gnuplotio::VecOfRange$<$ RT $>$@{gnuplotio::VecOfRange$<$ RT $>$}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_aed503f2f8d8ed71b303f2db26872bafd}\label{classgnuplotio_1_1VecOfRange_aed503f2f8d8ed71b303f2db26872bafd} 
+typedef std\+::vector$<$ typename RT\+::value\+\_\+type $>$ {\bfseries value\+\_\+type}
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_a4cfae20b9797febceffafec3415b52db}\label{classgnuplotio_1_1VecOfRange_a4cfae20b9797febceffafec3415b52db} 
+typedef \mbox{\hyperlink{classgnuplotio_1_1VecOfRange}{Vec\+Of\+Range}}$<$ typename RT\+::subiter\+\_\+type $>$ {\bfseries subiter\+\_\+type}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_a81e04f9ab4b8641d69df61f695e97e34}\label{classgnuplotio_1_1VecOfRange_a81e04f9ab4b8641d69df61f695e97e34} 
+{\bfseries Vec\+Of\+Range} (const std\+::vector$<$ RT $>$ \&\+\_\+rvec)
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_a714b945004e06909e5a0cdc3cca619b5}\label{classgnuplotio_1_1VecOfRange_a714b945004e06909e5a0cdc3cca619b5} 
+bool {\bfseries is\+\_\+end} () const
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_a2e5371ab6c88994e3fc6f12324783e1c}\label{classgnuplotio_1_1VecOfRange_a2e5371ab6c88994e3fc6f12324783e1c} 
+void {\bfseries inc} ()
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_ab0a35bc07a4f12b18bd1541bc4b771fc}\label{classgnuplotio_1_1VecOfRange_ab0a35bc07a4f12b18bd1541bc4b771fc} 
+value\+\_\+type {\bfseries deref} () const
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_a9b02d8bd8ec62ba77de16ad8ea8a87b2}\label{classgnuplotio_1_1VecOfRange_a9b02d8bd8ec62ba77de16ad8ea8a87b2} 
+\mbox{\hyperlink{classgnuplotio_1_1VecOfRange}{subiter\+\_\+type}} {\bfseries deref\+\_\+subiter} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_ad4d7bf4f48cac58b51f30f78e652d566}\label{classgnuplotio_1_1VecOfRange_ad4d7bf4f48cac58b51f30f78e652d566} 
+static constexpr bool {\bfseries is\+\_\+container} = RT\+::is\+\_\+container
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_a5e365886f2d9fa6d1c9f55334c80f8fe}\label{classgnuplotio_1_1VecOfRange_a5e365886f2d9fa6d1c9f55334c80f8fe} 
+static constexpr bool {\bfseries allow\+\_\+auto\+\_\+unwrap} = false
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgnuplotio_1_1VecOfRange_adafbfb0122b8e499d1af9c246f4ac288}\label{classgnuplotio_1_1VecOfRange_adafbfb0122b8e499d1af9c246f4ac288} 
+{\footnotesize template$<$typename T , typename Print\+Mode $>$ }\\void {\bfseries deref\+\_\+and\+\_\+print} (std\+::ostream \&, const \mbox{\hyperlink{classgnuplotio_1_1VecOfRange}{Vec\+Of\+Range}}$<$ T $>$ \&, Print\+Mode)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/gnuplot-\/iostream/gnuplot-\/iostream.\+h\end{DoxyCompactItemize}

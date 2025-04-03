@@ -1,0 +1,55 @@
+\doxysection{lib/dimension\+\_\+reductions/apla\+\_\+segment\+\_\+and\+\_\+merge.h File Reference}
+\hypertarget{apla__segment__and__merge_8h}{}\label{apla__segment__and__merge_8h}\index{lib/dimension\_reductions/apla\_segment\_and\_merge.h@{lib/dimension\_reductions/apla\_segment\_and\_merge.h}}
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacesegmerge}{segmerge}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}}
+\item 
+typedef std\+::vector$<$ double $>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a003be0fe9132444b97aa8431ce28c43e}{segmerge\+::merge\+\_\+1}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a7372588f2639347269b7162c00f0a7b9}{segmerge\+::merge\+\_\+k}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a6b763f928c581ad8b36cb69467146f14}{segmerge\+::merge\+\_\+to\+\_\+dim}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a62dd1710f7bc31617f46fd3a72871155}{segmerge\+::segment\+\_\+1}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a0840de794865d86f88de3ba422299e2d}{segmerge\+::segment\+\_\+k}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a7e2f34f54b29362bd04797382db7a43e}{segmerge\+::segment\+\_\+to\+\_\+dim}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a9de07ab2e62852c887dd73b4b709c21c}{segmerge\+::maxdev\+\_\+merge\+\_\+1}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a6b81308934ee33c6fba9d1027fdea5dc}{segmerge\+::maxdev\+\_\+merge\+\_\+k}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a766f7ed3d66261ce3d7bb2945bd2dbb3}{segmerge\+::maxdev\+\_\+segment\+\_\+1}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr)
+\item 
+void \mbox{\hyperlink{namespacesegmerge_a9f31aaa6e041478bbeb1b9369ac0d704}{segmerge\+::maxdev\+\_\+segment\+\_\+k}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}\label{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98} 
+\index{apla\_segment\_and\_merge.h@{apla\_segment\_and\_merge.h}!Seqd@{Seqd}}
+\index{Seqd@{Seqd}!apla\_segment\_and\_merge.h@{apla\_segment\_and\_merge.h}}
+\doxysubsubsection{\texorpdfstring{Seqd}{Seqd}}
+{\footnotesize\ttfamily typedef std\+::vector$<$double$>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}}
+
+\Hypertarget{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}\label{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95} 
+\index{apla\_segment\_and\_merge.h@{apla\_segment\_and\_merge.h}!Seqddt@{Seqddt}}
+\index{Seqddt@{Seqddt}!apla\_segment\_and\_merge.h@{apla\_segment\_and\_merge.h}}
+\doxysubsubsection{\texorpdfstring{Seqddt}{Seqddt}}
+{\footnotesize\ttfamily typedef std\+::vector$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int$>$ $>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}}}
+

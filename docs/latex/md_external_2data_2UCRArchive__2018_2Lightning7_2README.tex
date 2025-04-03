@@ -1,0 +1,32 @@
+\chapter{Lightning7}
+\hypertarget{md_external_2data_2UCRArchive__2018_2Lightning7_2README}{}\label{md_external_2data_2UCRArchive__2018_2Lightning7_2README}\index{Lightning7@{Lightning7}}
+\label{md_external_2data_2UCRArchive__2018_2Lightning7_2README_autotoc_md135}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2Lightning7_2README_autotoc_md135}%
+ The Fast On-\/orbit Recording of Transient Events satellite (FORTE) detects transient electromagnetic events associated with lightning using a suite of optical and radio-\/frequency (RF) instruments. Sampling rate was 50MHz over a period of 800 microseconds. A Fourier transform is performed on the input data to produce a spectrogram. The spectrograms are then collapsed in frequency to produce a power density time series, with 3181 samples in each time series. These are then smoothed to produce series of length 637.
+
+There are 7 classes as described in \mbox{[}1\mbox{]}\+: (label\+: name\+: description)
+\begin{DoxyItemize}
+\item CG\+: Positive\+: Initial Return Stroke A positive charge is lowered from a cloud to the ground. The characteristic feature of this type of event in the power density time series is a sharp turn-\/on of radiation, followed by a few hundreds of microseconds of noise.
+\item IR\+: Negative Initial Return Stroke A negative charge is lowered from a cloud to ground. The power waveform slowly ramps up to a level known as an attachment point, where a large surge current causes the VHF power to \textquotesingle{}spike\textquotesingle{}. This attachment is followed by an exponentially shaped decline in the waveform.
+\item SR\+: Subsequent Negative Return Stroke A negative charge is lowered from a cloud to ground. As the name implies, subsequent return strokes come after initial return strokes. Note that subsequent positive return strokes don\textquotesingle{}t exist.
+\item I\+: Impulsive Event Typically an intra-\/cloud event characterized by a sudden peak in the waveform.
+\item I2\+: Impulsive Event Pair Another intra-\/cloud event characterized by sudden peaks in the waveform that come in closely separated pairs. These are also called TIPPs (Trans-\/\+Ionospheric Pulse Pairs).
+\item KM\+: Gradual Intra-\/\+Cloud Stroke An intra-\/cloud event which increases in power more gradually than an impulsive event.
+\item O\+: Off-\/record 800 microseconds was not enough to fully capture the lightning event.
+\end{DoxyItemize}
+
+Train size\+: 70
+
+Test size\+: 73
+
+Missing value\+: No
+
+Number of classses\+: 7
+
+Time series length\+: 319
+
+Data donated by Damian Eads (see \mbox{[}1\mbox{]}, \mbox{[}2\mbox{]}).
+
+\mbox{[}1\mbox{]} Eads, Damian R., et al. "{}\+Genetic algorithms and support vector machines for time series classification."{} Applications and Science of Neural Networks, Fuzzy Systems, and Evolutionary Computation V. Vol. 4787. International Society for Optics and Photonics, 2002.
+
+\mbox{[}2\mbox{]} \href{http://www.timeseriesclassification.com/description.php?Dataset=Lightning7}{\texttt{ http\+://www.\+timeseriesclassification.\+com/description.\+php?\+Dataset=\+Lightning7}} 

@@ -1,0 +1,60 @@
+\doxysection{pla.\+h}
+\hypertarget{pla_8h_source}{}\label{pla_8h_source}\index{lib/dimension\_reductions/pla.h@{lib/dimension\_reductions/pla.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ std::array<double,\ 2>\ DoublePair;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ std::vector<double>\ Seqd;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ std::vector<DoublePair>\ Seqdd;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ std::vector<unsigned\ int>\ Sequi;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ std::vector<std::tuple<DoublePair,unsigned\ int>>\ Seqddt;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }pla\ \{}
+\DoxyCodeLine{00019\ std::vector<std::vector<double>>\ chunk\_series(std::vector<double>\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ chunk\_size);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ DoublePair\ regression(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ end);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{double}\ regression\_thru\_point(\textcolor{keywordtype}{double}\ first\_point,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ end);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ w\ is\ num\ items\ compressed\ to\ a\ linear\ function}}
+\DoxyCodeLine{00026\ std::vector<DoublePair>\ sliding\_window\_regression(\ \textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ w);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ std::vector<DoublePair>\ chunk\_regression(\ \textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00029\ std::vector<DoublePair>\ pla(\ \textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{double}\ pla\_mse(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ interval\_size);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ std::vector<double>\ pla\_to\_seq(\textcolor{keyword}{const}\ std::vector<DoublePair>,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ int\_size);}
+\DoxyCodeLine{00034\ std::vector<double>\ apla\_to\_seq(\textcolor{keyword}{const}\ std::vector<\ std::tuple<DoublePair,\ unsigned\ int>>);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{using\ }APLA\_DRT\ =\ std::function<\ std::vector<std::tuple<DoublePair,\ unsigned\ int>>(\textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ int)>;}
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ NS>}
+\DoxyCodeLine{00038\ \textcolor{keyword}{using\ }APLA\ =\ std::array<std::tuple<DoublePair,unsigned\ int>,NS>;}
+\DoxyCodeLine{00039\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ NS>}
+\DoxyCodeLine{00040\ std::vector<APLA<NS>>\ apla\_drt\_on\_subseqs(\ \textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ subseq\_size,\ APLA\_DRT\ f)}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ std::vector<APLA<NS>>\ subseqs\_compr;}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<q.size()\ -\/\ subseq\_size;\ i++)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ std::vector<double>\ q\_i(\ q.cbegin()+i,\ q.cbegin()+i+subseq\_size);\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{auto}\ apla\ =\ f(q\_i,NS*3);}
+\DoxyCodeLine{00046\ \ \ \ \ APLA<NS>\ apla\_arr;}
+\DoxyCodeLine{00047\ \ \ \ \ std::copy(q\_i.begin(),\ q\_i.end(),\ apla\_arr.begin());}
+\DoxyCodeLine{00048\ \ \ \ \ subseqs\_compr.push\_back(\ apla\_arr\ );}
+\DoxyCodeLine{00049\ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordflow}{return}\ subseqs\_compr;}
+\DoxyCodeLine{00051\ \}}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

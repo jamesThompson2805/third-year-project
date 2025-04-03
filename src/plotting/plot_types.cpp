@@ -1,5 +1,15 @@
 #include "plot_types.h"
+/**
+ * @file plot_types.cpp
+ * @brief Implementations of functions defined in plot_types.h .
+ */
 
+/**
+ * @brief setup_gnuplot should be passed an initialised instance of Gnuplot to configure ready to create a plot.
+ * The function uses the details in the PlotDetails to configure the metadata such as size, output, font, filepath and axis labels.
+ * @param gp Reference to instance of Gnuplot from gnuplot-iostream libary.
+ * @param p PlotDetails instance passed in to configure gnuplot for graph plotting.
+ */
 void plot_setup::setup_gnuplot(Gnuplot &gp, PlotDetails p)
 {
   double width = 32;
@@ -23,6 +33,10 @@ void plot_setup::setup_gnuplot(Gnuplot &gp, PlotDetails p)
   gp << "set title '" << p.title << "'\n";
 }
 
+/**
+ * @brief open_pdf should be called after graph creation and with same instance of PlotDetails to open specifically pdf plot using firefox.
+ * @param p Is PlotDetails instance that should be the same as passed to setup_gnuplot that should have been called before addition of graph.
+ */
 void plot_setup::open_pdf(PlotDetails p)
 {
   if (p.b == PDF) {

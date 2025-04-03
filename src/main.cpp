@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ *
+ * @brief Main implementation highlighting usage of utilities and DRTs
+ */
 #include <iostream>
 #include <iterator>
 #include <string>
@@ -18,12 +23,12 @@
 #include "bottom_up.h"
 #include "exact_dp.h"
 #include "apla_segment_and_merge.h"
+#include "swing.h"
 
 #include "conv_double_window.h"
 
 #include "plotting/series_plotting.h"
-#include "plotting/plot_dimreduct_paa.cpp"
-#include "plotting/plot_dimreduct_pla.cpp"
+#include "plotting/plot_dimreduct_paa.h"
 
 #include "evaluations/general.h"
 #include "evaluations/capla.h"
@@ -36,9 +41,17 @@
 
 #include <chrono>
 
+#include "demo.cpp"
+
 
 using std::vector, std::string, std::tuple;
 
+/**
+ * @brief The entry point of the project and a testing ground for all the project implements
+ *
+ * The main function is a large testing box of many of the features implemented in the project, left as usage examples for navigating.
+ * It highlights real and synthetic data, applying DRT's including varying parameters and the many plotting capabilities as well.
+ */
 int main()
 {
   using namespace ucr_parsing;
@@ -46,18 +59,20 @@ int main()
   string ucr_datasets_loc = "external/data/UCRArchive_2018/";
   vector<string> datasets = parse_folder_names(ucr_datasets_loc);
 
-  /**
+  /*
   for (int i=0; i<datasets.size(); i++) {
     vector<double> dataset = parse_ucr_dataset(datasets[i], ucr_datasets_loc,  DatasetType::TRAIN);
     std::cout << i << " : " << datasets[i] << " : " << dataset.size() << std::endl;
   }
-  **/
+  */
 
   // Favourites : 5 is Arrowhead, 13 is Chlorine, 28 is ECG200, 39 is Fifty Words, 128 is yoga, 46 is GuestureMidAirD1
-  unsigned int di = 39;
+  unsigned int di = 13;
+  /*
   vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN);
   std::cout << dataset.size() << std::endl;
   z_norm::z_normalise(dataset);
+  */
 
   auto paa_f = [](const vector<double>& s, unsigned int num_params){ return paa::paa_to_seq( paa::paa(s, num_params), (s.size() / num_params) + (s.size() % num_params != 0)); };
   auto pla_f = [](const vector<double>& s, unsigned int num_params){ return pla::pla_to_seq(pla::pla(s, num_params), (2*s.size() / num_params) + (2*s.size() % num_params != 0)); };
@@ -88,17 +103,22 @@ int main()
   };
   auto bottom_up_f = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(bottom_up_f_uncompr(s,parameter)); };
 
+  auto swing_f = [&](const Seqd& s) { return swing::swing(s,0.1); };
+
   vector<double> ldist = { 1.0/3.0, 1.0/3.0, 1.0/3.0};
   vector<double> rdist = { 0.0, 1.0/2.0, 1.0/2.0};
   auto conv_apla_f = [&ldist, &rdist](const vector<double>& s, unsigned int num_params){ return c_d_w::conv_pla(s, num_params, ldist, rdist); }; 
 
+
   RandomWalk walk( NormalFunctor(1) ); 
   walk.gen_steps(120);
-  walk.save_walk("./tsv/testwalk1.tsv");
+  //walk.save_walk("./tsv/testwalk1.tsv");
   vector<double> dataset2 = parse_tsv("./tsv/testwalk1.tsv",-1);
   z_norm::z_normalise(dataset2);
   Series s = { dataset2, "Normal Walk" };
   // plot_series(s, "./img/");
+
+  //     demo();
 
 
   /************************** Plot of DRT vs original **************************************
@@ -403,7 +423,8 @@ int main()
     return std::vector<std::array<const double*,2>>( {{ q.data()+i, q.data()+i+seq_size-1 }} );
   };
 
-  { /*
+  /*
+  {
 
   RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
   RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree2(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
@@ -444,9 +465,9 @@ int main()
   rdp_pp_ns1/=trials;
   b_u_pp_ns1/=trials;
 
-  */}
+  }
 
-  { /*
+  {
   RTree<apla_bounds::AplaMBR<NS2>, unsigned int> r_tree2_NS2(40,10 , apla_bounds::mbr_area<NS2> , apla_bounds::mbr_merge<NS2> , apla_bounds::dist_to_mbr_sqr<NS2>);
   RTree<apla_bounds::AplaMBR<NS2>, unsigned int> r_tree3_NS2(40,10 , apla_bounds::mbr_area<NS2> , apla_bounds::mbr_merge<NS2> , apla_bounds::dist_to_mbr_sqr<NS2>);
   RTree<apla_bounds::AplaMBR<NS2>, unsigned int> r_tree4_NS2(40,10 , apla_bounds::mbr_area<NS2> , apla_bounds::mbr_merge<NS2> , apla_bounds::dist_to_mbr_sqr<NS2>);
@@ -484,9 +505,9 @@ int main()
   rdp_pp_ns2/=trials;
   b_u_pp_ns2/=trials;
 
-  */}
+  }
 
-  { /*
+  {
   RTree<apla_bounds::AplaMBR<NS3>, unsigned int> r_tree2_NS3(40,10 , apla_bounds::mbr_area<NS3> , apla_bounds::mbr_merge<NS3> , apla_bounds::dist_to_mbr_sqr<NS3>);
   RTree<apla_bounds::AplaMBR<NS3>, unsigned int> r_tree3_NS3(40,10 , apla_bounds::mbr_area<NS3> , apla_bounds::mbr_merge<NS3> , apla_bounds::dist_to_mbr_sqr<NS3>);
   RTree<apla_bounds::AplaMBR<NS3>, unsigned int> r_tree4_NS3(40,10 , apla_bounds::mbr_area<NS3> , apla_bounds::mbr_merge<NS3> , apla_bounds::dist_to_mbr_sqr<NS3>);
@@ -525,15 +546,24 @@ int main()
   rdp_pp_ns3/=trials;
   b_u_pp_ns3/=trials;
 
-  */}
+  }
 
-  /*
   std::cout << "capla pruning powers " << NS3 << " : " << capla_pp_ns3 << ", " << NS2 << " : " << capla_pp_ns2 << ", " << NS << " : " << capla_pp_ns1 << std::endl;
   std::cout << "rdp pruning powers " << NS3 << " : " << rdp_pp_ns3 << ", " << NS2 << " : " << rdp_pp_ns2 << ", " << NS << " : " << rdp_pp_ns1 << std::endl;
   std::cout << "b-u pruning powers " << NS3 << " : " << b_u_pp_ns3 << ", " << NS2 << " : " << b_u_pp_ns2 << ", " << NS << " : " << b_u_pp_ns1 << std::endl;
   */
 
-  {
+  /*
+  Series capla_pruning = { { 0.0717536, 0.000605522, 2.71927e-05 }, "Sliding Window" };
+  Series rdp_pruning = { { 0.00894341, 5.63206e-05, 2.86695e-05 }, "RDP" };
+  Series b_u_pruning = { { 0.00896001, 5.49966e-05, 2.87714e-05 }, "B-U" };
+  vector<Series> vs = { capla_pruning, rdp_pruning, b_u_pruning };
+  PlotDetails pd = { "Pruning Power of PLA Methods", "", "Pruning Power", "img/", PDF };
+  plot::barplot_many_series(vs, pd);
+  */
+
+
+  {/*
   RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree4(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
 
   std::cout << "calculating mbrs" << std::endl;
@@ -548,10 +578,10 @@ int main()
   std::cout << "number of reachable leaves " << r_tree4.get_size_leaves() << std::endl;
 
   std::cout << "searching" << std::endl;
-  vector<double> rtree_times(1);
-  vector<double> seqscan_times(1);
+  vector<double> rtree_times(2);
+  vector<double> seqscan_times(2);
   double trials = 0;
-  for (int i=0;i<dataset.size()-seq_size; i+=1000000) {
+  for (int i=0;i<dataset.size()-seq_size; i+=10'000) {
     trials += 1;
     std::vector<double> query2( dataset.begin()+i, dataset.begin()+seq_size+i);
     std::vector<double> query( query2 );
@@ -561,40 +591,62 @@ int main()
     }
 
     auto start_rtree = std::chrono::high_resolution_clock::now();
-    auto results = r_tree4.knn_search(query, 30, retrieval_f, dataset);
+    r_tree4.sim_search(query, 0.1);
     auto end_rtree = std::chrono::high_resolution_clock::now();
     auto dur_rtree = std::chrono::duration_cast<std::chrono::microseconds>(end_rtree - start_rtree);
-    rtree_times.back() += dur_rtree.count()/1000.0;
+    rtree_times[1] += dur_rtree.count()/1000.0;
+
+    start_rtree = std::chrono::high_resolution_clock::now();
+    r_tree4.knn_search(query, 30, retrieval_f, dataset);
+    end_rtree = std::chrono::high_resolution_clock::now();
+    dur_rtree = std::chrono::duration_cast<std::chrono::microseconds>(end_rtree - start_rtree);
+    rtree_times[0] += dur_rtree.count()/1000.0;
 
     auto start_seqscan = std::chrono::high_resolution_clock::now();
-    auto seq_results = seq_scan::find_k_closest_indexes(dataset, query, 30);
+    seq_scan::find_similar_subseq_indexes(dataset, query, 0.1);
     auto end_seqscan = std::chrono::high_resolution_clock::now();
     auto dur_seqscan = std::chrono::duration_cast<std::chrono::microseconds>(end_seqscan - start_seqscan);
-    seqscan_times.back() += dur_seqscan.count()/1000.0;
+    seqscan_times[1] += dur_seqscan.count()/1000.0;
+
+    start_seqscan = std::chrono::high_resolution_clock::now();
+    seq_scan::find_k_closest_indexes(dataset, query, 30);
+    end_seqscan = std::chrono::high_resolution_clock::now();
+    dur_seqscan = std::chrono::duration_cast<std::chrono::microseconds>(end_seqscan - start_seqscan);
+    seqscan_times[0] += dur_seqscan.count()/1000.0;
 
   }
-  rtree_times.back() /= trials;
-  seqscan_times.back() /= trials;
-  PlotDetails pd = { "Timings for Sim Search Methods", "", "Time (MS)", "img/", X11 };
+  rtree_times[0] /= trials;
+  rtree_times[1] /= trials;
+  seqscan_times[0] /= trials;
+  seqscan_times[1] /= trials;
+
+  PlotDetails pd = { "Time taken by Sim Search and K-NN Methods", "", "Time (MS)", "img/", PDF };
   Series rtree_series = {rtree_times, "RTree"};
   Series seqscan_series = {seqscan_times, "Sequential Scan"};
   vector<Series> vs = {rtree_series, seqscan_series};
   plot::barplot_many_series(vs, pd);
 
+  */
   }
 
   /********************/
 
-  /*
-  NormalFunctor noise(5, 0.0, 1.0);
-  vector<double> dataset3;
-  for (double d : dataset2) {
-    dataset3.push_back( d + 2.0 + noise());
+  dataset2.resize(30);
+  z_norm::z_normalise(dataset2);
+  NormalFunctor noise(7, 0.0, 1.0);
+  vector<double> dataset3 = {0.0};
+  for (int i=1; i<dataset2.size(); i++) {
+    dataset3.push_back( dataset3[i-1] + noise());
   }
+  z_norm::z_normalise(dataset3);
   Series s2 = { dataset3, "Altered Walk" };
-  //plot_series_diff( s, s2, "./img/");
+  PlotDetails pd = { "Comparison of generated series", "", "", "img/paa_comparison/", PDF };
+  Seqd ds2_pla = pla_f(dataset2, 3);
+  Seqd ds3_pla = pla_f(dataset3, 3);
+  Series ds2 = { dataset2, "Synthetic 1" };
+  Series ds3 = { dataset3, "Synthetic 2" };
+  plot::plot_series_diff( ds2, ds3, pd);
   //
-  */
 
   return 0;
 }

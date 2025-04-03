@@ -1,0 +1,96 @@
+\doxysection{capla\+\_\+eval Namespace Reference}
+\hypertarget{namespacecapla__eval}{}\label{namespacecapla__eval}\index{capla\_eval@{capla\_eval}}
+
+
+\doxylink{namespacecapla__eval}{capla\+\_\+eval} is the namespace holding functions that return functions given parameters for how to construct the \textquotesingle{}windows\textquotesingle{}. For more details about CAPLA, please read the paper also found in the Git\+Hub repository.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} \mbox{\hyperlink{namespacecapla__eval_aaae207f8d7d4971389e6808ed1822b1c}{generate\+\_\+mean\+\_\+\+DRT}} (unsigned int win\+\_\+size)
+\item 
+\mbox{\hyperlink{capla_8h_ae01166a5b5e32fca34d1365517c5bb8f}{DRT\+\_\+\+COMPR}} \mbox{\hyperlink{namespacecapla__eval_abb6fc6d07bb85bdcf6838eda4734de53}{generate\+\_\+mean\+\_\+\+DRT\+\_\+\+COMPR}} (unsigned int win\+\_\+size)
+\item 
+\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} \mbox{\hyperlink{namespacecapla__eval_a59837a837a82c29b1f22eb132affb315}{generate\+\_\+mean\+\_\+skip\+\_\+one\+\_\+\+DRT}} (unsigned int win\+\_\+size)
+\item 
+\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} \mbox{\hyperlink{namespacecapla__eval_a4146cd72f536c304bc6948a0e08aa7ad}{generate\+\_\+tri\+\_\+\+DRT}} (unsigned int win\+\_\+size)
+\item 
+\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} \mbox{\hyperlink{namespacecapla__eval_a842648886fa818adc852c89ee4b0f0a9}{generate\+\_\+tri\+\_\+skip\+\_\+one\+\_\+\+DRT}} (unsigned int win\+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{namespacecapla__eval}{capla\+\_\+eval} is the namespace holding functions that return functions given parameters for how to construct the \textquotesingle{}windows\textquotesingle{}. For more details about CAPLA, please read the paper also found in the Git\+Hub repository. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacecapla__eval_aaae207f8d7d4971389e6808ed1822b1c}\label{namespacecapla__eval_aaae207f8d7d4971389e6808ed1822b1c} 
+\index{capla\_eval@{capla\_eval}!generate\_mean\_DRT@{generate\_mean\_DRT}}
+\index{generate\_mean\_DRT@{generate\_mean\_DRT}!capla\_eval@{capla\_eval}}
+\doxysubsubsection{\texorpdfstring{generate\_mean\_DRT()}{generate\_mean\_DRT()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} capla\+\_\+eval\+::generate\+\_\+mean\+\_\+\+DRT (\begin{DoxyParamCaption}\item[{unsigned int}]{win\+\_\+size }\end{DoxyParamCaption})}
+
+Function creates non-\/weighted distribution of given window size and returns function to apply to data. 
+\begin{DoxyParams}{Parameters}
+{\em win\+\_\+size} & is the desired size of the windows, 0 is invalid here \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Function that accepts series and number of parameters to return approximation already uncompressed as a sequence of the same size. 
+\end{DoxyReturn}
+\Hypertarget{namespacecapla__eval_abb6fc6d07bb85bdcf6838eda4734de53}\label{namespacecapla__eval_abb6fc6d07bb85bdcf6838eda4734de53} 
+\index{capla\_eval@{capla\_eval}!generate\_mean\_DRT\_COMPR@{generate\_mean\_DRT\_COMPR}}
+\index{generate\_mean\_DRT\_COMPR@{generate\_mean\_DRT\_COMPR}!capla\_eval@{capla\_eval}}
+\doxysubsubsection{\texorpdfstring{generate\_mean\_DRT\_COMPR()}{generate\_mean\_DRT\_COMPR()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{capla_8h_ae01166a5b5e32fca34d1365517c5bb8f}{DRT\+\_\+\+COMPR}} capla\+\_\+eval\+::generate\+\_\+mean\+\_\+\+DRT\+\_\+\+COMPR (\begin{DoxyParamCaption}\item[{unsigned int}]{win\+\_\+size }\end{DoxyParamCaption})}
+
+Function creates non-\/weighted distribution of given window size and returns function to apply to data, this time returning in compressed format. 
+\begin{DoxyParams}{Parameters}
+{\em win\+\_\+size} & is the desired size of the windows, 0 is invalid here \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Function that accepts series and number of parameters to return approximation 
+\end{DoxyReturn}
+\Hypertarget{namespacecapla__eval_a59837a837a82c29b1f22eb132affb315}\label{namespacecapla__eval_a59837a837a82c29b1f22eb132affb315} 
+\index{capla\_eval@{capla\_eval}!generate\_mean\_skip\_one\_DRT@{generate\_mean\_skip\_one\_DRT}}
+\index{generate\_mean\_skip\_one\_DRT@{generate\_mean\_skip\_one\_DRT}!capla\_eval@{capla\_eval}}
+\doxysubsubsection{\texorpdfstring{generate\_mean\_skip\_one\_DRT()}{generate\_mean\_skip\_one\_DRT()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} capla\+\_\+eval\+::generate\+\_\+mean\+\_\+skip\+\_\+one\+\_\+\+DRT (\begin{DoxyParamCaption}\item[{unsigned int}]{win\+\_\+size }\end{DoxyParamCaption})}
+
+Function creates non-\/weighted distribution of given window size and returns function to apply to data. This is formed of the additional hypothesis that gradient between the two potential lines shouldn\textquotesingle{}t be accounted for. 
+\begin{DoxyParams}{Parameters}
+{\em win\+\_\+size} & is the desired size of the windows, 0 is invalid here \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Function that accepts series and number of parameters to return approximation already uncompressed as a sequence of the same size. 
+\end{DoxyReturn}
+\Hypertarget{namespacecapla__eval_a4146cd72f536c304bc6948a0e08aa7ad}\label{namespacecapla__eval_a4146cd72f536c304bc6948a0e08aa7ad} 
+\index{capla\_eval@{capla\_eval}!generate\_tri\_DRT@{generate\_tri\_DRT}}
+\index{generate\_tri\_DRT@{generate\_tri\_DRT}!capla\_eval@{capla\_eval}}
+\doxysubsubsection{\texorpdfstring{generate\_tri\_DRT()}{generate\_tri\_DRT()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} capla\+\_\+eval\+::generate\+\_\+tri\+\_\+\+DRT (\begin{DoxyParamCaption}\item[{unsigned int}]{win\+\_\+size }\end{DoxyParamCaption})}
+
+Function creates weighted distribution of given window size in a triangular fashion, those closer to the split have greater weight and returns function to apply to data. 
+\begin{DoxyParams}{Parameters}
+{\em win\+\_\+size} & is the desired size of the windows, 0 is invalid here \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Function that accepts series and number of parameters to return approximation already uncompressed as a sequence of the same size. 
+\end{DoxyReturn}
+\Hypertarget{namespacecapla__eval_a842648886fa818adc852c89ee4b0f0a9}\label{namespacecapla__eval_a842648886fa818adc852c89ee4b0f0a9} 
+\index{capla\_eval@{capla\_eval}!generate\_tri\_skip\_one\_DRT@{generate\_tri\_skip\_one\_DRT}}
+\index{generate\_tri\_skip\_one\_DRT@{generate\_tri\_skip\_one\_DRT}!capla\_eval@{capla\_eval}}
+\doxysubsubsection{\texorpdfstring{generate\_tri\_skip\_one\_DRT()}{generate\_tri\_skip\_one\_DRT()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} capla\+\_\+eval\+::generate\+\_\+tri\+\_\+skip\+\_\+one\+\_\+\+DRT (\begin{DoxyParamCaption}\item[{unsigned int}]{win\+\_\+size }\end{DoxyParamCaption})}
+
+Function creates weighted distribution of given window size in a triangular fashion, those closer to the split have greater weight and returns function to apply to data. This also has the additional hypothesis that gradient between the two potential lines shouldn\textquotesingle{}t be accounted for. 
+\begin{DoxyParams}{Parameters}
+{\em win\+\_\+size} & is the desired size of the windows, 0 is invalid here \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Function that accepts series and number of parameters to return approximation already uncompressed as a sequence of the same size. 
+\end{DoxyReturn}

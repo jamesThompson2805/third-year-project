@@ -1,0 +1,28 @@
+\doxysection{src/plotting/plot\+\_\+dimreduct\+\_\+pla.h File Reference}
+\hypertarget{plot__dimreduct__pla_8h}{}\label{plot__dimreduct__pla_8h}\index{src/plotting/plot\_dimreduct\_pla.h@{src/plotting/plot\_dimreduct\_pla.h}}
+
+
+Header file containing methods for plotting (Adaptive) Piecewise Linear Approximations.  
+
+
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}plot\+\_\+types.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceplot__pla}{plot\+\_\+pla}}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespaceplot__pla}{plot\+\_\+pla} Is a namespace containing definitions of functions to plot PLA and APLA methods \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplot__pla_aba91408751d07ed585b7553763a44b6f}{plot\+\_\+pla\+::plot\+\_\+pla}} (const std\+::vector$<$ double $>$ \&series, std\+::string data\+\_\+name, unsigned int num\+\_\+params, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em \doxylink{namespaceplot__pla}{plot\+\_\+pla} plots a series with its PLA approximation render on top. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot__pla_a599adc16cf6c736633d8cd104304d25a}{plot\+\_\+pla\+::plot\+\_\+any\+\_\+apla}} (const std\+::vector$<$ double $>$ \&series, std\+::string data\+\_\+name, std\+::function$<$ const Seqddt(const Seqd \&)$>$ apla\+\_\+func, std\+::string drt\+\_\+name, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+any\+\_\+apla plots a series over time with its approximation by an adaptive PLA implementation on top. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file containing methods for plotting (Adaptive) Piecewise Linear Approximations. 
+

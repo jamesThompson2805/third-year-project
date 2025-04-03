@@ -1,0 +1,39 @@
+\doxysection{src/evaluations/general.cpp File Reference}
+\hypertarget{general_8cpp}{}\label{general_8cpp}\index{src/evaluations/general.cpp@{src/evaluations/general.cpp}}
+{\ttfamily \#include "{}general.\+h"{}}\newline
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+{\ttfamily \#include "{}error\+\_\+measures.\+h"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \mbox{\hyperlink{general_8cpp_ad20a588ae5840fb7ae49ff5aae7e3c45}{get\+\_\+cputime\+\_\+over\+\_\+sizes}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{general_8h_abdf22d5cee75eed0991db20be5b1efcc}{Sequi}} sizes, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \mbox{\hyperlink{general_8cpp_ad960fffc6913b94515ddff69f5b55c2f}{get\+\_\+cputime\+\_\+over\+\_\+num\+\_\+params}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{general_8h_abdf22d5cee75eed0991db20be5b1efcc}{Sequi}} vec\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \mbox{\hyperlink{general_8cpp_a31a2f6c0b01dd074e7f3396a2b785f48}{get\+\_\+cputime\+\_\+over\+\_\+\+DRTs}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, unsigned int num\+\_\+params, std\+::vector$<$ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} $>$ fs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{general_8cpp_a31a2f6c0b01dd074e7f3396a2b785f48}\label{general_8cpp_a31a2f6c0b01dd074e7f3396a2b785f48} 
+\index{general.cpp@{general.cpp}!get\_cputime\_over\_DRTs@{get\_cputime\_over\_DRTs}}
+\index{get\_cputime\_over\_DRTs@{get\_cputime\_over\_DRTs}!general.cpp@{general.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_cputime\_over\_DRTs()}{get\_cputime\_over\_DRTs()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} get\+\_\+cputime\+\_\+over\+\_\+\+DRTs (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{unsigned int}]{num\+\_\+params,  }\item[{std\+::vector$<$ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} $>$}]{fs }\end{DoxyParamCaption})}
+
+\Hypertarget{general_8cpp_ad960fffc6913b94515ddff69f5b55c2f}\label{general_8cpp_ad960fffc6913b94515ddff69f5b55c2f} 
+\index{general.cpp@{general.cpp}!get\_cputime\_over\_num\_params@{get\_cputime\_over\_num\_params}}
+\index{get\_cputime\_over\_num\_params@{get\_cputime\_over\_num\_params}!general.cpp@{general.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_cputime\_over\_num\_params()}{get\_cputime\_over\_num\_params()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} get\+\_\+cputime\+\_\+over\+\_\+num\+\_\+params (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{general_8h_abdf22d5cee75eed0991db20be5b1efcc}{Sequi}}}]{vec\+\_\+params,  }\item[{\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}}]{f }\end{DoxyParamCaption})}
+
+\Hypertarget{general_8cpp_ad20a588ae5840fb7ae49ff5aae7e3c45}\label{general_8cpp_ad20a588ae5840fb7ae49ff5aae7e3c45} 
+\index{general.cpp@{general.cpp}!get\_cputime\_over\_sizes@{get\_cputime\_over\_sizes}}
+\index{get\_cputime\_over\_sizes@{get\_cputime\_over\_sizes}!general.cpp@{general.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_cputime\_over\_sizes()}{get\_cputime\_over\_sizes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} get\+\_\+cputime\+\_\+over\+\_\+sizes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{general_8h_abdf22d5cee75eed0991db20be5b1efcc}{Sequi}}}]{sizes,  }\item[{unsigned int}]{num\+\_\+params,  }\item[{\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}}]{f }\end{DoxyParamCaption})}
+

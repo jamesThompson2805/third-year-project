@@ -1,0 +1,34 @@
+\doxysection{plot\+\_\+types.\+h}
+\hypertarget{plot__types_8h_source}{}\label{plot__types_8h_source}\index{src/plotting/plot\_types.h@{src/plotting/plot\_types.h}}
+\mbox{\hyperlink{plot__types_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLOT\_TYPES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLOT\_TYPES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <gnuplot-\/iostream.h>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{plot__types_8h_ae4db5848267c1a5a1413b7f87cf6889d}{Backend}}\ \{}
+\DoxyCodeLine{00020\ \ \ PDF,}
+\DoxyCodeLine{00021\ \ \ SVG,}
+\DoxyCodeLine{00022\ \ \ X11,}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ \{}
+\DoxyCodeLine{00034\ \ \ std::string\ title;}
+\DoxyCodeLine{00035\ \ \ std::string\ xlabel;}
+\DoxyCodeLine{00036\ \ \ std::string\ ylabel;}
+\DoxyCodeLine{00037\ \ \ std::string\ filepath;}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{plot__types_8h_ae4db5848267c1a5a1413b7f87cf6889d}{Backend}}\ b;}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceplot__setup}{plot\_setup}}\ \{}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot__setup_a99c39622a998034091a69ef49d403326}{setup\_gnuplot}}(Gnuplot\&\ gp,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot__setup_a7e18df5602526161cb6cc41e25874914}{open\_pdf}}(\mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00061\ }
+
+\end{DoxyCode}

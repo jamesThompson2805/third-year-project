@@ -26,6 +26,7 @@
 	      boost
 	      gnuplot
 	      valgrind
+	      doxygen
             ] ++ (if system == "aarch64-darwin" then [ ] else [ gdb ]);
           };
       });

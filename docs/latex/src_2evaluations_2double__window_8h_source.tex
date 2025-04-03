@@ -1,0 +1,64 @@
+\doxysection{double\+\_\+window.\+h}
+\hypertarget{src_2evaluations_2double__window_8h_source}{}\label{src_2evaluations_2double__window_8h_source}\index{src/evaluations/double\_window.h@{src/evaluations/double\_window.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ EVAL\_DOUBLE\_WINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ EVAL\_DOUBLE\_WINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{/*\ What\ to\ assess\ for\ double\ window}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ -\/\ How\ fast\ is\ it?}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ -\/\ How\ accurate\ is\ it?}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ Speed:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ \ -\/\ is\ it\ faster\ than\ d\_p}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ -\/\ is\ it\ faster\ than\ pla}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ How\ does\ it\ change\ when\ you\ vary:}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ \ -\/\ number\ of\ parameters}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ -\/\ size\ of\ windows}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ -\/\ size\ of\ data}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ How\ to\ assess\ speed:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ \ -\/\ Wall\ Clock\ Times}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ -\/\ CPU\ Times}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ \ -\/\ Page\ Accesses?}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ \ Accuracy:}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ \ -\/\ is\ it\ more\ accurate\ than\ d\_p\ min\ mse}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ \ -\/\ is\ it\ more\ accurate\ than\ d\_p\ min\ maxdev}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ \ -\/\ is\ it\ more\ accurate\ than\ pla}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ \ How\ does\ it\ change\ when\ you\ vary:}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ \ -\/\ number\ of\ parameters}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ \ -\/\ size\ of\ windows}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ \ -\/\ size\ of\ data}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ \ How\ to\ assess\ accuracy}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ \ -\/\ MEAN\ Squared\ Error}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ \ -\/\ Maximum\ Deviation\ }}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ std::vector<double>\ Seq;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{namespace\ }double\_window\_eval\ \{}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{double}\ mse\_of\_method(\textcolor{keyword}{const}\ Seq\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{double}\ maxdev\_of\_method(\textcolor{keyword}{const}\ Seq\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{double}\ cputime\_ms\_of\_method(\textcolor{keyword}{const}\ Seq\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ Seq\ get\_mse\_over\_sizes(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00045\ Seq\ get\_maxdev\_over\_sizes(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00046\ Seq\ get\_cputime\_over\_sizes(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ Seq\ get\_mse\_over\_num\_params(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ vec\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00049\ Seq\ get\_maxdev\_over\_num\_params(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ vec\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00050\ Seq\ get\_cputime\_over\_num\_params(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ vec\_params,\ \textcolor{keyword}{const}\ Seq\&\ ldist,\ \textcolor{keyword}{const}\ Seq\&\ rdist);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ Seq\ get\_mse\_over\_window\_window\_sizes(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ window\_sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00053\ Seq\ get\_maxdev\_over\_window\_window\_sizes(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ window\_sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00054\ Seq\ get\_cputime\_over\_window\_window\_sizes(\textcolor{keyword}{const}\ Seq\&\ s,\ std::vector<unsigned\ int>\ window\_sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

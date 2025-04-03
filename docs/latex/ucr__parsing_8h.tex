@@ -1,0 +1,28 @@
+\doxysection{lib/parsing/ucr\+\_\+parsing.h File Reference}
+\hypertarget{ucr__parsing_8h}{}\label{ucr__parsing_8h}\index{lib/parsing/ucr\_parsing.h@{lib/parsing/ucr\_parsing.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceucr__parsing}{ucr\+\_\+parsing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007}{ucr\+\_\+parsing\+::\+Dataset\+Type}} \{ \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007a28b9fd0a75dfdbca47bb1c979c43fa4f}{ucr\+\_\+parsing\+::\+TEST}}
+, \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007a6d3224c10a527075e6b60f78d712d138}{ucr\+\_\+parsing\+::\+TRAIN}}
+, \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007adf3057719c6de1b6f477cf4736104566}{ucr\+\_\+parsing\+::\+TEST\+\_\+\+APPEND\+\_\+\+TRAIN}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespaceucr__parsing_af0a300b2e11f171b7dbf84b0f2202b4a}{ucr\+\_\+parsing\+::parse\+\_\+tsv}} (std\+::string filename, int max\+\_\+lines)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespaceucr__parsing_a7f83f51cca900bc942bebace94f45477}{ucr\+\_\+parsing\+::parse\+\_\+ucr\+\_\+tsv}} (std\+::string filename, int max\+\_\+lines)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespaceucr__parsing_acd47505fda04ce823e57d1aceb8b27ce}{ucr\+\_\+parsing\+::parse\+\_\+ucr\+\_\+dataset}} (std\+::string dataset\+\_\+name, std\+::string dataset\+\_\+loc, \mbox{\hyperlink{namespaceucr__parsing_a8ecda92826a9d7143cc0dac958266007}{Dataset\+Type}} type)
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespaceucr__parsing_a6b08f2d0265a2a010a5e280742c7fc00}{ucr\+\_\+parsing\+::parse\+\_\+folder\+\_\+names}} (std\+::string directory\+\_\+path)
+\end{DoxyCompactItemize}

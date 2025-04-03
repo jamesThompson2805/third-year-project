@@ -1,0 +1,99 @@
+\chapter{README}
+\hypertarget{md_external_2libs_2pgbar_2README}{}\label{md_external_2libs_2pgbar_2README}\index{README@{README}}
+\doxysectlink{md_external_2libs_2pgbar_2docs_2README__zh}{中文文档见此}{0}。\hypertarget{md_external_2libs_2pgbar_2README_autotoc_md289}{}\doxysubsection{\texorpdfstring{Features}{Features}}\label{md_external_2libs_2pgbar_2README_autotoc_md289}
+
+\begin{DoxyItemize}
+\item {\bfseries{Header-\/only}}\+: All functionality contained within a single {\ttfamily .hpp} file in {\ttfamily include/pgbar}.
+\item {\bfseries{Low update overhead}}\+: Minimal cost for each progress update.
+\item {\bfseries{Unicode support}}\+: Parse each string in UTF-\/8 encoding.
+\item {\bfseries{RGB color support}}\+: Customizable progress bar colors.
+\item {\bfseries{Optional thread safety}}\+: Switchable via template parameters.
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily tqdm}-\/like interface\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: Access provided via template metaprogramming.
+\item {\bfseries{Modern C++ compliance}}\+: Adheres to best practices in modern C++.
+\end{DoxyItemize}\hypertarget{md_external_2libs_2pgbar_2README_autotoc_md290}{}\doxysubsection{\texorpdfstring{Styles}{Styles}}\label{md_external_2libs_2pgbar_2README_autotoc_md290}
+\hypertarget{md_external_2libs_2pgbar_2README_autotoc_md291}{}\doxysubsubsection{\texorpdfstring{Progress\+Bar}{Progress\+Bar}}\label{md_external_2libs_2pgbar_2README_autotoc_md291}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{LeftBorder\}\{Description\}\{Percent\}\{Starting\}\{Filler\}\{Lead\}\{Remains\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{RightBorder\}}
+\DoxyCodeLine{\ 30.87\%\ |\ [=========>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]\ |\ \ 662933732/2147483647\ |\ \ 11.92\ MHz\ |\ 00:00:55\ <\ 00:02:03}
+
+\end{DoxyCode}
+ \hypertarget{md_external_2libs_2pgbar_2README_autotoc_md292}{}\doxysubsubsection{\texorpdfstring{Block\+Progress\+Bar}{Block\+Progress\+Bar}}\label{md_external_2libs_2pgbar_2README_autotoc_md292}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{LeftBorder\}\{Description\}\{Percent\}\{Starting\}\{BlockBar\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{RightBorder\}}
+\DoxyCodeLine{\ 35.22\%\ |\ ██████████▋\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ 47275560/134217727\ |\ \ 16.80\ MHz\ |\ 00:00:02\ <\ 00:00:05}
+
+\end{DoxyCode}
+ \hypertarget{md_external_2libs_2pgbar_2README_autotoc_md293}{}\doxysubsubsection{\texorpdfstring{Spinner\+Bar}{Spinner\+Bar}}\label{md_external_2libs_2pgbar_2README_autotoc_md293}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{LeftBorder\}\{Lead\}\{Description\}\{Percent\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{RightBorder\}}
+\DoxyCodeLine{\(\backslash\)\ |\ \ 48.64\%\ |\ \ 65288807/134217727\ |\ \ 17.84\ MHz\ |\ 00:00:03\ <\ 00:00:03}
+
+\end{DoxyCode}
+ \hypertarget{md_external_2libs_2pgbar_2README_autotoc_md294}{}\doxysubsubsection{\texorpdfstring{Scanner\+Bar}{Scanner\+Bar}}\label{md_external_2libs_2pgbar_2README_autotoc_md294}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{LeftBorder\}\{Description\}\{Percent\}\{Starting\}\{Filler\}\{Lead\}\{Filler\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{RightBorder\}}
+\DoxyCodeLine{\ 39.82\%\ |\ [-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/<==>-\/-\/-\/-\/]\ |\ \ 53458698/134217727\ |\ \ 17.89\ MHz\ |\ 00:00:02\ <\ 00:00:04}
+
+\end{DoxyCode}
+ \hypertarget{md_external_2libs_2pgbar_2README_autotoc_md295}{}\doxysubsubsection{\texorpdfstring{Usage}{Usage}}\label{md_external_2libs_2pgbar_2README_autotoc_md295}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}pgbar/pgbar.hpp"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ bar\ \{\ \mbox{\hyperlink{structpgbar_1_1option_1_1Remains}{pgbar::option::Remains}}(\ \textcolor{stringliteral}{"{}-\/"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Filler}{pgbar::option::Filler}}(\ \textcolor{stringliteral}{"{}="{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::option::Styles(\ pgbar::configs::CharBar::Entire\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::option::TodoColor(\ \textcolor{stringliteral}{"{}\#A52A2A"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::option::DoneColor(\ 0x0099FF\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::option::StatusColor(\ pgbar::color::Yellow\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Tasks}{pgbar::option::Tasks}}(\ 100\ )\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ \_\ =\ 0;\ \_\ <\ 100;\ ++\_\ )}
+\DoxyCodeLine{\ \ \ \ bar.tick();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+For more examples, see \doxysectlink{md_external_2libs_2pgbar_2docs_2QuickStart}{Quick\+Start.md}{0} and \href{demo/demo.cpp}{\texttt{ demo.\+cpp}}.\hypertarget{md_external_2libs_2pgbar_2README_autotoc_md296}{}\doxysubsection{\texorpdfstring{FAQ}{FAQ}}\label{md_external_2libs_2pgbar_2README_autotoc_md296}
+\hypertarget{md_external_2libs_2pgbar_2README_autotoc_md297}{}\doxysubsubsection{\texorpdfstring{Does updating the progress bar slow down the program?}{Does updating the progress bar slow down the program?}}\label{md_external_2libs_2pgbar_2README_autotoc_md297}
+No, as mentioned in the Features section, updating the progress bar has {\itshape essentially} zero overhead.
+
+With {\ttfamily O2/\+O3} optimizations enabled, the performance overhead of the second iteration in the code below will {\itshape approach} that of the first iteration\mbox{[}\texorpdfstring{$^\wedge$}{\string^}1\mbox{]}.
+
+\mbox{[}\texorpdfstring{$^\wedge$}{\string^}1\mbox{]}\+: In practice, the overhead of updating the progress bar only adds a single function call and some branching cost.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}pgbar/pgbar.hpp"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ std::size\_t\ count\ =\ 0;}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\ std::size\_t\ \_\ =\ 0;\ \_\ <\ 2147483647;\ ++\_\ )}
+\DoxyCodeLine{\ \ \ \ ++count;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ bar\ \{\ pgbar::options::Tasks(\ 2147483647\ )\ \};}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\ std::size\_t\ \_\ =\ 0;\ \_\ <\ 2147483647;\ ++\_\ )}
+\DoxyCodeLine{\ \ \ \ bar.tick();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+However, the smoothness of the display will depend on the single-\/core performance of your processor. \hypertarget{md_external_2libs_2pgbar_2README_autotoc_md298}{}\doxysubsubsection{\texorpdfstring{Is it compatible with Windows/\+Linux?}{Is it compatible with Windows/\+Linux?}}\label{md_external_2libs_2pgbar_2README_autotoc_md298}
+Absolutely. I designed this library to work seamlessly on both systems, providing a unified visualization of iteration progress. \hypertarget{md_external_2libs_2pgbar_2README_autotoc_md299}{}\doxysubsubsection{\texorpdfstring{Does it support Unicode?}{Does it support Unicode?}}\label{md_external_2libs_2pgbar_2README_autotoc_md299}
+As pointed out at the beginning, there is no problem.
+
+Although only UTF-\/8 encoded strings are currently supported, using any non-\/\+UTF-\/8 encoded string will result in an exception.
+
+If you are using the C++20, {\ttfamily pgbar}\textquotesingle{}s functions also support {\ttfamily u8string}.
+
+\hypertarget{md_external_2libs_2pgbar_2README_autotoc_md300}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_external_2libs_2pgbar_2README_autotoc_md300}
+This project is licensed under the \mbox{[}MIT\mbox{]}(LICENSE) license. 

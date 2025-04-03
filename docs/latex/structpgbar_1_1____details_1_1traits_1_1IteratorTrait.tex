@@ -1,0 +1,39 @@
+\doxysection{pgbar\+::\+\_\+\+\_\+details\+::traits\+::Iterator\+Trait\texorpdfstring{$<$}{<} T, typename \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{structpgbar_1_1____details_1_1traits_1_1IteratorTrait}{}\label{structpgbar_1_1____details_1_1traits_1_1IteratorTrait}\index{pgbar::\_\_details::traits::IteratorTrait$<$ T, typename $>$@{pgbar::\_\_details::traits::IteratorTrait$<$ T, typename $>$}}
+
+
+{\ttfamily \#include $<$pgbar.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{structpgbar_1_1____details_1_1traits_1_1IteratorTrait_a4cab59399f9363348925711119755c91}{type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename = void$>$\newline
+struct pgbar\+::\+\_\+\+\_\+details\+::traits\+::\+Iterator\+Trait$<$ T, typename $>$}
+Check whether the type {\ttfamily T} has a type {\ttfamily iterator} or {\ttfamily const\+\_\+iterator}, and return it if affirmative. Otherwise, return the type {\ttfamily T} itself. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{structpgbar_1_1____details_1_1traits_1_1IteratorTrait_a4cab59399f9363348925711119755c91}\label{structpgbar_1_1____details_1_1traits_1_1IteratorTrait_a4cab59399f9363348925711119755c91} 
+\index{pgbar::\_\_details::traits::IteratorTrait$<$ T, typename $>$@{pgbar::\_\_details::traits::IteratorTrait$<$ T, typename $>$}!type@{type}}
+\index{type@{type}!pgbar::\_\_details::traits::IteratorTrait$<$ T, typename $>$@{pgbar::\_\_details::traits::IteratorTrait$<$ T, typename $>$}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily template$<$typename T , typename  = void$>$ \\
+using \mbox{\hyperlink{structpgbar_1_1____details_1_1traits_1_1IteratorTrait}{pgbar\+::\+\_\+\+\_\+details\+::traits\+::\+Iterator\+Trait}}$<$ T, typename $>$\+::type}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \textcolor{keyword}{typename}\ std::conditional<std::is\_array<typename\ std::remove\_reference<T>::type>::value,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::add\_pointer<\textcolor{keyword}{typename}\ std::remove\_extent<}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::remove\_reference<T>::type>::type>::type,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::remove\_reference<T>::type>::type}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

@@ -10,6 +10,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(${PROJECT_NAME} src/main.cpp
 			       src/plotting/series_plotting.cpp
 			       src/plotting/plot_types.cpp
+			       src/plotting/plot_dimreduct_paa.cpp
+			       src/plotting/plot_dimreduct_pla.cpp
 			       src/evaluations/general.cpp
 			       src/evaluations/capla.cpp)
 

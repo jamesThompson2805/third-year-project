@@ -1,0 +1,163 @@
+\doxysection{plot Namespace Reference}
+\hypertarget{namespaceplot}{}\label{namespaceplot}\index{plot@{plot}}
+
+
+plot namespace defines useful functions for plotting series and actions performed on series.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplot_ac04d391973e1e722dd94cf196023cdcd}{plot\+\_\+series}} (\mbox{\hyperlink{structSeries}{Series}} \&s, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+series plots a series. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_aa7743ec830f3d475c11741c63ae6351c}{plot\+\_\+many\+\_\+series}} (std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&vs, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+many\+\_\+series plots multiple series. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_ad4e7e6864221609200a47e52b1dacd3e}{barplot\+\_\+many\+\_\+series}} (std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&vs, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em barplot\+\_\+many\+\_\+series plots multiple series, here each series is viewed as a value for each set of bars. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_a10979c227275b61b2e0b2070337c606f}{plot\+\_\+series\+\_\+diff}} (\mbox{\hyperlink{structSeries}{Series}} \&s1, \mbox{\hyperlink{structSeries}{Series}} \&s2, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+series\+\_\+diff plots two series and adds error lines imbetween to highlight their disagreements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_a0dd6558f40503eb05365b2265a5327e7}{plot\+\_\+lines}} (std\+::vector$<$ \mbox{\hyperlink{structLine}{Line}} $>$ ls, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+lines plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_aeee601ec3f6e6fdecf57bafad3e6bc81}{plot\+\_\+lines\+\_\+generated}} (const std\+::vector$<$ double $>$ \&s, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+lines\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2}{plot\+\_\+lines\+\_\+generated\+\_\+ucr\+\_\+average}} (const std\+::vector$<$ std\+::string $>$ \&dataset\+\_\+names, std\+::string dataset\+\_\+filepath, unsigned int ds\+\_\+size, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+lines\+\_\+generated\+\_\+ucr\+\_\+average plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, utilising multiple UCR datasets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+plot namespace defines useful functions for plotting series and actions performed on series. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceplot_ad4e7e6864221609200a47e52b1dacd3e}\label{namespaceplot_ad4e7e6864221609200a47e52b1dacd3e} 
+\index{plot@{plot}!barplot\_many\_series@{barplot\_many\_series}}
+\index{barplot\_many\_series@{barplot\_many\_series}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{barplot\_many\_series()}{barplot\_many\_series()}}
+{\footnotesize\ttfamily void plot\+::barplot\+\_\+many\+\_\+series (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&}]{vs,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+barplot\+\_\+many\+\_\+series plots multiple series, here each series is viewed as a value for each set of bars. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vs} & Is the vector of all \doxylink{structSeries}{Series} to be plotted. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_a0dd6558f40503eb05365b2265a5327e7}\label{namespaceplot_a0dd6558f40503eb05365b2265a5327e7} 
+\index{plot@{plot}!plot\_lines@{plot\_lines}}
+\index{plot\_lines@{plot\_lines}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_lines()}{plot\_lines()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+lines (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structLine}{Line}} $>$}]{ls,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+lines plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s2} & ls the vector of lines to be plotted. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details}. The function will automatically scale to ensure that all lines are accommodated onto the plot. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_aeee601ec3f6e6fdecf57bafad3e6bc81}\label{namespaceplot_aeee601ec3f6e6fdecf57bafad3e6bc81} 
+\index{plot@{plot}!plot\_lines\_generated@{plot\_lines\_generated}}
+\index{plot\_lines\_generated@{plot\_lines\_generated}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_lines\_generated()}{plot\_lines\_generated()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+lines\+\_\+generated (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{s,  }\item[{std\+::vector$<$ unsigned int $>$}]{x,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$}]{y\+\_\+gens,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+lines\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & ls the baseline series. \\
+\hline
+{\em x} & Is the underlying x-\/axis to plot on (and the values passed to the parameter of \doxylink{structLineGenerator}{Line\+Generator}). \\
+\hline
+{\em y\+\_\+gens} & Is the vector of \doxylink{structLineGenerator}{Line\+Generator} that provide method to vary approximation of s. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details} to render the graph. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2}\label{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2} 
+\index{plot@{plot}!plot\_lines\_generated\_ucr\_average@{plot\_lines\_generated\_ucr\_average}}
+\index{plot\_lines\_generated\_ucr\_average@{plot\_lines\_generated\_ucr\_average}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_lines\_generated\_ucr\_average()}{plot\_lines\_generated\_ucr\_average()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+lines\+\_\+generated\+\_\+ucr\+\_\+average (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{dataset\+\_\+names,  }\item[{std\+::string}]{dataset\+\_\+filepath,  }\item[{unsigned int}]{ds\+\_\+size,  }\item[{std\+::vector$<$ unsigned int $>$}]{x,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$}]{y\+\_\+gens,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+lines\+\_\+generated\+\_\+ucr\+\_\+average plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, utilising multiple UCR datasets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dataset\+\_\+names} & Is the vector of names of the UCR datasets used. \\
+\hline
+{\em dataset\+\_\+filepath} & Is the filepath to the set of the UCR datasets, these can be downloaded from \href{https://www.cs.ucr.edu/\%7Eeamonn/time_series_data_2018/}{\texttt{ https\+://www.\+cs.\+ucr.\+edu/\%7\+Eeamonn/time\+\_\+series\+\_\+data\+\_\+2018/}}. \\
+\hline
+{\em ds\+\_\+size} & Is the size the datasets will be set to. This should be small enough such that none are below this size beforehand \\
+\hline
+{\em x} & Is the underlying x-\/axis to plot on (and the values passed to the parameter of \doxylink{structLineGenerator}{Line\+Generator}). \\
+\hline
+{\em y\+\_\+gens} & Is the vector of \doxylink{structLineGenerator}{Line\+Generator} that provide method to vary approximation of s. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details} to render the graph. Multiple datasets are used via ensuring all are z-\/normalised and hence being capable to take the mean of all of their results, providing the single line. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_aa7743ec830f3d475c11741c63ae6351c}\label{namespaceplot_aa7743ec830f3d475c11741c63ae6351c} 
+\index{plot@{plot}!plot\_many\_series@{plot\_many\_series}}
+\index{plot\_many\_series@{plot\_many\_series}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_many\_series()}{plot\_many\_series()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+many\+\_\+series (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&}]{vs,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+many\+\_\+series plots multiple series. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vs} & Is the vector of all \doxylink{structSeries}{Series} to be plotted. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_ac04d391973e1e722dd94cf196023cdcd}\label{namespaceplot_ac04d391973e1e722dd94cf196023cdcd} 
+\index{plot@{plot}!plot\_series@{plot\_series}}
+\index{plot\_series@{plot\_series}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_series()}{plot\_series()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+series (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSeries}{Series}} \&}]{s,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+series plots a series. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Is the \doxylink{structSeries}{Series} to be plotted. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_a10979c227275b61b2e0b2070337c606f}\label{namespaceplot_a10979c227275b61b2e0b2070337c606f} 
+\index{plot@{plot}!plot\_series\_diff@{plot\_series\_diff}}
+\index{plot\_series\_diff@{plot\_series\_diff}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_series\_diff()}{plot\_series\_diff()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+series\+\_\+diff (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSeries}{Series}} \&}]{s1,  }\item[{\mbox{\hyperlink{structSeries}{Series}} \&}]{s2,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+series\+\_\+diff plots two series and adds error lines imbetween to highlight their disagreements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1} & Is the first \doxylink{structSeries}{Series} to be plotted. \\
+\hline
+{\em s2} & Is the second \doxylink{structSeries}{Series} to be plotted. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details}. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,95 @@
+\doxysection{plot\+\_\+dimreduct\+\_\+paa.\+cpp}
+\hypertarget{plot__dimreduct__paa_8cpp_source}{}\label{plot__dimreduct__paa_8cpp_source}\index{src/plotting/plot\_dimreduct\_paa.cpp@{src/plotting/plot\_dimreduct\_paa.cpp}}
+\mbox{\hyperlink{plot__dimreduct__paa_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{plot__dimreduct__paa_8h}{plot\_dimreduct\_paa.h}}"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}paa.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}gnuplot-\/iostream.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{plot__types_8h}{plot\_types.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <boost/tuple/tuple.hpp>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ }std::vector;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ }std::tuple;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot__paa_a5c53b0e216018457018334e43422f95b}{plot\_paa::plot\_paa}}(\textcolor{keyword}{const}\ vector<double>\&\ series,\ std::string\ data\_name,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p)}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordflow}{if}\ (num\_params\ <=\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ vector<double>\ paa\ =\ paa::paa(series,\ num\_params);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ interval\_size\ =\ (series.size()\ /\ paa.size())\ +\ (series.size()\ \%\ paa.size()\ !=\ 0);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ vector<double>\ x1,\ x2,\ err1,\ err2,\ y1,\ y2;}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<series.size();\ ++i)\{}
+\DoxyCodeLine{00037\ \ \ \ \ x1.emplace\_back(i);}
+\DoxyCodeLine{00038\ \ \ \ \ x2.emplace\_back(i);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ y1.emplace\_back(\ series[i]\ );}
+\DoxyCodeLine{00041\ \ \ \ \ y2.emplace\_back(\ paa[i\ /\ interval\_size]\ );}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ err1.emplace\_back(\ series[i]\ );}
+\DoxyCodeLine{00044\ \ \ \ \ err2.emplace\_back(\ paa[\ i\ /\ interval\_size]);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (i+1)\ \%\ interval\_size\ ==\ 0)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ x2.emplace\_back(\ (\textcolor{keywordtype}{double})i\ +\ 0.50);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ y2.emplace\_back(\ NAN\ );}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ Gnuplot\ gp;}
+\DoxyCodeLine{00053\ \ \ \mbox{\hyperlink{namespaceplot__setup_a99c39622a998034091a69ef49d403326}{plot\_setup::setup\_gnuplot}}(gp,\ p);}
+\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//gp\ <<\ "{}plot\ '-\/'\ dt\ 3\ with\ yerrorlines\ title\ 'errors',\ '-\/'\ with\ lines\ lt\ rgb\ 'blue'\ lw\ 1.2\ title\ '"{}<<data\_name<<"{}',\ '-\/'\ with\ linespoints\ lt\ rgb\ 'red'\ lw\ 1.2\ title\ 'PAA'\(\backslash\)n"{};}}
+\DoxyCodeLine{00055\ \ \ gp\ <<\ \textcolor{stringliteral}{"{}plot\ '-\/'\ with\ lines\ lt\ rgb\ 'blue'\ lw\ 4\ title\ '"{}}<<data\_name<<\textcolor{stringliteral}{"{}',\ '-\/'\ with\ lines\ lt\ rgb\ 'red'\ lw\ 4\ title\ 'PAA'\(\backslash\)n"{}};}
+\DoxyCodeLine{00056\ \ \ \textcolor{comment}{//gp.send1d(\ boost::make\_tuple(\ x1,\ y1,\ err1,\ err2)\ );}}
+\DoxyCodeLine{00057\ \ \ gp.send1d(\ boost::make\_tuple(\ x1,\ y1\ )\ );}
+\DoxyCodeLine{00058\ \ \ gp.send1d(\ boost::make\_tuple(\ x2,\ y2\ )\ );}
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{namespaceplot__setup_a7e18df5602526161cb6cc41e25874914}{plot\_setup::open\_pdf}}(p);}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot__paa_ae7dd7a99be9a4b062f9598961bf2c4a7}{plot\_paa::plot\_any\_apaa}}(\textcolor{keyword}{const}\ vector<double>\&\ series}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ std::string\ data\_name}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ std::function<\ vector<tuple<double,\ unsigned\ int>>(\textcolor{keyword}{const}\ vector<double>\&)\ >\ to\_apaa}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ std::string\ drt\_name}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p)}
+\DoxyCodeLine{00075\ \{}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ vector<tuple<double,\ unsigned\ int>>\ apaa\ =\ to\_apaa(series);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ vector<double>\ x1,\ x2,\ err1,\ err2,\ y1,\ y2;}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{int}\ i=0;}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ tp\ :\ apaa)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ i\ <=\ std::get<1>(tp))\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ x1.emplace\_back(i);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ x2.emplace\_back(i);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ y1.emplace\_back(\ series[i]\ );}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ y2.emplace\_back(\ std::get<0>(tp)\ );}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ err1.emplace\_back(\ series[i]\ );}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ err2.emplace\_back(\ std::get<0>(tp));}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (i+1)\ >\ std::get<1>(tp))\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ x2.emplace\_back(\ (\textcolor{keywordtype}{double})i\ +\ 0.50);}
+\DoxyCodeLine{00094\ \ \ \ \ y2.emplace\_back(\ NAN\ );}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ Gnuplot\ gp;}
+\DoxyCodeLine{00101\ \ \ \mbox{\hyperlink{namespaceplot__setup_a99c39622a998034091a69ef49d403326}{plot\_setup::setup\_gnuplot}}(gp,\ p);}
+\DoxyCodeLine{00102\ \ \ \textcolor{comment}{//gp\ <<\ "{}plot\ '-\/'\ dt\ 3\ with\ yerrorlines\ title\ 'Errors',\ '-\/'\ with\ linespoints\ lt\ rgb\ 'blue'\ lw\ 1.2\ pt\ 5\ ps\ 0.5\ title\ '"{}<<data\_name<<"{}',\ '-\/'\ with\ linespoints\ lt\ rgb\ 'red'\ lw\ 1.2\ pt\ 7\ ps\ 0.5\ title\ '"{}<<\ drt\_name\ <<"{}'\(\backslash\)n"{};}}
+\DoxyCodeLine{00103\ \ \ gp\ <<\ \textcolor{stringliteral}{"{}plot\ '-\/'\ with\ lines\ lt\ rgb\ 'blue'\ lw\ 4\ title\ '"{}}<<data\_name<<\textcolor{stringliteral}{"{}',\ '-\/'\ with\ lines\ lt\ rgb\ 'red'\ lw\ 4\ title\ '"{}}<<\ drt\_name\ <<\textcolor{stringliteral}{"{}'\(\backslash\)n"{}};}
+\DoxyCodeLine{00104\ \ \ \textcolor{comment}{//gp.send1d(\ boost::make\_tuple(\ x1,\ y1,\ err1,\ err2)\ );}}
+\DoxyCodeLine{00105\ \ \ gp.send1d(\ boost::make\_tuple(\ x1,\ y1\ )\ );}
+\DoxyCodeLine{00106\ \ \ gp.send1d(\ boost::make\_tuple(\ x2,\ y2\ )\ );}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \mbox{\hyperlink{namespaceplot__setup_a7e18df5602526161cb6cc41e25874914}{plot\_setup::open\_pdf}}(p);}
+\DoxyCodeLine{00109\ \}}
+
+\end{DoxyCode}

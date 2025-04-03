@@ -1,0 +1,47 @@
+\doxysection{general.\+h}
+\hypertarget{general_8h_source}{}\label{general_8h_source}\index{src/evaluations/general.h@{src/evaluations/general.h}}
+\mbox{\hyperlink{general_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ EVAL\_GENERAL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ EVAL\_GENERAL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ std::function<Seqd(\textcolor{keyword}{const}\ Seqd\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int})>\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ std::function<double(\textcolor{keyword}{const}\ Seqd\&,\ \textcolor{keyword}{const}\ Seqd\&)>\ \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegeneral__eval}{general\_eval}}\ \{}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacegeneral__eval_a9a677b8a83cd29e8c5f2c72476524b10}{comp\_of\_method}}(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f,\ \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}}\ comp);}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacegeneral__eval_a3accd2f96c9cbbb8d49eacf7961dd11d}{mse\_of\_method}}(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacegeneral__eval_a5378dd1e1e9937b50a1035bc6ddb5f47}{l2\_of\_method}}(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacegeneral__eval_a0e6b86d637779c5c1d89a035568608e0}{maxdev\_of\_method}}(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacegeneral__eval_a1a6c338fe30d46ca4b472644605cb651}{cputime\_ms\_of\_method}}(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ Seqd\ get\_comp\_over\_sizes(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f,\ \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}}\ comp);}
+\DoxyCodeLine{00069\ \ \ Seqd\ get\_mse\_over\_sizes(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00070\ \ \ Seqd\ get\_l2\_over\_sizes(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00071\ \ \ Seqd\ get\_maxdev\_over\_sizes(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00072\ \ \ Seqd\ get\_cputime\_over\_sizes(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ sizes,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ Seqd\ get\_comp\_over\_num\_params(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ vec\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f,\ \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}}\ comp);}
+\DoxyCodeLine{00075\ \ \ Seqd\ get\_mse\_over\_num\_params(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ vec\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00076\ \ \ Seqd\ get\_l2\_over\_num\_params(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ vec\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00077\ \ \ Seqd\ get\_maxdev\_over\_num\_params(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ vec\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00078\ \ \ Seqd\ get\_cputime\_over\_num\_params(\textcolor{keyword}{const}\ Seqd\&\ s,\ Sequi\ vec\_params,\ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}\ f);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ Seqd\ get\_comp\_over\_DRTs(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ std::vector<DRT>\ fs,\ \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}}\ comp);}
+\DoxyCodeLine{00081\ \ \ Seqd\ get\_mse\_over\_DRTs(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ std::vector<DRT>\ fs);}
+\DoxyCodeLine{00082\ \ \ Seqd\ get\_l2\_over\_DRTs(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ std::vector<DRT>\ fs);}
+\DoxyCodeLine{00083\ \ \ Seqd\ get\_maxdev\_over\_DRTs(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ std::vector<DRT>\ fs);}
+\DoxyCodeLine{00084\ \ \ Seqd\ get\_cputime\_over\_DRTs(\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params,\ std::vector<DRT>\ fs);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

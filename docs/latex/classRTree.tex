@@ -1,0 +1,52 @@
+\doxysection{RTree\texorpdfstring{$<$}{<} R, I \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classRTree}{}\label{classRTree}\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRTree_a97b0f3741fd2b8c3e288bc9406e70c86}\label{classRTree_a97b0f3741fd2b8c3e288bc9406e70c86} 
+{\bfseries RTree} (unsigned int max\+\_\+entries, unsigned int min\+\_\+entries, FPtr\+Area$<$ R $>$ area\+\_\+f, FPtr\+Area\+Merge$<$ R $>$ merge\+\_\+f, FPtr\+MBRDist\+Sqr$<$ R $>$ p\+\_\+dist\+\_\+f)
+\item 
+\Hypertarget{classRTree_a92841af75aaec6a807c54d006bfb338b}\label{classRTree_a92841af75aaec6a807c54d006bfb338b} 
+unsigned int {\bfseries get\+\_\+size\+\_\+tree} ()
+\item 
+\Hypertarget{classRTree_ad358f2ca0d4f40e8bd1ea21621e64c4b}\label{classRTree_ad358f2ca0d4f40e8bd1ea21621e64c4b} 
+unsigned int {\bfseries get\+\_\+size\+\_\+leaves} ()
+\item 
+\Hypertarget{classRTree_addf261f84ef6b766d6512f31b6a648bc}\label{classRTree_addf261f84ef6b766d6512f31b6a648bc} 
+unsigned int {\bfseries get\+\_\+num\+\_\+leaves} ()
+\item 
+\Hypertarget{classRTree_a3a8761afebb62466aefe3cc06bbb1035}\label{classRTree_a3a8761afebb62466aefe3cc06bbb1035} 
+void {\bfseries insert} (R mbr, I st\+\_\+index)
+\item 
+\Hypertarget{classRTree_a3f17d051df33e1ff819680500e1f420e}\label{classRTree_a3f17d051df33e1ff819680500e1f420e} 
+std\+::vector$<$ I $>$ {\bfseries sim\+\_\+search} (const std\+::vector$<$ double $>$ \&q, double epsilon)
+\item 
+\Hypertarget{classRTree_a5146f5bb5caa00709a605b59dbf3205b}\label{classRTree_a5146f5bb5caa00709a605b59dbf3205b} 
+std\+::vector$<$ std\+::array$<$ const double \texorpdfstring{$\ast$}{*}, 2 $>$ $>$ {\bfseries knn\+\_\+search} (const std\+::vector$<$ double $>$ \&q, unsigned int k, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
+\item 
+\Hypertarget{classRTree_a4fd4f559b224d20ae204b2c6e83e256a}\label{classRTree_a4fd4f559b224d20ae204b2c6e83e256a} 
+std\+::vector$<$ std\+::array$<$ const double \texorpdfstring{$\ast$}{*}, 2 $>$ $>$ {\bfseries sim\+\_\+search\+\_\+exact} (const std\+::vector$<$ double $>$ \&q, double epsilon, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
+\item 
+\Hypertarget{classRTree_a452bf3d8ed2d011a32c2535655a09c07}\label{classRTree_a452bf3d8ed2d011a32c2535655a09c07} 
+double {\bfseries pruning\+\_\+power} (const std\+::vector$<$ double $>$ \&q, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
+\item 
+\Hypertarget{classRTree_a48efff6097e2b92ff8fbe376844561cc}\label{classRTree_a48efff6097e2b92ff8fbe376844561cc} 
+\mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*} {\bfseries split\+\_\+node} (\mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*}const node)
+\item 
+\Hypertarget{classRTree_a97867888a52ce6cbf8507707d66a7ef5}\label{classRTree_a97867888a52ce6cbf8507707d66a7ef5} 
+std\+::array$<$ unsigned int, 2 $>$ {\bfseries quad\+\_\+pick\+\_\+seeds} (const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&mbrs)
+\item 
+\Hypertarget{classRTree_ab451e6cc72bbc1fbafc0f9533f6f4c19}\label{classRTree_ab451e6cc72bbc1fbafc0f9533f6f4c19} 
+std\+::array$<$ unsigned int, 2 $>$ {\bfseries lin\+\_\+pick\+\_\+seeds} (const \mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*}const node)
+\item 
+\Hypertarget{classRTree_a799d76a18114055ef07b8959f67abd4e}\label{classRTree_a799d76a18114055ef07b8959f67abd4e} 
+unsigned int {\bfseries quad\+\_\+pick\+\_\+next\+\_\+node} (const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&mbrs, const std\+::set$<$ unsigned int $>$ \&g1, const R \&g1mbr, const std\+::set$<$ unsigned int $>$ \&g2, const R \&g2mbr)
+\item 
+\Hypertarget{classRTree_a7b079cd57a3c09f535e0e98c7a7a604a}\label{classRTree_a7b079cd57a3c09f535e0e98c7a7a604a} 
+unsigned int {\bfseries lin\+\_\+pick\+\_\+next\+\_\+node} (const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&mbrs, const std\+::set$<$ unsigned int $>$ \&g1, const R \&g1mbr, const std\+::set$<$ unsigned int $>$ \&g2, const R \&g2mbr)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/similarity\+\_\+search/r\+\_\+tree.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,58 @@
+\doxysection{lib/similarity\+\_\+search/lower\+\_\+bounds\+\_\+apca.h File Reference}
+\hypertarget{lower__bounds__apca_8h}{}\label{lower__bounds__apca_8h}\index{lib/similarity\_search/lower\_bounds\_apca.h@{lib/similarity\_search/lower\_bounds\_apca.h}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structapca__bounds_1_1Region}{apca\+\_\+bounds\+::\+Region}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceapca__bounds}{apca\+\_\+bounds}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\using \mbox{\hyperlink{lower__bounds__apca_8h_a6e227c9f6e08ed4b2293412cb4dd4adc}{Apca\+Pt}} = std\+::array$<$std\+::tuple$<$double,unsigned int$>$,S$>$
+\item 
+typedef std\+::vector$<$ double $>$ \mbox{\hyperlink{lower__bounds__apca_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\using \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{apca\+\_\+bounds\+::\+Apca\+MBR}} = std\+::array$<$\mbox{\hyperlink{structapca__bounds_1_1Region}{Region}}, S$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespaceapca__bounds_ab014a408fff1361f7f796111d0b28b64}{apca\+\_\+bounds\+::region\+\_\+area}} (const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&r)
+\item 
+\mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \mbox{\hyperlink{namespaceapca__bounds_a5060e0810d538a25526e50df39018945}{apca\+\_\+bounds\+::region\+\_\+merge}} (const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&r1, const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&r2)
+\item 
+double \mbox{\hyperlink{namespaceapca__bounds_a84fae0abf1a26b9427f720700829b203}{apca\+\_\+bounds\+::dist\+\_\+to\+\_\+region\+\_\+sqr}} (const double \&qi, const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \&r, unsigned int global\+\_\+offset)
+\item 
+double \mbox{\hyperlink{namespaceapca__bounds_ab97cd67a3dbe9f56a83a93d22970f0d4}{apca\+\_\+bounds\+::dist\+\_\+to\+\_\+regions\+\_\+sqr}} (const double \&qi, const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \texorpdfstring{$\ast$}{*}const rstart, const \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}} \texorpdfstring{$\ast$}{*}const rend, unsigned int global\+\_\+offset)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\double \mbox{\hyperlink{namespaceapca__bounds_ab6893bd3da8191cd5da032c91eccd127}{apca\+\_\+bounds\+::mbr\+\_\+area}} (const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&mbr)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\\mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \mbox{\hyperlink{namespaceapca__bounds_a743c07a2f762cb5cc9bf8bd1cd95fb1d}{apca\+\_\+bounds\+::mbr\+\_\+merge}} (const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&mbr1, const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&mbr2)
+\item 
+{\footnotesize template$<$unsigned int S$>$ }\\double \mbox{\hyperlink{namespaceapca__bounds_a5045f86f0fb53f19d174c0d55587e6c6}{apca\+\_\+bounds\+::dist\+\_\+to\+\_\+mbr\+\_\+sqr}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{namespaceapca__bounds_a3099ec572736d9afd85f4da3bf91ccfa}{Apca\+MBR}}$<$ S $>$ \&mbr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{lower__bounds__apca_8h_a6e227c9f6e08ed4b2293412cb4dd4adc}\label{lower__bounds__apca_8h_a6e227c9f6e08ed4b2293412cb4dd4adc} 
+\index{lower\_bounds\_apca.h@{lower\_bounds\_apca.h}!ApcaPt@{ApcaPt}}
+\index{ApcaPt@{ApcaPt}!lower\_bounds\_apca.h@{lower\_bounds\_apca.h}}
+\doxysubsubsection{\texorpdfstring{ApcaPt}{ApcaPt}}
+{\footnotesize\ttfamily template$<$unsigned int S$>$ \\
+using \mbox{\hyperlink{lower__bounds__apca_8h_a6e227c9f6e08ed4b2293412cb4dd4adc}{Apca\+Pt}} = std\+::array$<$std\+::tuple$<$double,unsigned int$>$,S$>$}
+
+\Hypertarget{lower__bounds__apca_8h_a5d3953cd3e75718fc534b351149f9f98}\label{lower__bounds__apca_8h_a5d3953cd3e75718fc534b351149f9f98} 
+\index{lower\_bounds\_apca.h@{lower\_bounds\_apca.h}!Seqd@{Seqd}}
+\index{Seqd@{Seqd}!lower\_bounds\_apca.h@{lower\_bounds\_apca.h}}
+\doxysubsubsection{\texorpdfstring{Seqd}{Seqd}}
+{\footnotesize\ttfamily typedef std\+::vector$<$double$>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}}
+

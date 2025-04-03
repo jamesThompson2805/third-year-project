@@ -1,0 +1,26 @@
+\doxysection{exact\+\_\+dp.\+h}
+\hypertarget{lib_2dimension__reductions_2exact__dp_8h_source}{}\label{lib_2dimension__reductions_2exact__dp_8h_source}\index{lib/dimension\_reductions/exact\_dp.h@{lib/dimension\_reductions/exact\_dp.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ EXACT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ EXACT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }exact\_dp\ \{\ }
+\DoxyCodeLine{00011\ std::vector<\ std::tuple<\ double,\ unsigned\ int>\ >\ min\_mse\_paa(\ \textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00012\ std::vector<\ std::tuple<\ DoublePair,\ unsigned\ int>\ >\ min\_mse\_pla(\ \textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ std::vector<\ std::tuple<\ double,\ unsigned\ int>\ >\ min\_maxdev\_paa(\ \textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00015\ std::vector<\ std::tuple<\ DoublePair,\ unsigned\ int>\ >\ min\_maxdev\_pla(\ \textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+
+\end{DoxyCode}

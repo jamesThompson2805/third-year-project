@@ -1,0 +1,57 @@
+\doxysection{pgbar\+::scope\+::Proxy\+Span\texorpdfstring{$<$}{<} R, B \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classpgbar_1_1scope_1_1ProxySpan}{}\label{classpgbar_1_1scope_1_1ProxySpan}\index{pgbar::scope::ProxySpan$<$ R, B $>$@{pgbar::scope::ProxySpan$<$ R, B $>$}}
+
+
+{\ttfamily \#include $<$pgbar.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan_1_1iterator}{iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1ProxySpan_a460a1bcbd0e28a04809f6bdce5b438b5}\label{classpgbar_1_1scope_1_1ProxySpan_a460a1bcbd0e28a04809f6bdce5b438b5} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX17\+\_\+\+CNSTXPR {\bfseries Proxy\+Span} (R itr\+\_\+range, B \&itr\+\_\+bar) noexcept(std\+::is\+\_\+nothrow\+\_\+move\+\_\+constructible$<$ R $>$\+::value)
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1ProxySpan_a368610e8a067aeedae669b69d6afb90e}\label{classpgbar_1_1scope_1_1ProxySpan_a368610e8a067aeedae669b69d6afb90e} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX17\+\_\+\+CNSTXPR {\bfseries Proxy\+Span} (\mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan}{Proxy\+Span}} \&\&rhs) noexcept(std\+::is\+\_\+nothrow\+\_\+move\+\_\+constructible$<$ R $>$\+::value)
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1ProxySpan_a13dc8339f2e97048764dc9d127e1a0b6}\label{classpgbar_1_1scope_1_1ProxySpan_a13dc8339f2e97048764dc9d127e1a0b6} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX17\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan}{Proxy\+Span}} \& {\bfseries operator=} (\mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan}{Proxy\+Span}} \&\&rhs) \&noexcept(std\+::is\+\_\+nothrow\+\_\+move\+\_\+assignable$<$ R $>$\+::value)
+\item 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN \+\_\+\+\_\+\+PGBAR\+\_\+\+CXX17\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan_1_1iterator}{iterator}} \mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan_ae1f6d94f09d2dab64aaa12f032430b83}{begin}} () \&
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1ProxySpan_a531e58dcb47b9410c8c60cec3a527037}\label{classpgbar_1_1scope_1_1ProxySpan_a531e58dcb47b9410c8c60cec3a527037} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN \+\_\+\+\_\+\+PGBAR\+\_\+\+CXX17\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan_1_1iterator}{iterator}} {\bfseries end} () const
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1ProxySpan_a3e826f6f5690a3d2b88441c49d1eeaf6}\label{classpgbar_1_1scope_1_1ProxySpan_a3e826f6f5690a3d2b88441c49d1eeaf6} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX14\+\_\+\+CNSTXPR void {\bfseries swap} (\mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan}{Proxy\+Span}}$<$ R, B $>$ \&lhs) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1scope_1_1ProxySpan_a04255f5c913f351c037e3374bb3e0a81}\label{classpgbar_1_1scope_1_1ProxySpan_a04255f5c913f351c037e3374bb3e0a81} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX14\+\_\+\+CNSTXPR void {\bfseries swap} (\mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan}{Proxy\+Span}}$<$ R, B $>$ \&a, \mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan}{Proxy\+Span}}$<$ R, B $>$ \&b) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename R, typename B$>$\newline
+class pgbar\+::scope\+::\+Proxy\+Span$<$ R, B $>$}
+A range that contains a bar object and an unidirectional abstract range, which transforms the iterations in the abstract into a visual display of the object. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpgbar_1_1scope_1_1ProxySpan_ae1f6d94f09d2dab64aaa12f032430b83}\label{classpgbar_1_1scope_1_1ProxySpan_ae1f6d94f09d2dab64aaa12f032430b83} 
+\index{pgbar::scope::ProxySpan$<$ R, B $>$@{pgbar::scope::ProxySpan$<$ R, B $>$}!begin@{begin}}
+\index{begin@{begin}!pgbar::scope::ProxySpan$<$ R, B $>$@{pgbar::scope::ProxySpan$<$ R, B $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$typename R , typename B $>$ \\
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD \+\_\+\+\_\+\+PGBAR\+\_\+\+INLINE\+\_\+\+FN \+\_\+\+\_\+\+PGBAR\+\_\+\+CXX17\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan_1_1iterator}{iterator}} \mbox{\hyperlink{classpgbar_1_1scope_1_1ProxySpan}{pgbar\+::scope\+::\+Proxy\+Span}}$<$ R, B $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) \&\hspace{0.3cm}{\ttfamily [inline]}}
+
+This function CHANGES the state of the pgbar object it holds. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

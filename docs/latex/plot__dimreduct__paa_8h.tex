@@ -1,0 +1,29 @@
+\doxysection{src/plotting/plot\+\_\+dimreduct\+\_\+paa.h File Reference}
+\hypertarget{plot__dimreduct__paa_8h}{}\label{plot__dimreduct__paa_8h}\index{src/plotting/plot\_dimreduct\_paa.h@{src/plotting/plot\_dimreduct\_paa.h}}
+
+
+Header file containing methods for plotting (Adaptive) Piecewise Aggregate Approximations.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+{\ttfamily \#include "{}plot\+\_\+types.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceplot__paa}{plot\+\_\+paa}}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespaceplot__paa}{plot\+\_\+paa} Is a namespace containing definitions of functions to plot PAA and APCA methods \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplot__paa_a5c53b0e216018457018334e43422f95b}{plot\+\_\+paa\+::plot\+\_\+paa}} (const Seqd \&series, std\+::string data\+\_\+name, unsigned int num\+\_\+params, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em \doxylink{namespaceplot__paa}{plot\+\_\+paa} plots a series with its PAA approximation render on top. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot__paa_ae7dd7a99be9a4b062f9598961bf2c4a7}{plot\+\_\+paa\+::plot\+\_\+any\+\_\+apaa}} (const Seqd \&series, std\+::string data\+\_\+name, std\+::function$<$ std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$(const Seqd \&) $>$ to\+\_\+apaa, std\+::string drt\+\_\+name, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+any\+\_\+apaa plots a series over time with its approximation by an adaptive PAA implementation on top. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file containing methods for plotting (Adaptive) Piecewise Aggregate Approximations. 
+

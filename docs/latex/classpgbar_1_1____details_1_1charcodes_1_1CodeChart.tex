@@ -1,0 +1,49 @@
+\doxysection{pgbar\+::\+\_\+\+\_\+details\+::charcodes\+::Code\+Chart Class Reference}
+\hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}\index{pgbar::\_\_details::charcodes::CodeChart@{pgbar::\_\_details::charcodes::CodeChart}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a6396b4bfd89389da77597f16c706b8a7}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a6396b4bfd89389da77597f16c706b8a7} 
+constexpr {\bfseries Code\+Chart} (types\+::\+UCode\+Point start, types\+::\+UCode\+Point end, types\+::\+Size width) noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_adf62b7290e04ea475b8551cb4056ea68}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_adf62b7290e04ea475b8551cb4056ea68} 
+constexpr {\bfseries Code\+Chart} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \&)=default
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a8cc8f261002a748063cae07a41d79734}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a8cc8f261002a748063cae07a41d79734} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX14\+\_\+\+CNSTXPR \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \& {\bfseries operator=} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \&) \&=default
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a6f4834e8cd921e7b66cfe72ed3283066}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a6f4834e8cd921e7b66cfe72ed3283066} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD constexpr bool {\bfseries contains} (types\+::\+UCode\+Point codepoint) const noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_af9fc66a4712b8e6aaf9ec14b60f971cf}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_af9fc66a4712b8e6aaf9ec14b60f971cf} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD constexpr types\+::\+Size {\bfseries width} () const noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_ac57c6b5be644d8e236aa392c6b9262b2}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_ac57c6b5be644d8e236aa392c6b9262b2} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD constexpr types\+::\+UCode\+Point {\bfseries size} () const noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_ac01a2f065dab817f01e7ab94e441017c}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_ac01a2f065dab817f01e7ab94e441017c} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD constexpr types\+::\+UCode\+Point {\bfseries head} () const noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a199bd09e11923f6770656606ecd66029}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a199bd09e11923f6770656606ecd66029} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD constexpr types\+::\+UCode\+Point {\bfseries tail} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a88d8b2308521ed9dcf751b42f46379a3}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a88d8b2308521ed9dcf751b42f46379a3} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD friend constexpr bool {\bfseries operator$<$} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \&a, const \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \&b) noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a72be84880e8f22c8edddac766e699b6c}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a72be84880e8f22c8edddac766e699b6c} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD friend constexpr bool {\bfseries operator$>$} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \&a, const \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \&b) noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a1897adc858428b620d0637414d67431a}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_a1897adc858428b620d0637414d67431a} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD friend constexpr bool {\bfseries operator$>$} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \&a, const types\+::\+UCode\+Point \&b) noexcept
+\item 
+\Hypertarget{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_add8843ebcdeb955823ecff450f051b8b}\label{classpgbar_1_1____details_1_1charcodes_1_1CodeChart_add8843ebcdeb955823ecff450f051b8b} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+NODISCARD friend constexpr bool {\bfseries operator$<$} (const \mbox{\hyperlink{classpgbar_1_1____details_1_1charcodes_1_1CodeChart}{Code\+Chart}} \&a, const types\+::\+UCode\+Point \&b) noexcept
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

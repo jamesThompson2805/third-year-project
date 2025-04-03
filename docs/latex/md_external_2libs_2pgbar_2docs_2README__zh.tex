@@ -1,0 +1,98 @@
+\chapter{特点}
+\hypertarget{md_external_2libs_2pgbar_2docs_2README__zh}{}\label{md_external_2libs_2pgbar_2docs_2README__zh}\index{特点@{特点}}
+\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md277}%
+\Hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md277}%
+
+\begin{DoxyItemize}
+\item {\bfseries{Header-\/only}}\+: 所有功能都包含在 {\ttfamily include/pgbar} 下的单个 {\ttfamily .hpp} 文件中。
+\item {\bfseries{低运行时开销}}\+: 更新进度条的开销成本极低。
+\item {\bfseries{Unicode 支持}}\+: 按 UTF-\/8 编码解析每个字符串。
+\item {\bfseries{RGB 支持}}\+: 可通过十六进制 RGB 值定制进度条颜色。
+\item {\bfseries{可选的线程安全}}\+: 可以通过模板参数调节进度条的线程安全性。
+\item {\bfseries{类 {\ttfamily tqdm} 接口}}\+: 利用模板技巧提供了友好的使用方式。
+\item {\bfseries{Modern C++ 规范}}\+: （基本上）遵循 Modern C++ 的最佳实践。
+\end{DoxyItemize}\hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md278}{}\doxysection{\texorpdfstring{样式}{样式}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md278}
+\hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md279}{}\doxysubsection{\texorpdfstring{Progress\+Bar}{Progress\+Bar}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md279}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{LeftBorder\}\{Description\}\{Percent\}\{Starting\}\{Filler\}\{Lead\}\{Remains\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{RightBorder\}}
+\DoxyCodeLine{\ 30.87\%\ |\ [=========>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]\ |\ \ 662933732/2147483647\ |\ \ 11.92\ MHz\ |\ 00:00:55\ <\ 00:02:03}
+
+\end{DoxyCode}
+ \hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md280}{}\doxysubsection{\texorpdfstring{Block\+Progress\+Bar}{Block\+Progress\+Bar}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md280}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{LeftBorder\}\{Description\}\{Percent\}\{Starting\}\{BlockBar\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{RightBorder\}}
+\DoxyCodeLine{\ 35.22\%\ |\ ██████████▋\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ 47275560/134217727\ |\ \ 16.80\ MHz\ |\ 00:00:02\ <\ 00:00:05}
+
+\end{DoxyCode}
+ \hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md281}{}\doxysubsection{\texorpdfstring{Spinner\+Bar}{Spinner\+Bar}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md281}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{LeftBorder\}\{Lead\}\{Description\}\{Percent\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{RightBorder\}}
+\DoxyCodeLine{\(\backslash\)\ |\ \ 48.64\%\ |\ \ 65288807/134217727\ |\ \ 17.84\ MHz\ |\ 00:00:03\ <\ 00:00:03}
+
+\end{DoxyCode}
+ \hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md282}{}\doxysubsection{\texorpdfstring{Scanner\+Bar}{Scanner\+Bar}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md282}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{LeftBorder\}\{Description\}\{Percent\}\{Starting\}\{Filler\}\{Lead\}\{Filler\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{RightBorder\}}
+\DoxyCodeLine{\ 39.82\%\ |\ [-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/<==>-\/-\/-\/-\/]\ |\ \ 53458698/134217727\ |\ \ 17.89\ MHz\ |\ 00:00:02\ <\ 00:00:04}
+
+\end{DoxyCode}
+ \hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md283}{}\doxysection{\texorpdfstring{用例}{用例}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md283}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}pgbar/pgbar.hpp"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ bar\ \{\ \mbox{\hyperlink{structpgbar_1_1option_1_1Remains}{pgbar::option::Remains}}(\ \textcolor{stringliteral}{"{}-\/"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Filler}{pgbar::option::Filler}}(\ \textcolor{stringliteral}{"{}="{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::option::Styles(\ pgbar::configs::CharBar::Entire\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::option::TodoColor(\ \textcolor{stringliteral}{"{}\#A52A2A"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::option::DoneColor(\ 0x0099FF\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::option::StatusColor(\ pgbar::color::Yellow\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Tasks}{pgbar::option::Tasks}}(\ 100\ )\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ \_\ =\ 0;\ \_\ <\ 100;\ ++\_\ )}
+\DoxyCodeLine{\ \ \ \ bar.tick();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+更多用例详见 \doxysectlink{md_external_2libs_2pgbar_2docs_2QuickStart__zh}{Quick\+Start\+\_\+zh.md}{0} 及 \href{../demo/demo.cpp}{\texttt{ demo.\+cpp}}。\hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md284}{}\doxysection{\texorpdfstring{FAQ}{FAQ}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md284}
+\hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md285}{}\doxysubsection{\texorpdfstring{进度条的更新工作会拖慢程序本身吗？}{进度条的更新工作会拖慢程序本身吗？}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md285}
+不，正如特点中指出的，进度条的更新是\texorpdfstring{$\ast$}{*}基本上\texorpdfstring{$\ast$}{*}零开销。
+
+在开启 {\ttfamily O2/\+O3} 优化的情况下，下面代码中的第二个迭代的性能开销会\texorpdfstring{$\ast$}{*}趋近于\texorpdfstring{$\ast$}{*}上面迭代的开销\mbox{[}\texorpdfstring{$^\wedge$}{\string^}1\mbox{]}。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}pgbar/pgbar.hpp"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ std::size\_t\ count\ =\ 0;}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\ std::size\_t\ \_\ =\ 0;\ \_\ <\ 2147483647;\ ++\_\ )}
+\DoxyCodeLine{\ \ \ \ ++count;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ bar\ \{\ pgbar::options::Tasks(\ 2147483647\ )\ \};}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\ std::size\_t\ \_\ =\ 0;\ \_\ <\ 2147483647;\ ++\_\ )}
+\DoxyCodeLine{\ \ \ \ bar.tick();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+不过显示效果流畅与否，就取决于使用的处理器的单核性能了。 \hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md286}{}\doxysubsection{\texorpdfstring{可以运行在 Windows/\+Linux 上吗？}{可以运行在 Windows/\+Linux 上吗？}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md286}
+没问题，我写这个库的初衷就是想在两个系统上同时使用一个可视化迭代进度的库。 \hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md287}{}\doxysubsection{\texorpdfstring{支持 Unicode 吗？}{支持 Unicode 吗？}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md287}
+正如一开头指出的，没有问题。
+
+虽然目前也仅支持 UTF-\/8 编码的字符串，使用任何非 UTF-\/8 编码字符串都会导致异常。
+
+如果你使用的是 C++20 标准，那么 {\ttfamily pgbar} 的函数也支持 {\ttfamily u8string}。
+
+\hypertarget{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md288}{}\doxysection{\texorpdfstring{许可}{许可}}\label{md_external_2libs_2pgbar_2docs_2README__zh_autotoc_md288}
+项目遵从 \mbox{[}MIT\mbox{]}(LICENSE) 许可。 

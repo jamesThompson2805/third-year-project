@@ -1,0 +1,68 @@
+\chapter{Gun\+Point data sets}
+\hypertarget{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README}{}\label{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README}\index{GunPoint data sets@{GunPoint data sets}}
+\label{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README_autotoc_md108}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README_autotoc_md108}%
+ This data set is a remake of the famous Gun\+Point data set released in 2003. We strive to mimic in every aspect the recording of the original Gun\+Point. The actors include one male and one female. They are the same actors who created the original Gun\+Point.
+
+We record two scenarios, Gun and Point (also known as Gun and No\+Gun). In each scenario, the actors aim at a eye-\/level target. The difference between Gun and Point is that for the Gun scenario, the actors hold a gun, and in the Point scenario, the actors point with just their fingers. A complete Gun action involves the actor moves hand from an initial rest position, points the gun at target, puts gun back to waist holster and then brings the free hand back to the initial rest position. Each complete action conforms to a five-\/second cycle. With 30fps, this translates into 150 frames per action. We extract the centroid of the hand from each frame and use its x-\/axis coordinate to form a time series.
+
+We refer to the old Gun\+Point as Gun\+Point 2003 and the new Gun\+Point as Gunpoint 2018. We merged Gun\+Point 2003 and Gun\+Point 2018 to make three data sets.
+
+Let us denote\+:
+\begin{DoxyItemize}
+\item G\+: Gun
+\item P\+: Point
+\item M\+: Male
+\item F\+: Female
+\item 03\+: The year 2003
+\item 18\+: The year 2018
+\end{DoxyItemize}\hypertarget{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README_autotoc_md109}{}\doxysection{\texorpdfstring{Gun\+Point\+Age\+Span}{Gun\+Point\+Age\+Span}}\label{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README_autotoc_md109}
+The task is to classify Gun and Point. There are 4 flavors of each class.
+\begin{DoxyItemize}
+\item Class 1\+: Gun (FG03, MG03, FG18, MG18)
+\item Class 2\+: Point (FP03, MP03, FP18, MP18)
+\end{DoxyItemize}
+
+Train size\+: 135
+
+Test size\+: 316
+
+Number of classes\+: 2
+
+Missing value\+: No
+
+Time series length\+: 150\hypertarget{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README_autotoc_md110}{}\doxysection{\texorpdfstring{Gun\+Point\+Male\+Versus\+Female}{Gun\+Point\+Male\+Versus\+Female}}\label{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README_autotoc_md110}
+The task is to classify Male and Female. There are 4 flavors of each class.
+\begin{DoxyItemize}
+\item Class 1\+: Female (FG03, FP03, FG18, FP18)
+\item Class 2\+: Male (MG03, MP03, MG18, MP18)
+\end{DoxyItemize}
+
+Train size\+: 135
+
+Test size\+: 316
+
+Number of classes\+: 2
+
+Missing value\+: No
+
+Time series length\+: 150\hypertarget{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README_autotoc_md111}{}\doxysection{\texorpdfstring{Gun\+Point\+Old\+Versus\+Young}{Gun\+Point\+Old\+Versus\+Young}}\label{md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README_autotoc_md111}
+The task is to classify the older and younger version of the actors. There are 4 flavors of each class.
+\begin{DoxyItemize}
+\item Class 1\+: Young (FG03, MG03, FP03, MP03)
+\item Class 2\+: Old (FG18, MG18, FP18, MP18)
+\end{DoxyItemize}
+
+Train size\+: 136
+
+Test size\+: 315
+
+Number of classes\+: 2
+
+Missing value\+: No
+
+Time series length\+: 150
+
+There is nothing to infer from the order of examples in the train and test set.
+
+Data created by Ann Ratanamahatana and Eamonn Keogh. Data edited by Hoang Anh Dau. 

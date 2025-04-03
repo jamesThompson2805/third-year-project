@@ -1,0 +1,39 @@
+\doxysection{src/plotting/plot\+\_\+types.h File Reference}
+\hypertarget{plot__types_8h}{}\label{plot__types_8h}\index{src/plotting/plot\_types.h@{src/plotting/plot\_types.h}}
+
+
+Header file for simplifying actions using gnuplot-\/iostream.  
+
+
+{\ttfamily \#include $<$gnuplot-\/iostream.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPlotDetails}{Plot\+Details}}
+\begin{DoxyCompactList}\small\item\em Struct containing parameters to be passed to any function wanting to render a plot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceplot__setup}{plot\+\_\+setup}}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespaceplot__setup}{plot\+\_\+setup} is a namespace containing utilities for setting up gnuplot to render the plot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{plot__types_8h_ae4db5848267c1a5a1413b7f87cf6889d}\label{plot__types_8h_ae4db5848267c1a5a1413b7f87cf6889d} 
+enum \mbox{\hyperlink{plot__types_8h_ae4db5848267c1a5a1413b7f87cf6889d}{Backend}} \{ {\bfseries PDF}
+, {\bfseries SVG}
+, {\bfseries X11}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum containing various rendering options for graph. Options are\+: PDF to render as pdf at $<$filepath$>$/$<$title$>$.pdf SVG to render as SVG at $<$filepath$>$/title.svg X11 to render as X11 window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplot__setup_a99c39622a998034091a69ef49d403326}{plot\+\_\+setup\+::setup\+\_\+gnuplot}} (Gnuplot \&gp, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em setup\+\_\+gnuplot should be passed an initialised instance of Gnuplot to configure ready to create a plot. The function uses the details in the \doxylink{structPlotDetails}{Plot\+Details} to configure the metadata such as size, output, font, filepath and axis labels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot__setup_a7e18df5602526161cb6cc41e25874914}{plot\+\_\+setup\+::open\+\_\+pdf}} (\mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em open\+\_\+pdf should be called after graph creation and with same instance of \doxylink{structPlotDetails}{Plot\+Details} to open specifically pdf plot using firefox. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for simplifying actions using gnuplot-\/iostream. 
+

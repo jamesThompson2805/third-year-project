@@ -1,0 +1,51 @@
+\chapter{Gesture\+Pebble data sets}
+\hypertarget{md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README}{}\label{md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README}\index{GesturePebble data sets@{GesturePebble data sets}}
+\label{md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README_autotoc_md97}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README_autotoc_md97}%
+ The data are collected with Pebble smart watch featuring 3-\/axis accelerometer. Data collection involves 4 subjects perform 6 gestures in two sessions several days apart.
+
+There are 6 classes corresponding to distinct gestures (see the paper \mbox{[}1\mbox{]} for gesture depiction and annotation).
+
+
+\begin{DoxyItemize}
+\item Class 1\+: hh
+\item Class 2\+: hu
+\item Class 3\+: ud
+\item Class 4\+: hud
+\item Class 5\+: hh2
+\item Class 6\+: hu2
+\end{DoxyItemize}
+
+We make two data sets out of these data.\hypertarget{md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README_autotoc_md98}{}\doxysection{\texorpdfstring{Gesture\+Pebble\+Z1}{Gesture\+Pebble\+Z1}}\label{md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README_autotoc_md98}
+This uses z-\/axis reading only. The train set contains data of all 4 subjects collected in the first session. The test set is data of all 4 subjects collected in the second session.
+
+Train size\+: 132
+
+Test size\+: 172
+
+Number of classes\+: 6
+
+Missing value\+: No
+
+Time series length\+: Vary
+
+For processing convenience, we pad NaN to the end of each time series to the length of the longest time series.\hypertarget{md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README_autotoc_md99}{}\doxysection{\texorpdfstring{Gesture\+Pebble\+Z2}{Gesture\+Pebble\+Z2}}\label{md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README_autotoc_md99}
+This uses z-\/axis reading only. The train set contains data of two subjects collected in both sessions. The test set is data of the other two subjects collected in both sessions. Note that in this case, a same subject does not appear in both train and test set.
+
+Train size\+: 146
+
+Test size\+: 158
+
+Number of classes\+: 6
+
+Missing value\+: No
+
+Time series length\+: Vary
+
+There is nothing to infer from the order of examples in the train and test set.
+
+For processing convenience, we pad NaN to the end of each time series to the length of the longest time series.
+
+Data created by Mezari, Antigoni, and Ilias Maglogiannis (see \mbox{[}1\mbox{]}). Data edited by Hoang Anh Dau.
+
+\mbox{[}1\mbox{]} Mezari, Antigoni, and Ilias Maglogiannis. "{}\+Gesture recognition using symbolic aggregate approximation and dynamic time warping on motion data."{} \+Proceedings of the 11th EAI International Conference on Pervasive Computing Technologies for Healthcare. ACM, 2017. 

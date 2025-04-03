@@ -1,0 +1,641 @@
+\chapter{Quick\+Start}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart}{}\label{md_external_2libs_2pgbar_2docs_2QuickStart}\index{QuickStart@{QuickStart}}
+{\bfseries{Contents}}
+\begin{DoxyItemize}
+\item Basic user guide.
+\begin{DoxyItemize}
+\item Construct, swap and base class reference
+\item Let it work
+\item Helper function
+\end{DoxyItemize}
+\item Customize your own progress bar object
+\begin{DoxyItemize}
+\item By constructor
+\item By member method
+\end{DoxyItemize}
+\item Insight into the configuration types
+\begin{DoxyItemize}
+\item Basic configuration types
+\item The base class of configuration types
+\end{DoxyItemize}
+\item Insight into the progress bar types
+\item Variable progress bar length
+\item Variable animation rate
+\item Thread safety
+\begin{DoxyItemize}
+\item Cross-\/thread call
+\item Lock type
+\end{DoxyItemize}
+\item Switching output stream
+\item Design principle
+\begin{DoxyItemize}
+\item Basic architecture
+\item About exception passing
+\item Implementation principle of progress bar type and configuration
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md235}{}\doxysection{\texorpdfstring{Basic user guide.}{Basic user guide.}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md235}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md236}{}\doxysubsection{\texorpdfstring{Construct, swap and base class reference}{Construct, swap and base class reference}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md236}
+All progress bar objects can be constructed by default without parameters.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar;}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::BlockProgressBar<>}}\ bpbar;}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::SpinnerBar<>}}\ spibar;}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ScannerBar<>}}\ scnbar;}
+
+\end{DoxyCode}
+
+
+And these objects are movable, swappble but not copyable.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar;}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{pbar\ =\ std::move(\ pbar2\ );\ \textcolor{comment}{//\ movable}}
+\DoxyCodeLine{swap(\ \mbox{\hyperlink{namespacepgbar}{pgbar}},\ pbar2\ );\ \ \ \ \ \ \textcolor{comment}{//\ swapable}}
+\DoxyCodeLine{\textcolor{comment}{//\ or}}
+\DoxyCodeLine{pbar.swap(\ pbar2\ );}
+
+\end{DoxyCode}
+
+
+The classes are derived from {\ttfamily \doxylink{classpgbar_1_1Indicator}{pgbar\+::\+Indicator}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar;}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1Indicator}{pgbar::Indicator}}\&\ base\_ref\ =\ pbar;}
+
+\end{DoxyCode}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md237}{}\doxysubsection{\texorpdfstring{Let it work}{Let it work}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md237}
+The {\ttfamily Progress\+Bar} and {\ttfamily Block\+Progress\+Bar} constructed by default cannot be used directly, it must be used only after passing a number of tasks to the method {\ttfamily config().tasks()}. Otherwise it will throw an exception {\ttfamily \doxylink{classpgbar_1_1exception_1_1InvalidState}{pgbar\+::exception\+::\+Invalid\+State}}.
+
+\begin{quote}
+All exceptions in the library are derived from {\ttfamily std\+::exception}, and they all have a common base class, {\ttfamily \doxylink{classpgbar_1_1exception_1_1Error}{pgbar\+::exception\+::\+Error}}. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ pbar.tick();}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{catch}\ (\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classpgbar_1_1exception_1_1InvalidState}{pgbar::exception::InvalidState}}\&\ e\ )\ \{}
+\DoxyCodeLine{\ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Oops!\ An\ exception\ occurs\ here:\ \(\backslash\)"{}"{}}\ <<\ e.what()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+During iteration, you can use the {\ttfamily is\+\_\+running()} and {\ttfamily progress()} methods to check whether the current progress bar is running and to get the number of times that {\ttfamily tick()} has been called so far.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{pbar.config().tasks(\ 100\ );}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ 100;\ ++i\ )\ \{}
+\DoxyCodeLine{\ \ pbar.tick();}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (\ i\ ==\ 99\ )\ \textcolor{comment}{//\ The\ last\ call\ of\ \`{}tick()`\ causes\ the\ progress\ bar\ to\ stop\ automatically}}
+\DoxyCodeLine{\ \ \ \ assert(\ !pbar.is\_running()\ );\ \textcolor{comment}{//\ So\ the\ assert\ is\ not\ going\ to\ be\ true\ at\ that\ moment}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ assert(\ pbar.is\_running()\ );}
+\DoxyCodeLine{\ \ assert(\ pbar.progress()\ !=\ 0\ );}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::milliseconds(\ 20\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+As soon as\textquotesingle{} {\ttfamily tick()} is called as many times as the predetermined value of {\ttfamily config().tasks()}, the progress bar will stop running on its own. However, you can also call the {\ttfamily reset()} method of the progress bar in advance to actively stop the progress bar; If the progress bar object is destructed, it is equivalent to calling {\ttfamily reset()}.
+
+Unlike the two progress bar types mentioned above, {\ttfamily Spinner\+Bar} and {\ttfamily Scanner\+Bar} do not require the number of tasks to be specified and can be used directly.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::SpinnerBar<>}}\ spibar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{spibar.tick();}
+\DoxyCodeLine{std::this\_thread::sleep\_for(\ std::chrono::seconds(\ 3\ )\ );}
+\DoxyCodeLine{spibar.\mbox{\hyperlink{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513}{reset}}();}
+
+\end{DoxyCode}
+
+
+However, because there is no limit on the number of tasks, the work of the progress bar will not stop by itself, and the {\ttfamily reset()} method must be actively called at this time to stop rendering\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md238}{}\doxysubsection{\texorpdfstring{Helper function}{Helper function}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md238}
+Instead of manually specifying the number of tasks, you can use the {\ttfamily iterate()} method to make the progress bar work on an "{}abstract range"{}, where the progress bar object will count the number of tasks itself.
+
+{\ttfamily iterate()} is used in a similar way to the {\ttfamily range()} function in Python.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::BlockProgressBar<>}}\ bpbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::cout\ <<\ \textcolor{stringliteral}{"{}Iterate\ over\ a\ range\ of\ values\ with\ BlockProgressBar:\ "{}};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\&\&\ \_\ :\ bpbar.iterate(\ 50\ )\ )\ \{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Iterate\ over\ the\ numeric\ interval\ [0,\ 50)\ with\ step\ size\ 1}}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::milliseconds(\ 40\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The {\ttfamily iterate()} method can also work on a data container, such as an array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::BlockProgressBar<>}}\ bpbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::cout\ <<\ \textcolor{stringliteral}{"{}Iterate\ over\ a\ raw\ array\ with\ BlockProgressBar:\ "{}};}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ arr[100]\ \{\ 0\ \};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\&\&\ e\ :\ bpbar.iterate(\ arr\ )\ )\ \{}
+\DoxyCodeLine{\ \ e\ =\ 114514;\ \textcolor{comment}{//\ access\ the\ elements\ directly\ within\ a\ loop}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ baseline\ =\ std::vector<int>(\ 100,\ 114514\ );}
+\DoxyCodeLine{std::cout\ <<\ \textcolor{stringliteral}{"{}Are\ the\ values\ in\ these\ two\ ranges\ equal?\ "{}}\ <<\ std::boolalpha}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ <<\ std::equal(\ arr,\ arr\ +\ 100,\ baseline.cbegin()\ )\ <<\ std::endl;}
+
+\end{DoxyCode}
+
+
+You can also pass two iterators to {\ttfamily iterate()} for the iterated range; If it is an iterator of pointer type, it can be accessed in reverse order by inverting the starting and ending points.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::SpinnerBar<>}}\ spibar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::cout\ <<\ \textcolor{stringliteral}{"{}Reverse\ iterate\ over\ a\ raw\ array\ with\ SpinnerBar:\ "{}};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\&\&\ \_\ :\ spibar.iterate(\ arr\ +\ 100,\ arr\ )\ )\ \{}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::milliseconds(\ 20\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The data container here also contains the generic container in the STL, such as {\ttfamily std\+::vector}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ScannerBar<>}}\ scnbar;}
+\DoxyCodeLine{\textcolor{comment}{//\ The\ baseline\ here\ appears\ above}}
+\DoxyCodeLine{std::cout\ <<\ \textcolor{stringliteral}{"{}Iterate\ over\ an\ object\ of\ std::vector\ with\ ScannerBar:\ "{}};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\&\&\ \_\ :\ scnbar.iterate(\ baseline\ )\ )\ \{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ do\ something\ here...}}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::milliseconds(\ 20\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\ttfamily iterate()} can also accept a unary function and act on the element in the range, as can {\ttfamily std\+::for\+\_\+each}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ScannerBar<>}}\ scnbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::cout\ <<\ \textcolor{stringliteral}{"{}Iterate\ over\ an\ object\ of\ std::vector\ with\ an\ unary\ function:\ "{}};}
+\DoxyCodeLine{std::vector<char>\ alphabet(\ 26\ );}
+\DoxyCodeLine{std::iota(\ alphabet.begin(),\ alphabet.end(),\ \textcolor{charliteral}{'a'}\ );}
+\DoxyCodeLine{scnbar.iterate(\ alphabet,\ [](\ \textcolor{keywordtype}{char}\ )\ \{\ \textcolor{comment}{/*...*/}\ \}\ );}
+
+\end{DoxyCode}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md239}{}\doxysection{\texorpdfstring{Customize your own progress bar object}{Customize your own progress bar object}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md239}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md240}{}\doxysubsection{\texorpdfstring{By constructor}{By constructor}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md240}
+All types of progress bars can be constructed as modified objects from the default configuration by passing in no less than one {\ttfamily pgbar\+::option} wrapper type.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar\ \{\ \mbox{\hyperlink{structpgbar_1_1option_1_1Style}{pgbar::option::Style}}(\ \textcolor{comment}{//\ Select\ a\ different\ progress\ bar\ information\ section}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pgbar::config::CharBar::Per\ |\ pgbar::config::CharBar::Elpsd\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1InfoColor}{pgbar::option::InfoColor}}(\ pgbar::color::Red\ ),\ \textcolor{comment}{//\ Change\ the\ color\ of\ the\ information\ section}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Tasks}{pgbar::option::Tasks}}(\ 100\ )\ \};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ \_\ =\ 0;\ \_\ <\ 100;\ ++\_\ )\ \{}
+\DoxyCodeLine{\ \ pbar.tick();}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::milliseconds(\ 20\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+It is not allowed to pass a duplicate {\ttfamily pgbar\+::option} type, otherwise it will cause compilation error.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::SpinnerBar<>}}\ spibar\ \{\ \mbox{\hyperlink{structpgbar_1_1option_1_1Lead}{pgbar::option::Lead}}(\ \{\ \textcolor{stringliteral}{"{}◜"{}},\ \textcolor{stringliteral}{"{}◝"{}},\ \textcolor{stringliteral}{"{}◞"{}},\ \textcolor{stringliteral}{"{}◟"{}}\ \}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Description}{pgbar::option::Description}}(\ \textcolor{stringliteral}{"{}Loading..."{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1DescColor}{pgbar::option::DescColor}}(\ \textcolor{stringliteral}{"{}\#FFF"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1DescColor}{pgbar::option::DescColor}}(\ \textcolor{stringliteral}{"{}\#39C5BB"{}}\ )\ \};}
+\DoxyCodeLine{\textcolor{comment}{//\ Compilation\ Error!}}
+
+\end{DoxyCode}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md241}{}\doxysubsection{\texorpdfstring{By member method}{By member method}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md241}
+In addition to the fact that the constructor can use multiple variable {\ttfamily pgbar\+::option} wrappers, the member method {\ttfamily config().set()} can also accept arguments of this form.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::SpinnerBar<>}}\ spibar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{spibar.config().set(\ \mbox{\hyperlink{structpgbar_1_1option_1_1InfoColor}{pgbar::option::InfoColor}}(\ \textcolor{stringliteral}{"{}\#FFA500"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Style}{pgbar::option::Style}}(\ pgbar::config::CharBar::Sped\ |\ pgbar::config::CharBar::Per}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ pgbar::config::CharBar::Elpsd}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ pgbar::config::CharBar::Cntdwn\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1SpeedUnit}{pgbar::option::SpeedUnit}}(\ \{\ \textcolor{stringliteral}{"{}B/s"{}},\ \textcolor{stringliteral}{"{}kB/s"{}},\ \textcolor{stringliteral}{"{}MB/s"{}},\ \textcolor{stringliteral}{"{}GB/s"{}}\ \}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Tasks}{pgbar::option::Tasks}}(\ 70\ )\ );}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ 70;\ ++i\ )\ \{}
+\DoxyCodeLine{\ \ spibar.tick();}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::milliseconds(\ 70\ -\/\ i\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+All types/methods used to configure colors can receive valid RGB color codes as strings, or RGB color values given directly as hexadecimal integers.
+
+And color effects can be forcibly turned off by defining a {\ttfamily PGBAR\+\_\+\+COLORLESS} macro.
+
+In addition, {\ttfamily config()} itself provides a streaming interface style, which can also configure different parts of the progress bar style one by one.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::SpinnerBar<>}}\ spibar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{spibar.config()}
+\DoxyCodeLine{\ \ \ \ \ \ .bolded(\ \textcolor{keyword}{false}\ )}
+\DoxyCodeLine{\ \ \ \ \ \ .info\_color(\ 0xFFE211\ )}
+\DoxyCodeLine{\ \ \ \ \ \ .speed\_unit(\ \{\ \textcolor{stringliteral}{"{}Actually"{}},\ \textcolor{stringliteral}{"{}you\ can\ write"{}},\ \textcolor{stringliteral}{"{}anything"{}},\ \textcolor{stringliteral}{"{}here"{}}\ \}\ )}
+\DoxyCodeLine{\ \ \ \ \ \ .divider(\ \textcolor{stringliteral}{"{}\ ><\ "{}}\ )}
+\DoxyCodeLine{\ \ \ \ \ \ .left\_border(\ \textcolor{stringliteral}{"{}<\ "{}}\ )}
+\DoxyCodeLine{\ \ \ \ \ \ .right\_border(\ \textcolor{stringliteral}{"{}\ >"{}}\ )}
+\DoxyCodeLine{\ \ \ \ \ \ .tasks(\ 1000\ );}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ 1000;\ ++i\ )\ \{}
+\DoxyCodeLine{\ \ spibar.tick();}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (\ i\ ==\ 499\ )}
+\DoxyCodeLine{\ \ \ \ std::this\_thread::sleep\_for(\ std::chrono::seconds(\ 3\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md242}{}\doxysection{\texorpdfstring{Insight into the configuration types}{Insight into the configuration types}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md242}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md243}{}\doxysubsection{\texorpdfstring{Basic configuration types}{Basic configuration types}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md243}
+In fact, the return value of the {\ttfamily config()} method is a reference to a configuration object held inside the progress bar object, whose type can be found in {\ttfamily pgbar\+::config}; Each progress bar type has only one configuration type corresponding to it.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{pgbar::config::CharBar}}\ pbar\_cfg;\ \ \ \textcolor{comment}{//\ config\ type\ of\ ProgressBar}}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{pgbar::config::BlckBar}}\ bpbar\_cfg;\ \ \textcolor{comment}{//\ config\ type\ of\ BlockProgressBar}}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{pgbar::config::SpinBar}}\ spibar\_cfg;\ \textcolor{comment}{//\ config\ type\ of\ SpinnerBar}}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{pgbar::config::ScanBar}}\ scnbar\_cfg;\ \textcolor{comment}{//\ config\ type\ of\ ScannerBar}}
+
+\end{DoxyCode}
+
+
+All these configuration types are copyable, movable and swappble.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{pgbar::config::CharBar}}\ pbar\_cfg;}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{pgbar::config::CharBar}}\ pbar\_cfg2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{pbar\_cfg\ =\ pbar\_cfg2;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ copyable}}
+\DoxyCodeLine{pbar\_cfg\ =\ std::move(\ pbar\_cfg2\ );\ \textcolor{comment}{//\ movable}}
+\DoxyCodeLine{swap(\ pbar\_cfg,\ pbar\_cfg2\ );\ \ \ \ \ \ \ \textcolor{comment}{//\ swapable}}
+\DoxyCodeLine{\textcolor{comment}{//\ or}}
+\DoxyCodeLine{pbar\_cfg.swap(\ pbar\_cfg2\ );}
+
+\end{DoxyCode}
+
+
+You can pass a configuration object directly to the constructor of the progress bar object to create a new progress bar based on existing configuration information.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar\ \{\ pbar\_cfg\ \};}
+\DoxyCodeLine{\textcolor{comment}{//\ Or\ reassign\ the\ internal\ configuration\ type\ using\ the\ config()\ method}}
+\DoxyCodeLine{pbar.config()\ =\ pbar\_cfg;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ The\ constructor\ of\ the\ configuration\ object\ itself\ also\ supports\ variable\ argument\ lists}}
+\DoxyCodeLine{\textcolor{comment}{//\ so\ you\ can\ also\ change\ the\ configuration\ object\ in\ this\ way}}
+\DoxyCodeLine{pbar.config()\ =\ \{\ \mbox{\hyperlink{structpgbar_1_1option_1_1InfoColor}{pgbar::option::InfoColor}}(\ pgbar::color::Red\ ),\ \mbox{\hyperlink{structpgbar_1_1option_1_1Tasks}{pgbar::option::Tasks}}(\ 100\ )\ \};}
+\DoxyCodeLine{\textcolor{comment}{//\ This\ is\ equivalent\ to\ pbar.config().swap(\ another\_config\ )}}
+
+\end{DoxyCode}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md244}{}\doxysubsection{\texorpdfstring{The base class of configuration types}{The base class of configuration types}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md244}
+These types are derived from {\ttfamily \doxylink{classpgbar_1_1config_1_1Core}{pgbar\+::config\+::\+Core}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{pgbar::config::CharBar}}\ pbar\_cfg;}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1config_1_1Core}{pgbar::config::Core}}\&\ base\_ref\ =\ pbar\_cfg;}
+
+\end{DoxyCode}
+
+
+This base class also stores some configuration data related to the underlying settings.
+
+For example, the refresh rate of progress bar objects in the terminal interface is controlled by the return value of {\ttfamily pgbar\+::config\+::\+Core\+::refresh\+\_\+interval()}, and {\ttfamily \doxylink{classpgbar_1_1config_1_1Core}{pgbar\+::config\+::\+Core}} allows you to modify the basic configuration data at run time.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Increase\ the\ refresh\ rate\ from\ the\ default\ 25\ Hz\ to\ 60\ Hz}}
+\DoxyCodeLine{pgbar::config::Core::refresh\_interval(\ std::chrono::milliseconds(\ 20\ )\ );}
+
+\end{DoxyCode}
+
+
+This method actually requires the progress bar object to sleep for 20 milliseconds after each output to the console; Shorter refresh intervals mean smoother animations, but also a higher single-\/core CPU load.
+
+However, since the time of each rendering output cannot be 0, this method is essentially controlling the minimum interval of rendering output can not be lower than the given value.
+
+You can also use {\ttfamily pgbar\+::config\+::\+Core\+::intty()} method to learn the standard output stream of the current process is binding on the terminal, it need to combine the enumeration {\ttfamily pgbar\+::\+Channel} values to determine which is you need to check the output stream; For example, check the standard output stream {\ttfamily stdout}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\ pgbar::config::Core::intty(\ pgbar::Channel::Stdout\ )\ )}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Standard\ output\ is\ bound\ to\ a\ terminal."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Standard\ output\ is\ not\ bound\ to\ a\ terminal."{}}\ <<\ std::endl;}
+
+\end{DoxyCode}
+
+
+You can define a {\ttfamily PGBAR\+\_\+\+INTTY} macro before the include file to force the {\ttfamily pgbar\+::config\+::\+Core\+::intty()} method to always return {\ttfamily true}.\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md245}{}\doxysection{\texorpdfstring{Insight into the progress bar types}{Insight into the progress bar types}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md245}
+As mentioned earlier, all progress bar types are highly similar, with the only differences being the behavior when the {\ttfamily tick()} method is called, the arguments the constructor can accept, and the kinds of methods that can be chain-\/called when the {\ttfamily config()} method is called.
+
+In addition to {\ttfamily is\+\_\+running()}, {\ttfamily progress()}, and {\ttfamily iterate()} mentioned earlier, the progress bar object has several useful methods; Take {\ttfamily Progress\+Bar} as an example.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar\ \{\ \mbox{\hyperlink{structpgbar_1_1option_1_1Tasks}{pgbar::option::Tasks}}(\ 100\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1Description}{pgbar::option::Description}}(\ \textcolor{stringliteral}{"{}Doing\ sth..."{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1TrueMesg}{pgbar::option::TrueMesg}}(\ \textcolor{stringliteral}{"{}✔\ Mission\ Complete!"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1TrueColor}{pgbar::option::TrueColor}}(\ pgbar::color::Green\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1FalseMesg}{pgbar::option::FalseMesg}}(\ \textcolor{stringliteral}{"{}✖\ Execution\ Failure!"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1FalseColor}{pgbar::option::FalseColor}}(\ pgbar::color::Red\ )\ \};}
+\DoxyCodeLine{pbar.tick();\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Make\ the\ progress\ bar\ advance\ one\ step}}
+\DoxyCodeLine{pbar.\mbox{\hyperlink{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513}{reset}}();\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ the\ progress\ bar\ and\ immediately\ terminate\ rendering\ while\ displaying\ TrueMesg's\ contents}}
+\DoxyCodeLine{pbar.\mbox{\hyperlink{classpgbar_1_1BasicBar_aa27ae4c536f1cd3283b6199f14e6f87a}{tick\_to}}(\ 50\ );\ \ \textcolor{comment}{//\ Make\ the\ progress\ bar\ progress\ to\ 50\%}}
+\DoxyCodeLine{pbar.tick(\ 3\ );\ \ \ \ \ \ \textcolor{comment}{//\ Make\ the\ progress\ bar\ advance\ three\ steps}}
+\DoxyCodeLine{pbar.\mbox{\hyperlink{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513}{reset}}(\ \textcolor{keyword}{false}\ );\ \textcolor{comment}{//\ Reset\ the\ progress\ bar\ and\ immediately\ terminate\ rendering\ while\ displaying\ FalseMesg's\ contents}}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+{\ttfamily True\+Mesg} and {\ttfamily False\+Mesg} are part of the {\ttfamily Description} element and appear only before the progress bar is about to stop working and are used to replace the predefined description with a custom one. \textbackslash{} Which information is displayed depends on the {\ttfamily bool} parameter passed when the {\ttfamily reset()} method is called; {\ttfamily True\+Mesg} is selected by default. \end{quote}
+Note\+: If the progress bar object is destructed, {\ttfamily True\+Mesg} or {\ttfamily False\+Mesg} are not rendered, even if they have been written to the configuration object.
+
+\begin{quote}
+In the destructor scenario, stopping work immediately and releasing all resources is considered a top priority. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Be\ deconstructed\ while\ rendering."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::SpinnerBar<>}}\ spibar\ \{\ \mbox{\hyperlink{structpgbar_1_1option_1_1Description}{pgbar::option::Description}}(\ \textcolor{stringliteral}{"{}???"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1TrueMesg}{pgbar::option::TrueMesg}}(\ \textcolor{stringliteral}{"{}!!!"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structpgbar_1_1option_1_1FalseMesg}{pgbar::option::FalseMesg}}(\ \textcolor{stringliteral}{"{}///"{}}\ )\ \};}
+\DoxyCodeLine{\ \ spibar.tick();}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::seconds(\ 3\ )\ );}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ spibar\ is\ destructed\ here\ and\ rendering\ stops\ immediately}}
+\DoxyCodeLine{\textcolor{comment}{//\ so\ we\ have\ to\ add\ a\ newline}}
+\DoxyCodeLine{std::cout\ <<\ std::endl;}
+
+\end{DoxyCode}
+
+
+In addition to configuring all the information for the progress bar before the task starts, you can also dynamically modify the information in the progress bar while it is running.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{pbar.config().tasks(\ 5\ );}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ 5;\ ++i\ )\ \{}
+\DoxyCodeLine{\ \ pbar.tick();}
+\DoxyCodeLine{\ \ pbar.config().description(\ \textcolor{stringliteral}{"{}Working\ process\ ("{}}\ +\ std::to\_string(\ i\ +\ 1\ )\ +\ \textcolor{stringliteral}{"{}/5)"{}}\ );}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::milliseconds(\ 1500\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+But changing the number of tasks is {\bfseries{not effective}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{pbar.config().tasks(\ 100\ );}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ 100;\ ++i\ )\ \{}
+\DoxyCodeLine{\ \ pbar.tick();}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (\ i\ ==\ 30\ )}
+\DoxyCodeLine{\ \ \ \ pbar.config().tasks(\ 50\ );}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::milliseconds(\ 20\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+If you wish, you can also "{}gradient"{} the color of the progress bar like this.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<>}}\ pbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{pbar.config().description(\ \textcolor{stringliteral}{"{}Rainbow"{}}\ ).tasks(\ 0xFFFFFF\ +\ 1\ );}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ 0xFFFFFF\ +\ 1;\ ++i\ )\ \{}
+\DoxyCodeLine{\ \ pbar.tick();}
+\DoxyCodeLine{\ \ pbar.config().info\_color(\ i\ );}
+\DoxyCodeLine{\ \ std::this\_thread::sleep\_for(\ std::chrono::microseconds(\ 30\ )\ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md246}{}\doxysection{\texorpdfstring{Variable progress bar length}{Variable progress bar length}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md246}
+In particular, the length of the bar indicator can be changed for {\ttfamily Progress\+Bar}, {\ttfamily Block\+Progress\+Bar} and {\ttfamily Scanner\+Bar}; Take {\ttfamily Scanner\+Bar} as an example.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ScannerBar<>}}\ scnbar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ The\ counting\ unit\ of\ config().bar\_length()\ is\ "{}character"{}}}
+\DoxyCodeLine{\textcolor{comment}{//\ That\ is,\ the\ value\ you\ pass\ in\ represents\ the\ number\ of\ characters\ that\ the\ bar\ indicator\ occupies\ in\ the\ terminal}}
+\DoxyCodeLine{scnbar.config().bar\_length(\ 20\ );}
+\DoxyCodeLine{scnbar.tick();}
+\DoxyCodeLine{std::this\_thread::sleep\_for(\ std::chrono::seconds(\ 2\ )\ );}
+\DoxyCodeLine{scnbar.\mbox{\hyperlink{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513}{reset}}();}
+
+\end{DoxyCode}
+
+
+If you can get the horizontal width of the current terminal window, then you can also calculate a length that allows the progress bar to "{}fill"{} a row.
+
+You can get the length of the progress bar section except for the bar indicator by calling {\ttfamily config().fixed\+\_\+size()} and calculate it as follows.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ \_WIN32\ }\textcolor{comment}{//\ Windows}}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ terminal\_width\ =\ []()\ \{}
+\DoxyCodeLine{\ \ HANDLE\ hConsole\ =\ GetStdHandle(\ STD\_OUTPUT\_HANDLE\ );}
+\DoxyCodeLine{\ \ CONSOLE\_SCREEN\_BUFFER\_INFO\ csbi;}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (\ GetConsoleScreenBufferInfo(\ hConsole,\ \&csbi\ )\ )\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ width\ =\ csbi.srWindow.Right\ -\/\ csbi.srWindow.Left\ +\ 1;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ width\ ==\ 0\ ?\ 120\ :\ width;}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 120;}
+\DoxyCodeLine{\}();}
+\DoxyCodeLine{\textcolor{preprocessor}{\#elif\ defined(\ \_\_unix\_\_\ )\ }\textcolor{comment}{//\ Linux}}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ terminal\_width\ =\ []()\ \{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{struct\ }winsize\ w;}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (\ ioctl(\ STDOUT\_FILENO,\ TIOCGWINSZ,\ \&w\ )\ ==\ -\/1\ )}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 120;}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ w.ws\_col\ ==\ 0\ ?\ 120\ :\ w.ws\_col;}
+\DoxyCodeLine{\}();}
+\DoxyCodeLine{\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ terminal\_width\ =\ 120;\ \textcolor{comment}{//\ Assuming\ terminal\ width\ is\ 120}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ total\_length\_excluding\_bar\ =\ scnbar.config().fixed\_size();}
+\DoxyCodeLine{scnbar.config().bar\_length(\ terminal\_width\ -\/\ total\_length\_excluding\_bar\ );}
+\DoxyCodeLine{\textcolor{comment}{//\ config().bar\_length()\ itself\ also\ returns\ the\ length\ of\ the\ bar\ indicator\ for\ the\ current\ progress\ bar}}
+\DoxyCodeLine{}
+\DoxyCodeLine{scnbar.tick();}
+\DoxyCodeLine{std::this\_thread::sleep\_for(\ std::chrono::seconds(\ 5\ )\ );}
+\DoxyCodeLine{scnbar.\mbox{\hyperlink{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513}{reset}}();}
+
+\end{DoxyCode}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md247}{}\doxysection{\texorpdfstring{Variable animation rate}{Variable animation rate}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md247}
+For {\ttfamily Progress\+Bar}, {\ttfamily Spinner\+Bar} and {\ttfamily Scanner\+Bar}, the motion rate of their component {\ttfamily Lead} part is variable.
+
+This variable rate can be adjusted by the type wrapper {\ttfamily \doxylink{structpgbar_1_1option_1_1Shift}{pgbar\+::option\+::\+Shift}} and the method {\ttfamily config().shift()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ScannerBar<>}}\ scnbar;}
+\DoxyCodeLine{scnbar.config().shift(\ 2\ );\ \textcolor{comment}{//\ Switch\ to\ 2x\ speed}}
+\DoxyCodeLine{scnbar.tick();}
+\DoxyCodeLine{std::this\_thread::sleep\_for(\ std::chrono::seconds(\ 5\ )\ );}
+\DoxyCodeLine{scnbar.\mbox{\hyperlink{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513}{reset}}();}
+
+\end{DoxyCode}
+
+
+{\ttfamily Shift} is between -\/128 and 127; If the value k is negative, it means that the rate is adjusted to 1/k of the normal case, otherwise it is k times the normal case.
+
+In fact, the effect is equivalent to change {\ttfamily pgbar\+::config\+::\+Core\+::refresh\+\_\+interval()}; However, the effect of {\ttfamily Shift} only applies to local progress bar objects.\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md248}{}\doxysection{\texorpdfstring{Thread safety}{Thread safety}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md248}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md249}{}\doxysubsection{\texorpdfstring{Cross-\/thread call}{Cross-\/thread call}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md249}
+First, any type of method in {\ttfamily pgbar\+::config} is thread-\/safe, including replacing the configuration object itself with the {\ttfamily config()} method; This means that you can configure different parameters for another thread\textquotesingle{}s progress bar object in another thread.
+
+Second, the progress bar object itself is "{}optional"{} thread-\/safe, and this optionality is reflected in the template parameters of the progress bar object. For all progress bar objects that use the default construction, they are equivalent to the following declaration statement\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<pgbar::Threadunsafe>}}\ unsafe\_bar;}
+
+\end{DoxyCode}
+
+
+For thread-\/unsafe progress bar objects, calling any method other than {\ttfamily config()} is thread-\/unsafe.
+
+Using the {\ttfamily pgbar\+::\+Threadsafe} parameter, you can create a thread-\/safe progress bar object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<pgbar::Threadsafe>}}\ safe\_bar;}
+
+\end{DoxyCode}
+
+
+For the thread-\/safe version, you can call its {\ttfamily tick()} and {\ttfamily reset()} methods from as many threads as you want; However, it is still thread-\/unsafe for {\ttfamily swap()}, {\ttfamily iterate()}, and {\ttfamily operator=()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{safe\_bar\ =\ \mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<pgbar::Threadsafe>}}();\ \textcolor{comment}{//\ Thread\ Unsafe!}}
+
+\end{DoxyCode}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md250}{}\doxysubsection{\texorpdfstring{Lock type}{Lock type}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md250}
+{\ttfamily pgbar\+::\+Threadsafe} is just a lock class that satisfies the Basic Locakable requirement. You can use another lock type instead of this parameter type. For example {\ttfamily std\+::mutex}.
+
+\begin{quote}
+In contrast, the thread-\/safe version of the progress bar has an additional overhead than the less secure version, an overhead that cannot be resolved by introducing a more lightweight lock type. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ProgressBar<std::mutex>}}\ safe\_bar;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ iteration\ \ \ =\ 2147483648;}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ num\_threads\ =\ 4;}
+\DoxyCodeLine{safe\_bar.config().tasks(\ iteration\ );}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::vector<std::thread>\ threads;}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{size\_t}\ \_\ =\ 0;\ \_\ <\ num\_threads;\ ++\_\ )\ \{}
+\DoxyCodeLine{\ \ threads.emplace\_back(\ [\&]()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{size\_t}\ \_\ =\ 0;\ \_\ <\ iteration\ /\ num\_threads;\ ++\_\ )\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ safe\_bar.tick();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}\ );}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\&\ td\ :\ threads\ )\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (\ td.joinable()\ )}
+\DoxyCodeLine{\ \ \ \ td.join();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{safe\_bar.wait();}
+
+\end{DoxyCode}
+
+
+Notice that a {\ttfamily wait()} method is called at the end of the previous code; This is because in a multithreaded environment, if the thread holding the progress bar object leaves the scope of the progress bar, the progress bar rendering will immediately stop because of the destructor.
+
+So the progress bar object provides {\ttfamily wait()} and {\ttfamily wait\+\_\+for()} methods to block the current thread until the progress bar is stopped.
+
+But the blocking effect only takes effect after the first {\ttfamily tick()} method is called; So in a multithreaded environment, the optimal solution is to wait for all child threads to finish before calling the {\ttfamily wait()} or {\ttfamily wait\+\_\+for()} method.\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md251}{}\doxysection{\texorpdfstring{Switching output stream}{Switching output stream}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md251}
+By default, the progress bar object outputs a string to the current process\textquotesingle{}s standard error stream {\ttfamily stderr}; The destination of the output stream can be changed by the template type parameter passed to the progress bar when the progress bar object is created.
+
+For example, create a progress bar object that outputs to {\ttfamily stdout}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar::ScannerBar<pgbar::Threadunsafe,\ pgbar::Channel::Stdout>}}\ scnbar;}
+
+\end{DoxyCode}
+
+
+The progress bar itself does not monopolize a standard output stream of the current process at any point in time, so output information to the standard output stream bound to the progress bar during progress bar work will cause the string rendered by the terminal to be distorted.
+
+If an output stream is not bound to the terminal, the progress bar does not write any data to the output stream file, but the exception check and task iteration count proceed normally.
+
+\begin{quote}
+To check whether an output stream is bound to a terminal, you can use the {\ttfamily pgbar\+::config\+::\+Core\+::intty()} method mentioned earlier. \end{quote}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md252}{}\doxysection{\texorpdfstring{Design principle}{Design principle}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md252}
+\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md253}{}\doxysubsection{\texorpdfstring{Basic architecture}{Basic architecture}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md253}
+The progress bar consists of two main parts\+: the notification thread and the rendering thread. The notification thread is the thread responsible for calling the {\ttfamily tick()} method each time, while the render thread is a thread object managed by the thread manager {\ttfamily \doxylink{classpgbar_1_1____details_1_1render_1_1Renderer}{pgbar\+::\+\_\+\+\_\+details\+::render\+::\+Renderer}}.
+
+Each notification thread\textquotesingle{}s first call to {\ttfamily tick()} wakes up the rendering thread; Since thread managers are designed as lazy initialization, the first call of each progress bar object at the global scope also attempts to initialize the thread manager, i.\+e., create a child thread.
+
+Each time the {\ttfamily reset()} method is called, the progress bar object suspends the rendering thread through the thread manager\textquotesingle{}s member methods.
+
+In order to ensure that the working state of the rendering thread is always valid, only the first {\ttfamily tick()} and the last {\ttfamily tick()}, or when the {\ttfamily reset()} is called at run, the notification thread will use a spin lock to wait for the rendering thread to transfer to the specified state; That is to say, only in the above three time points, the notification thread will block for an indefinite length.\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md254}{}\doxysubsection{\texorpdfstring{About exception passing}{About exception passing}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md254}
+Since the rendering thread needs to repeatedly concatenate strings and write data to the standard output stream, it is possible to throw exceptions throughout the process.
+
+If in Windows platform, the program can\textquotesingle{}t get to the current process flow standard output Handle, the render thread throws a local system error exception {\ttfamily \doxylink{classpgbar_1_1exception_1_1SystemError}{pgbar\+::exception\+::\+System\+Error}}; In a more general case, if the current machine is running low on resources (e.\+g., out of memory), a library exception such as {\ttfamily std\+::bad\+\_\+alloc} will be thrown by the standard library at any memory request point.
+
+The rest of the case, if the rendering thread received a thrown exception, it will be the exception is stored in the internal {\ttfamily \doxylink{classpgbar_1_1____details_1_1concurrent_1_1ExceptionBox}{pgbar\+::\+\_\+\+\_\+details\+::concurrent\+::\+Exception\+Box}} container, and stop the current render job; Wait until the next time the notification thread calls {\ttfamily activate()} or {\ttfamily suspend()} the caught exception is re-\/thrown in the notification thread.
+
+\begin{quote}
+{\ttfamily activate()} and {\ttfamily suspend()} are called only on the first and last {\ttfamily tick()} and {\ttfamily reset()} methods of the progress bar. \end{quote}
+If the rendering thread already has an unhandled exception in its exception container, and another exception is thrown inside the thread, the rendering thread will enter a {\ttfamily dead} state. In this state, new exceptions are not caught, but are allowed to propagate until the rendering thread terminates.
+
+In the {\ttfamily dead} state, recalling the thread manager\textquotesingle{}s {\ttfamily activate()} method (i.\+e. reactivating the progress bar object) will attempt to pull up a new rendering thread; During this process, the last unhandled exception will be thrown before a new rendering thread is created and can start working.\hypertarget{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md255}{}\doxysubsection{\texorpdfstring{Implementation principle of progress bar type and configuration}{Implementation principle of progress bar type and configuration}}\label{md_external_2libs_2pgbar_2docs_2QuickStart_autotoc_md255}
+As mentioned earlier, the functionality of the different types of progress bars is highly similar, except that their semantic expression and rendering styles differ at runtime.
+
+In fact, all progress bar types are aliases of the template class {\ttfamily \doxylink{classpgbar_1_1BasicBar}{pgbar\+::\+Basic\+Bar}}; Similarly, all configuration type is {\ttfamily \doxylink{classpgbar_1_1config_1_1BasicConfig}{pgbar\+::config\+::\+Basic\+Config}} alias.
+
+By \href{https://zhuanlan.zhihu.com/p/106672814}{\texttt{ this article}}, the progress bar follow a Mixin pattern combination inherited from {\ttfamily pgbar\+::\+\_\+\+\_\+details\+::assets} the different template base class; All template classes in {\ttfamily pgbar\+::\+\_\+\+\_\+details\+::assets} are designed in CRTP mode, so a whole bunch of methods for configuring data can be called through the {\ttfamily config()} method chain for final use.
+
+The Mixin pattern here owes much to a compile-\/time topological sorting algorithm called {\ttfamily \doxylink{structpgbar_1_1____details_1_1traits_1_1TopoSort}{pgbar\+::\+\_\+\+\_\+details\+::traits\+::\+Topo\+Sort}}.
+
+This topological sorting algorithm is similar to the C3 linearization algorithm in Python, but unlike it\+: The purpose of C3 linearization algorithm is to find the most suitable class method in the class inheritance structure, while the topological sorting algorithm here linearizes the entire inheritance structure directly, linearizing a complex multi-\/inheritance structure into an inheritance chain at compile time.
+
+But they have one thing in common\+: the method resolution at the most derived class satisfies the local priority principle of the inheritance order of the base class; In other words, during the inheritance process, the base class located to the left of the inheritance list is preferentially placed closer to the derived class to ensure that the methods of this base class are not overwritten by the base class further to the right.
+
+In addition, the topological sorting algorithm has another feature\+: for the two classes with non-\/virtual inheritance relationship, they will be placed as close to each other as possible after sorting; This is to ensure that in non-\/virtual inheritance, derived classes can refer directly to base classes without complex template nesting.
+
+The specific working principle can be referred to the article mentioned above. Based on the principle proposed in the article, I have implemented a topological sorting algorithm that can analyze the relationship between virtual inheritance and non-\/virtual inheritance at the same time and meet some characteristics of C3 linearization algorithm. 

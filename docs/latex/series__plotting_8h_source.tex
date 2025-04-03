@@ -1,0 +1,49 @@
+\doxysection{series\+\_\+plotting.\+h}
+\hypertarget{series__plotting_8h_source}{}\label{series__plotting_8h_source}\index{src/plotting/series\_plotting.h@{src/plotting/series\_plotting.h}}
+\mbox{\hyperlink{series__plotting_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SERIES\_PLOTTING\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SERIES\_PLOTTING\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{plot__types_8h}{plot\_types.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSeries}{Series}}\ \{}
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ series;}
+\DoxyCodeLine{00022\ \ \ std::string\ name;}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLine}{Line}}\ \{}
+\DoxyCodeLine{00033\ \ \ std::vector<double>\ x;}
+\DoxyCodeLine{00034\ \ \ std::vector<double>\ y;}
+\DoxyCodeLine{00035\ \ \ std::string\ name;}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLineGenerator}{LineGenerator}}\ \{}
+\DoxyCodeLine{00044\ \ \ std::function<\ double(\textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int})\ >\ result\_gen;}
+\DoxyCodeLine{00045\ \ \ std::string\ method\_name;}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceplot}{plot}}\ \{\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_ac04d391973e1e722dd94cf196023cdcd}{plot\_series}}(\mbox{\hyperlink{structSeries}{Series}}\&\ s,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_aa7743ec830f3d475c11741c63ae6351c}{plot\_many\_series}}(std::vector<Series>\&\ vs,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_ad4e7e6864221609200a47e52b1dacd3e}{barplot\_many\_series}}(std::vector<Series>\&\ vs,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a10979c227275b61b2e0b2070337c606f}{plot\_series\_diff}}(\mbox{\hyperlink{structSeries}{Series}}\&\ s1,\ \mbox{\hyperlink{structSeries}{Series}}\&\ s2,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a0dd6558f40503eb05365b2265a5327e7}{plot\_lines}}(std::vector<Line>\ ls,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_aeee601ec3f6e6fdecf57bafad3e6bc81}{plot\_lines\_generated}}(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ std::vector<unsigned\ int>\ x,\ std::vector<LineGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2}{plot\_lines\_generated\_ucr\_average}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ dataset\_names,\ std::string\ dataset\_filepath,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ ds\_size,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<unsigned\ int>\ x,\ std::vector<LineGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00110\ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

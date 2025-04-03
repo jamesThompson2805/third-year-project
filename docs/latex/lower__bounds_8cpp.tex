@@ -1,0 +1,43 @@
+\doxysection{lib/similarity\+\_\+search/lower\+\_\+bounds.cpp File Reference}
+\hypertarget{lower__bounds_8cpp}{}\label{lower__bounds_8cpp}\index{lib/similarity\_search/lower\_bounds.cpp@{lib/similarity\_search/lower\_bounds.cpp}}
+{\ttfamily \#include "{}lower\+\_\+bounds.\+h"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{lower__bounds_8cpp_a80bf148d4743e580871735454976f631}{sqr}} (double a)
+\item 
+double \mbox{\hyperlink{lower__bounds_8cpp_a1faf556bf83266d28c18db10f1d3ba97}{dist\+\_\+lines\+\_\+sqr}} (const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&dp1, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&dp2, unsigned int len)
+\item 
+double \mbox{\hyperlink{lower__bounds_8cpp_a77b92f70b6f346620d45b5c28b72e279}{dist\+\_\+region\+\_\+lb\+\_\+sqr\+\_\+i}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{structRegion}{Region}} \&r, unsigned int qi)
+\item 
+double \mbox{\hyperlink{lower__bounds_8cpp_aa0819200a96bdeccb7bfa794dbdda550}{dist\+\_\+regions\+\_\+lb\+\_\+sqr\+\_\+i}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{structRegion}{Region}} \texorpdfstring{$\ast$}{*}const r\+\_\+start, const \mbox{\hyperlink{structRegion}{Region}} \texorpdfstring{$\ast$}{*}const r\+\_\+end, unsigned int qi)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{lower__bounds_8cpp_a1faf556bf83266d28c18db10f1d3ba97}\label{lower__bounds_8cpp_a1faf556bf83266d28c18db10f1d3ba97} 
+\index{lower\_bounds.cpp@{lower\_bounds.cpp}!dist\_lines\_sqr@{dist\_lines\_sqr}}
+\index{dist\_lines\_sqr@{dist\_lines\_sqr}!lower\_bounds.cpp@{lower\_bounds.cpp}}
+\doxysubsubsection{\texorpdfstring{dist\_lines\_sqr()}{dist\_lines\_sqr()}}
+{\footnotesize\ttfamily double dist\+\_\+lines\+\_\+sqr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&}]{dp1,  }\item[{const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&}]{dp2,  }\item[{unsigned int}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{lower__bounds_8cpp_a77b92f70b6f346620d45b5c28b72e279}\label{lower__bounds_8cpp_a77b92f70b6f346620d45b5c28b72e279} 
+\index{lower\_bounds.cpp@{lower\_bounds.cpp}!dist\_region\_lb\_sqr\_i@{dist\_region\_lb\_sqr\_i}}
+\index{dist\_region\_lb\_sqr\_i@{dist\_region\_lb\_sqr\_i}!lower\_bounds.cpp@{lower\_bounds.cpp}}
+\doxysubsubsection{\texorpdfstring{dist\_region\_lb\_sqr\_i()}{dist\_region\_lb\_sqr\_i()}}
+{\footnotesize\ttfamily double dist\+\_\+region\+\_\+lb\+\_\+sqr\+\_\+i (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{q,  }\item[{const \mbox{\hyperlink{structRegion}{Region}} \&}]{r,  }\item[{unsigned int}]{qi }\end{DoxyParamCaption})}
+
+\Hypertarget{lower__bounds_8cpp_aa0819200a96bdeccb7bfa794dbdda550}\label{lower__bounds_8cpp_aa0819200a96bdeccb7bfa794dbdda550} 
+\index{lower\_bounds.cpp@{lower\_bounds.cpp}!dist\_regions\_lb\_sqr\_i@{dist\_regions\_lb\_sqr\_i}}
+\index{dist\_regions\_lb\_sqr\_i@{dist\_regions\_lb\_sqr\_i}!lower\_bounds.cpp@{lower\_bounds.cpp}}
+\doxysubsubsection{\texorpdfstring{dist\_regions\_lb\_sqr\_i()}{dist\_regions\_lb\_sqr\_i()}}
+{\footnotesize\ttfamily double dist\+\_\+regions\+\_\+lb\+\_\+sqr\+\_\+i (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{q,  }\item[{const \mbox{\hyperlink{structRegion}{Region}} \texorpdfstring{$\ast$}{*}const}]{r\+\_\+start,  }\item[{const \mbox{\hyperlink{structRegion}{Region}} \texorpdfstring{$\ast$}{*}const}]{r\+\_\+end,  }\item[{unsigned int}]{qi }\end{DoxyParamCaption})}
+
+\Hypertarget{lower__bounds_8cpp_a80bf148d4743e580871735454976f631}\label{lower__bounds_8cpp_a80bf148d4743e580871735454976f631} 
+\index{lower\_bounds.cpp@{lower\_bounds.cpp}!sqr@{sqr}}
+\index{sqr@{sqr}!lower\_bounds.cpp@{lower\_bounds.cpp}}
+\doxysubsubsection{\texorpdfstring{sqr()}{sqr()}}
+{\footnotesize\ttfamily double sqr (\begin{DoxyParamCaption}\item[{double}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

@@ -1,0 +1,40 @@
+\chapter{Missing values and variable lengths data sets}
+\hypertarget{md_external_2data_2UCRArchive__2018_2Missing__value__and__variable__length__datasets__adjusted_2REAME}{}\label{md_external_2data_2UCRArchive__2018_2Missing__value__and__variable__length__datasets__adjusted_2REAME}\index{Missing values and variable lengths data sets@{Missing values and variable lengths data sets}}
+\label{md_external_2data_2UCRArchive__2018_2Missing__value__and__variable__length__datasets__adjusted_2REAME_autotoc_md148}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2Missing__value__and__variable__length__datasets__adjusted_2REAME_autotoc_md148}%
+ This folder concerns 15 data sets with missing values and variable lengths. We herewith include the equal length version that leads to the result published on the UCR archive website in the interest of reproducible research.
+
+We makes all time series of equal length with the following practices\+:
+\begin{DoxyItemize}
+\item Missing values are treated with linear interpolation.
+\item Variable lengths are reconciled by padding low amplitude random noise to the end of each time series to the length of the longest time series.
+\end{DoxyItemize}
+
+The need for making time series of equal length arises because\+:
+\begin{DoxyItemize}
+\item Euclidean distance is only defined for equal length time series.
+\item Some of the well-\/known lowerbounding techniques for DTW only work if time series are of equal length (even thougth DTW distance is possible between variable lengths time series).
+\end{DoxyItemize}
+
+The first four data sets (numbered 1-\/4) are data sets with missing values. The rest are data sets with variable lengths. Within a data set, the difference between the length of the shortest and longest time series can be dramatic. For example, in case of PLAID, that is 101 vs. 1344. Some of the data sets might contain noisy examples, for which an ideal classifier should have the option to ignore or label them as \textquotesingle{}not sure\textquotesingle{}.
+
+
+\begin{DoxyEnumerate}
+\item Dodger\+Loop\+Day
+\item Dodger\+Loop\+Game
+\item Dodger\+Loop\+Weekend
+\item Melbourne\+Pedestrain
+\item All\+Gesture\+WiimoteX
+\item All\+Gesture\+WiimoteY
+\item All\+Gesture\+WiimoteZ
+\item Gesture\+Mid\+Air\+D1
+\item Gesture\+Mid\+Air\+D2
+\item Gesture\+Mid\+Air\+D3
+\item Gesture\+Pebble\+Z1
+\item Gesture\+Pebble\+Z2
+\item Pickup\+Gesture\+WiimoteZ
+\item PLAID
+\item Shake\+Gesture\+WiimoteZ
+\end{DoxyEnumerate}
+
+We thank Germain Forestier and Hassan Ismail Fawaz at University of Haute Alsace for bringing this matter to our attention and other constructive comments. 

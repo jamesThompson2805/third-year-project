@@ -1,0 +1,75 @@
+\chapter{Dodgers\+Loop data sets}
+\hypertarget{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README}{}\label{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README}\index{DodgersLoop data sets@{DodgersLoop data sets}}
+\label{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README_autotoc_md53}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README_autotoc_md53}%
+ The traffic data are collected with the loop sensor installed on ramp for the 101 North freeway in Los Angeles. This location is close to Dodgers Stadium; therefore the traffic is affected by volumne of visitors to the stadium.
+
+We make three data sets out of these data.\hypertarget{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README_autotoc_md54}{}\doxysection{\texorpdfstring{Dodgers\+Loop\+Day}{Dodgers\+Loop\+Day}}\label{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README_autotoc_md54}
+The classes are days of the week.
+
+
+\begin{DoxyItemize}
+\item Class 1\+: Sunday
+\item Class 2\+: Monday
+\item Class 3\+: Tuesday
+\item Class 4\+: Wednesday
+\item Class 5\+: Thursday
+\item Class 6\+: Friday
+\item Class 7\+: Saturday
+\end{DoxyItemize}
+
+Train size\+: 78
+
+Test size\+: 80
+
+Number of classes\+: 7
+
+Missing value\+: Yes
+
+Time series length\+: 288
+
+Missing values are represented with NaN.\hypertarget{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README_autotoc_md55}{}\doxysection{\texorpdfstring{Dodgers\+Loop\+Weekend}{Dodgers\+Loop\+Weekend}}\label{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README_autotoc_md55}
+
+\begin{DoxyItemize}
+\item Class 1\+: Weekday
+\item Class 2\+: Weekend
+\end{DoxyItemize}
+
+Train size\+: 20
+
+Test size\+: 138
+
+Number of classes\+: 2
+
+Missing value\+: Yes
+
+Time series length\+: 288
+
+Missing values are represented with NaN.\hypertarget{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README_autotoc_md56}{}\doxysection{\texorpdfstring{Dodgers\+Loop\+Game}{Dodgers\+Loop\+Game}}\label{md_external_2data_2UCRArchive__2018_2DodgerLoopWeekend_2README_autotoc_md56}
+
+\begin{DoxyItemize}
+\item Class 1\+: Normal day
+\item Class 2\+: Game day
+\end{DoxyItemize}
+
+Train size\+: 20
+
+Test size\+: 138
+
+Number of classes\+: 2
+
+Missing value\+: Yes
+
+Time series length\+: 288
+
+There is nothing to infer from the order of examples in the train and test set.
+
+Missing values are represented with NaN.
+
+Data created by Ihler, Alexander, Jon Hutchins, and Padhraic Smyth (see \mbox{[}1\mbox{]}\mbox{[}2\mbox{]}\mbox{[}3\mbox{]}). Data edited by Chin-\/\+Chia Michael Yeh.
+
+\mbox{[}1\mbox{]} Ihler, Alexander, Jon Hutchins, and Padhraic Smyth. "{}\+Adaptive event detection with time-\/varying poisson processes."{} Proceedings of the 12th ACM SIGKDD international conference on Knowledge discovery and data mining. ACM, 2006.
+
+\mbox{[}2\mbox{]} “\+UCI Machine Learning Repository\+: Dodgers Loop Sensor Data Set.\+” UCI Machine Learning Repository, archive.\+ics.\+uci.\+edu/ml/datasets/dodgers+loop+sensor.
+
+\mbox{[}3\mbox{]} “\+Caltrans Pe\+MS.\+” Caltrans, pems.\+dot.\+ca.\+gov/. 

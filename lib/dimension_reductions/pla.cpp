@@ -43,6 +43,24 @@ DoublePair pla::regression(const double* const start, const double* const end)
 
   return {a,b};
 }
+double pla::regression_thru_point(double first_point, const double* const start, const double* const end)
+{
+  // using formulas from 
+  //  https://stats.libretexts.org/Bookshelves/Computing_and_Modeling/Supplemental_Modules_(Computing_and_Modeling)/Regression_Analysis/Simple_linear_regression/Regression_through_the_origin
+  if (end-start<0) return 0.0;  
+  if (end-start==0) return start[0]-first_point;
+  int size = end-start+1;
+
+  double b_hat=0;
+  double sqr_x_sum=0;
+  for (int i=0; i<size; ++i) {
+    b_hat += (i+1) * (start[i]-first_point); // translate each point as to have first point be origin
+    sqr_x_sum += (i+1)*(i+1);
+  }
+  b_hat =  b_hat / sqr_x_sum;
+  // no need to translate back as b_hat is the gradient and therefore invariant of location
+  return b_hat;
+}
 
 // w is num items compressed to a linear function
 vector<DoublePair> pla::sliding_window_regression( const vector<double>& series, unsigned int w)

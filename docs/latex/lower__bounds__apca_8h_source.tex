@@ -1,0 +1,92 @@
+\doxysection{lower\+\_\+bounds\+\_\+apca.\+h}
+\hypertarget{lower__bounds__apca_8h_source}{}\label{lower__bounds__apca_8h_source}\index{lib/similarity\_search/lower\_bounds\_apca.h@{lib/similarity\_search/lower\_bounds\_apca.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LOWER\_BOUNDS\_APCA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LOWER\_BOUNDS\_APCA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ }ApcaPt\ =\ \ std::array<std::tuple<double,unsigned\ int>,S>;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ std::vector<double>\ Seqd;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }apca\_bounds\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structapca__bounds_1_1Region}{Region}}\ \{\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{double}\ min\_v;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_i;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_v;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_i;}
+\DoxyCodeLine{00020\ \ \ \};}
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{using\ }ApcaMBR\ =\ std::array<Region,\ S>;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ region\_area(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapca__bounds_1_1Region}{Region}}\&\ r)\ \{\ \textcolor{keywordflow}{return}\ (r.max\_v\ -\/\ r.min\_v)\ *\ (r.max\_i\ -\/\ r.min\_i);\ \}}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structRegion}{Region}}\ region\_merge(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r2)}
+\DoxyCodeLine{00026\ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ std::min(r1.min\_v,r2.min\_v),\ std::min(r1.min\_i,r2.min\_i),\ std::max(r1.max\_v,r2.max\_v),\ std::max(r1.max\_i,r2.max\_i)\ \};}
+\DoxyCodeLine{00028\ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ dist\_to\_region\_sqr(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ qi,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ global\_offset)}
+\DoxyCodeLine{00030\ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (qi\ <\ r.min\_v)\ \textcolor{keywordflow}{return}\ (qi-\/r.min\_v)*(qi-\/r.min\_v);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (qi\ >\ r.max\_v)\ \textcolor{keywordflow}{return}\ (qi-\/r.max\_v)*(qi-\/r.max\_v);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0;}
+\DoxyCodeLine{00034\ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ dist\_to\_regions\_sqr(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ qi,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}*\ \textcolor{keyword}{const}\ rstart,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}*\ \textcolor{keyword}{const}\ rend,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ global\_offset)}
+\DoxyCodeLine{00036\ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{auto}\ min\_f\ =\ [\&](\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ min\_d,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r)\{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{double}\ rd\ =\ dist\_to\_region\_sqr(qi,r,global\_offset);\ min\_d\ <\ 0\ ||\ rd\ <\ min\_d)}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{return}\ rd;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ min\_d;}
+\DoxyCodeLine{00041\ \ \ \ \ \};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{return}\ std::accumulate(rstart,\ rend+1,\ -\/1.0,\ min\_f);}
+\DoxyCodeLine{00043\ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{double}\ mbr\_area(\textcolor{keyword}{const}\ ApcaMBR<S>\&\ mbr)}
+\DoxyCodeLine{00047\ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{return}\ std::accumulate(\ mbr.begin(),\ mbr.end(),\ 0.0,\ [](\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ d,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r)\{\ return\ d+region\_area(r);\ \});}
+\DoxyCodeLine{00049\ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00051\ \ \ ApcaMBR<S>\ mbr\_merge(\textcolor{keyword}{const}\ ApcaMBR<S>\&\ mbr1,\ \textcolor{keyword}{const}\ ApcaMBR<S>\&\ mbr2)}
+\DoxyCodeLine{00052\ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ ApcaMBR<S>\ ret;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<S;\ i++)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ ret[i]\ =\ region\_merge(mbr1[i],\ mbr2[i]);}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00058\ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{double}\ dist\_to\_mbr\_sqr(\ \textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ ApcaMBR<S>\&\ mbr\ )\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_start\_i\ =\ 0;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_end\_i\ =\ 0;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ active\_end\_i\ <\ mbr.size()\ \&\&\ mbr[active\_end\_i].min\_i\ ==\ 0\ )\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ active\_end\_i++;}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ active\_end\_i-\/-\/;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{double}\ dist\ =\ 0.0;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<q.size();\ i++)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ dist\ +=\ DistToRegionsSqr(q,\ \&mbr[0]\ +\ active\_start\_i,\ \&mbr[0]\ +\ active\_end\_i,\ i);\ }
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \textcolor{comment}{//\ adjust\ window\ of\ regions}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ active\_start\_i\ <\ mbr.size()\ \&\&\ mbr[active\_start\_i].max\_i\ <\ i\ )\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ active\_start\_i++;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\ active\_end\_i\ <\ mbr.size()\ \&\&\ mbr[active\_end\_i].min\_i\ <\ i+1\ )\{}
+\DoxyCodeLine{00077\ \ \ \ \ active\_end\_i++;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ active\_end\_i-\/-\/;}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{return}\ dist;}
+\DoxyCodeLine{00083\ \ \ \}}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,183 @@
+\doxysection{general\+\_\+eval Namespace Reference}
+\hypertarget{namespacegeneral__eval}{}\label{namespacegeneral__eval}\index{general\_eval@{general\_eval}}
+
+
+\doxylink{namespacegeneral__eval}{general\+\_\+eval} is a namespace containing generic methods to compare a series with approximations of itself.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespacegeneral__eval_a9a677b8a83cd29e8c5f2c72476524b10}{comp\+\_\+of\+\_\+method}} (const Seqd \&s, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f, \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}} comp)
+\begin{DoxyCompactList}\small\item\em comp\+\_\+of\+\_\+method compares a series with the uncompressed approximation of itself under the provided distance measure. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacegeneral__eval_a3accd2f96c9cbbb8d49eacf7961dd11d}{mse\+\_\+of\+\_\+method}} (const Seqd \&s, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\begin{DoxyCompactList}\small\item\em mse\+\_\+of\+\_\+method compares a series with the uncompressed approximation of itself under the mean squared error measure. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacegeneral__eval_a5378dd1e1e9937b50a1035bc6ddb5f47}{l2\+\_\+of\+\_\+method}} (const Seqd \&s, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\begin{DoxyCompactList}\small\item\em l2\+\_\+of\+\_\+method compares a series with the uncompressed approximation of itself under the euclidean distance. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacegeneral__eval_a0e6b86d637779c5c1d89a035568608e0}{maxdev\+\_\+of\+\_\+method}} (const Seqd \&s, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\begin{DoxyCompactList}\small\item\em maxdev\+\_\+of\+\_\+method compares a series with the uncompressed approximation of itself under the maximum deviation distance. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacegeneral__eval_a1a6c338fe30d46ca4b472644605cb651}{cputime\+\_\+ms\+\_\+of\+\_\+method}} (const Seqd \&s, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\begin{DoxyCompactList}\small\item\em cputime\+\_\+of\+\_\+method returns the time taken to compute the approximation of the series. \end{DoxyCompactList}\item 
+\Hypertarget{namespacegeneral__eval_a0571eff624b1c41f63cf4ede56967d7c}\label{namespacegeneral__eval_a0571eff624b1c41f63cf4ede56967d7c} 
+Seqd {\bfseries get\+\_\+comp\+\_\+over\+\_\+sizes} (const Seqd \&s, Sequi sizes, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f, \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}} comp)
+\item 
+\Hypertarget{namespacegeneral__eval_a559467b6012d52d7415c55d451bccd20}\label{namespacegeneral__eval_a559467b6012d52d7415c55d451bccd20} 
+Seqd {\bfseries get\+\_\+mse\+\_\+over\+\_\+sizes} (const Seqd \&s, Sequi sizes, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\Hypertarget{namespacegeneral__eval_a5d7e759a77def2b2e5818a8c58582ce2}\label{namespacegeneral__eval_a5d7e759a77def2b2e5818a8c58582ce2} 
+Seqd {\bfseries get\+\_\+l2\+\_\+over\+\_\+sizes} (const Seqd \&s, Sequi sizes, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\Hypertarget{namespacegeneral__eval_aa082972bcd9acb793ab421e8ccdf1dbc}\label{namespacegeneral__eval_aa082972bcd9acb793ab421e8ccdf1dbc} 
+Seqd {\bfseries get\+\_\+maxdev\+\_\+over\+\_\+sizes} (const Seqd \&s, Sequi sizes, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\Hypertarget{namespacegeneral__eval_ac02ac7f2b70499cd8dcce2d02cec94b1}\label{namespacegeneral__eval_ac02ac7f2b70499cd8dcce2d02cec94b1} 
+Seqd {\bfseries get\+\_\+cputime\+\_\+over\+\_\+sizes} (const Seqd \&s, Sequi sizes, unsigned int num\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\Hypertarget{namespacegeneral__eval_a43cd90881c619dbc7efaf940aa11d746}\label{namespacegeneral__eval_a43cd90881c619dbc7efaf940aa11d746} 
+Seqd {\bfseries get\+\_\+comp\+\_\+over\+\_\+num\+\_\+params} (const Seqd \&s, Sequi vec\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f, \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}} comp)
+\item 
+\Hypertarget{namespacegeneral__eval_a49525e28c9dde94eb9710af491dce934}\label{namespacegeneral__eval_a49525e28c9dde94eb9710af491dce934} 
+Seqd {\bfseries get\+\_\+mse\+\_\+over\+\_\+num\+\_\+params} (const Seqd \&s, Sequi vec\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\Hypertarget{namespacegeneral__eval_a02f721e529f1bd6e2807153188f1ef69}\label{namespacegeneral__eval_a02f721e529f1bd6e2807153188f1ef69} 
+Seqd {\bfseries get\+\_\+l2\+\_\+over\+\_\+num\+\_\+params} (const Seqd \&s, Sequi vec\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\Hypertarget{namespacegeneral__eval_acadf35244d18940cf196348e0c39de80}\label{namespacegeneral__eval_acadf35244d18940cf196348e0c39de80} 
+Seqd {\bfseries get\+\_\+maxdev\+\_\+over\+\_\+num\+\_\+params} (const Seqd \&s, Sequi vec\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\Hypertarget{namespacegeneral__eval_a2ac4908ef695ece815731f94f35c0f40}\label{namespacegeneral__eval_a2ac4908ef695ece815731f94f35c0f40} 
+Seqd {\bfseries get\+\_\+cputime\+\_\+over\+\_\+num\+\_\+params} (const Seqd \&s, Sequi vec\+\_\+params, \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} f)
+\item 
+\Hypertarget{namespacegeneral__eval_a9bfe4076f346e19e8341de9661360dc3}\label{namespacegeneral__eval_a9bfe4076f346e19e8341de9661360dc3} 
+Seqd {\bfseries get\+\_\+comp\+\_\+over\+\_\+\+DRTs} (const Seqd \&s, unsigned int num\+\_\+params, std\+::vector$<$ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} $>$ fs, \mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}} comp)
+\item 
+\Hypertarget{namespacegeneral__eval_a4fcef0860305248337797a46ca8b6a67}\label{namespacegeneral__eval_a4fcef0860305248337797a46ca8b6a67} 
+Seqd {\bfseries get\+\_\+mse\+\_\+over\+\_\+\+DRTs} (const Seqd \&s, unsigned int num\+\_\+params, std\+::vector$<$ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} $>$ fs)
+\item 
+\Hypertarget{namespacegeneral__eval_ae013e7c9a46a1aaf05e7b4c7c0610ecc}\label{namespacegeneral__eval_ae013e7c9a46a1aaf05e7b4c7c0610ecc} 
+Seqd {\bfseries get\+\_\+l2\+\_\+over\+\_\+\+DRTs} (const Seqd \&s, unsigned int num\+\_\+params, std\+::vector$<$ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} $>$ fs)
+\item 
+\Hypertarget{namespacegeneral__eval_acc51f7eba610f405a62d18e65f361714}\label{namespacegeneral__eval_acc51f7eba610f405a62d18e65f361714} 
+Seqd {\bfseries get\+\_\+maxdev\+\_\+over\+\_\+\+DRTs} (const Seqd \&s, unsigned int num\+\_\+params, std\+::vector$<$ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} $>$ fs)
+\item 
+\Hypertarget{namespacegeneral__eval_aa32d037aa110540a2e80fcf5fd6401d0}\label{namespacegeneral__eval_aa32d037aa110540a2e80fcf5fd6401d0} 
+Seqd {\bfseries get\+\_\+cputime\+\_\+over\+\_\+\+DRTs} (const Seqd \&s, unsigned int num\+\_\+params, std\+::vector$<$ \mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}} $>$ fs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{namespacegeneral__eval}{general\+\_\+eval} is a namespace containing generic methods to compare a series with approximations of itself. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacegeneral__eval_a9a677b8a83cd29e8c5f2c72476524b10}\label{namespacegeneral__eval_a9a677b8a83cd29e8c5f2c72476524b10} 
+\index{general\_eval@{general\_eval}!comp\_of\_method@{comp\_of\_method}}
+\index{comp\_of\_method@{comp\_of\_method}!general\_eval@{general\_eval}}
+\doxysubsubsection{\texorpdfstring{comp\_of\_method()}{comp\_of\_method()}}
+{\footnotesize\ttfamily double general\+\_\+eval\+::comp\+\_\+of\+\_\+method (\begin{DoxyParamCaption}\item[{const Seqd \&}]{s,  }\item[{unsigned int}]{num\+\_\+params,  }\item[{\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}}]{f,  }\item[{\mbox{\hyperlink{general_8h_a19001aa67ae996933965458b4e98fc2c}{COMP}}}]{comp }\end{DoxyParamCaption})}
+
+
+
+comp\+\_\+of\+\_\+method compares a series with the uncompressed approximation of itself under the provided distance measure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em num\+\_\+params} & is the number of parameters you wish to grant the DRT to approximate with. \\
+\hline
+{\em f} & is the DRT to be used (eg. PAA). \\
+\hline
+{\em comp} & is the comparison function (eg. L2 or even non-\/norm such as Squared Error). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The observed distance between the exact series and its approximation. 
+\end{DoxyReturn}
+\Hypertarget{namespacegeneral__eval_a1a6c338fe30d46ca4b472644605cb651}\label{namespacegeneral__eval_a1a6c338fe30d46ca4b472644605cb651} 
+\index{general\_eval@{general\_eval}!cputime\_ms\_of\_method@{cputime\_ms\_of\_method}}
+\index{cputime\_ms\_of\_method@{cputime\_ms\_of\_method}!general\_eval@{general\_eval}}
+\doxysubsubsection{\texorpdfstring{cputime\_ms\_of\_method()}{cputime\_ms\_of\_method()}}
+{\footnotesize\ttfamily double general\+\_\+eval\+::cputime\+\_\+ms\+\_\+of\+\_\+method (\begin{DoxyParamCaption}\item[{const Seqd \&}]{s,  }\item[{unsigned int}]{num\+\_\+params,  }\item[{\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}}]{f }\end{DoxyParamCaption})}
+
+
+
+cputime\+\_\+of\+\_\+method returns the time taken to compute the approximation of the series. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em num\+\_\+params} & is the number of parameters you wish to grant the DRT to approximate with. \\
+\hline
+{\em f} & is the DRT to be used (eg. PAA). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time taken to form the approximation (the function times an application of f). 
+\end{DoxyReturn}
+\Hypertarget{namespacegeneral__eval_a5378dd1e1e9937b50a1035bc6ddb5f47}\label{namespacegeneral__eval_a5378dd1e1e9937b50a1035bc6ddb5f47} 
+\index{general\_eval@{general\_eval}!l2\_of\_method@{l2\_of\_method}}
+\index{l2\_of\_method@{l2\_of\_method}!general\_eval@{general\_eval}}
+\doxysubsubsection{\texorpdfstring{l2\_of\_method()}{l2\_of\_method()}}
+{\footnotesize\ttfamily double general\+\_\+eval\+::l2\+\_\+of\+\_\+method (\begin{DoxyParamCaption}\item[{const Seqd \&}]{s,  }\item[{unsigned int}]{num\+\_\+params,  }\item[{\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}}]{f }\end{DoxyParamCaption})}
+
+
+
+l2\+\_\+of\+\_\+method compares a series with the uncompressed approximation of itself under the euclidean distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em num\+\_\+params} & is the number of parameters you wish to grant the DRT to approximate with. \\
+\hline
+{\em f} & is the DRT to be used (eg. PAA). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The observed distance between the exact series and its approximation. 
+\end{DoxyReturn}
+\Hypertarget{namespacegeneral__eval_a0e6b86d637779c5c1d89a035568608e0}\label{namespacegeneral__eval_a0e6b86d637779c5c1d89a035568608e0} 
+\index{general\_eval@{general\_eval}!maxdev\_of\_method@{maxdev\_of\_method}}
+\index{maxdev\_of\_method@{maxdev\_of\_method}!general\_eval@{general\_eval}}
+\doxysubsubsection{\texorpdfstring{maxdev\_of\_method()}{maxdev\_of\_method()}}
+{\footnotesize\ttfamily double general\+\_\+eval\+::maxdev\+\_\+of\+\_\+method (\begin{DoxyParamCaption}\item[{const Seqd \&}]{s,  }\item[{unsigned int}]{num\+\_\+params,  }\item[{\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}}]{f }\end{DoxyParamCaption})}
+
+
+
+maxdev\+\_\+of\+\_\+method compares a series with the uncompressed approximation of itself under the maximum deviation distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em num\+\_\+params} & is the number of parameters you wish to grant the DRT to approximate with. \\
+\hline
+{\em f} & is the DRT to be used (eg. PAA). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The observed distance between the exact series and its approximation. 
+\end{DoxyReturn}
+\Hypertarget{namespacegeneral__eval_a3accd2f96c9cbbb8d49eacf7961dd11d}\label{namespacegeneral__eval_a3accd2f96c9cbbb8d49eacf7961dd11d} 
+\index{general\_eval@{general\_eval}!mse\_of\_method@{mse\_of\_method}}
+\index{mse\_of\_method@{mse\_of\_method}!general\_eval@{general\_eval}}
+\doxysubsubsection{\texorpdfstring{mse\_of\_method()}{mse\_of\_method()}}
+{\footnotesize\ttfamily double general\+\_\+eval\+::mse\+\_\+of\+\_\+method (\begin{DoxyParamCaption}\item[{const Seqd \&}]{s,  }\item[{unsigned int}]{num\+\_\+params,  }\item[{\mbox{\hyperlink{general_8h_a8e616e954dd9975c25aae7f381bd9da1}{DRT}}}]{f }\end{DoxyParamCaption})}
+
+
+
+mse\+\_\+of\+\_\+method compares a series with the uncompressed approximation of itself under the mean squared error measure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em num\+\_\+params} & is the number of parameters you wish to grant the DRT to approximate with. \\
+\hline
+{\em f} & is the DRT to be used (eg. PAA). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The observed distance between the exact series and its approximation. 
+\end{DoxyReturn}

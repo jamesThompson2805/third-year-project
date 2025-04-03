@@ -1,0 +1,40 @@
+\doxysection{lib/similarity\+\_\+search/gemini.cpp File Reference}
+\hypertarget{gemini_8cpp}{}\label{gemini_8cpp}\index{lib/similarity\_search/gemini.cpp@{lib/similarity\_search/gemini.cpp}}
+{\ttfamily \#include "{}../\+R-\/\+Tree/\+RTree\+Template/\+RTree.\+h"{}}\newline
+{\ttfamily \#include "{}./naive\+\_\+pla.\+cpp"{}}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGeminiNaive}{Gemini\+Naive$<$ FEATURE\+\_\+\+DIM $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef array$<$ int, 2 $>$ \mbox{\hyperlink{gemini_8cpp_a827d7d2521ab807cf6ee87392f0e4011}{Int\+Pair}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$int FEATURE\+\_\+\+DIM$>$ }\\\mbox{\hyperlink{classGeminiNaive}{Gemini\+Naive}}$<$ FEATURE\+\_\+\+DIM $>$ \mbox{\hyperlink{gemini_8cpp_a14226f60a6f15c62fd68dc814261bc71}{candidate\+\_\+similar\+\_\+subseq}} (const vector$<$ array$<$ float, FEATURE\+\_\+\+DIM $>$ $>$ \&query, float epsilon)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{gemini_8cpp_a827d7d2521ab807cf6ee87392f0e4011}\label{gemini_8cpp_a827d7d2521ab807cf6ee87392f0e4011} 
+\index{gemini.cpp@{gemini.cpp}!IntPair@{IntPair}}
+\index{IntPair@{IntPair}!gemini.cpp@{gemini.cpp}}
+\doxysubsubsection{\texorpdfstring{IntPair}{IntPair}}
+{\footnotesize\ttfamily typedef array$<$int, 2$>$ \mbox{\hyperlink{gemini_8cpp_a827d7d2521ab807cf6ee87392f0e4011}{Int\+Pair}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gemini_8cpp_a14226f60a6f15c62fd68dc814261bc71}\label{gemini_8cpp_a14226f60a6f15c62fd68dc814261bc71} 
+\index{gemini.cpp@{gemini.cpp}!candidate\_similar\_subseq@{candidate\_similar\_subseq}}
+\index{candidate\_similar\_subseq@{candidate\_similar\_subseq}!gemini.cpp@{gemini.cpp}}
+\doxysubsubsection{\texorpdfstring{candidate\_similar\_subseq()}{candidate\_similar\_subseq()}}
+{\footnotesize\ttfamily template$<$int FEATURE\+\_\+\+DIM$>$ \\
+\mbox{\hyperlink{classGeminiNaive}{Gemini\+Naive}}$<$ FEATURE\+\_\+\+DIM $>$ candidate\+\_\+similar\+\_\+subseq (\begin{DoxyParamCaption}\item[{const vector$<$ array$<$ float, FEATURE\+\_\+\+DIM $>$ $>$ \&}]{query,  }\item[{float}]{epsilon }\end{DoxyParamCaption})}
+

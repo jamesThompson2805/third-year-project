@@ -1,0 +1,59 @@
+\doxysection{lib/dimension\+\_\+reductions/exact\+\_\+dp.cpp File Reference}
+\hypertarget{exact__dp_8cpp}{}\label{exact__dp_8cpp}\index{lib/dimension\_reductions/exact\_dp.cpp@{lib/dimension\_reductions/exact\_dp.cpp}}
+{\ttfamily \#include "{}exact\+\_\+dp.\+h"{}}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{exact__dp_8cpp_aed1bb10480f08212ea558f7cf99bf56a}{quick\+\_\+mean}} (const double \texorpdfstring{$\ast$}{*}const f1, const double \texorpdfstring{$\ast$}{*}const f2)
+\item 
+double \mbox{\hyperlink{exact__dp_8cpp_a2fd30e94d0bbf382bf0507d9d6205c39}{quick\+\_\+se\+\_\+with\+\_\+mean}} (const double \texorpdfstring{$\ast$}{*}const f1, const double \texorpdfstring{$\ast$}{*}const f2, double \mbox{\hyperlink{dac__curve__fitting_8cpp_af231a51f350128da44ad5324b44d96a8}{mean}})
+\item 
+\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \mbox{\hyperlink{exact__dp_8cpp_a760955b7f198a0d4bcb7bcba4389e87e}{regress}} (const double \texorpdfstring{$\ast$}{*}const start, const double \texorpdfstring{$\ast$}{*}const end)
+\item 
+double \mbox{\hyperlink{exact__dp_8cpp_aa828ab99672ba5c84c3ff286fb715688}{quick\+\_\+se\+\_\+with\+\_\+regress}} (const double \texorpdfstring{$\ast$}{*}const f1, const double \texorpdfstring{$\ast$}{*}const f2, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&regressed)
+\item 
+double \mbox{\hyperlink{exact__dp_8cpp_ae175f064db271af3632c1dfc7b69c726}{quick\+\_\+maxdev\+\_\+with\+\_\+mean}} (const double \texorpdfstring{$\ast$}{*}const f1, const double \texorpdfstring{$\ast$}{*}const f2, double \mbox{\hyperlink{dac__curve__fitting_8cpp_af231a51f350128da44ad5324b44d96a8}{mean}})
+\item 
+double \mbox{\hyperlink{exact__dp_8cpp_a704b18bfee834faf4e00f18114a850b4}{quick\+\_\+maxdev\+\_\+with\+\_\+regress}} (const double \texorpdfstring{$\ast$}{*}const f1, const double \texorpdfstring{$\ast$}{*}const f2, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&regressed)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{exact__dp_8cpp_ae175f064db271af3632c1dfc7b69c726}\label{exact__dp_8cpp_ae175f064db271af3632c1dfc7b69c726} 
+\index{exact\_dp.cpp@{exact\_dp.cpp}!quick\_maxdev\_with\_mean@{quick\_maxdev\_with\_mean}}
+\index{quick\_maxdev\_with\_mean@{quick\_maxdev\_with\_mean}!exact\_dp.cpp@{exact\_dp.cpp}}
+\doxysubsubsection{\texorpdfstring{quick\_maxdev\_with\_mean()}{quick\_maxdev\_with\_mean()}}
+{\footnotesize\ttfamily double quick\+\_\+maxdev\+\_\+with\+\_\+mean (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{f1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{f2,  }\item[{double}]{mean }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{exact__dp_8cpp_a704b18bfee834faf4e00f18114a850b4}\label{exact__dp_8cpp_a704b18bfee834faf4e00f18114a850b4} 
+\index{exact\_dp.cpp@{exact\_dp.cpp}!quick\_maxdev\_with\_regress@{quick\_maxdev\_with\_regress}}
+\index{quick\_maxdev\_with\_regress@{quick\_maxdev\_with\_regress}!exact\_dp.cpp@{exact\_dp.cpp}}
+\doxysubsubsection{\texorpdfstring{quick\_maxdev\_with\_regress()}{quick\_maxdev\_with\_regress()}}
+{\footnotesize\ttfamily double quick\+\_\+maxdev\+\_\+with\+\_\+regress (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{f1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{f2,  }\item[{const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&}]{regressed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{exact__dp_8cpp_aed1bb10480f08212ea558f7cf99bf56a}\label{exact__dp_8cpp_aed1bb10480f08212ea558f7cf99bf56a} 
+\index{exact\_dp.cpp@{exact\_dp.cpp}!quick\_mean@{quick\_mean}}
+\index{quick\_mean@{quick\_mean}!exact\_dp.cpp@{exact\_dp.cpp}}
+\doxysubsubsection{\texorpdfstring{quick\_mean()}{quick\_mean()}}
+{\footnotesize\ttfamily double quick\+\_\+mean (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{f1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{f2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{exact__dp_8cpp_a2fd30e94d0bbf382bf0507d9d6205c39}\label{exact__dp_8cpp_a2fd30e94d0bbf382bf0507d9d6205c39} 
+\index{exact\_dp.cpp@{exact\_dp.cpp}!quick\_se\_with\_mean@{quick\_se\_with\_mean}}
+\index{quick\_se\_with\_mean@{quick\_se\_with\_mean}!exact\_dp.cpp@{exact\_dp.cpp}}
+\doxysubsubsection{\texorpdfstring{quick\_se\_with\_mean()}{quick\_se\_with\_mean()}}
+{\footnotesize\ttfamily double quick\+\_\+se\+\_\+with\+\_\+mean (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{f1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{f2,  }\item[{double}]{mean }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{exact__dp_8cpp_aa828ab99672ba5c84c3ff286fb715688}\label{exact__dp_8cpp_aa828ab99672ba5c84c3ff286fb715688} 
+\index{exact\_dp.cpp@{exact\_dp.cpp}!quick\_se\_with\_regress@{quick\_se\_with\_regress}}
+\index{quick\_se\_with\_regress@{quick\_se\_with\_regress}!exact\_dp.cpp@{exact\_dp.cpp}}
+\doxysubsubsection{\texorpdfstring{quick\_se\_with\_regress()}{quick\_se\_with\_regress()}}
+{\footnotesize\ttfamily double quick\+\_\+se\+\_\+with\+\_\+regress (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{f1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{f2,  }\item[{const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&}]{regressed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{exact__dp_8cpp_a760955b7f198a0d4bcb7bcba4389e87e}\label{exact__dp_8cpp_a760955b7f198a0d4bcb7bcba4389e87e} 
+\index{exact\_dp.cpp@{exact\_dp.cpp}!regress@{regress}}
+\index{regress@{regress}!exact\_dp.cpp@{exact\_dp.cpp}}
+\doxysubsubsection{\texorpdfstring{regress()}{regress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} regress (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{start,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{end }\end{DoxyParamCaption})}
+

@@ -1,0 +1,80 @@
+\doxysection{lib/dimension\+\_\+reductions/double\+\_\+window.cpp File Reference}
+\hypertarget{double__window_8cpp}{}\label{double__window_8cpp}\index{lib/dimension\_reductions/double\_window.cpp@{lib/dimension\_reductions/double\_window.cpp}}
+{\ttfamily \#include "{}double\+\_\+window.\+h"{}}\newline
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{double__window_8cpp_a727a320df41353f18982315c9276649f}{mean\+\_\+diff}} (const double \texorpdfstring{$\ast$}{*}const d1, const double \texorpdfstring{$\ast$}{*}const d2, unsigned int lw\+\_\+size, unsigned int rw\+\_\+size)
+\item 
+unsigned int \mbox{\hyperlink{double__window_8cpp_ad2651940b334293f39cc8c4b49691f62}{greatest\+\_\+diff\+\_\+index}} (const double \texorpdfstring{$\ast$}{*}const d1, const double \texorpdfstring{$\ast$}{*}const d2, unsigned int lw\+\_\+size, unsigned int rw\+\_\+size)
+\item 
+double \mbox{\hyperlink{double__window_8cpp_a43446ea16fd84a1c7ddb1cc9f8c7e0d2}{int\+\_\+expansion}} (const double \texorpdfstring{$\ast$}{*}const d1, const double \texorpdfstring{$\ast$}{*}const d2, unsigned int lw\+\_\+size, unsigned int rw\+\_\+size)
+\item 
+unsigned int \mbox{\hyperlink{double__window_8cpp_ad3fad791a6cb2fd8a338236d159e0133}{greatest\+\_\+int\+\_\+diff\+\_\+index}} (const double \texorpdfstring{$\ast$}{*}const d1, const double \texorpdfstring{$\ast$}{*}const d2, unsigned int lw\+\_\+size, unsigned int rw\+\_\+size)
+\item 
+double \mbox{\hyperlink{double__window_8cpp_a4d8757a55a2505d1ba66a54b880c47f1}{mean\+\_\+differential\+\_\+diff}} (const double \texorpdfstring{$\ast$}{*}const d1, const double \texorpdfstring{$\ast$}{*}const d2, unsigned int lw\+\_\+size, unsigned int rw\+\_\+size)
+\item 
+unsigned int \mbox{\hyperlink{double__window_8cpp_ad4b4f2194264e3e6d9cc7cc65f024cef}{greatest\+\_\+differential\+\_\+index}} (const double \texorpdfstring{$\ast$}{*}const d1, const double \texorpdfstring{$\ast$}{*}const d2, unsigned int lw\+\_\+size, unsigned int rw\+\_\+size)
+\item 
+double \mbox{\hyperlink{double__window_8cpp_ae69669b5842a3364d233caf08c60655a}{differential\+\_\+int\+\_\+difference}} (const double \texorpdfstring{$\ast$}{*}const d1, const double \texorpdfstring{$\ast$}{*}const d2, unsigned int lw\+\_\+size, unsigned int rw\+\_\+size)
+\item 
+unsigned int \mbox{\hyperlink{double__window_8cpp_ab11ba22e507abf8be49c07c0e583032b}{greatest\+\_\+differential\+\_\+int\+\_\+index}} (const double \texorpdfstring{$\ast$}{*}const d1, const double \texorpdfstring{$\ast$}{*}const d2, unsigned int lw\+\_\+size, unsigned int rw\+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{double__window_8cpp_ae69669b5842a3364d233caf08c60655a}\label{double__window_8cpp_ae69669b5842a3364d233caf08c60655a} 
+\index{double\_window.cpp@{double\_window.cpp}!differential\_int\_difference@{differential\_int\_difference}}
+\index{differential\_int\_difference@{differential\_int\_difference}!double\_window.cpp@{double\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{differential\_int\_difference()}{differential\_int\_difference()}}
+{\footnotesize\ttfamily double differential\+\_\+int\+\_\+difference (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{d1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{d2,  }\item[{unsigned int}]{lw\+\_\+size,  }\item[{unsigned int}]{rw\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{double__window_8cpp_ad2651940b334293f39cc8c4b49691f62}\label{double__window_8cpp_ad2651940b334293f39cc8c4b49691f62} 
+\index{double\_window.cpp@{double\_window.cpp}!greatest\_diff\_index@{greatest\_diff\_index}}
+\index{greatest\_diff\_index@{greatest\_diff\_index}!double\_window.cpp@{double\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{greatest\_diff\_index()}{greatest\_diff\_index()}}
+{\footnotesize\ttfamily unsigned int greatest\+\_\+diff\+\_\+index (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{d1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{d2,  }\item[{unsigned int}]{lw\+\_\+size,  }\item[{unsigned int}]{rw\+\_\+size }\end{DoxyParamCaption})}
+
+\Hypertarget{double__window_8cpp_ad4b4f2194264e3e6d9cc7cc65f024cef}\label{double__window_8cpp_ad4b4f2194264e3e6d9cc7cc65f024cef} 
+\index{double\_window.cpp@{double\_window.cpp}!greatest\_differential\_index@{greatest\_differential\_index}}
+\index{greatest\_differential\_index@{greatest\_differential\_index}!double\_window.cpp@{double\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{greatest\_differential\_index()}{greatest\_differential\_index()}}
+{\footnotesize\ttfamily unsigned int greatest\+\_\+differential\+\_\+index (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{d1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{d2,  }\item[{unsigned int}]{lw\+\_\+size,  }\item[{unsigned int}]{rw\+\_\+size }\end{DoxyParamCaption})}
+
+\Hypertarget{double__window_8cpp_ab11ba22e507abf8be49c07c0e583032b}\label{double__window_8cpp_ab11ba22e507abf8be49c07c0e583032b} 
+\index{double\_window.cpp@{double\_window.cpp}!greatest\_differential\_int\_index@{greatest\_differential\_int\_index}}
+\index{greatest\_differential\_int\_index@{greatest\_differential\_int\_index}!double\_window.cpp@{double\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{greatest\_differential\_int\_index()}{greatest\_differential\_int\_index()}}
+{\footnotesize\ttfamily unsigned int greatest\+\_\+differential\+\_\+int\+\_\+index (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{d1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{d2,  }\item[{unsigned int}]{lw\+\_\+size,  }\item[{unsigned int}]{rw\+\_\+size }\end{DoxyParamCaption})}
+
+\Hypertarget{double__window_8cpp_ad3fad791a6cb2fd8a338236d159e0133}\label{double__window_8cpp_ad3fad791a6cb2fd8a338236d159e0133} 
+\index{double\_window.cpp@{double\_window.cpp}!greatest\_int\_diff\_index@{greatest\_int\_diff\_index}}
+\index{greatest\_int\_diff\_index@{greatest\_int\_diff\_index}!double\_window.cpp@{double\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{greatest\_int\_diff\_index()}{greatest\_int\_diff\_index()}}
+{\footnotesize\ttfamily unsigned int greatest\+\_\+int\+\_\+diff\+\_\+index (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{d1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{d2,  }\item[{unsigned int}]{lw\+\_\+size,  }\item[{unsigned int}]{rw\+\_\+size }\end{DoxyParamCaption})}
+
+\Hypertarget{double__window_8cpp_a43446ea16fd84a1c7ddb1cc9f8c7e0d2}\label{double__window_8cpp_a43446ea16fd84a1c7ddb1cc9f8c7e0d2} 
+\index{double\_window.cpp@{double\_window.cpp}!int\_expansion@{int\_expansion}}
+\index{int\_expansion@{int\_expansion}!double\_window.cpp@{double\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{int\_expansion()}{int\_expansion()}}
+{\footnotesize\ttfamily double int\+\_\+expansion (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{d1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{d2,  }\item[{unsigned int}]{lw\+\_\+size,  }\item[{unsigned int}]{rw\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{double__window_8cpp_a727a320df41353f18982315c9276649f}\label{double__window_8cpp_a727a320df41353f18982315c9276649f} 
+\index{double\_window.cpp@{double\_window.cpp}!mean\_diff@{mean\_diff}}
+\index{mean\_diff@{mean\_diff}!double\_window.cpp@{double\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{mean\_diff()}{mean\_diff()}}
+{\footnotesize\ttfamily double mean\+\_\+diff (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{d1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{d2,  }\item[{unsigned int}]{lw\+\_\+size,  }\item[{unsigned int}]{rw\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{double__window_8cpp_a4d8757a55a2505d1ba66a54b880c47f1}\label{double__window_8cpp_a4d8757a55a2505d1ba66a54b880c47f1} 
+\index{double\_window.cpp@{double\_window.cpp}!mean\_differential\_diff@{mean\_differential\_diff}}
+\index{mean\_differential\_diff@{mean\_differential\_diff}!double\_window.cpp@{double\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{mean\_differential\_diff()}{mean\_differential\_diff()}}
+{\footnotesize\ttfamily double mean\+\_\+differential\+\_\+diff (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{d1,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{d2,  }\item[{unsigned int}]{lw\+\_\+size,  }\item[{unsigned int}]{rw\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

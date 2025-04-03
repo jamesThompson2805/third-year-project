@@ -1,0 +1,39 @@
+\chapter{EOG data sets}
+\hypertarget{md_external_2data_2UCRArchive__2018_2EOGHorizontalSignal_2README}{}\label{md_external_2data_2UCRArchive__2018_2EOGHorizontalSignal_2README}\index{EOG data sets@{EOG data sets}}
+\label{md_external_2data_2UCRArchive__2018_2EOGHorizontalSignal_2README_autotoc_md62}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2EOGHorizontalSignal_2README_autotoc_md62}%
+ The data are electrooculography signal (EOG). EOG is measurements of the electrical potential between electrodes placed at points close to the eyes. The EOG recording device is Blue\+Gain, a commercial biomedical amplifier. Four measurement electrodes are attached to the left, right, upper and lower sides of the left eye. A two-\/channel (horizontal and vertical) EOG signal is obtained by taking the differences of the signals between the electrodes on the left and right sides and those between the upper and lower sides, respectively. The sampling rate was 1.\+0\+KHz.
+
+We use the "{}\+Isolated data"{} described in the paper \mbox{[}1\mbox{]}. This dataset includes 6 participants eye-\/writing 12 types of Japanese Katakana strokes.
+
+There are 12 classes. Class labels correspond to stroke ID. See Fig 7 in \mbox{[}1\mbox{]} for the mapping of stroke ID -\/ stroke type.
+
+We make two data sets out of these data.\hypertarget{md_external_2data_2UCRArchive__2018_2EOGHorizontalSignal_2README_autotoc_md63}{}\doxysection{\texorpdfstring{EOGHorizontal\+Signal}{EOGHorizontal\+Signal}}\label{md_external_2data_2UCRArchive__2018_2EOGHorizontalSignal_2README_autotoc_md63}
+The horizontal eye movement (left-\/right)
+
+Train size\+: 362
+
+Test size\+: 362
+
+Number of classes\+: 12
+
+Missing value\+: No
+
+Time series length\+: 1250\hypertarget{md_external_2data_2UCRArchive__2018_2EOGHorizontalSignal_2README_autotoc_md64}{}\doxysection{\texorpdfstring{EOGVertical\+Signal}{EOGVertical\+Signal}}\label{md_external_2data_2UCRArchive__2018_2EOGHorizontalSignal_2README_autotoc_md64}
+The vertical eye movement (up-\/down)
+
+Train size\+: 362
+
+Test size\+: 362
+
+Number of classes\+: 12
+
+Missing value\+: No
+
+Time series length\+: 1250
+
+There is nothing to infer from the order of examples in the train and test set.
+
+Data created by Fang Fuming and Takahiro Shinozaki (see \mbox{[}1\mbox{]}. Data edited by Hoang Anh Dau.
+
+\mbox{[}1\mbox{]} Fang, Fuming, and Takahiro Shinozaki. "{}\+Electrooculography-\/based continuous eye-\/writing recognition system for efficient assistive communication systems."{} PloS one 13.\+2 (2018)\+: e0192684. 

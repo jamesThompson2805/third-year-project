@@ -1,0 +1,89 @@
+\doxysection{pgbar\+::Basic\+Bar\texorpdfstring{$<$}{<} Config\+Type, Mutex\+Mode, Stream\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classpgbar_1_1BasicBar}{}\label{classpgbar_1_1BasicBar}\index{pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$@{pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$}}
+Inheritance diagram for pgbar\+::Basic\+Bar\texorpdfstring{$<$}{<} Config\+Type, Mutex\+Mode, Stream\+Type \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpgbar_1_1BasicBar}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_aca333b6816e5a5f41728af3f86beac28}\label{classpgbar_1_1BasicBar_aca333b6816e5a5f41728af3f86beac28} 
+{\bfseries Basic\+Bar} (Config\+Type config=Config\+Type()) noexcept(std\+::is\+\_\+nothrow\+\_\+default\+\_\+constructible$<$ Mutex\+Mode $>$\+::value)
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a38c5ef81b00c35d1aa5698fabc623083}\label{classpgbar_1_1BasicBar_a38c5ef81b00c35d1aa5698fabc623083} 
+{\footnotesize template$<$typename... Args, typename  = typename std\+::enable\+\_\+if$<$std\+::is\+\_\+constructible$<$\+Config\+Type, Args...$>$\+::value$>$\+::type$>$ }\\{\bfseries Basic\+Bar} (Args \&\&... args)
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a68b1a84866f4e4b7f4bb1b0c0edc9f2f}\label{classpgbar_1_1BasicBar_a68b1a84866f4e4b7f4bb1b0c0edc9f2f} 
+{\bfseries Basic\+Bar} (\mbox{\hyperlink{classpgbar_1_1BasicBar}{Self}} \&\&rhs) noexcept(std\+::is\+\_\+nothrow\+\_\+default\+\_\+constructible$<$ Mutex\+Mode $>$\+::value)
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a94a8a62252353ad1b7f09f5bd0d2dbfa}\label{classpgbar_1_1BasicBar_a94a8a62252353ad1b7f09f5bd0d2dbfa} 
+\mbox{\hyperlink{classpgbar_1_1BasicBar}{Self}} \& {\bfseries operator=} (\mbox{\hyperlink{classpgbar_1_1BasicBar}{Self}} \&\&rhs) \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a2fd533d89ede528a1f703090014a61fa}\label{classpgbar_1_1BasicBar_a2fd533d89ede528a1f703090014a61fa} 
+\mbox{\hyperlink{classpgbar_1_1BasicBar}{Self}} \& {\bfseries tick} () \&override final
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_ad864fa2bb14639753c54c7cb5bb2b89c}\label{classpgbar_1_1BasicBar_ad864fa2bb14639753c54c7cb5bb2b89c} 
+\mbox{\hyperlink{classpgbar_1_1BasicBar}{Self}} \& {\bfseries tick} (\+\_\+\+\_\+details\+::types\+::\+Size next\+\_\+step) \&override final
+\item 
+\mbox{\hyperlink{classpgbar_1_1BasicBar}{Self}} \& \mbox{\hyperlink{classpgbar_1_1BasicBar_aa27ae4c536f1cd3283b6199f14e6f87a}{tick\+\_\+to}} (\+\_\+\+\_\+details\+::types\+::\+Size percentage) \&override final
+\item 
+void \mbox{\hyperlink{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513}{reset}} () override final
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a8c67fca757a781ce08047ede28e506c0}\label{classpgbar_1_1BasicBar_a8c67fca757a781ce08047ede28e506c0} 
+void {\bfseries reset} (bool final\+\_\+mesg) override final
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_ac82bec80d1df10cbbaccef6da62775e8}\label{classpgbar_1_1BasicBar_ac82bec80d1df10cbbaccef6da62775e8} 
+Config\+Type \& {\bfseries config} () \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a51ffc8b92ee6f9f8d113e1605674bc19}\label{classpgbar_1_1BasicBar_a51ffc8b92ee6f9f8d113e1605674bc19} 
+const Config\+Type \& {\bfseries config} () const \&noexcept
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_ab6a3efff4d55a5ea4726d19f89267f7f}\label{classpgbar_1_1BasicBar_ab6a3efff4d55a5ea4726d19f89267f7f} 
+Config\+Type {\bfseries config} () \&\&noexcept
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a4d4709c1f08cc138135d1fe3833a97c6}\label{classpgbar_1_1BasicBar_a4d4709c1f08cc138135d1fe3833a97c6} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX20\+\_\+\+CNSTXPR void {\bfseries swap} (\mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}} \&lhs) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a66ebeef792ca2cebf94cdd9e0a90bb81}\label{classpgbar_1_1BasicBar_a66ebeef792ca2cebf94cdd9e0a90bb81} 
+{\footnotesize template$<$typename , typename $>$ }\\struct {\bfseries \+\_\+\+\_\+details\+::render\+::\+Tick\+Action}
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_ad391bc8d2ebc0e7b87baae51c6e7fed8}\label{classpgbar_1_1BasicBar_ad391bc8d2ebc0e7b87baae51c6e7fed8} 
+{\footnotesize template$<$typename , typename $>$ }\\struct {\bfseries \+\_\+\+\_\+details\+::render\+::\+Render\+Action}
+\item 
+\Hypertarget{classpgbar_1_1BasicBar_a73cd7e9df5da5df440eb83fbe2ecb907}\label{classpgbar_1_1BasicBar_a73cd7e9df5da5df440eb83fbe2ecb907} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX20\+\_\+\+CNSTXPR void {\bfseries swap} (\mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}} \&a, \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}} \&b) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513}\label{classpgbar_1_1BasicBar_a317ddc05b19fd3d5ceb17eabd1a36513} 
+\index{pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$@{pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$}!reset@{reset}}
+\index{reset@{reset}!pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$@{pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily template$<$typename Config\+Type , typename Mutex\+Mode , Channel Stream\+Type$>$ \\
+void \mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar\+::\+Basic\+Bar}}$<$ Config\+Type, Mutex\+Mode, Stream\+Type $>$\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}}
+
+Reset the state of the object, it will immediately TERMINATE the current make. \Hypertarget{classpgbar_1_1BasicBar_aa27ae4c536f1cd3283b6199f14e6f87a}\label{classpgbar_1_1BasicBar_aa27ae4c536f1cd3283b6199f14e6f87a} 
+\index{pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$@{pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$}!tick\_to@{tick\_to}}
+\index{tick\_to@{tick\_to}!pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$@{pgbar::BasicBar$<$ ConfigType, MutexMode, StreamType $>$}}
+\doxysubsubsection{\texorpdfstring{tick\_to()}{tick\_to()}}
+{\footnotesize\ttfamily template$<$typename Config\+Type , typename Mutex\+Mode , Channel Stream\+Type$>$ \\
+\mbox{\hyperlink{classpgbar_1_1BasicBar}{Self}} \& \mbox{\hyperlink{classpgbar_1_1BasicBar}{pgbar\+::\+Basic\+Bar}}$<$ Config\+Type, Mutex\+Mode, Stream\+Type $>$\+::tick\+\_\+to (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+details\+::types\+::\+Size}]{percentage }\end{DoxyParamCaption}) \&\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}}
+
+Set the iteration step of the progress bar to a specified percentage. Ignore the call if the iteration count exceeds the given percentage. If {\ttfamily percentage} is bigger than 100, it will be set to 100.
+
+
+\begin{DoxyParams}{Parameters}
+{\em percentage} & Value range\+: \mbox{[}0, 100\mbox{]}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

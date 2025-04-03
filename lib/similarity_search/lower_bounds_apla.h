@@ -161,11 +161,6 @@ namespace apla_bounds {
   AplaMBR<S> vec_to_mbr(const std::vector<double>& q, pla::APLA_DRT f)
   {
     std::vector<std::tuple<DoublePair, unsigned int>> apla = f(q,3*S);
-    //std::cout << "apla end indexes ";
-    for (auto& [dp,i] : apla) {
-      //std::cout << i << "	";
-    }
-    //std::cout << std::endl;
     AplaMBR<S> mbr;
     int start_i = 0;
     for ( int apla_i = 0; apla_i < S; apla_i++ ) {

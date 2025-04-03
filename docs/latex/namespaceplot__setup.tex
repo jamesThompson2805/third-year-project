@@ -1,0 +1,52 @@
+\doxysection{plot\+\_\+setup Namespace Reference}
+\hypertarget{namespaceplot__setup}{}\label{namespaceplot__setup}\index{plot\_setup@{plot\_setup}}
+
+
+\doxylink{namespaceplot__setup}{plot\+\_\+setup} is a namespace containing utilities for setting up gnuplot to render the plot.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceplot__setup_a99c39622a998034091a69ef49d403326}{setup\+\_\+gnuplot}} (Gnuplot \&gp, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em setup\+\_\+gnuplot should be passed an initialised instance of Gnuplot to configure ready to create a plot. The function uses the details in the \doxylink{structPlotDetails}{Plot\+Details} to configure the metadata such as size, output, font, filepath and axis labels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot__setup_a7e18df5602526161cb6cc41e25874914}{open\+\_\+pdf}} (\mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em open\+\_\+pdf should be called after graph creation and with same instance of \doxylink{structPlotDetails}{Plot\+Details} to open specifically pdf plot using firefox. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{namespaceplot__setup}{plot\+\_\+setup} is a namespace containing utilities for setting up gnuplot to render the plot. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceplot__setup_a7e18df5602526161cb6cc41e25874914}\label{namespaceplot__setup_a7e18df5602526161cb6cc41e25874914} 
+\index{plot\_setup@{plot\_setup}!open\_pdf@{open\_pdf}}
+\index{open\_pdf@{open\_pdf}!plot\_setup@{plot\_setup}}
+\doxysubsubsection{\texorpdfstring{open\_pdf()}{open\_pdf()}}
+{\footnotesize\ttfamily void plot\+\_\+setup\+::open\+\_\+pdf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+open\+\_\+pdf should be called after graph creation and with same instance of \doxylink{structPlotDetails}{Plot\+Details} to open specifically pdf plot using firefox. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Is \doxylink{structPlotDetails}{Plot\+Details} instance that should be the same as passed to setup\+\_\+gnuplot that should have been called before addition of graph. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot__setup_a99c39622a998034091a69ef49d403326}\label{namespaceplot__setup_a99c39622a998034091a69ef49d403326} 
+\index{plot\_setup@{plot\_setup}!setup\_gnuplot@{setup\_gnuplot}}
+\index{setup\_gnuplot@{setup\_gnuplot}!plot\_setup@{plot\_setup}}
+\doxysubsubsection{\texorpdfstring{setup\_gnuplot()}{setup\_gnuplot()}}
+{\footnotesize\ttfamily void plot\+\_\+setup\+::setup\+\_\+gnuplot (\begin{DoxyParamCaption}\item[{Gnuplot \&}]{gp,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+setup\+\_\+gnuplot should be passed an initialised instance of Gnuplot to configure ready to create a plot. The function uses the details in the \doxylink{structPlotDetails}{Plot\+Details} to configure the metadata such as size, output, font, filepath and axis labels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gp} & Reference to instance of Gnuplot from gnuplot-\/iostream libary. \\
+\hline
+{\em p} & \doxylink{structPlotDetails}{Plot\+Details} instance passed in to configure gnuplot for graph plotting. \\
+\hline
+\end{DoxyParams}

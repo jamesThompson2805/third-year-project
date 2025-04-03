@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['gesturemidair_20data_20sets_0',['GestureMidAir data sets',['../md_external_2data_2UCRArchive__2018_2GestureMidAirD1_2README.html',1,'GestureMidAir data sets'],['../md_external_2data_2UCRArchive__2018_2GestureMidAirD2_2README.html',1,'GestureMidAir data sets'],['../md_external_2data_2UCRArchive__2018_2GestureMidAirD3_2README.html',1,'GestureMidAir data sets']]],
+  ['gesturepebble_20data_20sets_1',['GesturePebble data sets',['../md_external_2data_2UCRArchive__2018_2GesturePebbleZ1_2README.html',1,'GesturePebble data sets'],['../md_external_2data_2UCRArchive__2018_2GesturePebbleZ2_2README.html',1,'GesturePebble data sets']]],
+  ['gesturewiimote_20data_20sets_2',['GestureWiimote data sets',['../md_external_2data_2UCRArchive__2018_2AllGestureWiimoteX_2README.html',1,'GestureWiimote data sets'],['../md_external_2data_2UCRArchive__2018_2AllGestureWiimoteY_2README.html',1,'GestureWiimote data sets'],['../md_external_2data_2UCRArchive__2018_2AllGestureWiimoteZ_2README.html',1,'GestureWiimote data sets'],['../md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README.html',1,'GestureWiimote data sets'],['../md_external_2data_2UCRArchive__2018_2ShakeGestureWiimoteZ_2README.html',1,'GestureWiimote data sets']]],
+  ['gunpoint_3',['GunPoint',['../md_external_2data_2UCRArchive__2018_2GunPoint_2README.html',1,'']]],
+  ['gunpoint_20data_20sets_4',['GunPoint data sets',['../md_external_2data_2UCRArchive__2018_2GunPointAgeSpan_2README.html',1,'GunPoint data sets'],['../md_external_2data_2UCRArchive__2018_2GunPointMaleVersusFemale_2README.html',1,'GunPoint data sets'],['../md_external_2data_2UCRArchive__2018_2GunPointOldVersusYoung_2README.html',1,'GunPoint data sets']]]
+];

@@ -1,0 +1,73 @@
+\doxysection{pgbar\+::option\+::Speed\+Unit Struct Reference}
+\hypertarget{structpgbar_1_1option_1_1SpeedUnit}{}\label{structpgbar_1_1option_1_1SpeedUnit}\index{pgbar::option::SpeedUnit@{pgbar::option::SpeedUnit}}
+
+
+{\ttfamily \#include $<$pgbar.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX20\+\_\+\+CNSTXPR \mbox{\hyperlink{structpgbar_1_1option_1_1SpeedUnit_a76b9b88e6760db8f635de216c9c20629}{Speed\+Unit}} (std\+::array$<$ \+\_\+\+\_\+details\+::types\+::\+String, 4 $>$ \+\_\+units)
+\item 
+\Hypertarget{structpgbar_1_1option_1_1SpeedUnit_aee6b30edce786a0fd020152b2a306f20}\label{structpgbar_1_1option_1_1SpeedUnit_aee6b30edce786a0fd020152b2a306f20} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX20\+\_\+\+CNSTXPR {\bfseries Speed\+Unit} (const \mbox{\hyperlink{structpgbar_1_1option_1_1SpeedUnit}{Speed\+Unit}} \&)=default
+\item 
+\Hypertarget{structpgbar_1_1option_1_1SpeedUnit_a2fe22aae50475661275a8b4eab852a75}\label{structpgbar_1_1option_1_1SpeedUnit_a2fe22aae50475661275a8b4eab852a75} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX20\+\_\+\+CNSTXPR {\bfseries Speed\+Unit} (\mbox{\hyperlink{structpgbar_1_1option_1_1SpeedUnit}{Speed\+Unit}} \&\&)=default
+\item 
+\Hypertarget{structpgbar_1_1option_1_1SpeedUnit_aea0c6d17556515926dcf49cc6f177989}\label{structpgbar_1_1option_1_1SpeedUnit_aea0c6d17556515926dcf49cc6f177989} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX20\+\_\+\+CNSTXPR \mbox{\hyperlink{structpgbar_1_1option_1_1SpeedUnit}{Speed\+Unit}} \& {\bfseries operator=} (const \mbox{\hyperlink{structpgbar_1_1option_1_1SpeedUnit}{Speed\+Unit}} \&) \&=default
+\item 
+\Hypertarget{structpgbar_1_1option_1_1SpeedUnit_a01f533ef02a4ecf7120c2fb4936eab17}\label{structpgbar_1_1option_1_1SpeedUnit_a01f533ef02a4ecf7120c2fb4936eab17} 
+\+\_\+\+\_\+\+PGBAR\+\_\+\+CXX20\+\_\+\+CNSTXPR \mbox{\hyperlink{structpgbar_1_1option_1_1SpeedUnit}{Speed\+Unit}} \& {\bfseries operator=} (\mbox{\hyperlink{structpgbar_1_1option_1_1SpeedUnit}{Speed\+Unit}} \&\&) \&=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A wrapper that stores ordered units for information rate formatting (e.\+g. B/s, k\+B/s).
+
+Encapsulates four consecutive scaling units where each unit is scaled by the configured magnitude factor (default 1,000x if no {\ttfamily \doxylink{structpgbar_1_1option_1_1Magnitude}{option\+::\+Magnitude}} is explicitly set).
+
+Unit order MUST be ascending\+: \mbox{[}base\+\_\+unit, scaled\+\_\+unit\+\_\+1, scaled\+\_\+unit\+\_\+2, scaled\+\_\+unit\+\_\+3\mbox{]}.
+
+Example\+:
+
+
+\begin{DoxyItemize}
+\item magnitude=1000\+: \mbox{[}"{}\+B/s"{}, "{}k\+B/s"{}, "{}\+MB/s"{}, "{}\+GB/s"{}\mbox{]}
+\item magnitude=1024\+: \mbox{[}"{}\+B/s"{}, "{}\+Ki\+B/s"{}, "{}\+Mi\+B/s"{}, "{}\+Gi\+B/s"{}\mbox{]}
+\end{DoxyItemize}
+
+Scaling logic\+: value \texorpdfstring{$>$}{>}= magnitude -\/\texorpdfstring{$>$}{>} upgrade to next unit tier.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classpgbar_1_1exception_1_1InvalidArgument}{exception\+::\+Invalid\+Argument}} & Thrown if any input string fails UTF-\/8 validation or the array size mismatches. \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structpgbar_1_1option_1_1SpeedUnit_a76b9b88e6760db8f635de216c9c20629}\label{structpgbar_1_1option_1_1SpeedUnit_a76b9b88e6760db8f635de216c9c20629} 
+\index{pgbar::option::SpeedUnit@{pgbar::option::SpeedUnit}!SpeedUnit@{SpeedUnit}}
+\index{SpeedUnit@{SpeedUnit}!pgbar::option::SpeedUnit@{pgbar::option::SpeedUnit}}
+\doxysubsubsection{\texorpdfstring{SpeedUnit()}{SpeedUnit()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+\+PGBAR\+\_\+\+CXX20\+\_\+\+CNSTXPR pgbar\+::option\+::\+Speed\+Unit\+::\+Speed\+Unit (\begin{DoxyParamCaption}\item[{std\+::array$<$ \+\_\+\+\_\+details\+::types\+::\+String, 4 $>$}]{\+\_\+units }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classpgbar_1_1exception_1_1InvalidArgument}{exception\+::\+Invalid\+Argument}} & \\
+\hline
+\end{DoxyExceptions}
+If the passed parameters are not coding in UTF-\/8.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+units} & The given each unit will be treated as 1,000 times greater than the previous one (from left to right). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+external/libs/pgbar/include/pgbar/pgbar.\+hpp\end{DoxyCompactItemize}

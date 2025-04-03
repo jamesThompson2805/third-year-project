@@ -1,0 +1,89 @@
+\chapter{Gesture\+Wiimote data sets}
+\hypertarget{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README}{}\label{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README}\index{GestureWiimote data sets@{GestureWiimote data sets}}
+\label{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md162}%
+\Hypertarget{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md162}%
+ The original data include 10 subjects, each perform 10 gestures 10 times. The gesture acquisition device is a Nintendo Wiimote remote controller with built-\/in three-\/axis accelerometer. Time series are of different lengths. There is no missing values.
+
+The gestures are (class label. original label -\/ English translation)\+:
+\begin{DoxyEnumerate}
+\item poteg – pick-\/up
+\item shake – shake
+\item desno – one move to the right
+\item levo – one move to the left
+\item gor – one move to up
+\item dol – one move to down
+\item kroglevo – one left circle
+\item krogdesno – one right circle
+\item suneknot – one move toward the screen
+\item sunekven – one move away from the screen
+\end{DoxyEnumerate}
+
+We make five data sets out of these data.\hypertarget{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md163}{}\doxysection{\texorpdfstring{All\+Gesture\+WiimoteX}{All\+Gesture\+WiimoteX}}\label{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md163}
+Data are acceleration in x-\/axis dimension. Each subject performs a set of gestures multiple times. Classes are based on gestures (see class labels above).
+
+
+\begin{DoxyItemize}
+\item Train size\+: 300
+\item Test size\+: 700
+\item Missing value\+: No
+\item Number of classses\+: 10
+\item Time series length\+: Vary
+\end{DoxyItemize}
+
+Each time series is padded with NaN to the length of the longest time series in the data set.\hypertarget{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md164}{}\doxysection{\texorpdfstring{All\+Gesture\+WiimoteY}{All\+Gesture\+WiimoteY}}\label{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md164}
+Data are acceleration in y-\/axis dimension. Each subject performs a set of gestures multiple times. Classes are based on gestures (see class labels above).
+
+
+\begin{DoxyItemize}
+\item Train size\+: 300
+\item Test size\+: 700
+\item Missing value\+: No
+\item Number of classses\+: 10
+\item Time series length\+: Vary
+\end{DoxyItemize}
+
+Each time series is padded with NaN to the length of the longest time series in the data set.\hypertarget{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md165}{}\doxysection{\texorpdfstring{All\+Gesture\+WiimoteZ}{All\+Gesture\+WiimoteZ}}\label{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md165}
+Data are acceleration in z-\/axis dimension. Classes are based on gestures (see class labels above).
+
+
+\begin{DoxyItemize}
+\item Train size\+: 300
+\item Test size\+: 700
+\item Missing value\+: No
+\item Number of classses\+: 10
+\item Time series length\+: Vary
+\end{DoxyItemize}
+
+Each time series is padded with NaN to the length of the longest time series in the data set.\hypertarget{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md166}{}\doxysection{\texorpdfstring{Pickup\+Gesture\+WiimoteZ}{Pickup\+Gesture\+WiimoteZ}}\label{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md166}
+Data are acceleration in z-\/axis dimension. Each subject performs "{}pick-\/up"{} gesture multiple times. Classes are based on subject.
+
+
+\begin{DoxyItemize}
+\item Train size\+: 50
+\item Test size\+: 50
+\item Missing value\+: No
+\item Number of classses\+: 10
+\item Time series length\+: Vary
+\end{DoxyItemize}
+
+Each time series is padded with NaN to the length of the longest time series in the data set.\hypertarget{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md167}{}\doxysection{\texorpdfstring{Shake\+Gesture\+WiimoteZ}{Shake\+Gesture\+WiimoteZ}}\label{md_external_2data_2UCRArchive__2018_2PickupGestureWiimoteZ_2README_autotoc_md167}
+Data are acceleration in z-\/axis dimension. Each subject performs "{}shake"{} gesture multiple times. Classes are based on subject.
+
+
+\begin{DoxyItemize}
+\item Train size\+: 50
+\item Test size\+: 50
+\item Missing value\+: No
+\item Number of classses\+: 10
+\item Time series length\+: Vary
+\end{DoxyItemize}
+
+There is nothing to infer from the order of exemplars in the train and test set.
+
+Each time series is padded with NaN to the length of the longest time series in the dataset.
+
+Note that data are shuffled and randomly sampled so that instances across data sets do not sychronized by dimension or subject.
+
+Data created by Guna Jože et al. (see \mbox{[}1\mbox{]}). Data edited by Hoang Anh Dau.
+
+\mbox{[}1\mbox{]} Guna, Jože, Iztok Humar, and Matevž Pogačnik. "{}\+Intuitive gesture based user identification system."{} Telecommunications and Signal Processing (TSP), 2012 35th International Conference on. IEEE, 2012. 

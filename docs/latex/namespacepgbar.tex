@@ -1,0 +1,76 @@
+\doxysection{pgbar Namespace Reference}
+\hypertarget{namespacepgbar}{}\label{namespacepgbar}\index{pgbar@{pgbar}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}
+\item 
+class \mbox{\hyperlink{classpgbar_1_1Indicator}{Indicator}}
+\item 
+class \mbox{\hyperlink{classpgbar_1_1Threadunsafe}{Threadunsafe}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacepgbar_a4ad45bb0c15332a60a373a1a3dfcce00}\label{namespacepgbar_a4ad45bb0c15332a60a373a1a3dfcce00} 
+using {\bfseries Threadsafe} = \mbox{\hyperlink{classpgbar_1_1____details_1_1concurrent_1_1Mutex}{\+\_\+\+\_\+details\+::concurrent\+::\+Mutex}}
+\item 
+{\footnotesize template$<$typename Mutex\+Mode  = Threadunsafe, Channel Stream\+Type = Channel\+::\+Stderr$>$ }\\using \mbox{\hyperlink{namespacepgbar_a1b6e74345c1707991ecd7f91b495edae}{Progress\+Bar}} = \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}$<$\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{config\+::\+Char\+Bar}}, Mutex\+Mode, Stream\+Type$>$
+\item 
+{\footnotesize template$<$typename Mutex\+Mode  = Threadunsafe, Channel Stream\+Type = Channel\+::\+Stderr$>$ }\\using \mbox{\hyperlink{namespacepgbar_ab34ab504c18d3b5fa837e4ed8572e8da}{Block\+Progress\+Bar}} = \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}$<$\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{config\+::\+Blck\+Bar}}, Mutex\+Mode, Stream\+Type$>$
+\item 
+{\footnotesize template$<$typename Mutex\+Mode  = Threadunsafe, Channel Stream\+Type = Channel\+::\+Stderr$>$ }\\using \mbox{\hyperlink{namespacepgbar_a325e10774b2b2ba29afab8eb51674197}{Spinner\+Bar}} = \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}$<$\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{config\+::\+Spin\+Bar}}, Mutex\+Mode, Stream\+Type$>$
+\item 
+{\footnotesize template$<$typename Mutex\+Mode  = Threadunsafe, Channel Stream\+Type = Channel\+::\+Stderr$>$ }\\using \mbox{\hyperlink{namespacepgbar_aa634bd67fbe1206a3b9dd49beb25bae8}{Scanner\+Bar}} = \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}$<$\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{config\+::\+Scan\+Bar}}, Mutex\+Mode, Stream\+Type$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacepgbar_ad75f03fb202e2c8da7fd1ef5372b2925}\label{namespacepgbar_ad75f03fb202e2c8da7fd1ef5372b2925} 
+enum class {\bfseries Channel} \+: std\+::uint8\+\_\+t \{ {\bfseries Stdout} = 1
+, {\bfseries Stderr}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file is a minimal implementation of the \doxylink{classpgbar_1_1____details_1_1charcodes_1_1U8String}{pgbar\+::\+\_\+\+\_\+details\+::charcodes\+::\+U8\+String} component, used to demonstrate the char\+\_\+width function with character encoding mappings from the Unicode Code\+Charts. 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespacepgbar_ab34ab504c18d3b5fa837e4ed8572e8da}\label{namespacepgbar_ab34ab504c18d3b5fa837e4ed8572e8da} 
+\index{pgbar@{pgbar}!BlockProgressBar@{BlockProgressBar}}
+\index{BlockProgressBar@{BlockProgressBar}!pgbar@{pgbar}}
+\doxysubsubsection{\texorpdfstring{BlockProgressBar}{BlockProgressBar}}
+{\footnotesize\ttfamily template$<$typename Mutex\+Mode  = Threadunsafe, Channel Stream\+Type = Channel\+::\+Stderr$>$ \\
+using \mbox{\hyperlink{namespacepgbar_ab34ab504c18d3b5fa837e4ed8572e8da}{pgbar\+::\+Block\+Progress\+Bar}} = \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}$<$\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{config\+::\+Blck\+Bar}}, Mutex\+Mode, Stream\+Type$>$}
+
+A progress bar with a smoother bar, requires an Unicode-\/supported terminal.
+
+It\textquotesingle{}s structure is shown below\+: \{Left\+Border\}\{Description\}\{Percent\}\{Starting\}\{Block\+Bar\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{Right\+Border\} \Hypertarget{namespacepgbar_a1b6e74345c1707991ecd7f91b495edae}\label{namespacepgbar_a1b6e74345c1707991ecd7f91b495edae} 
+\index{pgbar@{pgbar}!ProgressBar@{ProgressBar}}
+\index{ProgressBar@{ProgressBar}!pgbar@{pgbar}}
+\doxysubsubsection{\texorpdfstring{ProgressBar}{ProgressBar}}
+{\footnotesize\ttfamily template$<$typename Mutex\+Mode  = Threadunsafe, Channel Stream\+Type = Channel\+::\+Stderr$>$ \\
+using \mbox{\hyperlink{namespacepgbar_a1b6e74345c1707991ecd7f91b495edae}{pgbar\+::\+Progress\+Bar}} = \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}$<$\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{config\+::\+Char\+Bar}}, Mutex\+Mode, Stream\+Type$>$}
+
+The simplest progress bar, which is what you think it is.
+
+It\textquotesingle{}s structure is shown below\+: \{Left\+Border\}\{Description\}\{Percent\}\{Starting\}\{Filler\}\{Lead\}\{Remains\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{Right\+Border\} \Hypertarget{namespacepgbar_aa634bd67fbe1206a3b9dd49beb25bae8}\label{namespacepgbar_aa634bd67fbe1206a3b9dd49beb25bae8} 
+\index{pgbar@{pgbar}!ScannerBar@{ScannerBar}}
+\index{ScannerBar@{ScannerBar}!pgbar@{pgbar}}
+\doxysubsubsection{\texorpdfstring{ScannerBar}{ScannerBar}}
+{\footnotesize\ttfamily template$<$typename Mutex\+Mode  = Threadunsafe, Channel Stream\+Type = Channel\+::\+Stderr$>$ \\
+using \mbox{\hyperlink{namespacepgbar_aa634bd67fbe1206a3b9dd49beb25bae8}{pgbar\+::\+Scanner\+Bar}} = \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}$<$\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{config\+::\+Scan\+Bar}}, Mutex\+Mode, Stream\+Type$>$}
+
+The indeterminate progress bar.
+
+It\textquotesingle{}s structure is shown below\+: \{Left\+Border\}\{Description\}\{Percent\}\{Starting\}\{Filler\}\{Lead\}\{Filler\}\{Ending\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{Right\+Border\} \Hypertarget{namespacepgbar_a325e10774b2b2ba29afab8eb51674197}\label{namespacepgbar_a325e10774b2b2ba29afab8eb51674197} 
+\index{pgbar@{pgbar}!SpinnerBar@{SpinnerBar}}
+\index{SpinnerBar@{SpinnerBar}!pgbar@{pgbar}}
+\doxysubsubsection{\texorpdfstring{SpinnerBar}{SpinnerBar}}
+{\footnotesize\ttfamily template$<$typename Mutex\+Mode  = Threadunsafe, Channel Stream\+Type = Channel\+::\+Stderr$>$ \\
+using \mbox{\hyperlink{namespacepgbar_a325e10774b2b2ba29afab8eb51674197}{pgbar\+::\+Spinner\+Bar}} = \mbox{\hyperlink{classpgbar_1_1BasicBar}{Basic\+Bar}}$<$\mbox{\hyperlink{classpgbar_1_1config_1_1BasicConfig}{config\+::\+Spin\+Bar}}, Mutex\+Mode, Stream\+Type$>$}
+
+A progress bar without bar indicator, replaced by a fixed animation component.
+
+It\textquotesingle{}s structure is shown below\+: \{Left\+Border\}\{Lead\}\{Description\}\{Percent\}\{Counter\}\{Speed\}\{Elapsed\}\{Countdown\}\{Right\+Border\} 

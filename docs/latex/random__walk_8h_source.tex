@@ -1,0 +1,107 @@
+\doxysection{random\+\_\+walk.\+h}
+\hypertarget{random__walk_8h_source}{}\label{random__walk_8h_source}\index{lib/sequence\_gen/random\_walk.h@{lib/sequence\_gen/random\_walk.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RANDOM\_WALK\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RANDOM\_WALK\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ }std::deque;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRandomWalk}{RandomWalk}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ deque<double>\ m\_walk;}
+\DoxyCodeLine{00014\ \ \ std::function<\ double()\ >\ m\_gen\_next\_incr;}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_steps;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{classRandomWalk}{RandomWalk}}(std::function<\textcolor{keywordtype}{double}()>\ next\_incr\_generator);}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ gen\_steps(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{const}\ deque<double>\&\ get\_walk();}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ save\_walk(std::string\ filename);}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBernFunctor}{BernFunctor}}\{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00026\ \ \ std::mt19937\ m\_gen;}
+\DoxyCodeLine{00027\ \ \ std::bernoulli\_distribution\ m\_dis;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{classBernFunctor}{BernFunctor}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed=0,\ \textcolor{keywordtype}{double}\ p=0.5)\ }
+\DoxyCodeLine{00031\ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{00033\ \ \ \ \ m\_gen\ =\ std::mt19937(rd());}
+\DoxyCodeLine{00034\ \ \ \ \ m\_gen.seed(seed);}
+\DoxyCodeLine{00035\ \ \ \ \ m\_dis\ =\ std::bernoulli\_distribution(p);\ }
+\DoxyCodeLine{00036\ \ \ \}}
+\DoxyCodeLine{00037\ \ \ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{double}\ operator\ ()\ ()}
+\DoxyCodeLine{00039\ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{return}\ 2*m\_dis(m\_gen)\ -\/\ 1.0;}
+\DoxyCodeLine{00041\ \ \ \}}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUnifFunctor}{UnifFunctor}}\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ std::mt19937\ m\_gen;}
+\DoxyCodeLine{00046\ \ \ std::uniform\_real\_distribution<>\ m\_dis;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{classUnifFunctor}{UnifFunctor}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed=0,\ \textcolor{keywordtype}{double}\ min=-\/1.0,\ \textcolor{keywordtype}{double}\ max=1.0)\ }
+\DoxyCodeLine{00050\ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{00052\ \ \ \ \ m\_gen\ =\ std::mt19937(rd());}
+\DoxyCodeLine{00053\ \ \ \ \ m\_gen.seed(seed);}
+\DoxyCodeLine{00054\ \ \ \ \ m\_dis\ =\ std::uniform\_real\_distribution<>(min,\ max);\ }
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ \ \ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{double}\ operator\ ()\ ()}
+\DoxyCodeLine{00058\ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_dis(m\_gen);}
+\DoxyCodeLine{00060\ \ \ \}}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classNormalFunctor}{NormalFunctor}}\ \{}
+\DoxyCodeLine{00063\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ std::mt19937\ m\_gen;}
+\DoxyCodeLine{00065\ \ \ std::normal\_distribution<>\ m\_dis;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \mbox{\hyperlink{classNormalFunctor}{NormalFunctor}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed=0,\ \textcolor{keywordtype}{double}\ mean=0.0,\ \textcolor{keywordtype}{double}\ var=1.0)\ }
+\DoxyCodeLine{00069\ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{00071\ \ \ \ \ m\_gen\ =\ std::mt19937(rd());}
+\DoxyCodeLine{00072\ \ \ \ \ m\_gen.seed(seed);}
+\DoxyCodeLine{00073\ \ \ \ \ m\_dis\ =\ std::normal\_distribution<>(mean,\ var);\ }
+\DoxyCodeLine{00074\ \ \ \}}
+\DoxyCodeLine{00075\ \ \ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{double}\ operator\ ()\ ()}
+\DoxyCodeLine{00077\ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_dis(m\_gen);}
+\DoxyCodeLine{00079\ \ \ \}}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCauchyFunctor}{CauchyFunctor}}\ \{}
+\DoxyCodeLine{00082\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ std::mt19937\ m\_gen;}
+\DoxyCodeLine{00084\ \ \ std::cauchy\_distribution<>\ m\_dis;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00087\ \ \ \mbox{\hyperlink{classCauchyFunctor}{CauchyFunctor}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed=0,\ \textcolor{keywordtype}{double}\ mean=0.0,\ \textcolor{keywordtype}{double}\ var=1.0)\ }
+\DoxyCodeLine{00088\ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{00090\ \ \ \ \ m\_gen\ =\ std::mt19937(rd());}
+\DoxyCodeLine{00091\ \ \ \ \ m\_gen.seed(seed);}
+\DoxyCodeLine{00092\ \ \ \ \ m\_dis\ =\ std::cauchy\_distribution<>(mean,\ var);\ }
+\DoxyCodeLine{00093\ \ \ \}}
+\DoxyCodeLine{00094\ \ \ }
+\DoxyCodeLine{00095\ \ \ \textcolor{keywordtype}{double}\ operator\ ()\ ()}
+\DoxyCodeLine{00096\ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_dis(m\_gen);}
+\DoxyCodeLine{00098\ \ \ \}}
+\DoxyCodeLine{00099\ \};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

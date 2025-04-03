@@ -1,0 +1,121 @@
+\doxysection{demo.\+cpp}
+\hypertarget{src_2demo_8cpp_source}{}\label{src_2demo_8cpp_source}\index{src/demo.cpp@{src/demo.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}random\_walk.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}ucr\_parsing.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}z\_norm.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}bottom\_up.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}r\_tree.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}lower\_bounds\_apla.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}plotting/series\_plotting.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}plotting/plot\_dimreduct\_pla.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}evaluations/capla.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ }std::vector,\ std::string;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ demo()}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ /****\ GENERATE\ RANDOM\ WALK\ **********/}}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{classRandomWalk}{RandomWalk}}\ walk(\ \mbox{\hyperlink{classNormalFunctor}{NormalFunctor}}(11)\ );\ }
+\DoxyCodeLine{00022\ \ \ walk.gen\_steps(100'000);}
+\DoxyCodeLine{00023\ \ \ walk.save\_walk(\textcolor{stringliteral}{"{}./tsv/testwalk1.tsv"{}});}
+\DoxyCodeLine{00024\ \ \ vector<double>\ synth\_data\ =\ ucr\_parsing::parse\_tsv(\textcolor{stringliteral}{"{}./tsv/testwalk1.tsv"{}},-\/1);}
+\DoxyCodeLine{00025\ \ \ z\_norm::z\_normalise(synth\_data);}
+\DoxyCodeLine{00026\ \ \ vector<double>\ short\_synth(\ synth\_data.begin(),\ synth\_data.begin()+2000);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{structSeries}{Series}}\ s\_walk\ =\ \{\ synth\_data,\ \textcolor{stringliteral}{"{}Normal\ Walk"{}}\ \};}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{structSeries}{Series}}\ s\_walk\_short\ =\ \{\ short\_synth,\ \textcolor{stringliteral}{"{}Normal\ Walk"{}}\ \};}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p\_walk\ =\ \{\ \textcolor{stringliteral}{"{}Plot\ of\ generated\ random\ walk"{}},\ \textcolor{stringliteral}{"{}Time"{}},\ \textcolor{stringliteral}{"{}Value"{}},\ \textcolor{stringliteral}{"{}./img/"{}},\ PDF\ \};}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p\_walk\_short\ =\ \{\ \textcolor{stringliteral}{"{}Plot\ of\ subsequence\ of\ generated\ random\ walk"{}},\ \textcolor{stringliteral}{"{}Time"{}},\ \textcolor{stringliteral}{"{}Value"{}},\ \textcolor{stringliteral}{"{}./img/"{}},\ PDF\ \};}
+\DoxyCodeLine{00032\ \ \ plot::plot\_series(s\_walk,\ p\_walk);}
+\DoxyCodeLine{00033\ \ \ plot::plot\_series(s\_walk\_short,\ p\_walk\_short);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ /****\ LOAD\ REAL\ DATA\ ****************/}}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{string}\ ucr\_datasets\_loc\ =\ \textcolor{stringliteral}{"{}external/data/UCRArchive\_2018/"{}};}
+\DoxyCodeLine{00037\ \ \ vector<string>\ datasets\ =\ ucr\_parsing::parse\_folder\_names(ucr\_datasets\_loc);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ di\ =\ 30;}
+\DoxyCodeLine{00040\ \ \ vector<double>\ real\_data\ =\ parse\_ucr\_dataset(datasets[di],\ ucr\_datasets\_loc,\ \ ucr\_parsing::DatasetType::TEST);}
+\DoxyCodeLine{00041\ \ \ z\_norm::z\_normalise(real\_data);}
+\DoxyCodeLine{00042\ \ \ vector<double>\ short\_real(\ real\_data.begin(),\ real\_data.begin()+2000);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{structSeries}{Series}}\ s\_real\ =\ \{\ real\_data,\ \textcolor{stringliteral}{"{}ECG\ Scan"{}}\ \};}
+\DoxyCodeLine{00045\ \ \ \mbox{\hyperlink{structSeries}{Series}}\ s\_real\_short\ =\ \{\ short\_real,\ \textcolor{stringliteral}{"{}ECG\ Scan"{}}\ \};}
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p\_real\ =\ \{\ \textcolor{stringliteral}{"{}Plot\ of\ ECG\ Data"{}},\ \textcolor{stringliteral}{"{}Time"{}},\ \textcolor{stringliteral}{"{}Voltage"{}},\ \textcolor{stringliteral}{"{}./img/"{}},\ PDF\ \};}
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p\_real\_short\ =\ \{\ \textcolor{stringliteral}{"{}Plot\ of\ subsequence\ of\ ECG\ Data"{}},\ \textcolor{stringliteral}{"{}Time"{}},\ \textcolor{stringliteral}{"{}Voltage"{}},\ \textcolor{stringliteral}{"{}./img/"{}},\ PDF\ \};}
+\DoxyCodeLine{00048\ \ \ plot::plot\_series(s\_real,\ p\_real);}
+\DoxyCodeLine{00049\ \ \ plot::plot\_series(s\_real\_short,\ p\_real\_short);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ /*****\ TEST\ SOME\ DRT'S\ ************/}}
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{auto}\ capla\_tri\_f\ =\ capla\_eval::generate\_tri\_DRT(5);}
+\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{auto}\ capla\_drt\ =\ [](\textcolor{keyword}{const}\ Seqd\&\ s)\{\ \textcolor{keywordflow}{return}\ capla\_eval::generate\_mean\_DRT\_COMPR(5)(s,\ 33);\ \};}
+\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{auto}\ bottom\_up\_f\_uncompr\ =\ [\&](\textcolor{keyword}{const}\ Seqd\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ parameter)\{\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{auto}\ apla\ =\ bottom\_up::bottom\_up(s,\ 0.1,\ bottom\_up::se);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (apla.size()\ <\ parameter/3)\ segmerge::segment\_to\_dim(s,apla,parameter);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (apla.size()\ >\ parameter/3)\ segmerge::merge\_to\_dim(s,apla,parameter);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{return}\ apla;}
+\DoxyCodeLine{00059\ \ \ \};}
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{auto}\ b\_u\_drt\ =\ [\&bottom\_up\_f\_uncompr](\textcolor{keyword}{const}\ Seqd\&\ s)\{\ \textcolor{keywordflow}{return}\ bottom\_up\_f\_uncompr(s,\ 63);\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p\_capla\_drt\ =\ \{\ \textcolor{stringliteral}{"{}Plot\ of\ Sliding\ Window\ upon\ ECG"{}},\ \textcolor{stringliteral}{"{}Time"{}},\ \textcolor{stringliteral}{"{}Voltage"{}},\ \textcolor{stringliteral}{"{}./img/"{}},\ PDF\ \};}
+\DoxyCodeLine{00063\ \ \ \textcolor{comment}{//plot\_pla::plot\_any\_apla(short\_real,\ "{}ECG\ Scan"{},\ capla\_drt,\ "{}Sliding\ Window"{},\ p\_capla\_drt);}}
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p\_b\_u\_drt\ =\ \{\ \textcolor{stringliteral}{"{}Plot\ of\ Bottom\ Up\ Approach\ upon\ ECG"{}},\ \textcolor{stringliteral}{"{}Time"{}},\ \textcolor{stringliteral}{"{}Voltage"{}},\ \textcolor{stringliteral}{"{}./img/"{}},\ PDF\ \};}
+\DoxyCodeLine{00065\ \ \ \textcolor{comment}{//plot\_pla::plot\_any\_apla(short\_real,\ "{}ECG\ Scan"{},\ b\_u\_drt,\ "{}Bottom\ Up"{},\ p\_capla\_drt);}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ /******\ FIND\ SOME\ HEART-\/BEATS\ *****/}}
+\DoxyCodeLine{00068\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seq\_size\ =\ 50;}
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ NS\ =\ 5;}
+\DoxyCodeLine{00070\ \ \ \textcolor{keyword}{auto}\ retrieval\_f\ =\ [](\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ i,\ \textcolor{keyword}{const}\ vector<double>\&\ q)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{return}\ std::vector<std::array<const\ double*,2>>(\ \{\{\ q.data()+i,\ q.data()+i+seq\_size-\/1\ \}\}\ );}
+\DoxyCodeLine{00072\ \ \ \};}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{classRTree}{RTree<apla\_bounds::AplaMBR<NS>}},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}>\ r\_tree(40,10\ ,\ apla\_bounds::mbr\_area<NS>\ ,\ apla\_bounds::mbr\_merge<NS>\ ,\ apla\_bounds::dist\_to\_mbr\_sqr<NS>);}
+\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{auto}\ vec\_of\_mbrs\ =\ apla\_bounds::vec\_to\_subseq\_mbrs<NS>(short\_real,seq\_size,bottom\_up\_f\_uncompr);}
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<vec\_of\_mbrs.size();\ i++)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ r\_tree.insert(vec\_of\_mbrs[i],\ i);}
+\DoxyCodeLine{00077\ \ \ \}}
+\DoxyCodeLine{00078\ \ \ Seqd\ query(short\_real.begin()\ +\ 51,\ short\_real.begin()\ +\ 101);}
+\DoxyCodeLine{00079\ \ \ Seqd\ short\_real\_x;\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<short\_real.size();\ i++)\ short\_real\_x.push\_back(i);}
+\DoxyCodeLine{00080\ \ \ std::vector<Line>\ vl;}
+\DoxyCodeLine{00081\ \ \ \mbox{\hyperlink{structLine}{Line}}\ short\_real\_line\ =\ \{\ short\_real\_x,\ short\_real,\ \textcolor{stringliteral}{"{}ECG\ Data"{}}\ \};}
+\DoxyCodeLine{00082\ \ \ vl.push\_back(short\_real\_line);}
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{auto}\ sim\_results\ =\ r\_tree.sim\_search\_exact(query,\ 7.0,\ retrieval\_f,\ short\_real);}
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [l\_ptr,r\_ptr]\ :\ sim\_results)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ std::cout\ <<\ l\_ptr\ -\/\ short\_real.data()\ <<\ std::endl;}
+\DoxyCodeLine{00086\ \ \ \ \ Seqd\ res(l\_ptr,\ r\_ptr+1);}
+\DoxyCodeLine{00087\ \ \ \ \ Seqd\ res\_x;\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<res.size();\ i++)\ res\_x.push\_back(\ l\_ptr\ -\/\ short\_real.data()\ +\ i\ );}
+\DoxyCodeLine{00088\ \ \ \ \ vl.push\_back(\{res\_x,\ res,\ \textcolor{stringliteral}{"{}distance\ 2\ away"{}}\});}
+\DoxyCodeLine{00089\ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p\_sim\ =\ \{\ \textcolor{stringliteral}{"{}Plot\ of\ closest\ to\ first\ heart\ beat\ upon\ ECG"{}},\ \textcolor{stringliteral}{"{}Time"{}},\ \textcolor{stringliteral}{"{}Voltage"{}},\ \textcolor{stringliteral}{"{}./img/"{}},\ PDF\ \};}
+\DoxyCodeLine{00091\ \ \ plot::plot\_lines(vl,p\_sim);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ /************\ Find\ Some\ Similar\ Subsequences\ ***********/}}
+\DoxyCodeLine{00094\ \ \ \mbox{\hyperlink{classRTree}{RTree<apla\_bounds::AplaMBR<NS>}},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}>\ r\_tree2(40,10\ ,\ apla\_bounds::mbr\_area<NS>\ ,\ apla\_bounds::mbr\_merge<NS>\ ,\ apla\_bounds::dist\_to\_mbr\_sqr<NS>);}
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{auto}\ vec\_of\_mbrs\_synth\ =\ apla\_bounds::vec\_to\_subseq\_mbrs<NS>(short\_synth,seq\_size,bottom\_up\_f\_uncompr);}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<vec\_of\_mbrs\_synth.size();\ i++)\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ r\_tree2.insert(vec\_of\_mbrs\_synth[i],\ i);}
+\DoxyCodeLine{00098\ \ \ \}}
+\DoxyCodeLine{00099\ \ \ Seqd\ query\_synth(short\_synth.begin(),\ short\_synth.begin()\ +\ 50);}
+\DoxyCodeLine{00100\ \ \ Seqd\ short\_synth\_x;\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<short\_synth.size();\ i++)\ short\_synth\_x.push\_back(i);}
+\DoxyCodeLine{00101\ \ \ vl.clear();}
+\DoxyCodeLine{00102\ \ \ \mbox{\hyperlink{structLine}{Line}}\ short\_synth\_line\ =\ \{\ short\_synth\_x,\ short\_synth,\ \textcolor{stringliteral}{"{}Synthetic\ Data"{}}\ \};}
+\DoxyCodeLine{00103\ \ \ vl.push\_back(short\_synth\_line);}
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{auto}\ knn\_results\ =\ r\_tree2.knn\_search(query\_synth,\ 8,\ retrieval\_f,\ short\_synth);}
+\DoxyCodeLine{00105\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [l\_ptr,r\_ptr]\ :\ knn\_results)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ std::cout\ <<\ l\_ptr\ -\/\ short\_synth.data()\ <<\ std::endl;}
+\DoxyCodeLine{00108\ \ \ \ \ Seqd\ res(l\_ptr,\ r\_ptr+1);}
+\DoxyCodeLine{00109\ \ \ \ \ Seqd\ res\_x;\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<res.size();\ i++)\ res\_x.push\_back(\ l\_ptr\ -\/\ short\_synth.data()\ +\ i\ );}
+\DoxyCodeLine{00110\ \ \ \ \ vl.push\_back(\{res\_x,\ res,\ \textcolor{stringliteral}{"{}k-\/nn\ close"{}}\});}
+\DoxyCodeLine{00111\ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p\_knn\ =\ \{\ \textcolor{stringliteral}{"{}Plot\ of\ 8\ closest\ to\ beginning"{}},\ \textcolor{stringliteral}{"{}Time"{}},\ \textcolor{stringliteral}{"{}Value"{}},\ \textcolor{stringliteral}{"{}./img/"{}},\ PDF\ \};}
+\DoxyCodeLine{00113\ \ \ plot::plot\_lines(vl,p\_knn);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \}}
+
+\end{DoxyCode}

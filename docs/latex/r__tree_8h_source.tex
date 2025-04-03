@@ -1,0 +1,634 @@
+\doxysection{r\+\_\+tree.\+h}
+\hypertarget{r__tree_8h_source}{}\label{r__tree_8h_source}\index{lib/similarity\_search/r\_tree.h@{lib/similarity\_search/r\_tree.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ R\_TREE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ R\_TREE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ }std::queue;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}error\_measures.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRTreeNode}{RTreeNode}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLeafEntry}{LeafEntry}}\ \{}
+\DoxyCodeLine{00019\ \ \ R\ mbr;}
+\DoxyCodeLine{00020\ \ \ I\ st\_index;}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{structLeafEntry}{LeafEntry}}(R\ mbr,\ I\ st\_index)\ :\ mbr(mbr),\ st\_index(st\_index)\ \{\}}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRTreeNode}{RTreeNode}}\ \{}
+\DoxyCodeLine{00025\ \ \ R\ mbr;}
+\DoxyCodeLine{00026\ \ \ RTreeNode<R,I>*\ parent;}
+\DoxyCodeLine{00027\ \ \ std::variant<std::vector<LeafEntry<R,I>>,\ std::vector<RTreeNode<R,I>*>>\ entries;}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{structRTreeNode}{RTreeNode}}(R\ mbr,\ RTreeNode<R,I>*\ p,\ std::variant<std::vector<LeafEntry<R,I>>,\ std::vector<RTreeNode<R,I>*>>\ e)\ :\ mbr(mbr),\ parent(p),\ entries(e)\ \{\}}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R>}
+\DoxyCodeLine{00032\ \textcolor{keyword}{using\ }FPtrArea\ =\ double\ (*)(\textcolor{keyword}{const}\ R\&);}
+\DoxyCodeLine{00033\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R>}
+\DoxyCodeLine{00034\ \textcolor{keyword}{using\ }FPtrAreaMerge\ =\ R\ (*)(\textcolor{keyword}{const}\ R\&,\ \textcolor{keyword}{const}\ R\&);}
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R>}
+\DoxyCodeLine{00036\ \textcolor{keyword}{using\ }FPtrMBRDistSqr\ =\ double\ (*)(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keyword}{const}\ R\&);}
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00038\ \textcolor{keyword}{using\ }FPtrRetrievalMethod\ =\ std::vector<std::array<const\ double*,\ 2>>\ (*)(\textcolor{keyword}{const}\ I\&,\ \textcolor{keyword}{const}\ std::vector<double>\&);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRTree}{RTree}}\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ RTreeNode<R,I>*\ root;}
+\DoxyCodeLine{00046\ \ \ FPtrArea<R>\ area\_f;}
+\DoxyCodeLine{00047\ \ \ FPtrAreaMerge<R>\ merge\_f;}
+\DoxyCodeLine{00048\ \ \ FPtrMBRDistSqr<R>\ uncompr\_point\_dist\_sqr\_f;}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_entries;}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_entries;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ total\_num\_entries;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{classRTree}{RTree}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_entries,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_entries,\ FPtrArea<R>\ area\_f,\ FPtrAreaMerge<R>\ merge\_f,\ FPtrMBRDistSqr<R>\ p\_dist\_f)}
+\DoxyCodeLine{00056\ \ \ \ \ :\ max\_entries(max\_entries)}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ ,\ min\_entries(min\_entries)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ ,\ area\_f(area\_f)}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ ,\ merge\_f(merge\_f)}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ ,\ uncompr\_point\_dist\_sqr\_f(p\_dist\_f)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ ,\ root(\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ ,\ total\_num\_entries(0)\ \{\}}
+\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{classRTree}{\string~RTree}}()}
+\DoxyCodeLine{00064\ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ destroy\_tree\_from(root);}
+\DoxyCodeLine{00066\ \ \ \ \ root\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00067\ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ get\_size\_tree();}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ get\_size\_leaves();}
+\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ get\_num\_leaves()\ \{\ \textcolor{keywordflow}{return}\ total\_num\_entries;\ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{void}\ insert(R\ mbr,\ I\ st\_index);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ std::vector<I>\ sim\_search(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{double}\ epsilon);}
+\DoxyCodeLine{00076\ \ \ std::vector<std::array<const\ double*,\ 2>>\ knn\_search(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k,\ FPtrRetrievalMethod<I>\ retrieve\_f,\ \textcolor{keyword}{const}\ std::vector<double>\&\ s);}
+\DoxyCodeLine{00077\ \ \ std::vector<std::array<const\ double*,\ 2>>\ sim\_search\_exact(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{double}\ epsilon,\ FPtrRetrievalMethod<I>\ retrieve\_f,\ \textcolor{keyword}{const}\ std::vector<double>\&\ s);}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{double}\ pruning\_power(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ FPtrRetrievalMethod<I>\ retrieve\_f,\ \textcolor{keyword}{const}\ std::vector<double>\&\ s);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ RTreeNode<R,I>*\ split\_node(RTreeNode<R,I>*\ \textcolor{keyword}{const}\ node);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ std::array<unsigned\ int,\ 2>\ quad\_pick\_seeds(\textcolor{keyword}{const}\ std::vector<const\ R*>\&\ mbrs);}
+\DoxyCodeLine{00084\ \ \ std::array<unsigned\ int,\ 2>\ lin\_pick\_seeds(\textcolor{keyword}{const}\ RTreeNode<R,I>*\ \textcolor{keyword}{const}\ node);}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ quad\_pick\_next\_node(\textcolor{keyword}{const}\ std::vector<const\ R*>\&\ mbrs,\ \textcolor{keyword}{const}\ std::set<unsigned\ int>\&\ g1,\ \textcolor{keyword}{const}\ R\&\ g1mbr,\ \textcolor{keyword}{const}\ std::set<unsigned\ int>\&\ g2,\ \textcolor{keyword}{const}\ R\&\ g2mbr);}
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ lin\_pick\_next\_node(\textcolor{keyword}{const}\ std::vector<const\ R*>\&\ mbrs,\ \textcolor{keyword}{const}\ std::set<unsigned\ int>\&\ g1,\ \textcolor{keyword}{const}\ R\&\ g1mbr,\ \textcolor{keyword}{const}\ std::set<unsigned\ int>\&\ g2,\ \textcolor{keyword}{const}\ R\&\ g2mbr);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ RTreeNode<R,I>*\ choose\_leaf(\textcolor{keyword}{const}\ R\&);}
+\DoxyCodeLine{00091\ \ \ RTreeNode<R,I>*\ choose\_leaf\_from(\textcolor{keyword}{const}\ R\&,\ RTreeNode<R,I>*);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{void}\ adjust\_tree(RTreeNode<R,I>*\ node);\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ std::vector<const\ R*>\ get\_entry\_mbrs(\ \textcolor{keyword}{const}\ RTreeNode<R,I>\ *\textcolor{keyword}{const}\ n);}
+\DoxyCodeLine{00096\ \ \ R\ rebuild\_mbr(\ \textcolor{keyword}{const}\ RTreeNode<R,I>\ *\textcolor{keyword}{const}\ n);}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ get\_num\_mbrs(\ \textcolor{keyword}{const}\ RTreeNode<R,I>\ *\textcolor{keyword}{const}\ n);}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ get\_size\_tree(\textcolor{keyword}{const}\ RTreeNode<R,I>*\ node);}
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ get\_size\_leaves(\textcolor{keyword}{const}\ RTreeNode<R,I>*\ node);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ destroy\_tree\_from(RTreeNode<R,I>*\ node);}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{comment}{/*\ ********************\ General\ R\ Tree\ functions\ ************************\ */}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ non\ recursive\ destruction\ to\ avoid\ crashing\ the\ stack}}
+\DoxyCodeLine{00106\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::destroy\_tree\_from}}(RTreeNode<R,I>*\ node)}
+\DoxyCodeLine{00108\ \{}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00110\ \ \ \textcolor{keywordflow}{if}\ (node-\/>entries.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ leaf\ node}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{delete}\ node;}
+\DoxyCodeLine{00112\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ queue<RTreeNode<R,I>*>\ q;}
+\DoxyCodeLine{00114\ \ \ \ \ q.push(node);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{while}\ (q.size()\ >\ 0)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ RTreeNode<R,I>*\ next\ =\ q.front();}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ q.pop();}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (next-\/>entries.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ next\ is\ a\ leaf}}
+\DoxyCodeLine{00120\ \ \ \ \ destroy\_tree\_from(next);}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (RTreeNode<R,I>*\ entry\ :\ std::get<1>(next-\/>entries))\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ q.push(entry);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \textcolor{keyword}{delete}\ next;}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \}}
+\DoxyCodeLine{00129\ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00133\ std::vector<const\ R*>\ \mbox{\hyperlink{classRTree}{RTree<R,I>::get\_entry\_mbrs}}(\ \textcolor{keyword}{const}\ RTreeNode<R,I>\ *\textcolor{keyword}{const}\ n)}
+\DoxyCodeLine{00134\ \{}
+\DoxyCodeLine{00135\ \ \ \textcolor{keywordflow}{if}\ (n-\/>entries.index()\ ==\ 0)\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ std::vector<const\ R*>\ mbrs;}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ LeafEntry<R,I>\&\ l\ :\ std::get<0>(n-\/>entries)\ )\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ mbrs.push\_back(\&l.mbr);}
+\DoxyCodeLine{00139\ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ mbrs;}
+\DoxyCodeLine{00141\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ std::vector<const\ R*>\ mbrs;}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ ep\ :\ std::get<1>(n-\/>entries)\ )\{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ mbrs.push\_back(\&ep-\/>mbr);}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{return}\ mbrs;}
+\DoxyCodeLine{00147\ \ \ \}}
+\DoxyCodeLine{00148\ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00151\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::get\_num\_mbrs}}(\ \textcolor{keyword}{const}\ RTreeNode<R,I>\ *\textcolor{keyword}{const}\ n)}
+\DoxyCodeLine{00152\ \{}
+\DoxyCodeLine{00153\ \ \ \textcolor{keywordflow}{if}\ (n-\/>entries.index()\ ==\ 0)}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<0>(n-\/>entries).size();}
+\DoxyCodeLine{00155\ \ \ \textcolor{keywordflow}{return}\ std::get<1>(n-\/>entries).size();}
+\DoxyCodeLine{00156\ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00159\ R\ \mbox{\hyperlink{classRTree}{RTree<R,I>::rebuild\_mbr}}(\ \textcolor{keyword}{const}\ RTreeNode<R,I>\ *\textcolor{keyword}{const}\ n)}
+\DoxyCodeLine{00160\ \{}
+\DoxyCodeLine{00161\ \ \ std::vector<const\ R*>\ mbrs\ =\ get\_entry\_mbrs(n);}
+\DoxyCodeLine{00162\ \ \ R\ mbr\ =\ *mbrs[0];}
+\DoxyCodeLine{00163\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ R*\ \textcolor{keyword}{const}\ rp\ :\ mbrs)\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ mbr\ =\ merge\_f(\ mbr,\ *rp\ );}
+\DoxyCodeLine{00165\ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \textcolor{keywordflow}{return}\ mbr;}
+\DoxyCodeLine{00167\ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00170\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::get\_size\_tree}}()\{}
+\DoxyCodeLine{00171\ \ \ \textcolor{keywordflow}{return}\ get\_size\_tree(root);}
+\DoxyCodeLine{00172\ \}}
+\DoxyCodeLine{00173\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00174\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::get\_size\_leaves}}()\{}
+\DoxyCodeLine{00175\ \ \ \textcolor{keywordflow}{return}\ get\_size\_leaves(root);}
+\DoxyCodeLine{00176\ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00179\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::get\_size\_tree}}(\textcolor{keyword}{const}\ RTreeNode<R,I>*\ node)}
+\DoxyCodeLine{00180\ \{}
+\DoxyCodeLine{00181\ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00182\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\ =\ 1;}
+\DoxyCodeLine{00183\ \ \ \textcolor{keywordflow}{if}\ (node-\/>entries.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ leaf\ node}}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{00185\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ queue<const\ RTreeNode<R,I>*>\ q;}
+\DoxyCodeLine{00187\ \ \ \ \ q.push(node);}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{while}\ (q.size()\ >\ 0)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ next\ =\ q.front();}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ q.pop();}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (next-\/>entries.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ next\ is\ a\ leaf}}
+\DoxyCodeLine{00193\ \ \ \ \ size++;}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (RTreeNode<R,I>*\ entry\ :\ std::get<1>(next-\/>entries))\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ size++;}
+\DoxyCodeLine{00198\ \ \ \ \ q.push(entry);}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \}}
+\DoxyCodeLine{00202\ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{00203\ \}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00206\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::get\_size\_leaves}}(\textcolor{keyword}{const}\ RTreeNode<R,I>*\ node)}
+\DoxyCodeLine{00207\ \{}
+\DoxyCodeLine{00208\ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00209\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\ =\ 1;}
+\DoxyCodeLine{00210\ \ \ \textcolor{keywordflow}{if}\ (node-\/>entries.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ leaf\ node}}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{00212\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ queue<const\ RTreeNode<R,I>*>\ q;}
+\DoxyCodeLine{00214\ \ \ \ \ q.push(node);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordflow}{while}\ (q.size()\ >\ 0)\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ next\ =\ q.front();}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ q.pop();}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (next-\/>entries.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ next\ is\ a\ leaf}}
+\DoxyCodeLine{00220\ \ \ \ \ size+=std::get<0>(next-\/>entries).size();}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (RTreeNode<R,I>*\ entry\ :\ std::get<1>(next-\/>entries))\ \{}
+\DoxyCodeLine{00224\ \ \ \ \ q.push(entry);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{00229\ \}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{comment}{/*\ ***********************************\ Insert\ definitions\ *******************\ */}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00235\ RTreeNode<R,I>*\ \mbox{\hyperlink{classRTree}{RTree<R,I>::choose\_leaf}}(\textcolor{keyword}{const}\ R\&\ mbr)}
+\DoxyCodeLine{00236\ \{}
+\DoxyCodeLine{00237\ \ \ \textcolor{keywordflow}{return}\ choose\_leaf\_from(mbr,\ root);}
+\DoxyCodeLine{00238\ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{comment}{//\ recursive\ call\ here\ is\ all\ good\ as\ goes\ directly\ downwards,\ doesn't\ branch\ at\ all}}
+\DoxyCodeLine{00241\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00242\ RTreeNode<R,I>*\ \mbox{\hyperlink{classRTree}{RTree<R,I>::choose\_leaf\_from}}(\textcolor{keyword}{const}\ R\&\ mbr,\ RTreeNode<R,I>*\ node)}
+\DoxyCodeLine{00243\ \{}
+\DoxyCodeLine{00244\ \ \ \textcolor{comment}{//\ if\ root\ is\ leaf\ node}}
+\DoxyCodeLine{00245\ \ \ \textcolor{keywordflow}{if}\ (node-\/>entries.index()\ ==\ 0)\ \textcolor{keywordflow}{return}\ node;}
+\DoxyCodeLine{00246\ \ \ }
+\DoxyCodeLine{00247\ \ \ \textcolor{comment}{//\ otherwise\ find\ the\ child\ rect\ that\ increases\ area\ least\ to\ accomodate\ it\ and\ recursively\ call}}
+\DoxyCodeLine{00248\ \ \ \textcolor{keywordtype}{double}\ min\_area\_incr\ =\ -\/1;}
+\DoxyCodeLine{00249\ \ \ RTreeNode<R,I>*\ min\_r;}
+\DoxyCodeLine{00250\ \ \ \textcolor{keywordflow}{for}\ (RTreeNode<R,I>*\ e\_ptr\ :\ std::get<1>(node-\/>entries))\ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{double}\ area\_incr\ =\ area\_f(\ merge\_f(\ mbr,\ e\_ptr-\/>mbr\ )\ )\ -\/\ area\_f(e\_ptr-\/>mbr);}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\_area\_incr\ <\ 0\ ||\ area\_incr\ <\ min\_area\_incr\ ||\ area\_incr\ ==\ min\_area\_incr\ \&\&\ area\_f(e\_ptr-\/>mbr)\ <\ area\_f(min\_r-\/>mbr))\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ min\_r\ =\ e\_ptr;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ min\_area\_incr\ =\ area\_incr;}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \textcolor{keywordflow}{return}\ choose\_leaf\_from(mbr,\ min\_r);}
+\DoxyCodeLine{00258\ \}}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00261\ std::array<unsigned\ int,\ 2>\ \mbox{\hyperlink{classRTree}{RTree<R,I>::quad\_pick\_seeds}}(\textcolor{keyword}{const}\ std::vector<const\ R*>\&\ mbrs)}
+\DoxyCodeLine{00262\ \{}
+\DoxyCodeLine{00263\ \ \ \textcolor{keywordtype}{double}\ max\_d\ =\ -\/1e30;}
+\DoxyCodeLine{00264\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i1,\ i2;}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<mbrs.size();\ i++)\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j=0;\ j<i;\ j++)\ \{}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ d\ =\ area\_f(\ merge\_f(*mbrs[i],\ *mbrs[j])\ )}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ -\/\ area\_f(\ *mbrs[i]\ )}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ -\/\ area\_f(\ *mbrs[j]\ );}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (d\ >\ max\_d)\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ max\_d\ =\ d;}
+\DoxyCodeLine{00273\ \ \ \ \ i1\ =\ i;}
+\DoxyCodeLine{00274\ \ \ \ \ i2\ =\ j;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \textcolor{keywordflow}{return}\ \{\ i1,\ i2\ \};}
+\DoxyCodeLine{00279\ \}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00282\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::quad\_pick\_next\_node}}(\textcolor{keyword}{const}\ std::vector<const\ R*>\&\ mbrs,\ \textcolor{keyword}{const}\ std::set<unsigned\ int>\&\ g1,\ \textcolor{keyword}{const}\ R\&\ g1mbr,\ \textcolor{keyword}{const}\ std::set<unsigned\ int>\&\ g2,\ \textcolor{keyword}{const}\ R\&\ g2mbr)}
+\DoxyCodeLine{00283\ \{}
+\DoxyCodeLine{00284\ \ \ \textcolor{keywordtype}{double}\ max\_d\ =\ 0;}
+\DoxyCodeLine{00285\ \ \ \textcolor{keywordtype}{int}\ max\_i\ =\ -\/1;}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<mbrs.size();\ i++)\ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ g1.count(i)\ >\ 0\ ||\ g2.count(i)\ >\ 0)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordtype}{double}\ d\ =\ area\_f(\ merge\_f(g1mbr,\ *mbrs[i])\ )}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ -\/\ area\_f(\ merge\_f(g2mbr,\ *mbrs[i])\ );}
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(d)\ >=\ std::abs(max\_d))\ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ max\_d\ =\ d;}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ max\_i\ =\ i;}
+\DoxyCodeLine{00294\ \ \ \ \ \}}
+\DoxyCodeLine{00295\ \ \ \}}
+\DoxyCodeLine{00296\ \ \ \textcolor{keywordflow}{return}\ max\_i;}
+\DoxyCodeLine{00297\ \}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \textcolor{comment}{//\ split\ node\ only\ adjusts\ the\ MBR\ of\ node\ and\ new\ twin\_node}}
+\DoxyCodeLine{00300\ \textcolor{comment}{//\ \ does\ not\ adjust\ mbr\ of\ parent}}
+\DoxyCodeLine{00301\ \textcolor{comment}{//\ \ may\ invalidate\ max\ entries\ of\ parent}}
+\DoxyCodeLine{00302\ \textcolor{comment}{//\ \ must\ be\ called\ with\ adjust\ tree\ to\ maintain\ invariant}}
+\DoxyCodeLine{00303\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00304\ RTreeNode<R,I>*\ \mbox{\hyperlink{classRTree}{RTree<R,I>::split\_node}}(RTreeNode<R,I>*\ node)}
+\DoxyCodeLine{00305\ \{}
+\DoxyCodeLine{00306\ \ \ std::vector<const\ R*>\ mbrs\ =\ get\_entry\_mbrs(node);}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ std::array<unsigned\ int,\ 2>\ seeds\ =\ quad\_pick\_seeds(mbrs);}
+\DoxyCodeLine{00309\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ got\ here\ afterall"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00310\ \ \ \textcolor{comment}{//std::cout\ <<\ seeds[0]\ <<\ "{}\ "{}\ <<\ seeds[1]\ <<\ std::endl;}}
+\DoxyCodeLine{00311\ \ \ std::set<unsigned\ int>\ g0\ =\ \{seeds[0]\},\ g1\ =\ \{seeds[1]\};}
+\DoxyCodeLine{00312\ \ \ R\ g0mbr\ =\ *mbrs[seeds[0]],\ g1mbr\ =\ *mbrs[seeds[1]];}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \textcolor{keywordtype}{int}\ num\_remaining\ =\ get\_num\_mbrs(node)\ -\/\ 2;}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \ \ \textcolor{comment}{//\ allocate\ all\ entries\ to\ either\ of\ the\ seeds\ preserving\ the\ minimum\ entries\ per\ node\ requirement}}
+\DoxyCodeLine{00317\ \ \ \textcolor{keywordflow}{while}\ (g0.size()\ <\ max\_entries\ \&\&\ g1.size()\ <\ max\_entries\ \&\&\ g0.size()+num\_remaining\ >\ min\_entries\ \&\&\ g1.size()+num\_remaining\ >\ min\_entries)\ \{}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ next\_i\ =\ quad\_pick\_next\_node(mbrs,\ g0,\ g0mbr,\ g1,\ g1mbr);}
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keywordflow}{if}\ (next\_i\ ==\ -\/1)\ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ exhausted\ all\ numbers}}
+\DoxyCodeLine{00320\ \ \ \ \ num\_remaining-\/-\/;}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keywordtype}{double}\ area\_incr\_g0\ =\ area\_f(\ merge\_f(\ g0mbr,\ *mbrs[next\_i]\ )\ )\ -\/\ area\_f(\ g0mbr\ );}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{double}\ area\_incr\_g1\ =\ area\_f(\ merge\_f(\ g1mbr,\ *mbrs[next\_i]\ )\ )\ -\/\ area\_f(\ g1mbr\ );}
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordflow}{if}\ (area\_incr\_g0\ <\ area\_incr\_g1\ ||\ area\_incr\_g0\ ==\ area\_incr\_g1\ \&\&\ area\_f(g0mbr)\ <\ area\_f(g1mbr))\ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ g0.insert(next\_i);}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ g0mbr\ =\ merge\_f(g0mbr,\ *mbrs[next\_i]);}
+\DoxyCodeLine{00326\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ g1.insert(next\_i);}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ g1mbr\ =\ merge\_f(g1mbr,\ *mbrs[next\_i]);}
+\DoxyCodeLine{00329\ \ \ \ \ \}}
+\DoxyCodeLine{00330\ \ \ \}}
+\DoxyCodeLine{00331\ \ \ \textcolor{keywordflow}{if}\ (g0.size()==max\_entries\ ||\ g1.size()+num\_remaining\ <=\ min\_entries)\ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ next\_i\ =\ quad\_pick\_next\_node(mbrs,\ g0,\ g0mbr,\ g1,\ g1mbr);}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keywordflow}{while}\ (next\_i\ !=\ -\/1)\ \{}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ g1.insert(next\_i);}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ g1mbr\ =\ merge\_f(g1mbr,\ *mbrs[next\_i]);}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ next\_i\ =\ quad\_pick\_next\_node(mbrs,\ g0,\ g0mbr,\ g1,\ g1mbr);}
+\DoxyCodeLine{00337\ \ \ \ \ \}}
+\DoxyCodeLine{00338\ \ \ \}}
+\DoxyCodeLine{00339\ \ \ \textcolor{keywordflow}{if}\ (g1.size()==max\_entries\ ||\ g0.size()+num\_remaining\ <=\ min\_entries)\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ next\_i\ =\ quad\_pick\_next\_node(mbrs,\ g0,\ g0mbr,\ g1,\ g1mbr);}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordflow}{while}\ (next\_i\ !=\ -\/1)\ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ g0.insert(next\_i);}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ g0mbr\ =\ merge\_f(g0mbr,\ *mbrs[next\_i]);}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ next\_i\ =\ quad\_pick\_next\_node(mbrs,\ g0,\ g0mbr,\ g1,\ g1mbr);}
+\DoxyCodeLine{00345\ \ \ \ \ \}}
+\DoxyCodeLine{00346\ \ \ \}}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \ \ \textcolor{keywordflow}{if}\ (\ node-\/>entries.index()\ ==\ 0\ )\ \{}
+\DoxyCodeLine{00349\ \ \ \ \ std::vector<LeafEntry<R,I>>\&\ leaves\ =\ std::get<0>(node-\/>entries);}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \ \ std::vector<LeafEntry<R,I>>\ g0entries;}
+\DoxyCodeLine{00352\ \ \ \ \ std::vector<LeafEntry<R,I>>\ g1entries;}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n\ :\ g1)\ \{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ g1entries.push\_back(\ leaves[n]\ );}
+\DoxyCodeLine{00355\ \ \ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n\ :\ g0)\ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ g0entries.push\_back(\ leaves[n]\ );}
+\DoxyCodeLine{00358\ \ \ \ \ \}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{comment}{//\ cover\ is\ root\ case}}
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>parent\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ RTreeNode<R,I>*\ new\_root\ =\ \textcolor{keyword}{new}\ RTreeNode<R,I>(\{\ node-\/>mbr,\ \textcolor{keyword}{nullptr},\ std::vector<RTreeNode<R,I>*>\{node\}\ \});}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ node-\/>parent\ =\ new\_root;}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ root\ =\ new\_root;}
+\DoxyCodeLine{00365\ \ \ \ \ \}}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \ \ \ \ node-\/>entries\ =\ g0entries;}
+\DoxyCodeLine{00368\ \ \ \ \ node-\/>mbr\ =\ g0mbr;\ \textcolor{comment}{//\ adjust\ node's\ mbr\ to\ reflect\ its\ current\ entries}}
+\DoxyCodeLine{00369\ \ \ \ \ RTreeNode<R,I>*\ g1node\ =\ \textcolor{keyword}{new}\ RTreeNode<R,I>(\{g1mbr,\ node-\/>parent,\ g1entries\});}
+\DoxyCodeLine{00370\ \ \ \ \ std::get<1>(node-\/>parent-\/>entries).push\_back(\ g1node\ );\ \textcolor{comment}{//\ add\ g1node\ to\ parent}}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keywordflow}{return}\ g1node;}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<RTreeNode<R,I>*>\&\ entries\ =\ std::get<1>(node-\/>entries);}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00377\ \ \ \ \ std::vector<RTreeNode<R,I>*>\ g0entries;}
+\DoxyCodeLine{00378\ \ \ \ \ std::vector<RTreeNode<R,I>*>\ g1entries;}
+\DoxyCodeLine{00379\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n\ :\ g1)\ \{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ g1entries.push\_back(entries[n]);}
+\DoxyCodeLine{00381\ \ \ \ \ \}\ \textcolor{comment}{//\ copy\ across\ pointers}}
+\DoxyCodeLine{00382\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n\ :\ g0)\ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ g0entries.push\_back(entries[n]);}
+\DoxyCodeLine{00384\ \ \ \ \ \}\ \textcolor{comment}{//\ copy\ across\ pointers}}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00386\ \ \ \ \ \textcolor{comment}{//\ cover\ is\ root\ case}}
+\DoxyCodeLine{00387\ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>parent\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ RTreeNode<R,I>*\ new\_root\ =\ \textcolor{keyword}{new}\ RTreeNode<R,I>(\{\ node-\/>mbr,\ \textcolor{keyword}{nullptr},\ std::vector<RTreeNode<R,I>*>\{node\}\ \});}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ node-\/>parent\ =\ new\_root;}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ root\ =\ new\_root;}
+\DoxyCodeLine{00391\ \ \ \ \ \}}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00393\ \ \ \ \ RTreeNode<R,I>*\ g1node\ =\ \textcolor{keyword}{new}\ RTreeNode<R,I>(\{g1mbr,\ node-\/>parent,\ g1entries\});}
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n\ :\ g1)\ \{}
+\DoxyCodeLine{00395\ \ \ \ \ entries[n]-\/>parent\ =\ g1node;}
+\DoxyCodeLine{00396\ \ \ \ \ \}\ \textcolor{comment}{//\ change\ child\ entries\ to\ have\ new\ parent}}
+\DoxyCodeLine{00397\ \ \ \ \ node-\/>entries\ =\ g0entries;}
+\DoxyCodeLine{00398\ \ \ \ \ node-\/>mbr\ =\ g0mbr;\ \textcolor{comment}{//\ adjust\ node's\ mbr\ to\ reflect\ its\ current\ entries}}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00400\ \ \ \ \ std::get<1>(node-\/>parent-\/>entries).push\_back(\ g1node\ );\ \textcolor{comment}{//\ add\ g1node\ to\ parent}}
+\DoxyCodeLine{00401\ \ \ \ \ \textcolor{keywordflow}{return}\ g1node;}
+\DoxyCodeLine{00402\ \ \ \}}
+\DoxyCodeLine{00403\ \}}
+\DoxyCodeLine{00404\ }
+\DoxyCodeLine{00405\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00406\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::adjust\_tree}}(RTreeNode<R,I>*\ node)}
+\DoxyCodeLine{00407\ \{}
+\DoxyCodeLine{00408\ \ \ RTreeNode<R,I>*\ curr\_node\ =\ node;}
+\DoxyCodeLine{00409\ \ \ \textcolor{keywordflow}{while}\ (curr\_node\ !=\ root)\ \{}
+\DoxyCodeLine{00410\ \ \ \ \ RTreeNode<R,I>*\ parent\_node\ =\ curr\_node-\/>parent;}
+\DoxyCodeLine{00411\ \ \ \ \ parent\_node-\/>mbr\ =\ rebuild\_mbr(parent\_node);}
+\DoxyCodeLine{00412\ \ \ \ \ \textcolor{keywordflow}{if}\ (get\_num\_mbrs(parent\_node)\ >\ max\_entries)\ \{}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ split\_node(parent\_node);}
+\DoxyCodeLine{00414\ \ \ \ \ \}}
+\DoxyCodeLine{00415\ \ \ \ \ curr\_node\ =\ parent\_node;}
+\DoxyCodeLine{00416\ \ \ \}}
+\DoxyCodeLine{00417\ \}}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00420\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::insert}}(R\ mbr,\ I\ st\_index)}
+\DoxyCodeLine{00421\ \{}
+\DoxyCodeLine{00422\ \ \ total\_num\_entries++;}
+\DoxyCodeLine{00423\ \ \ \textcolor{keywordflow}{if}\ (root\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00424\ \ \ \ \ root\ =\ \textcolor{keyword}{new}\ RTreeNode<R,I>(mbr,\ \textcolor{keyword}{nullptr},\ std::vector<LeafEntry<R,I>>(\{\{mbr,st\_index\}\})\ );}
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00426\ \ \ \}}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ RTreeNode<R,I>*\ target\_leaf\ =\ choose\_leaf(mbr);}
+\DoxyCodeLine{00429\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ got\ leaf"{}<<std::endl;}}
+\DoxyCodeLine{00430\ \ \ std::vector<LeafEntry<R,I>>\&\ entries\ =\ std::get<0>(target\_leaf-\/>entries);}
+\DoxyCodeLine{00431\ \ \ entries.push\_back(\{mbr,\ st\_index\});}
+\DoxyCodeLine{00432\ \ \ target\_leaf-\/>mbr\ =\ merge\_f(\ target\_leaf-\/>mbr,\ mbr\ );}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ \ \ RTreeNode<R,I>*\ twin\_node\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00435\ \ \ \textcolor{keywordflow}{if}\ (entries.size()\ >\ max\_entries)\ \{}
+\DoxyCodeLine{00436\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ \ \ splitting"{}<<std::endl;}}
+\DoxyCodeLine{00437\ \ \ \ \ twin\_node\ =\ split\_node(target\_leaf);}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ \ \ splitted"{}<<std::endl;}}
+\DoxyCodeLine{00439\ \ \ \}}
+\DoxyCodeLine{00440\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ adjusting"{}<<std::endl;}}
+\DoxyCodeLine{00441\ \ \ adjust\_tree(target\_leaf);}
+\DoxyCodeLine{00442\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ adjusted"{}<<std::endl;}}
+\DoxyCodeLine{00443\ \ \ \ \ }
+\DoxyCodeLine{00444\ \}}
+\DoxyCodeLine{00445\ \textcolor{comment}{/*\ ***************************\ R\ Tree\ Search\ methods\ *************************\ */}}
+\DoxyCodeLine{00446\ }
+\DoxyCodeLine{00447\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00448\ std::vector<I>\ \mbox{\hyperlink{classRTree}{RTree<R,I>::sim\_search}}(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{double}\ epsilon)}
+\DoxyCodeLine{00449\ \{}
+\DoxyCodeLine{00450\ \ \ epsilon\ =\ epsilon\ *\ epsilon;}
+\DoxyCodeLine{00451\ \ \ \textcolor{keywordflow}{if}\ (uncompr\_point\_dist\_sqr\_f(q,\ root-\/>mbr)\ >\ epsilon)\ \{}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\};}
+\DoxyCodeLine{00453\ \ \ \}}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00455\ \ \ queue<const\ RTreeNode<R,I>*>\ nodes;}
+\DoxyCodeLine{00456\ \ \ nodes.push(root);}
+\DoxyCodeLine{00457\ \ \ std::vector<I>\ results;}
+\DoxyCodeLine{00458\ }
+\DoxyCodeLine{00459\ \ \ \textcolor{keywordflow}{while}\ (nodes.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ \textcolor{keyword}{const}\ next\ =\ nodes.front();}
+\DoxyCodeLine{00461\ \ \ \ \ nodes.pop();}
+\DoxyCodeLine{00462\ \ \ \ \ \textcolor{keywordflow}{if}\ (next-\/>entries.index()\ ==\ 0)\ \{}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ LeafEntry<R,I>\&\ l\ :\ std::get<0>(next-\/>entries))\ \{}
+\DoxyCodeLine{00464\ \ \ \ \ \textcolor{keywordflow}{if}\ (uncompr\_point\_dist\_sqr\_f(q,\ l.mbr)\ <=\ epsilon)\ \{}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ results.push\_back(l.st\_index);}
+\DoxyCodeLine{00466\ \ \ \ \ \}}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00468\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ RTreeNode<R,I>*\ \textcolor{keyword}{const}\ n\ :\ std::get<1>(next-\/>entries))\ \{}
+\DoxyCodeLine{00470\ \ \ \ \ \textcolor{keywordflow}{if}\ (uncompr\_point\_dist\_sqr\_f(q,\ n-\/>mbr)\ <=\ epsilon)\ \{}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ nodes.push(n);}
+\DoxyCodeLine{00472\ \ \ \ \ \}}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00474\ \ \ \ \ \}}
+\DoxyCodeLine{00475\ \ \ \}}
+\DoxyCodeLine{00476\ \ \ \textcolor{keywordflow}{return}\ results;}
+\DoxyCodeLine{00477\ \}}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00480\ std::vector<std::array<const\ double*,2>>\ \mbox{\hyperlink{classRTree}{RTree<R,I>::knn\_search}}(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k,\ FPtrRetrievalMethod<I>\ retrieve\_f,\ \textcolor{keyword}{const}\ std::vector<double>\&\ s)}
+\DoxyCodeLine{00481\ \{}
+\DoxyCodeLine{00482\ \ \ \textcolor{keyword}{typedef}\ std::variant<const\ LeafEntry<R,I>*,\ \textcolor{keyword}{const}\ RTreeNode<R,I>*>\ QEntry;}
+\DoxyCodeLine{00483\ \ \ \textcolor{keyword}{auto}\ entry\_error\ =\ [\textcolor{keyword}{this},\&q](\textcolor{keyword}{const}\ QEntry\&\ a)\ \{}
+\DoxyCodeLine{00484\ \ \ \ \ \textcolor{keyword}{const}\ R\&\ ambr\ =\ a.index()==0\ ?\ std::get<0>(a)-\/>mbr\ :\ std::get<1>(a)-\/>mbr;}
+\DoxyCodeLine{00485\ \ \ \ \ \textcolor{keywordflow}{return}\ uncompr\_point\_dist\_sqr\_f(q,ambr);}
+\DoxyCodeLine{00486\ \ \ \};}
+\DoxyCodeLine{00487\ \ \ \textcolor{keyword}{auto}\ cmp\_qentry\ =\ [\textcolor{keyword}{this},\&q,\&entry\_error](\textcolor{keyword}{const}\ QEntry\&\ a,\ \textcolor{keyword}{const}\ QEntry\&\ b)\ \{}
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordflow}{return}\ entry\_error(a)\ >\ entry\_error(b);}
+\DoxyCodeLine{00489\ \ \ \};}
+\DoxyCodeLine{00490\ \ \ \textcolor{keyword}{typedef}\ std::tuple<QEntry,\ double>\ QDEntry;}
+\DoxyCodeLine{00491\ \ \ \textcolor{keyword}{auto}\ cmp\ =\ [](\textcolor{keyword}{const}\ QDEntry\&\ a,\ \textcolor{keyword}{const}\ QDEntry\&\ b)\ \{}
+\DoxyCodeLine{00492\ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<1>(a)\ >\ std::get<1>(b);}
+\DoxyCodeLine{00493\ \ \ \};}
+\DoxyCodeLine{00494\ \ \ \textcolor{keyword}{using\ }std::vector,\ std::array;}
+\DoxyCodeLine{00495\ \ \ \textcolor{keyword}{typedef}\ array<const\ double*,2>\ Subseq;}
+\DoxyCodeLine{00496\ \ \ \textcolor{keyword}{typedef}\ std::tuple<Subseq,double>\ SubseqWithE;}
+\DoxyCodeLine{00497\ \ \ \textcolor{keyword}{auto}\ ptr\_error\ =\ [\textcolor{keyword}{this},\&q](\textcolor{keyword}{const}\ Subseq\&\ s)\ \{\ \textcolor{keywordflow}{return}\ error\_measures::se\_between\_ptrs(q.data(),\ q.data()+q.size()-\/1,s[0],s[1]);\ \};}
+\DoxyCodeLine{00498\ \ \ \textcolor{keyword}{auto}\ leaf\_cmp\ =\ [](\textcolor{keyword}{const}\ SubseqWithE\&\ sa,\ \textcolor{keyword}{const}\ SubseqWithE\&\ sb)\ \{}
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<1>(sa)\ >\ std::get<1>(sb);}
+\DoxyCodeLine{00500\ \ \ \};}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \ \ std::priority\_queue<QDEntry,\ std::vector<QDEntry>,\ \textcolor{keyword}{decltype}(cmp)>\ pri\_q(cmp);}
+\DoxyCodeLine{00503\ \ \ std::priority\_queue<SubseqWithE,\ std::vector<SubseqWithE>,\ \textcolor{keyword}{decltype}(leaf\_cmp)>\ candidates(leaf\_cmp);}
+\DoxyCodeLine{00504\ \ \ std::vector<array<const\ double*,2>>\ results;}
+\DoxyCodeLine{00505\ \ \ pri\_q.push(\ \{\ root,\ entry\_error(root)\ \}\ );}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ \ \ \textcolor{keywordflow}{while}\ (pri\_q.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{00508\ \ \ \ \ \textcolor{keyword}{auto}\ [next,\ next\_error]\ =\ pri\_q.top();}
+\DoxyCodeLine{00509\ \ \ \ \ pri\_q.pop();}
+\DoxyCodeLine{00510\ \ \ \ \ \textcolor{keywordflow}{while}\ (candidates.size()!=0\ \&\&\ std::get<1>(candidates.top())\ <=\ next\_error\ )\ \{}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ results.push\_back(\ std::get<0>(candidates.top())\ );}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ candidates.pop();}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (results.size()\ >=\ k)\ \{}
+\DoxyCodeLine{00514\ \ \ \ \ \textcolor{keywordflow}{return}\ results;}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00516\ \ \ \ \ \}}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keywordflow}{if}\ (next.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ next\ is\ an\ entry}}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ s\ :\ retrieve\_f(\ std::get<0>(next)-\/>st\_index,\ s\ )\ )\ \{}
+\DoxyCodeLine{00520\ \ \ \ \ candidates.push(\{\ s,\ ptr\_error(s)\ \});}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00522\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ node\ =\ std::get<1>(next);}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>entries.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ next\ is\ a\ leaf\ node}}
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ LeafEntry<R,I>\&\ l\ :\ std::get<0>(node-\/>entries)\ )\{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ pri\_q.push(\{\ \&l,\ entry\_error(\&l)\ \}\ );\ \textcolor{comment}{//\ potential\ optimisation\ if\ you\ can\ retrieve\ the\ original\ DRT\ and\ use\ dist\_LB}}
+\DoxyCodeLine{00527\ \ \ \ \ \}}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ e\ :\ std::get<1>(node-\/>entries)\ )\{}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ pri\_q.push(\ \{\ e,\ entry\_error(e)\ \}\ );}
+\DoxyCodeLine{00531\ \ \ \ \ \}}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00533\ \ \ \ \ \}}
+\DoxyCodeLine{00534\ \ \ \}}
+\DoxyCodeLine{00535\ \ \ \textcolor{keywordflow}{return}\ results;}
+\DoxyCodeLine{00536\ \}}
+\DoxyCodeLine{00537\ }
+\DoxyCodeLine{00538\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00539\ std::vector<std::array<const\ double*,2>>\ \mbox{\hyperlink{classRTree}{RTree<R,I>::sim\_search\_exact}}(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{double}\ epsilon,\ FPtrRetrievalMethod<I>\ retrieve\_f,\ \textcolor{keyword}{const}\ std::vector<double>\&\ s)}
+\DoxyCodeLine{00540\ \{}
+\DoxyCodeLine{00541\ \ \ epsilon\ =\ epsilon\ *\ epsilon;}
+\DoxyCodeLine{00542\ \ \ \textcolor{keywordflow}{if}\ (uncompr\_point\_dist\_sqr\_f(q,\ root-\/>mbr)\ >\ epsilon)\ \{}
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\};}
+\DoxyCodeLine{00544\ \ \ \}}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00546\ \ \ queue<const\ RTreeNode<R,I>*>\ nodes;}
+\DoxyCodeLine{00547\ \ \ nodes.push(root);}
+\DoxyCodeLine{00548\ \ \ std::vector<std::array<const\ double*,\ 2>>\ results;}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00550\ \ \ \textcolor{keywordflow}{while}\ (nodes.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ \textcolor{keyword}{const}\ next\ =\ nodes.front();}
+\DoxyCodeLine{00552\ \ \ \ \ nodes.pop();}
+\DoxyCodeLine{00553\ \ \ \ \ \textcolor{keywordflow}{if}\ (next-\/>entries.index()\ ==\ 0)\ \{}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ LeafEntry<R,I>\&\ l\ :\ std::get<0>(next-\/>entries))\ \{}
+\DoxyCodeLine{00555\ \ \ \ \ \textcolor{keywordflow}{if}\ (uncompr\_point\_dist\_sqr\_f(q,\ l.mbr)\ <=\ epsilon)\ \{}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [s\_ptr,e\_ptr]\ :\ retrieve\_f(l.st\_index,s))\ \{}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\_measures::se\_between\_ptrs(q.data(),\ q.data()+q.size()-\/1,\ s\_ptr,\ e\_ptr)\ <=\ epsilon)}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ results.push\_back(\{s\_ptr,e\_ptr\});}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00560\ \ \ \ \ \}}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00562\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ RTreeNode<R,I>*\ \textcolor{keyword}{const}\ n\ :\ std::get<1>(next-\/>entries))\ \{}
+\DoxyCodeLine{00564\ \ \ \ \ \textcolor{keywordflow}{if}\ (uncompr\_point\_dist\_sqr\_f(q,\ n-\/>mbr)\ <=\ epsilon)\ \{}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ nodes.push(n);}
+\DoxyCodeLine{00566\ \ \ \ \ \}}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00568\ \ \ \ \ \}}
+\DoxyCodeLine{00569\ \ \ \}}
+\DoxyCodeLine{00570\ \ \ \textcolor{keywordflow}{return}\ results;}
+\DoxyCodeLine{00571\ \}}
+\DoxyCodeLine{00572\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R,\ \textcolor{keyword}{typename}\ I>}
+\DoxyCodeLine{00573\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classRTree}{RTree<R,I>::pruning\_power}}(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ FPtrRetrievalMethod<I>\ retrieve\_f,\ \textcolor{keyword}{const}\ std::vector<double>\&\ s)}
+\DoxyCodeLine{00574\ \{}
+\DoxyCodeLine{00575\ \ \ \textcolor{keyword}{typedef}\ std::variant<const\ LeafEntry<R,I>*,\ \textcolor{keyword}{const}\ RTreeNode<R,I>*>\ QEntry;}
+\DoxyCodeLine{00576\ \ \ \textcolor{keyword}{typedef}\ std::tuple<QEntry,double>\ QDEntry;}
+\DoxyCodeLine{00577\ \ \ \textcolor{keyword}{auto}\ entry\_error\ =\ [\textcolor{keyword}{this},\&q](\textcolor{keyword}{const}\ QEntry\&\ a)\ \{}
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keyword}{const}\ R\&\ ambr\ =\ a.index()==0\ ?\ std::get<0>(a)-\/>mbr\ :\ std::get<1>(a)-\/>mbr;}
+\DoxyCodeLine{00579\ \ \ \ \ \textcolor{keywordflow}{return}\ uncompr\_point\_dist\_sqr\_f(q,ambr);}
+\DoxyCodeLine{00580\ \ \ \};}
+\DoxyCodeLine{00581\ \ \ \textcolor{keyword}{auto}\ cmp\ =\ [](\textcolor{keyword}{const}\ QDEntry\&\ a,\ \textcolor{keyword}{const}\ QDEntry\&\ b)\ \{}
+\DoxyCodeLine{00582\ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<1>(a)\ >\ std::get<1>(b);}
+\DoxyCodeLine{00583\ \ \ \};}
+\DoxyCodeLine{00584\ \ \ \textcolor{keyword}{using\ }std::vector,\ std::array;}
+\DoxyCodeLine{00585\ \ \ \textcolor{keyword}{auto}\ ptr\_error\ =\ [\textcolor{keyword}{this},\&q](\textcolor{keyword}{const}\ array<const\ double*,2>\&\ s)\ \{\ \textcolor{keywordflow}{return}\ error\_measures::se\_between\_ptrs(q.data(),\ q.data()+q.size()-\/1,s[0],s[1]);\ \};}
+\DoxyCodeLine{00586\ \ \ \textcolor{keyword}{auto}\ leaf\_cmp\ =\ [\textcolor{keyword}{this},\&q,\&ptr\_error](\textcolor{keyword}{const}\ array<const\ double*,2>\&\ sa,\ \textcolor{keyword}{const}\ array<const\ double*,2>\&\ sb)\ \{}
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordflow}{return}\ ptr\_error(sa)\ >\ ptr\_error(sb);}
+\DoxyCodeLine{00588\ \ \ \};}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \ \ std::priority\_queue<QDEntry,\ std::vector<QDEntry>,\ \textcolor{keyword}{decltype}(cmp)>\ pri\_q(cmp);}
+\DoxyCodeLine{00591\ \ \ pri\_q.push(\ \{\ root,\ entry\_error(root)\ \}\ );}
+\DoxyCodeLine{00592\ }
+\DoxyCodeLine{00593\ \ \ array<const\ double*,2>\ min\_index;}
+\DoxyCodeLine{00594\ \ \ \textcolor{keywordtype}{double}\ min\_actual\_error\ =\ 100000000000000000;}
+\DoxyCodeLine{00595\ \ \ \textcolor{keywordtype}{double}\ objects\_scanned\ =\ 0.0;}
+\DoxyCodeLine{00596\ }
+\DoxyCodeLine{00597\ \ \ \textcolor{keywordflow}{while}\ (pri\_q.size()\ !=\ 0)\ \{}
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keyword}{auto}\ [next,next\_error]\ =\ pri\_q.top();}
+\DoxyCodeLine{00599\ \ \ \ \ pri\_q.pop();}
+\DoxyCodeLine{00600\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\_actual\_error\ <\ next\_error)\ \{}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ objects\_scanned\ /\ (double)\ total\_num\_entries;}
+\DoxyCodeLine{00602\ \ \ \ \ \}}
+\DoxyCodeLine{00603\ }
+\DoxyCodeLine{00604\ \ \ \ \ \textcolor{keywordflow}{if}\ (next.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ next\ is\ an\ entry}}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ objects\_scanned++;}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ s\ :\ retrieve\_f(\ std::get<0>(next)-\/>st\_index,\ s\ )\ )\ \{}
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptr\_error(s)\ <\ min\_actual\_error)\ \{}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ min\_actual\_error\ =\ ptr\_error(s);}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ min\_index\ =\ s;}
+\DoxyCodeLine{00610\ \ \ \ \ \}}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00612\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ node\ =\ std::get<1>(next);}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>entries.index()\ ==\ 0)\ \{\ \textcolor{comment}{//\ next\ is\ a\ leaf\ node}}
+\DoxyCodeLine{00615\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ LeafEntry<R,I>\&\ l\ :\ std::get<0>(node-\/>entries)\ )\{}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ pri\_q.push(\{\ \&l,\ entry\_error(\&l)\ \});\ \textcolor{comment}{//\ potential\ optimisation\ if\ you\ can\ retrieve\ the\ original\ DRT\ and\ use\ dist\_LB}}
+\DoxyCodeLine{00617\ \ \ \ \ \}}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ RTreeNode<R,I>*\ e\ :\ std::get<1>(node-\/>entries)\ )\{}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ pri\_q.push(\{e,entry\_error(e)\});}
+\DoxyCodeLine{00621\ \ \ \ \ \}}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00623\ \ \ \ \ \}}
+\DoxyCodeLine{00624\ \ \ \}}
+\DoxyCodeLine{00625\ \ \ \textcolor{keywordflow}{return}\ 1.0;}
+\DoxyCodeLine{00626\ \}}
+\DoxyCodeLine{00627\ }
+\DoxyCodeLine{00628\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
