@@ -78,47 +78,37 @@ $(function() {
   <div class="headertitle"><div class="title">ucr_parsing Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="namespaceucr__parsing.html" title="ucr_parsing namespace contains functions to parse datasets and file reading capabilities.">ucr_parsing</a> namespace contains functions to parse datasets and file reading capabilities.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a8ecda92826a9d7143cc0dac958266007" id="r_a8ecda92826a9d7143cc0dac958266007"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ecda92826a9d7143cc0dac958266007">DatasetType</a> { <a class="el" href="#a8ecda92826a9d7143cc0dac958266007a28b9fd0a75dfdbca47bb1c979c43fa4f">TEST</a>
-, <a class="el" href="#a8ecda92826a9d7143cc0dac958266007a6d3224c10a527075e6b60f78d712d138">TRAIN</a>
-, <a class="el" href="#a8ecda92826a9d7143cc0dac958266007adf3057719c6de1b6f477cf4736104566">TEST_APPEND_TRAIN</a>
+<tr class="memitem:a8ecda92826a9d7143cc0dac958266007" id="r_a8ecda92826a9d7143cc0dac958266007"><td class="memItemLeft" align="right" valign="top"><a id="a8ecda92826a9d7143cc0dac958266007" name="a8ecda92826a9d7143cc0dac958266007"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ecda92826a9d7143cc0dac958266007">DatasetType</a> { <b>TEST</b>
+, <b>TRAIN</b>
+, <b>TEST_APPEND_TRAIN</b>
  }</td></tr>
+<tr class="memdesc:a8ecda92826a9d7143cc0dac958266007"><td class="mdescLeft">&#160;</td><td class="mdescRight">DatasetType is an enum specific to the UCR Time <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> Archive, datasets contain a TEST and TRAIN tsv, this enum specifies whether you want the series from TEST, TRAIN or TEST and TRAIN. <br /></td></tr>
 <tr class="separator:a8ecda92826a9d7143cc0dac958266007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af0a300b2e11f171b7dbf84b0f2202b4a" id="r_af0a300b2e11f171b7dbf84b0f2202b4a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0a300b2e11f171b7dbf84b0f2202b4a">parse_tsv</a> (std::string filename, int max_lines)</td></tr>
+<tr class="memdesc:af0a300b2e11f171b7dbf84b0f2202b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">parse_tsv function takes a filename and a max_lines count (negative values will read the entire file).  <br /></td></tr>
 <tr class="separator:af0a300b2e11f171b7dbf84b0f2202b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f83f51cca900bc942bebace94f45477" id="r_a7f83f51cca900bc942bebace94f45477"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f83f51cca900bc942bebace94f45477">parse_ucr_tsv</a> (std::string filename, int max_lines)</td></tr>
+<tr class="memdesc:a7f83f51cca900bc942bebace94f45477"><td class="mdescLeft">&#160;</td><td class="mdescRight">parse_ucr_tsv function takes a filename and a max_lines count (negative values will read the entire file).  <br /></td></tr>
 <tr class="separator:a7f83f51cca900bc942bebace94f45477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd47505fda04ce823e57d1aceb8b27ce" id="r_acd47505fda04ce823e57d1aceb8b27ce"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd47505fda04ce823e57d1aceb8b27ce">parse_ucr_dataset</a> (std::string dataset_name, std::string dataset_loc, <a class="el" href="#a8ecda92826a9d7143cc0dac958266007">DatasetType</a> type)</td></tr>
+<tr class="memdesc:acd47505fda04ce823e57d1aceb8b27ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">parse_ucr_dataset function takes a datasets name, the location of all UCR datasets and which files to be read and returns the Time <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> in the file(s).  <br /></td></tr>
 <tr class="separator:acd47505fda04ce823e57d1aceb8b27ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b08f2d0265a2a010a5e280742c7fc00" id="r_a6b08f2d0265a2a010a5e280742c7fc00"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b08f2d0265a2a010a5e280742c7fc00">parse_folder_names</a> (std::string directory_path)</td></tr>
+<tr class="memdesc:a6b08f2d0265a2a010a5e280742c7fc00"><td class="mdescLeft">&#160;</td><td class="mdescRight">parse_folder_names function takes a directory_path and returns the titles of any folders present at that location.  <br /></td></tr>
 <tr class="separator:a6b08f2d0265a2a010a5e280742c7fc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a8ecda92826a9d7143cc0dac958266007" name="a8ecda92826a9d7143cc0dac958266007"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ecda92826a9d7143cc0dac958266007">&#9670;&#160;</a></span>DatasetType</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="#a8ecda92826a9d7143cc0dac958266007">ucr_parsing::DatasetType</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8ecda92826a9d7143cc0dac958266007a28b9fd0a75dfdbca47bb1c979c43fa4f" name="a8ecda92826a9d7143cc0dac958266007a28b9fd0a75dfdbca47bb1c979c43fa4f"></a>TEST&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ecda92826a9d7143cc0dac958266007a6d3224c10a527075e6b60f78d712d138" name="a8ecda92826a9d7143cc0dac958266007a6d3224c10a527075e6b60f78d712d138"></a>TRAIN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ecda92826a9d7143cc0dac958266007adf3057719c6de1b6f477cf4736104566" name="a8ecda92826a9d7143cc0dac958266007adf3057719c6de1b6f477cf4736104566"></a>TEST_APPEND_TRAIN&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="namespaceucr__parsing.html" title="ucr_parsing namespace contains functions to parse datasets and file reading capabilities.">ucr_parsing</a> namespace contains functions to parse datasets and file reading capabilities. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a6b08f2d0265a2a010a5e280742c7fc00" name="a6b08f2d0265a2a010a5e280742c7fc00"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b08f2d0265a2a010a5e280742c7fc00">&#9670;&#160;</a></span>parse_folder_names()</h2>
 
@@ -133,6 +123,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>parse_folder_names function takes a directory_path and returns the titles of any folders present at that location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">directory_path</td><td>is the name of the file, including filepath if not in present working directory and including file extension. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The names of any folders in that directory. The function skips any empty or NaN values in the file and skips the first entry of every line as this denotes the 'class' of the line in the UCR Time <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> Archive. </dd></dl>
 
 </div>
 </div>
@@ -154,6 +153,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>parse_tsv function takes a filename and a max_lines count (negative values will read the entire file). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>is the name of the file, including filepath if not in present working directory and including file extension. </td></tr>
+    <tr><td class="paramname">max_lines</td><td>is the maximum number of lines to be read from the TSV file, negative will read all lines. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The series read from the file. The function skips any empty or NaN values in the file. </dd></dl>
 
 </div>
 </div>
@@ -181,6 +190,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>parse_ucr_dataset function takes a datasets name, the location of all UCR datasets and which files to be read and returns the Time <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> in the file(s). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dataset_name</td><td>is the name of the dataset, the name of the folder the dataset is located in and the prefix of the name of the files. </td></tr>
+    <tr><td class="paramname">dataset_loc</td><td>is the folder location of the datasets from the present working directory, as it points to a folder, the string should end in /. </td></tr>
+    <tr><td class="paramname">type</td><td>is the files from the dataset that should be read, options TEST, TRAIN or TEST_APPEND_TRAIN specify the Time <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> returned based on TEST and TRAIN present in directory. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The series read from the file. The function skips any empty or NaN values in the file and skips the first entry of every line as this denotes the 'class' of the line in the UCR Time <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> Archive. Files inside the folder of the dataset should be of the format &lt;dataset_name&gt;_TEST.tsv or &lt;dataset_name&gt;_TRAIN.tsv. </dd></dl>
+
 </div>
 </div>
 <a id="a7f83f51cca900bc942bebace94f45477" name="a7f83f51cca900bc942bebace94f45477"></a>
@@ -201,6 +221,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>parse_ucr_tsv function takes a filename and a max_lines count (negative values will read the entire file). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>is the name of the file, including filepath if not in present working directory and including file extension. </td></tr>
+    <tr><td class="paramname">max_lines</td><td>is the maximum number of lines to be read from the TSV file, negative will read all lines. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The series read from the file. The function skips any empty or NaN values in the file and skips the first entry of every line as this denotes the 'class' of the line in the UCR Time <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> Archive. </dd></dl>
 
 </div>
 </div>

@@ -28,7 +28,7 @@ Seqddt swing::swing(const Seqd& s, double epsilon)
       // 	and as lines connected we start next segment from previous index
       double best_grad = pla::regression_thru_point(u[0] ,s.data() + seg_start+1, s.data() + c_ind - 1);
       if (breakpoints.size() == 0) {
-	// this is the only line segment that actually 'starts' at seg-start
+	// only  the first line segment actually 'starts' at seg-start
 	breakpoints.push_back( {{u[0],best_grad}, c_ind-1} );
       } else {
 	breakpoints.push_back( {{u[0]+best_grad,best_grad}, c_ind-1} );
@@ -36,8 +36,8 @@ Seqddt swing::swing(const Seqd& s, double epsilon)
 
       // calculate the next upper and lower lines via projected start of prev line
       double l_start = u[0] + best_grad*(c_ind-1-seg_start);
-      u = {l_start, (s[c_ind]-l_start+epsilon)/(c_ind-seg_start) };
-      l = {l_start, (s[c_ind]-l_start-epsilon)/(c_ind-seg_start) };
+      u = {l_start, (s[c_ind]+epsilon-l_start)/(1.0) };
+      l = {l_start, (s[c_ind]-epsilon-l_start)/(1.0) };
       // adjust the segment start and final increment c_ind
       seg_start = c_ind - 1;
       c_ind++;

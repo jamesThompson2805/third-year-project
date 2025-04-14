@@ -78,16 +78,91 @@ $(function() {
   <div class="headertitle"><div class="title">BernFunctor Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Functor to simulate independent trials of Radermacher variable.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="random__walk_8h_source.html">random_walk.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a03a8b5cd0d2df126f280476d3bd173da" id="r_a03a8b5cd0d2df126f280476d3bd173da"><td class="memItemLeft" align="right" valign="top"><a id="a03a8b5cd0d2df126f280476d3bd173da" name="a03a8b5cd0d2df126f280476d3bd173da"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>BernFunctor</b> (unsigned int seed=0, double p=0.5)</td></tr>
+<tr class="memitem:a03a8b5cd0d2df126f280476d3bd173da" id="r_a03a8b5cd0d2df126f280476d3bd173da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03a8b5cd0d2df126f280476d3bd173da">BernFunctor</a> (unsigned int seed=0, double p=0.5)</td></tr>
+<tr class="memdesc:a03a8b5cd0d2df126f280476d3bd173da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the Functor based off the parameters.  <br /></td></tr>
 <tr class="separator:a03a8b5cd0d2df126f280476d3bd173da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac172b2b39276fffdbd4793f4f5ac0f45" id="r_ac172b2b39276fffdbd4793f4f5ac0f45"><td class="memItemLeft" align="right" valign="top"><a id="ac172b2b39276fffdbd4793f4f5ac0f45" name="ac172b2b39276fffdbd4793f4f5ac0f45"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> ()</td></tr>
+<tr class="memitem:ac172b2b39276fffdbd4793f4f5ac0f45" id="r_ac172b2b39276fffdbd4793f4f5ac0f45"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac172b2b39276fffdbd4793f4f5ac0f45">operator()</a> ()</td></tr>
+<tr class="memdesc:ac172b2b39276fffdbd4793f4f5ac0f45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloaded () operator allowing Functor to act like function.  <br /></td></tr>
 <tr class="separator:ac172b2b39276fffdbd4793f4f5ac0f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Functor to simulate independent trials of Radermacher variable. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a03a8b5cd0d2df126f280476d3bd173da" name="a03a8b5cd0d2df126f280476d3bd173da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03a8b5cd0d2df126f280476d3bd173da">&#9670;&#160;</a></span>BernFunctor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BernFunctor::BernFunctor </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>seed</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>p</em><span class="paramdefsep"> = </span><span class="paramdefval">0.5</span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs the Functor based off the parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seed</td><td>The seed for the pseudo random generator. </td></tr>
+    <tr><td class="paramname">p</td><td>The probability of the variable being +1. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac172b2b39276fffdbd4793f4f5ac0f45" name="ac172b2b39276fffdbd4793f4f5ac0f45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac172b2b39276fffdbd4793f4f5ac0f45">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BernFunctor::operator() </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overloaded () operator allowing Functor to act like function. </p>
+<dl class="section return"><dt>Returns</dt><dd>result of independent trial of variable. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/sequence_gen/<a class="el" href="random__walk_8h_source.html">random_walk.h</a></li>
 </ul>

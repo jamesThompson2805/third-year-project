@@ -13,7 +13,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
 			       src/plotting/plot_dimreduct_paa.cpp
 			       src/plotting/plot_dimreduct_pla.cpp
 			       src/evaluations/general.cpp
-			       src/evaluations/capla.cpp)
+			       src/evaluations/capla.cpp
+			       src/evaluations/e_guarantee_eval.cpp)
 
 add_subdirectory(lib/sequence_gen)
 add_subdirectory(lib/parsing)

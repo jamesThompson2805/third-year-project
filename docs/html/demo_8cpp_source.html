@@ -85,9 +85,9 @@ $(function() { codefold.init(0); });
 </div><!--header-->
 <div class="contents">
 <a href="demo_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;random_walk.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;ucr_parsing.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;z_norm.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="random__walk_8h.html">random_walk.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="ucr__parsing_8h.html">ucr_parsing.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="z__norm_8h.html">z_norm.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;bottom_up.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
@@ -109,8 +109,8 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <a class="code hl_class" href="classRandomWalk.html">RandomWalk</a> walk( <a class="code hl_class" href="classNormalFunctor.html">NormalFunctor</a>(11) ); </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  walk.gen_steps(100&#39;000);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  walk.save_walk(<span class="stringliteral">&quot;./tsv/testwalk1.tsv&quot;</span>);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  vector&lt;double&gt; synth_data = ucr_parsing::parse_tsv(<span class="stringliteral">&quot;./tsv/testwalk1.tsv&quot;</span>,-1);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  z_norm::z_normalise(synth_data);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  vector&lt;double&gt; synth_data = <a class="code hl_function" href="namespaceucr__parsing.html#af0a300b2e11f171b7dbf84b0f2202b4a">ucr_parsing::parse_tsv</a>(<span class="stringliteral">&quot;./tsv/testwalk1.tsv&quot;</span>,-1);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <a class="code hl_function" href="namespacez__norm.html#aa356cedca43e989885ceb0fee1e2d660">z_norm::z_normalise</a>(synth_data);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  vector&lt;double&gt; short_synth( synth_data.begin(), synth_data.begin()+2000);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <a class="code hl_struct" href="structSeries.html">Series</a> s_walk = { synth_data, <span class="stringliteral">&quot;Normal Walk&quot;</span> };</div>
@@ -122,11 +122,11 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">  /**** LOAD REAL DATA ****************/</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordtype">string</span> ucr_datasets_loc = <span class="stringliteral">&quot;external/data/UCRArchive_2018/&quot;</span>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  vector&lt;string&gt; datasets = ucr_parsing::parse_folder_names(ucr_datasets_loc);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  vector&lt;string&gt; datasets = <a class="code hl_function" href="namespaceucr__parsing.html#a6b08f2d0265a2a010a5e280742c7fc00">ucr_parsing::parse_folder_names</a>(ucr_datasets_loc);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> di = 30;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  vector&lt;double&gt; real_data = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  ucr_parsing::DatasetType::TEST);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  z_norm::z_normalise(real_data);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <a class="code hl_function" href="namespacez__norm.html#aa356cedca43e989885ceb0fee1e2d660">z_norm::z_normalise</a>(real_data);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  vector&lt;double&gt; short_real( real_data.begin(), real_data.begin()+2000);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <a class="code hl_struct" href="structSeries.html">Series</a> s_real = { real_data, <span class="stringliteral">&quot;ECG Scan&quot;</span> };</div>
@@ -203,18 +203,24 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
 </div>
 <div class="ttc" id="acapla_8h_html"><div class="ttname"><a href="capla_8h.html">capla.h</a></div><div class="ttdoc">Header file for helpful functions for utilising the ChangeInSlope sliding window technique.</div></div>
-<div class="ttc" id="aclassNormalFunctor_html"><div class="ttname"><a href="classNormalFunctor.html">NormalFunctor</a></div><div class="ttdef"><b>Definition</b> random_walk.h:62</div></div>
-<div class="ttc" id="aclassRandomWalk_html"><div class="ttname"><a href="classRandomWalk.html">RandomWalk</a></div><div class="ttdef"><b>Definition</b> random_walk.h:11</div></div>
+<div class="ttc" id="aclassNormalFunctor_html"><div class="ttname"><a href="classNormalFunctor.html">NormalFunctor</a></div><div class="ttdoc">Functor to simulate independent trials of Normal variable.</div><div class="ttdef"><b>Definition</b> random_walk.h:114</div></div>
+<div class="ttc" id="aclassRandomWalk_html"><div class="ttname"><a href="classRandomWalk.html">RandomWalk</a></div><div class="ttdef"><b>Definition</b> random_walk.h:19</div></div>
 <div class="ttc" id="ademo_8cpp_html_ac474183ee901f1980a9963e75699b6a1"><div class="ttname"><a href="demo_8cpp.html#ac474183ee901f1980a9963e75699b6a1">demo</a></div><div class="ttdeci">void demo()</div><div class="ttdoc">The demo function automatically runs all sections of the demo in order, displaying a full end to end ...</div><div class="ttdef"><b>Definition</b> demo.cpp:26</div></div>
 <div class="ttc" id="anamespacecapla__eval_html_a4146cd72f536c304bc6948a0e08aa7ad"><div class="ttname"><a href="namespacecapla__eval.html#a4146cd72f536c304bc6948a0e08aa7ad">capla_eval::generate_tri_DRT</a></div><div class="ttdeci">DRT generate_tri_DRT(unsigned int win_size)</div><div class="ttdef"><b>Definition</b> capla.cpp:33</div></div>
 <div class="ttc" id="anamespacecapla__eval_html_abb6fc6d07bb85bdcf6838eda4734de53"><div class="ttname"><a href="namespacecapla__eval.html#abb6fc6d07bb85bdcf6838eda4734de53">capla_eval::generate_mean_DRT_COMPR</a></div><div class="ttdeci">DRT_COMPR generate_mean_DRT_COMPR(unsigned int win_size)</div><div class="ttdef"><b>Definition</b> capla.cpp:18</div></div>
 <div class="ttc" id="anamespaceplot_html_a0dd6558f40503eb05365b2265a5327e7"><div class="ttname"><a href="namespaceplot.html#a0dd6558f40503eb05365b2265a5327e7">plot::plot_lines</a></div><div class="ttdeci">void plot_lines(std::vector&lt; Line &gt; ls, PlotDetails p)</div><div class="ttdoc">plot_lines plots all of the lines passed to it using the PlotDetails also passed.</div></div>
 <div class="ttc" id="anamespaceplot_html_ac04d391973e1e722dd94cf196023cdcd"><div class="ttname"><a href="namespaceplot.html#ac04d391973e1e722dd94cf196023cdcd">plot::plot_series</a></div><div class="ttdeci">void plot_series(Series &amp;s, PlotDetails p)</div><div class="ttdoc">plot_series plots a series.</div><div class="ttdef"><b>Definition</b> series_plotting.cpp:21</div></div>
+<div class="ttc" id="anamespaceucr__parsing_html_a6b08f2d0265a2a010a5e280742c7fc00"><div class="ttname"><a href="namespaceucr__parsing.html#a6b08f2d0265a2a010a5e280742c7fc00">ucr_parsing::parse_folder_names</a></div><div class="ttdeci">std::vector&lt; std::string &gt; parse_folder_names(std::string directory_path)</div><div class="ttdoc">parse_folder_names function takes a directory_path and returns the titles of any folders present at t...</div><div class="ttdef"><b>Definition</b> ucr_parsing.cpp:82</div></div>
+<div class="ttc" id="anamespaceucr__parsing_html_af0a300b2e11f171b7dbf84b0f2202b4a"><div class="ttname"><a href="namespaceucr__parsing.html#af0a300b2e11f171b7dbf84b0f2202b4a">ucr_parsing::parse_tsv</a></div><div class="ttdeci">std::vector&lt; double &gt; parse_tsv(std::string filename, int max_lines)</div><div class="ttdoc">parse_tsv function takes a filename and a max_lines count (negative values will read the entire file)...</div><div class="ttdef"><b>Definition</b> ucr_parsing.cpp:10</div></div>
+<div class="ttc" id="anamespacez__norm_html_aa356cedca43e989885ceb0fee1e2d660"><div class="ttname"><a href="namespacez__norm.html#aa356cedca43e989885ceb0fee1e2d660">z_norm::z_normalise</a></div><div class="ttdeci">void z_normalise(std::vector&lt; double &gt; &amp;series)</div><div class="ttdoc">z_normalise function takes a mutable reference to a sequence and mutates the sequence to be Z Normali...</div></div>
 <div class="ttc" id="aplot__dimreduct__pla_8h_html"><div class="ttname"><a href="plot__dimreduct__pla_8h.html">plot_dimreduct_pla.h</a></div><div class="ttdoc">Header file containing methods for plotting (Adaptive) Piecewise Linear Approximations.</div></div>
+<div class="ttc" id="arandom__walk_8h_html"><div class="ttname"><a href="random__walk_8h.html">random_walk.h</a></div><div class="ttdoc">Header file the RandomWalk class and various functors to use inside RandomWalk.</div></div>
 <div class="ttc" id="aseries__plotting_8h_html"><div class="ttname"><a href="series__plotting_8h.html">series_plotting.h</a></div><div class="ttdoc">Header file containing many functions for plotting series.</div></div>
 <div class="ttc" id="astructLine_html"><div class="ttname"><a href="structLine.html">Line</a></div><div class="ttdoc">Struct slightly more complicated than Series also specifying the x values for the corresponding y....</div><div class="ttdef"><b>Definition</b> series_plotting.h:32</div></div>
 <div class="ttc" id="astructPlotDetails_html"><div class="ttname"><a href="structPlotDetails.html">PlotDetails</a></div><div class="ttdoc">Struct containing parameters to be passed to any function wanting to render a plot.</div><div class="ttdef"><b>Definition</b> plot_types.h:33</div></div>
 <div class="ttc" id="astructSeries_html"><div class="ttname"><a href="structSeries.html">Series</a></div><div class="ttdoc">Struct stores a series and its name together.</div><div class="ttdef"><b>Definition</b> series_plotting.h:20</div></div>
+<div class="ttc" id="aucr__parsing_8h_html"><div class="ttname"><a href="ucr__parsing_8h.html">ucr_parsing.h</a></div><div class="ttdoc">Header file declaring methods to read in files from TSV format and specifically the format of UCR Tim...</div></div>
+<div class="ttc" id="az__norm_8h_html"><div class="ttname"><a href="z__norm_8h.html">z_norm.h</a></div><div class="ttdoc">Header file containing the means to z-normalise data. The only header file of the data cleaning libra...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,13 +1,23 @@
 \doxysection{lib/cleaning/z\+\_\+norm.h File Reference}
 \hypertarget{z__norm_8h}{}\label{z__norm_8h}\index{lib/cleaning/z\_norm.h@{lib/cleaning/z\_norm.h}}
+
+
+Header file containing the means to z-\/normalise data. The only header file of the data cleaning library as no other methods needed to be implemented in the duration of the project. It offers only the function z\+\_\+normalise that takes a mutable series reference and mutates all values to have mean zero, variance 1.  
+
+
 {\ttfamily \#include $<$vector$>$}\newline
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacez__norm}{z\+\_\+norm}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespacez__norm}{z\+\_\+norm} namespace contains z\+\_\+normalisation function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{namespacez__norm_aa356cedca43e989885ceb0fee1e2d660}{z\+\_\+norm\+::z\+\_\+normalise}} (std\+::vector$<$ double $>$ \&series)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em z\+\_\+normalise function takes a mutable reference to a sequence and mutates the sequence to be Z Normalised. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file containing the means to z-\/normalise data. The only header file of the data cleaning library as no other methods needed to be implemented in the duration of the project. It offers only the function z\+\_\+normalise that takes a mutable series reference and mutates all values to have mean zero, variance 1. 
+

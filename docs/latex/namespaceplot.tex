@@ -12,7 +12,7 @@ void \mbox{\hyperlink{namespaceplot_ac04d391973e1e722dd94cf196023cdcd}{plot\+\_\
 \begin{DoxyCompactList}\small\item\em plot\+\_\+series plots a series. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespaceplot_aa7743ec830f3d475c11741c63ae6351c}{plot\+\_\+many\+\_\+series}} (std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&vs, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
 \begin{DoxyCompactList}\small\item\em plot\+\_\+many\+\_\+series plots multiple series. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespaceplot_ad4e7e6864221609200a47e52b1dacd3e}{barplot\+\_\+many\+\_\+series}} (std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&vs, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+void \mbox{\hyperlink{namespaceplot_a46dfb3302745ceaf93f28d372828fd13}{barplot\+\_\+many\+\_\+series}} (const std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&vs, const std\+::vector$<$ std\+::string $>$ \&group\+\_\+labels, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
 \begin{DoxyCompactList}\small\item\em barplot\+\_\+many\+\_\+series plots multiple series, here each series is viewed as a value for each set of bars. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespaceplot_a10979c227275b61b2e0b2070337c606f}{plot\+\_\+series\+\_\+diff}} (\mbox{\hyperlink{structSeries}{Series}} \&s1, \mbox{\hyperlink{structSeries}{Series}} \&s2, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
 \begin{DoxyCompactList}\small\item\em plot\+\_\+series\+\_\+diff plots two series and adds error lines imbetween to highlight their disagreements. \end{DoxyCompactList}\item 
@@ -28,11 +28,11 @@ void \mbox{\hyperlink{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2}{plot\+\_\
 plot namespace defines useful functions for plotting series and actions performed on series. 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespaceplot_ad4e7e6864221609200a47e52b1dacd3e}\label{namespaceplot_ad4e7e6864221609200a47e52b1dacd3e} 
+\Hypertarget{namespaceplot_a46dfb3302745ceaf93f28d372828fd13}\label{namespaceplot_a46dfb3302745ceaf93f28d372828fd13} 
 \index{plot@{plot}!barplot\_many\_series@{barplot\_many\_series}}
 \index{barplot\_many\_series@{barplot\_many\_series}!plot@{plot}}
 \doxysubsubsection{\texorpdfstring{barplot\_many\_series()}{barplot\_many\_series()}}
-{\footnotesize\ttfamily void plot\+::barplot\+\_\+many\+\_\+series (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&}]{vs,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void plot\+::barplot\+\_\+many\+\_\+series (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structSeries}{Series}} $>$ \&}]{vs,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{group\+\_\+labels,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
 
 
 
@@ -40,7 +40,9 @@ barplot\+\_\+many\+\_\+series plots multiple series, here each series is viewed 
 
 
 \begin{DoxyParams}{Parameters}
-{\em vs} & Is the vector of all \doxylink{structSeries}{Series} to be plotted. \\
+{\em vs} & Is the vector of all \doxylink{structSeries}{Series} to be plotted. Each series should denote one \textquotesingle{}case\textquotesingle{}s set of bars for each group, for example, perhaps you are comparing price of apples and pears bought by Alice, Bob and Charlie. Then passing \{ \{1,3\}, \{4,3\}, \{5,6\} \} indicates Alice bought 1 apple, 3 pears, Bob bought 4 apples, 3 pears and so forth. \\
+\hline
+{\em group\+\_\+labels} & Is a vector that gives a label to each group which should be of a length equal or greater to that of the inner lists. Using the example beforehand, passing \{ "{}apple"{}, "{}pear"{} \} would be the correct labels for the groups \\
 \hline
 {\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details}. \\
 \hline

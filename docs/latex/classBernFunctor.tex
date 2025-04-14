@@ -1,16 +1,62 @@
 \doxysection{Bern\+Functor Class Reference}
 \hypertarget{classBernFunctor}{}\label{classBernFunctor}\index{BernFunctor@{BernFunctor}}
+
+
+Functor to simulate independent trials of Radermacher variable.  
+
+
+
+
+{\ttfamily \#include $<$random\+\_\+walk.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classBernFunctor_a03a8b5cd0d2df126f280476d3bd173da}{Bern\+Functor}} (unsigned int seed=0, double p=0.\+5)
+\begin{DoxyCompactList}\small\item\em Constructs the Functor based off the parameters. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBernFunctor_ac172b2b39276fffdbd4793f4f5ac0f45}{operator()}} ()
+\begin{DoxyCompactList}\small\item\em Overloaded () operator allowing Functor to act like function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functor to simulate independent trials of Radermacher variable. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classBernFunctor_a03a8b5cd0d2df126f280476d3bd173da}\label{classBernFunctor_a03a8b5cd0d2df126f280476d3bd173da} 
-{\bfseries Bern\+Functor} (unsigned int seed=0, double p=0.\+5)
-\item 
+\index{BernFunctor@{BernFunctor}!BernFunctor@{BernFunctor}}
+\index{BernFunctor@{BernFunctor}!BernFunctor@{BernFunctor}}
+\doxysubsubsection{\texorpdfstring{BernFunctor()}{BernFunctor()}}
+{\footnotesize\ttfamily Bern\+Functor\+::\+Bern\+Functor (\begin{DoxyParamCaption}\item[{unsigned int}]{seed = {\ttfamily 0},  }\item[{double}]{p = {\ttfamily 0.5} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs the Functor based off the parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seed} & The seed for the pseudo random generator. \\
+\hline
+{\em p} & The probability of the variable being +1. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \Hypertarget{classBernFunctor_ac172b2b39276fffdbd4793f4f5ac0f45}\label{classBernFunctor_ac172b2b39276fffdbd4793f4f5ac0f45} 
-double {\bfseries operator()} ()
-\end{DoxyCompactItemize}
+\index{BernFunctor@{BernFunctor}!operator()@{operator()}}
+\index{operator()@{operator()}!BernFunctor@{BernFunctor}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily double Bern\+Functor\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded () operator allowing Functor to act like function. 
+
+\begin{DoxyReturn}{Returns}
+result of independent trial of variable. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-lib/sequence\+\_\+gen/random\+\_\+walk.\+h\end{DoxyCompactItemize}
+lib/sequence\+\_\+gen/\mbox{\hyperlink{random__walk_8h}{random\+\_\+walk.\+h}}\end{DoxyCompactItemize}

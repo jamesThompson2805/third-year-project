@@ -1,23 +1,90 @@
 \doxysection{Random\+Walk Class Reference}
 \hypertarget{classRandomWalk}{}\label{classRandomWalk}\index{RandomWalk@{RandomWalk}}
+
+
+{\ttfamily \#include $<$random\+\_\+walk.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classRandomWalk_a339054cc28928289abe189edf2469d8d}{Random\+Walk}} (std\+::function$<$ double()$>$ next\+\_\+incr\+\_\+generator)
+\begin{DoxyCompactList}\small\item\em Construct a random walk using a function that generates the next number when called. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRandomWalk_a3b042ad6c762157839ca4a8ccc41c6c4}{gen\+\_\+steps}} (unsigned int n)
+\begin{DoxyCompactList}\small\item\em gen\+\_\+steps simulates n steps of the random walk. \end{DoxyCompactList}\item 
+const deque$<$ double $>$ \& \mbox{\hyperlink{classRandomWalk_a74981e11ebee767b2e75ca8e78d4295a}{get\+\_\+walk}} ()
+\begin{DoxyCompactList}\small\item\em get\+\_\+walk returns a view into the random walk \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRandomWalk_ad23570f7cc551e415eb65cba123cb95c}{save\+\_\+walk}} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em save\+\_\+walk saves the current walk so far in TSV format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Models a random walk of independent, identically distributed random variables. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classRandomWalk_a339054cc28928289abe189edf2469d8d}\label{classRandomWalk_a339054cc28928289abe189edf2469d8d} 
-{\bfseries Random\+Walk} (std\+::function$<$ double()$>$ next\+\_\+incr\+\_\+generator)
-\item 
+\index{RandomWalk@{RandomWalk}!RandomWalk@{RandomWalk}}
+\index{RandomWalk@{RandomWalk}!RandomWalk@{RandomWalk}}
+\doxysubsubsection{\texorpdfstring{RandomWalk()}{RandomWalk()}}
+{\footnotesize\ttfamily Random\+Walk\+::\+Random\+Walk (\begin{DoxyParamCaption}\item[{std\+::function$<$ double()$>$}]{next\+\_\+incr\+\_\+generator }\end{DoxyParamCaption})}
+
+
+
+Construct a random walk using a function that generates the next number when called. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em series} & is a mutable reference to a sequence. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \Hypertarget{classRandomWalk_a3b042ad6c762157839ca4a8ccc41c6c4}\label{classRandomWalk_a3b042ad6c762157839ca4a8ccc41c6c4} 
-void {\bfseries gen\+\_\+steps} (unsigned int n)
-\item 
+\index{RandomWalk@{RandomWalk}!gen\_steps@{gen\_steps}}
+\index{gen\_steps@{gen\_steps}!RandomWalk@{RandomWalk}}
+\doxysubsubsection{\texorpdfstring{gen\_steps()}{gen\_steps()}}
+{\footnotesize\ttfamily void Random\+Walk\+::gen\+\_\+steps (\begin{DoxyParamCaption}\item[{unsigned int}]{n }\end{DoxyParamCaption})}
+
+
+
+gen\+\_\+steps simulates n steps of the random walk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number of steps to simulate. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classRandomWalk_a74981e11ebee767b2e75ca8e78d4295a}\label{classRandomWalk_a74981e11ebee767b2e75ca8e78d4295a} 
-const deque$<$ double $>$ \& {\bfseries get\+\_\+walk} ()
-\item 
+\index{RandomWalk@{RandomWalk}!get\_walk@{get\_walk}}
+\index{get\_walk@{get\_walk}!RandomWalk@{RandomWalk}}
+\doxysubsubsection{\texorpdfstring{get\_walk()}{get\_walk()}}
+{\footnotesize\ttfamily const deque$<$ double $>$ \& Random\+Walk\+::get\+\_\+walk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+walk returns a view into the random walk 
+
+\begin{DoxyReturn}{Returns}
+A const reference to a double ended queue representing the walk so far. 
+\end{DoxyReturn}
 \Hypertarget{classRandomWalk_ad23570f7cc551e415eb65cba123cb95c}\label{classRandomWalk_ad23570f7cc551e415eb65cba123cb95c} 
-void {\bfseries save\+\_\+walk} (std\+::string filename)
-\end{DoxyCompactItemize}
+\index{RandomWalk@{RandomWalk}!save\_walk@{save\_walk}}
+\index{save\_walk@{save\_walk}!RandomWalk@{RandomWalk}}
+\doxysubsubsection{\texorpdfstring{save\_walk()}{save\_walk()}}
+{\footnotesize\ttfamily void Random\+Walk\+::save\+\_\+walk (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+
+
+save\+\_\+walk saves the current walk so far in TSV format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The string to be opened as a file to save the walk in, should be of format "{}file\+\_\+path/name.\+format"{}. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-lib/sequence\+\_\+gen/random\+\_\+walk.\+h\item 
+lib/sequence\+\_\+gen/\mbox{\hyperlink{random__walk_8h}{random\+\_\+walk.\+h}}\item 
 lib/sequence\+\_\+gen/random\+\_\+walk.\+cpp\end{DoxyCompactItemize}

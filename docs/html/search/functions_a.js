@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['normalfunctor_0',['NormalFunctor',['../classNormalFunctor.html#a38e97499a12d0b2214d433ef058b2e24',1,'NormalFunctor']]]
+  ['save_5fwalk_0',['save_walk',['../classRandomWalk.html#ad23570f7cc551e415eb65cba123cb95c',1,'RandomWalk']]],
+  ['setup_5fgnuplot_1',['setup_gnuplot',['../namespaceplot__setup.html#a99c39622a998034091a69ef49d403326',1,'plot_setup']]]
 ];

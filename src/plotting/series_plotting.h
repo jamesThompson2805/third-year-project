@@ -14,11 +14,11 @@
 
 /**
  * @brief Struct stores a series and its name together.
- * @param series Provides constant reference to data to be plotted.
+ * @param series Is the data to be plotted.
  * @param name Is name you want associated with series.
  */
 struct Series {
-  const std::vector<double>& series;
+  std::vector<double> series;
   std::string name;
 };
 
@@ -45,6 +45,17 @@ struct LineGenerator {
   std::string method_name;
 };
 
+/**
+ * @brief Struct stores a method for plotting approximations that vary according to some double.
+ * @param result_gen Is a function that provides better or worse approximations of the passed in series based on parameter double.
+ * @param method_name Is the name you want associated with the function.
+ */
+struct LinePGGenerator {
+  std::function< double(const std::vector<double>&, double) > result_gen;
+  std::string method_name;
+};
+
+
 
 /**
  * @brief plot namespace defines useful functions for plotting series and actions performed on series.
@@ -65,10 +76,11 @@ namespace plot {
   void plot_many_series(std::vector<Series>& vs, PlotDetails p);
   /**
    * @brief barplot_many_series plots multiple series, here each series is viewed as a value for each set of bars.
-   * @param vs Is the vector of all Series to be plotted.
+   * @param vs Is the vector of all Series to be plotted. Each series should denote one 'case's set of bars for each group, for example, perhaps you are comparing price of apples and pears bought by Alice, Bob and Charlie. Then passing { {1,3}, {4,3}, {5,6} } indicates Alice bought 1 apple, 3 pears, Bob bought 4 apples, 3 pears and so forth.
+   * @param group_labels Is a vector that gives a label to each group which should be of a length equal or greater to that of the inner lists. Using the example beforehand, passing { "apple", "pear" } would be the correct labels for the groups
    * @param p Is the PlotDetails.
    */
-  void barplot_many_series(std::vector<Series>& vs, PlotDetails p);
+  void barplot_many_series(const std::vector<Series> &vs, const std::vector<std::string>& group_labels, PlotDetails p);
 
   /**
    * @brief plot_series_diff plots two series and adds error lines imbetween to highlight their disagreements.
@@ -94,6 +106,9 @@ namespace plot {
    * @param p Is the PlotDetails to render the graph.
    */
   void plot_lines_generated(const std::vector<double>& s, std::vector<unsigned int> x, std::vector<LineGenerator> y_gens, PlotDetails p);
+
+  void plot_bars_generated(const std::vector<double>& s, std::vector<unsigned int> x, std::vector<LineGenerator> y_gens, PlotDetails p);
+  void plot_barsPG_generated(const std::vector<double>& s, std::vector<double> x, std::vector<LinePGGenerator> y_gens, PlotDetails p);
 
   /**
    * @brief plot_lines_generated_ucr_average plots all of the lines passed to it using the PlotDetails also passed, utilising multiple UCR datasets.

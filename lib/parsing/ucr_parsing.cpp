@@ -74,7 +74,7 @@ vector<double> ucr_parsing::parse_ucr_dataset(std::string dataset_name, std::str
   } else {
     vector<double> test = parse_ucr_tsv( ""+dataset_loc + dataset_name + "/" + dataset_name + "_TEST.tsv");
     vector<double> train = parse_ucr_tsv( ""+dataset_loc + dataset_name + "/" + dataset_name + "_TRAIN.tsv");
-    test.insert( test.end(), train.begin(), train.end());
+    train.insert( train.end(), test.begin(), test.end());
     return test;
   }
 }

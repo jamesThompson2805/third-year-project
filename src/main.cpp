@@ -10,6 +10,7 @@
 #include <tuple>
 #include <algorithm>
 
+#include "plotting/plot_dimreduct_pla.h"
 #include "ucr_parsing.h"
 #include "z_norm.h"
 #include "error_measures.h"
@@ -24,14 +25,15 @@
 #include "exact_dp.h"
 #include "apla_segment_and_merge.h"
 #include "swing.h"
-
 #include "conv_double_window.h"
+#include "sliding_window.h"
 
 #include "plotting/series_plotting.h"
 #include "plotting/plot_dimreduct_paa.h"
 
 #include "evaluations/general.h"
 #include "evaluations/capla.h"
+#include "evaluations/e_guarantee_eval.h"
 
 #include "random_walk.h"
 
@@ -66,13 +68,17 @@ int main()
   }
   */
 
-  // Favourites : 5 is Arrowhead, 13 is Chlorine, 28 is ECG200, 39 is Fifty Words, 128 is yoga, 46 is GuestureMidAirD1
+
+  // Used in reports : 5 is Arrowhead, 13 is Chlorine, 28 is ECG200, 39 is Fifty Words, 128 is yoga, 46 is GuestureMidAirD1
+  // 109 is Strawberry, 25 is Dodgers loop day
   unsigned int di = 13;
-  /*
   vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN);
   std::cout << dataset.size() << std::endl;
   z_norm::z_normalise(dataset);
-  */
+
+  Series s_ucr = { dataset, "Chlorine Dataset" };
+  PlotDetails pd_ucr = { "Plot of ucr rough data", "Time", "Value", "img/walks/", X11 };
+  //plot::plot_series(s_ucr, pd_ucr);
 
   auto paa_f = [](const vector<double>& s, unsigned int num_params){ return paa::paa_to_seq( paa::paa(s, num_params), (s.size() / num_params) + (s.size() % num_params != 0)); };
   auto pla_f = [](const vector<double>& s, unsigned int num_params){ return pla::pla_to_seq(pla::pla(s, num_params), (2*s.size() / num_params) + (2*s.size() % num_params != 0)); };
@@ -80,7 +86,7 @@ int main()
   auto d_w_apca_f = [](const vector<double>& s, unsigned int num_params){ return d_w::simple_paa(s, num_params, 5, 5); };
   auto d_w_proj_apca_f = [](const vector<double>& s, unsigned int num_params){ return d_w::y_proj_paa(s, num_params, 5, 5); };
 
-  auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::simple_pla(s, num_params, 3, 3)); };
+  auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::simple_pla(s, num_params, 5, 5)); };
   auto d_w_proj_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::y_proj_pla(s, num_params, 5, 5)); };
 
   auto exact_apaa_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq(exact_dp::min_mse_paa(s, num_params)); }; 
@@ -102,6 +108,13 @@ int main()
     return apla;
   };
   auto bottom_up_f = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(bottom_up_f_uncompr(s,parameter)); };
+  auto sw_f_uncompr = [&](const Seqd& s, unsigned int parameter){ 
+    auto apla = sw::sliding_window(s, 0.1);
+    if (apla.size() < parameter/3) segmerge::segment_to_dim(s,apla,parameter);
+    if (apla.size() > parameter/3) segmerge::merge_to_dim(s,apla,parameter);
+    return apla;
+  };
+  auto sw_f = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(sw_f_uncompr(s,parameter)); };
 
   auto swing_f = [&](const Seqd& s) { return swing::swing(s,0.1); };
 
@@ -109,18 +122,21 @@ int main()
   vector<double> rdist = { 0.0, 1.0/2.0, 1.0/2.0};
   auto conv_apla_f = [&ldist, &rdist](const vector<double>& s, unsigned int num_params){ return c_d_w::conv_pla(s, num_params, ldist, rdist); }; 
 
-
   RandomWalk walk( NormalFunctor(1) ); 
   walk.gen_steps(120);
   //walk.save_walk("./tsv/testwalk1.tsv");
   vector<double> dataset2 = parse_tsv("./tsv/testwalk1.tsv",-1);
   z_norm::z_normalise(dataset2);
   Series s = { dataset2, "Normal Walk" };
-  // plot_series(s, "./img/");
-
   //     demo();
+  
+  /*
+  dataset.resize(100);
+  auto sw_f_2 = [&](const Seqd& s) { return sw_f_uncompr(s,42); };
+  plot_pla::plot_any_apla(dataset, "chlorine", sw_f_2, "sliding window", pd_ucr);
+  */
 
-
+  
   /************************** Plot of DRT vs original **************************************
   PlotDetails p = { "RDP nonsense", "Time", "", "img/", PDF };
   auto apla_uncompr = [](const Seqd& s){
@@ -137,50 +153,7 @@ int main()
   auto capla_mean_s1_f =  capla_eval::generate_mean_skip_one_DRT(5);
   auto capla_tri_s1_f =  capla_eval::generate_tri_skip_one_DRT(5);
 
-  /************************** MSE Evaluation against parameters *****************************/
-  // PAA
-  auto paa_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, paa_f); };
-  LineGenerator paa_gen_mse = { paa_gen_mse_f, "PAA" };
-  // APCA
-  auto apca_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, apca_f); };
-  LineGenerator apca_gen_mse = { apca_gen_mse_f, "APCA" };
-  // PLA
-  auto pla_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, pla_f); };
-  LineGenerator pla_gen_mse = { pla_gen_mse_f, "PLA" };
-  // Double Window PLA and Proj
-  auto d_w_apla_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, d_w_apla_f); };
-  LineGenerator d_w_apla_gen_mse = { d_w_apla_gen_mse_f, "Double Window PLA" };
-  auto d_w_proj_apla_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, d_w_proj_apla_f); };
-  LineGenerator d_w_proj_apla_gen_mse = { d_w_proj_apla_gen_mse_f, "Projection PLA" };
-  // CAPLA hypotheses
-  auto c_d_w_mean_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, capla_mean_f); };
-  LineGenerator c_d_w_mean_gen_mse = { c_d_w_mean_gen_mse_f, "Faster Double Window PLA" };
-  auto c_d_w_tri_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, capla_tri_f); };
-  LineGenerator c_d_w_tri_gen_mse = { c_d_w_tri_gen_mse_f, "Triangular Double Window PLA" };
-  auto c_d_w_mean_s1_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, capla_mean_s1_f); };
-  LineGenerator c_d_w_mean_s1_gen_mse = { c_d_w_mean_s1_gen_mse_f, "mean s1 double window pla" };
-  auto c_d_w_tri_s1_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, capla_tri_s1_f); };
-  LineGenerator c_d_w_tri_s1_gen_mse = { c_d_w_tri_s1_gen_mse_f, "Tri s1 double window pla" };
-  auto apla_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s, parameter, exact_apla_f); };
-  LineGenerator apla_gen_mse = { apla_gen_mse_f, "DP Exact PLA" };
-  auto rdp_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s,parameter,rdp_f); };
-  LineGenerator rdp_gen_mse = { rdp_gen_mse_f, "RDP" };
-  auto bot_gen_mse_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::mse_of_method(s,parameter,bottom_up_f); };
-  LineGenerator bot_gen_mse = { bot_gen_mse_f, "B-U" };
-  vector<LineGenerator> mse_generators = {
-	paa_gen_mse
-	, apca_gen_mse
-	, pla_gen_mse
-	, d_w_apla_gen_mse
-	, c_d_w_mean_gen_mse
-	, c_d_w_tri_gen_mse
-	//, apla_gen_mse
-	, rdp_gen_mse
-	, bot_gen_mse
-  };
-  /**************/
-
-  /************************** Euclidean Evaluation against parameters *****************************/
+  /************************** Euclidean Evaluation against parameters *************************/
   // PAA
   auto paa_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, paa_f); };
   LineGenerator paa_gen_l2 = { paa_gen_l2_f, "PAA" };
@@ -192,20 +165,20 @@ int main()
   LineGenerator pla_gen_l2 = { pla_gen_l2_f, "PLA" };
   // Double Window PLA and Proj
   auto d_w_apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, d_w_apla_f); };
-  LineGenerator d_w_apla_gen_l2 = { d_w_apla_gen_l2_f, "Double Window PLA(3,3)" };
+  LineGenerator d_w_apla_gen_l2 = { d_w_apla_gen_l2_f, "AV PLA" };
   auto d_w_proj_apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, d_w_proj_apla_f); };
-  LineGenerator d_w_proj_apla_gen_l2 = { d_w_proj_apla_gen_l2_f, "Projection PLA(5,5)" };
+  LineGenerator d_w_proj_apla_gen_l2 = { d_w_proj_apla_gen_l2_f, "IP PLA" };
   // CAPLA hypotheses
   auto c_d_w_mean_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, capla_mean_f); };
   LineGenerator c_d_w_mean_gen_l2 = { c_d_w_mean_gen_l2_f, "Faster Double Window PLA(5,5)" };
   auto c_d_w_tri_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, capla_tri_f); };
-  LineGenerator c_d_w_tri_gen_l2 = { c_d_w_tri_gen_l2_f, "Tri Double Window PLA(5,5)" };
+  LineGenerator c_d_w_tri_gen_l2 = { c_d_w_tri_gen_l2_f, "IncrWAV PLA" };
   auto c_d_w_mean_s1_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, capla_mean_s1_f); };
-  LineGenerator c_d_w_mean_s1_gen_l2 = { c_d_w_mean_s1_gen_l2_f, "mean s1 double window pla" };
+  LineGenerator c_d_w_mean_s1_gen_l2 = { c_d_w_mean_s1_gen_l2_f, "SkipWAV PLA" };
   auto c_d_w_tri_s1_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, capla_tri_s1_f); };
   LineGenerator c_d_w_tri_s1_gen_l2 = { c_d_w_tri_s1_gen_l2_f, "Tri s1 double window pla" };
   auto apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, exact_apla_f); };
-  LineGenerator apla_gen_l2 = { apla_gen_l2_f, "DP Exact PLA" };
+  LineGenerator apla_gen_l2 = { apla_gen_l2_f, "APLA" };
   auto rdp_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,rdp_f); };
   LineGenerator rdp_gen_l2 = { rdp_gen_l2_f, "RDP" };
   auto bot_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,bottom_up_f); };
@@ -216,11 +189,11 @@ int main()
 	, apca_gen_l2
 	, d_w_apla_gen_l2
 	, d_w_proj_apla_gen_l2
-	, c_d_w_mean_gen_l2
+	, c_d_w_mean_s1_gen_l2
 	, c_d_w_tri_gen_l2
-	//, apla_gen_l2
-	, rdp_gen_l2
-	, bot_gen_l2
+	, apla_gen_l2
+	//, rdp_gen_l2
+	//, bot_gen_l2
   };
   /**************/
 
@@ -236,20 +209,20 @@ int main()
   LineGenerator pla_gen_maxdev = { pla_gen_maxdev_f, "PLA" };
   // Double Window PLA and Proj
   auto d_w_apla_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, d_w_apla_f); };
-  LineGenerator d_w_apla_gen_maxdev = { d_w_apla_gen_maxdev_f, "Double Window PLA(3,3)" };
+  LineGenerator d_w_apla_gen_maxdev = { d_w_apla_gen_maxdev_f, "AV PLA" };
   auto d_w_proj_apla_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, d_w_proj_apla_f); };
-  LineGenerator d_w_proj_apla_gen_maxdev = { d_w_proj_apla_gen_maxdev_f, "Projection PLA(5,5)" };
+  LineGenerator d_w_proj_apla_gen_maxdev = { d_w_proj_apla_gen_maxdev_f, "IP PLA" };
   // CAPLA hypotheses
   auto c_d_w_mean_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, capla_mean_f); };
   LineGenerator c_d_w_mean_gen_maxdev = { c_d_w_mean_gen_maxdev_f, "Faster Double Window PLA(5,5)" };
   auto c_d_w_tri_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, capla_tri_f); };
-  LineGenerator c_d_w_tri_gen_maxdev = { c_d_w_tri_gen_maxdev_f, "Triangular Double Window PLA(5,5)" };
+  LineGenerator c_d_w_tri_gen_maxdev = { c_d_w_tri_gen_maxdev_f, "IncrWAV PLA" };
   auto c_d_w_mean_s1_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, capla_mean_s1_f); };
-  LineGenerator c_d_w_mean_s1_gen_maxdev = { c_d_w_mean_s1_gen_maxdev_f, "mean s1 double window pla(5,5)" };
+  LineGenerator c_d_w_mean_s1_gen_maxdev = { c_d_w_mean_s1_gen_maxdev_f, "SkipWAV PLA" };
   auto c_d_w_tri_s1_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, capla_tri_s1_f); };
   LineGenerator c_d_w_tri_s1_gen_maxdev = { c_d_w_tri_s1_gen_maxdev_f, "Tri s1 double window pla(5,5)" };
   auto apla_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, exact_apla_f); };
-  LineGenerator apla_gen_maxdev = { apla_gen_maxdev_f, "DP Exact PLA" };
+  LineGenerator apla_gen_maxdev = { apla_gen_maxdev_f, "APLA" };
   auto rdp_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s, parameter, rdp_f); };
   LineGenerator rdp_gen_maxdev = { rdp_gen_maxdev_f, "RDP" };
   auto bot_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s,parameter,bottom_up_f); };
@@ -260,15 +233,15 @@ int main()
 	, apca_gen_maxdev
 	, d_w_apla_gen_maxdev
 	, d_w_proj_apla_gen_maxdev
-	, c_d_w_mean_gen_maxdev
+	, c_d_w_mean_s1_gen_maxdev
 	, c_d_w_tri_gen_maxdev
-	//, apla_gen_maxdev
-	, rdp_gen_maxdev
-	, bot_gen_maxdev
+	, apla_gen_maxdev
+	//, rdp_gen_maxdev
+	//, bot_gen_maxdev
   };
   /**************/
 
-  /************************** Time Evaluation against parameters *****************************/
+  /************************** Time Evaluation against parameters ******************************/
   // PAA
   auto paa_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, paa_f); };
   LineGenerator paa_gen_time = { paa_gen_time_f, "PAA" };
@@ -280,20 +253,20 @@ int main()
   LineGenerator pla_gen_time = { pla_gen_time_f, "PLA" };
   // Double Window PLA and Proj
   auto d_w_apla_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, d_w_apla_f); };
-  LineGenerator d_w_apla_gen_time = { d_w_apla_gen_time_f, "Double Window PLA" };
+  LineGenerator d_w_apla_gen_time = { d_w_apla_gen_time_f, "AV PLA" };
   auto d_w_proj_apla_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, d_w_proj_apla_f); };
-  LineGenerator d_w_proj_apla_gen_time = { d_w_proj_apla_gen_time_f, "Projection PLA" };
+  LineGenerator d_w_proj_apla_gen_time = { d_w_proj_apla_gen_time_f, "IP PLA" };
   // CAPLA hypotheses
   auto c_d_w_mean_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, capla_mean_f); };
   LineGenerator c_d_w_mean_gen_time = { c_d_w_mean_gen_time_f, "Faster Double Window PLA" };
   auto c_d_w_tri_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, capla_tri_f); };
-  LineGenerator c_d_w_tri_gen_time = { c_d_w_tri_gen_time_f, "Triangular Double Window PLA" };
+  LineGenerator c_d_w_tri_gen_time = { c_d_w_tri_gen_time_f, "IncrWAV PLA" };
   auto c_d_w_mean_s1_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, capla_mean_s1_f); };
-  LineGenerator c_d_w_mean_s1_gen_time = { c_d_w_mean_s1_gen_time_f, "mean s1 double window pla" };
+  LineGenerator c_d_w_mean_s1_gen_time = { c_d_w_mean_s1_gen_time_f, "SkipWAV PLA" };
   auto c_d_w_tri_s1_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, capla_tri_s1_f); };
   LineGenerator c_d_w_tri_s1_gen_time = { c_d_w_tri_s1_gen_time_f, "Tri s1 double window pla" };
   auto apla_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, exact_apla_f); };
-  LineGenerator apla_gen_time = { apla_gen_time_f, "DP Exact PLA" };
+  LineGenerator apla_gen_time = { apla_gen_time_f, "APLA" };
   auto rdp_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s, parameter, rdp_f); };
   LineGenerator rdp_gen_time = { rdp_gen_time_f, "RDP" };
   auto bot_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s,parameter,bottom_up_f); };
@@ -303,15 +276,16 @@ int main()
 	, apca_gen_time
 	, pla_gen_time
 	, d_w_apla_gen_time
-	, c_d_w_mean_gen_time
+	, d_w_proj_apla_gen_time
+	, c_d_w_mean_s1_gen_time
 	, c_d_w_tri_gen_time
-	//, apla_gen_time
-	, rdp_gen_time
-	, bot_gen_time
+	, apla_gen_time
+	//, rdp_gen_time
+	//, bot_gen_time
   };
   /**************/
 
-  /************************** Time Evaluation against size *****************************/
+  /************************** Time Evaluation against size ************************************/
   unsigned int tdim = 150;
   // PAA
   auto paa_gen_size_time_f = [&](const Seqd& s, unsigned int parameter){ 
@@ -392,12 +366,56 @@ int main()
   };
   /**************/
 
+  /************************** Compression Ratio against epsilon ************************************/
+  auto bottom_up = [&](const Seqd& s, double e) { return bottom_up::bottom_up(s, e, bottom_up::maxdev); };
+
+  auto top_down_compr_ratio  = [&](const Seqd& s, double e) { return precision_eval::compr_ratio_of_method(s,e,dac_curve_fitting::dac_linear); };
+  auto bottom_up_compr_ratio = [&](const Seqd& s, double e) { return precision_eval::compr_ratio_of_method(s,e,bottom_up); };
+  auto sliding_w_compr_ratio = [&](const Seqd& s, double e) { return precision_eval::compr_ratio_of_method(s,e,sw::sliding_window); };
+  auto swing_compr_ratio     = [&](const Seqd& s, double e) { return precision_eval::compr_ratio_of_method(s,e,swing::swing); };
+
+  auto top_down_time  = [&](const Seqd& s, double e) { return precision_eval::cputime_of_method(s,e,dac_curve_fitting::dac_linear); };
+  auto bottom_up_time = [&](const Seqd& s, double e) { return precision_eval::cputime_of_method(s,e,bottom_up); };
+  auto sliding_w_time = [&](const Seqd& s, double e) { return precision_eval::cputime_of_method(s,e,sw::sliding_window); };
+  auto swing_time     = [&](const Seqd& s, double e) { return precision_eval::cputime_of_method(s,e,swing::swing); };
+
+  LinePGGenerator top_down_gen = { top_down_compr_ratio, "Top Down" };
+  LinePGGenerator bottom_up_gen = { bottom_up_compr_ratio, "Bottom Up" };
+  LinePGGenerator sw_gen = { sliding_w_compr_ratio, "Sliding Window" };
+  LinePGGenerator swing_gen = { swing_compr_ratio, "Swing" };
+
+  LinePGGenerator top_down_gen_time = { top_down_time, "Top Down" };
+  LinePGGenerator bottom_up_gen_time = { bottom_up_time, "Bottom Up" };
+  LinePGGenerator sw_gen_time = { sliding_w_time, "Sliding Window" };
+  LinePGGenerator swing_gen_time = { swing_time, "Swing" };
+
+  vector<LinePGGenerator> compr_generators = { top_down_gen, bottom_up_gen, sw_gen, swing_gen };
+  vector<LinePGGenerator> etime_generators = { top_down_gen_time, bottom_up_gen_time, sw_gen_time, swing_gen_time };
+
+  vector<unsigned int> compr_ds = { 5, 13, 25, 109 };
+  for (auto compr_i : compr_ds) {
+    dataset = parse_ucr_dataset(datasets[compr_i], ucr_datasets_loc,  DatasetType::TRAIN_APPEND_TEST);
+    std::cout << dataset.size() << std::endl;
+    dataset.resize(20'000);
+    z_norm::z_normalise(dataset);
+    PlotDetails pd_compr = { "Compression Ratio of DRTs on " + datasets[compr_i] + " dataset", "Epsilon Value", "Compression Ratio", "img/drt_comparisons/", PDF };
+    PlotDetails pd_etime = { "CPU Time of DRTs on " + datasets[compr_i] + " dataset", "Epsilon Value", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
+    plot::plot_barsPG_generated(dataset, { 0.05, 0.1, 0.15, 0.2, 0.25 }, compr_generators, pd_compr);
+    plot::plot_barsPG_generated(dataset, { 0.05, 0.1, 0.15, 0.2, 0.25 }, etime_generators, pd_etime);
+  }
+  
+
+  /**************/
+
+
+
+
+  PlotDetails p_l2 = { "Euclidean Distance of DRTs on Chlorine dataset", "Target Dimension m", "L2", "img/drt_comparisons/", PDF };
+  PlotDetails p_maxdev = { "Maximum Deviation of DRTs on Chlorine dataset", "Target Dimension m", "Maximum Deviation", "img/drt_comparisons/", PDF };
+  PlotDetails p_time = { "CPU Time of DRTs on Synthetic dataset", "Target Dimension m", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
+  PlotDetails p_time_size = { "CPU Time of fewer DRTs (to target dimension 150) against size of datasets", "Dataset Size n", "CPU Execution Time (ns)", "img/drt_comparisons", X11 };
+
   /*
-  PlotDetails p_mse = { "MSE of DRTs against compressed dimension", "Target Dimension m", "MSE", "img/", PDF };
-  PlotDetails p_l2 = { "Euclidean Distance of DRTs against compressed dimension on datasets size 4096", "Target Dimension m", "L2", "img/", PDF };
-  PlotDetails p_maxdev = { "Maximum Deviation of DRTs against compressed dimension on datasets size 4096", "Target Dimension m", "Maximum Deviation", "img/", PDF };
-  PlotDetails p_time = { "CPU Time of DRTs against compressed dimension", "Target Dimension m", "CPU Execution Time (ns)", "img/", PDF };
-  PlotDetails p_time_size = { "CPU Time of fewer DRTs (to target dimension 150) against size of datasets", "Dataset Size n", "CPU Execution Time (ns)", "img/", PDF };
   vector<unsigned int> ds_indexes;
   for (int i=0; i<datasets.size(); i+=4) ds_indexes.push_back(i);
   vector<string> names; std::for_each(ds_indexes.begin(), ds_indexes.end(), [&](unsigned int i){ names.push_back(datasets[i]); });
@@ -406,6 +424,14 @@ int main()
       , {30, 60, 90, 120, 150, 180, 210, 240, 270, 300}
       , l2_generators, p_l2);
   */
+
+  //PlotDetails pd_l2 = { "Euclidean Distance of DRTs on Synthetic dataset", "Target Dimension m", "L2", "img/drt_comparisons/", PDF };
+  //PlotDetails pd_maxdev = { "Maximum Deviation of DRTs on Synthetic dataset", "Target Dimension m", "Maximum Deviation", "img/drt_comparisons/", PDF };
+  //PlotDetails pd_time = { "CPU Time of DRTs on Synthetic dataset", "Target Dimension m", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
+  //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, l2_generators, pd_l2);
+  //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, maxdev_generators, pd_maxdev);
+  //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, time_generators, pd_time);
+
 
 
   /********************************** R Tree implementation **************************************/
@@ -631,21 +657,15 @@ int main()
 
   /********************/
 
-  dataset2.resize(30);
+  dataset2.resize(120);
   z_norm::z_normalise(dataset2);
-  NormalFunctor noise(7, 0.0, 1.0);
+  CauchyFunctor noise(7, 0.0, 1.0);
   vector<double> dataset3 = {0.0};
   for (int i=1; i<dataset2.size(); i++) {
     dataset3.push_back( dataset3[i-1] + noise());
   }
   z_norm::z_normalise(dataset3);
-  Series s2 = { dataset3, "Altered Walk" };
-  PlotDetails pd = { "Comparison of generated series", "", "", "img/paa_comparison/", PDF };
-  Seqd ds2_pla = pla_f(dataset2, 3);
-  Seqd ds3_pla = pla_f(dataset3, 3);
-  Series ds2 = { dataset2, "Synthetic 1" };
-  Series ds3 = { dataset3, "Synthetic 2" };
-  plot::plot_series_diff( ds2, ds3, pd);
+  Series s2 = { dataset3, "Standard Cauchy Walk" };
   //
 
   return 0;

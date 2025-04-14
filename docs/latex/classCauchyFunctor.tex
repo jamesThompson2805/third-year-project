@@ -1,16 +1,64 @@
 \doxysection{Cauchy\+Functor Class Reference}
 \hypertarget{classCauchyFunctor}{}\label{classCauchyFunctor}\index{CauchyFunctor@{CauchyFunctor}}
+
+
+Functor to simulate independent trials of Cauchy variable.  
+
+
+
+
+{\ttfamily \#include $<$random\+\_\+walk.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classCauchyFunctor_a7e3378b1924d1b925a29842579f88d9d}\label{classCauchyFunctor_a7e3378b1924d1b925a29842579f88d9d} 
-{\bfseries Cauchy\+Functor} (unsigned int seed=0, double mean=0.\+0, double var=1.\+0)
-\item 
+\mbox{\hyperlink{classCauchyFunctor_aad0c348e8578e687a90af614d22efb4c}{Cauchy\+Functor}} (unsigned int seed=0, double a=0.\+0, double b=1.\+0)
+\begin{DoxyCompactList}\small\item\em Constructs the Functor based off the parameters. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCauchyFunctor_a3157478a60dacee1776a0f71f1e8cb38}{operator()}} ()
+\begin{DoxyCompactList}\small\item\em Overloaded () operator allowing Functor to act like function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functor to simulate independent trials of Cauchy variable. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCauchyFunctor_aad0c348e8578e687a90af614d22efb4c}\label{classCauchyFunctor_aad0c348e8578e687a90af614d22efb4c} 
+\index{CauchyFunctor@{CauchyFunctor}!CauchyFunctor@{CauchyFunctor}}
+\index{CauchyFunctor@{CauchyFunctor}!CauchyFunctor@{CauchyFunctor}}
+\doxysubsubsection{\texorpdfstring{CauchyFunctor()}{CauchyFunctor()}}
+{\footnotesize\ttfamily Cauchy\+Functor\+::\+Cauchy\+Functor (\begin{DoxyParamCaption}\item[{unsigned int}]{seed = {\ttfamily 0},  }\item[{double}]{a = {\ttfamily 0.0},  }\item[{double}]{b = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs the Functor based off the parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seed} & The seed for the pseudo random generator. \\
+\hline
+{\em a} & Parameter a of Cauchy distribution. \\
+\hline
+{\em b} & Parameter b of Cauchy distribution. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \Hypertarget{classCauchyFunctor_a3157478a60dacee1776a0f71f1e8cb38}\label{classCauchyFunctor_a3157478a60dacee1776a0f71f1e8cb38} 
-double {\bfseries operator()} ()
-\end{DoxyCompactItemize}
+\index{CauchyFunctor@{CauchyFunctor}!operator()@{operator()}}
+\index{operator()@{operator()}!CauchyFunctor@{CauchyFunctor}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily double Cauchy\+Functor\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded () operator allowing Functor to act like function. 
+
+\begin{DoxyReturn}{Returns}
+result of independent trial of variable. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-lib/sequence\+\_\+gen/random\+\_\+walk.\+h\end{DoxyCompactItemize}
+lib/sequence\+\_\+gen/\mbox{\hyperlink{random__walk_8h}{random\+\_\+walk.\+h}}\end{DoxyCompactItemize}

@@ -14,5 +14,6 @@ add_library( ${PROJECT_NAME} pla.cpp
   apca.cpp
   apla_segment_and_merge.cpp
   bottom_up.cpp
-  swing.cpp)
+  swing.cpp
+  sliding_window.cpp)
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR})

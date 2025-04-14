@@ -78,16 +78,97 @@ $(function() {
   <div class="headertitle"><div class="title">UnifFunctor Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Functor to simulate independent trials of Uniform variable.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="random__walk_8h_source.html">random_walk.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa426ee02ef2f3bf57fc4175a039b147b" id="r_aa426ee02ef2f3bf57fc4175a039b147b"><td class="memItemLeft" align="right" valign="top"><a id="aa426ee02ef2f3bf57fc4175a039b147b" name="aa426ee02ef2f3bf57fc4175a039b147b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>UnifFunctor</b> (unsigned int seed=0, double min=-1.0, double max=1.0)</td></tr>
+<tr class="memitem:aa426ee02ef2f3bf57fc4175a039b147b" id="r_aa426ee02ef2f3bf57fc4175a039b147b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa426ee02ef2f3bf57fc4175a039b147b">UnifFunctor</a> (unsigned int seed=0, double min=-1.0, double max=1.0)</td></tr>
+<tr class="memdesc:aa426ee02ef2f3bf57fc4175a039b147b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the Functor based off the parameters.  <br /></td></tr>
 <tr class="separator:aa426ee02ef2f3bf57fc4175a039b147b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f4068b7cdcd5400f04b106ecd91bd44" id="r_a9f4068b7cdcd5400f04b106ecd91bd44"><td class="memItemLeft" align="right" valign="top"><a id="a9f4068b7cdcd5400f04b106ecd91bd44" name="a9f4068b7cdcd5400f04b106ecd91bd44"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> ()</td></tr>
+<tr class="memitem:a9f4068b7cdcd5400f04b106ecd91bd44" id="r_a9f4068b7cdcd5400f04b106ecd91bd44"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f4068b7cdcd5400f04b106ecd91bd44">operator()</a> ()</td></tr>
+<tr class="memdesc:a9f4068b7cdcd5400f04b106ecd91bd44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloaded () operator allowing Functor to act like function.  <br /></td></tr>
 <tr class="separator:a9f4068b7cdcd5400f04b106ecd91bd44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Functor to simulate independent trials of Uniform variable. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa426ee02ef2f3bf57fc4175a039b147b" name="aa426ee02ef2f3bf57fc4175a039b147b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa426ee02ef2f3bf57fc4175a039b147b">&#9670;&#160;</a></span>UnifFunctor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UnifFunctor::UnifFunctor </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>seed</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>min</em><span class="paramdefsep"> = </span><span class="paramdefval">-1.0</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>max</em><span class="paramdefsep"> = </span><span class="paramdefval">1.0</span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs the Functor based off the parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seed</td><td>The seed for the pseudo random generator. </td></tr>
+    <tr><td class="paramname">min</td><td>The minimum value of the interval. </td></tr>
+    <tr><td class="paramname">max</td><td>The maximum value of the interval. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9f4068b7cdcd5400f04b106ecd91bd44" name="a9f4068b7cdcd5400f04b106ecd91bd44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f4068b7cdcd5400f04b106ecd91bd44">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double UnifFunctor::operator() </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overloaded () operator allowing Functor to act like function. </p>
+<dl class="section return"><dt>Returns</dt><dd>result of independent trial of variable. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/sequence_gen/<a class="el" href="random__walk_8h_source.html">random_walk.h</a></li>
 </ul>

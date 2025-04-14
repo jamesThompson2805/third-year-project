@@ -1,16 +1,64 @@
 \doxysection{Normal\+Functor Class Reference}
 \hypertarget{classNormalFunctor}{}\label{classNormalFunctor}\index{NormalFunctor@{NormalFunctor}}
+
+
+Functor to simulate independent trials of Normal variable.  
+
+
+
+
+{\ttfamily \#include $<$random\+\_\+walk.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classNormalFunctor_a38e97499a12d0b2214d433ef058b2e24}{Normal\+Functor}} (unsigned int seed=0, double mean=0.\+0, double var=1.\+0)
+\begin{DoxyCompactList}\small\item\em Constructs the Functor based off the parameters. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classNormalFunctor_afc28b993e74de7d9310650d23588396e}{operator()}} ()
+\begin{DoxyCompactList}\small\item\em Overloaded () operator allowing Functor to act like function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functor to simulate independent trials of Normal variable. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classNormalFunctor_a38e97499a12d0b2214d433ef058b2e24}\label{classNormalFunctor_a38e97499a12d0b2214d433ef058b2e24} 
-{\bfseries Normal\+Functor} (unsigned int seed=0, double mean=0.\+0, double var=1.\+0)
-\item 
+\index{NormalFunctor@{NormalFunctor}!NormalFunctor@{NormalFunctor}}
+\index{NormalFunctor@{NormalFunctor}!NormalFunctor@{NormalFunctor}}
+\doxysubsubsection{\texorpdfstring{NormalFunctor()}{NormalFunctor()}}
+{\footnotesize\ttfamily Normal\+Functor\+::\+Normal\+Functor (\begin{DoxyParamCaption}\item[{unsigned int}]{seed = {\ttfamily 0},  }\item[{double}]{mean = {\ttfamily 0.0},  }\item[{double}]{var = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs the Functor based off the parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seed} & The seed for the pseudo random generator. \\
+\hline
+{\em mean} & The average value of the trial. \\
+\hline
+{\em var} & The variance of the normal random variable. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \Hypertarget{classNormalFunctor_afc28b993e74de7d9310650d23588396e}\label{classNormalFunctor_afc28b993e74de7d9310650d23588396e} 
-double {\bfseries operator()} ()
-\end{DoxyCompactItemize}
+\index{NormalFunctor@{NormalFunctor}!operator()@{operator()}}
+\index{operator()@{operator()}!NormalFunctor@{NormalFunctor}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily double Normal\+Functor\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded () operator allowing Functor to act like function. 
+
+\begin{DoxyReturn}{Returns}
+result of independent trial of variable. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-lib/sequence\+\_\+gen/random\+\_\+walk.\+h\end{DoxyCompactItemize}
+lib/sequence\+\_\+gen/\mbox{\hyperlink{random__walk_8h}{random\+\_\+walk.\+h}}\end{DoxyCompactItemize}

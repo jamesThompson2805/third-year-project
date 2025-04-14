@@ -76,15 +76,15 @@ vector<tuple<DoublePair, unsigned int>> dac_curve_fitting::dac_linear( const vec
   if (epsilon < 0) return {};
   if (series.size() == 0) return {};
 
-  vector<array<unsigned int, 2>> queue = {};
-  queue.push_back( {0, (unsigned int) series.size() - 1} );
+  vector<array<unsigned int, 2>> stack = {};
+  stack.push_back( {0, (unsigned int) series.size() - 1} );
   vector<tuple<DoublePair, unsigned int>> curves;
 
   auto dist_from_line = [](DoublePair line, double x, double y) { return std::abs( y - line[0] - line[1]*x); };
 
-  while (queue.size() > 0) {
-    array<unsigned int, 2> intrvl = queue.back();
-    queue.pop_back();
+  while (stack.size() > 0) {
+    array<unsigned int, 2> intrvl = stack.back();
+    stack.pop_back();
     DoublePair regressed = pla::regression( series.data() + intrvl[0], series.data() + intrvl[1] );
     
     unsigned int max_i = intrvl[0];
@@ -101,21 +101,22 @@ vector<tuple<DoublePair, unsigned int>> dac_curve_fitting::dac_linear( const vec
     } else {
       if ( max_i == intrvl[0]) {
 	curves.push_back( { {series[max_i], 0 }, intrvl[0]} );
-	queue.push_back( {intrvl[0]+1,intrvl[1]});
+	stack.push_back( {intrvl[0]+1,intrvl[1]});
       } else if ( max_i == intrvl[1] ){
 	curves.push_back( { {series[max_i], 0}, intrvl[1]} );
-	queue.push_back( {intrvl[0],intrvl[1]-1});
+	stack.push_back( {intrvl[0],intrvl[1]-1});
       } else {
 	DoublePair s1_curve = pla::regression( series.data() + intrvl[0], series.data() + max_i - 1);
 	DoublePair s2_curve = pla::regression( series.data() + max_i + 1, series.data() + intrvl[1]);
 
-	bool add_break_to_s1 = dist_from_line(s1_curve, double(max_i-intrvl[0]), series[max_i]) < dist_from_line(s2_curve, -1.0, series[max_i]);
+	bool add_break_to_s1 = dist_from_line(s1_curve, double(max_i-intrvl[0]), series[max_i]) 
+				< dist_from_line(s2_curve, -1.0, series[max_i]);
 	if (add_break_to_s1) {
-	  queue.push_back( {intrvl[0], max_i});
-	  queue.push_back( {max_i + 1,intrvl[1]});
+	  stack.push_back( {intrvl[0], max_i});
+	  stack.push_back( {max_i + 1,intrvl[1]});
 	} else {
-	  queue.push_back( {intrvl[0],max_i - 1});
-	  queue.push_back( {max_i,intrvl[1]});
+	  stack.push_back( {intrvl[0],max_i - 1});
+	  stack.push_back( {max_i,intrvl[1]});
 	}
       }
     }

@@ -65,7 +65,7 @@ void plot::plot_many_series(vector<Series>& vs, PlotDetails p)
   plot_setup::open_pdf(p);
 }
 
-void plot::barplot_many_series(std::vector<Series> &vs, PlotDetails p)
+void plot::barplot_many_series(const std::vector<Series> &vs, const std::vector<std::string>& group_labels, PlotDetails p)
 {
   if (vs.size() == 0) return;
 
@@ -78,6 +78,18 @@ void plot::barplot_many_series(std::vector<Series> &vs, PlotDetails p)
   gp << "set style fill pattern border -1\n";
   gp << "set boxwidth 0.9\n";
   gp << "set xtics format ''\n";
+
+  //gp << "set key rmargin\n";
+  gp << "set key off\n";
+
+  //gp << "set yrange [0:500]\n";
+
+  gp << "set xtics (";
+  for (int i=0; i<group_labels.size()-1; i++)
+    gp << "'" << group_labels[i] << "' "<<std::to_string(i) <<", ";
+  gp << "'" << group_labels.back()
+    << "' " << std::to_string(group_labels.size()-1) << ")\n";
+
   gp << "set grid ytics\n";
 
   gp << "plot ";
@@ -88,6 +100,7 @@ void plot::barplot_many_series(std::vector<Series> &vs, PlotDetails p)
   for (int i=0; i<vs.size(); ++i) {
     gp.send1d( boost::make_tuple( vs[i].series ) );
   }
+  plot_setup::open_pdf(p);
 }
 
 int min(int x, int y) { if (x<y) return x; return y;}
@@ -124,15 +137,16 @@ void plot::plot_lines(vector<Line> lines, PlotDetails p)
 
   Gnuplot gp;
   plot_setup::setup_gnuplot(gp, p);
-  gp << "set key off\n";
+  //gp << "set key off\n";
+  gp << "set key outside\n";
   gp << "plot ";
-  gp << "'-' with lines lt rgb 'blue' lw 4.0 title '" <<  lines[0].name << "', ";
+  gp << "'-' with lines lw 4.0 title '" <<  lines[0].name << "', ";
   for (int i=1; i<lines.size()-1; ++i) {
-    //gp << "'-' with lines lw 4.0 dt " << i+1 << " title '" <<  lines[i].name << "', ";
-    gp << "'-' with lines lt rgb 'red' lw 4.0 title '" <<  lines[i].name << "', ";
+    gp << "'-' with lines lw 4.0 dt " << i+1 << " title '" <<  lines[i].name << "', ";
+    //gp << "'-' with lines lw 4.0 title '" <<  lines[i].name << "', ";
   }
-  //gp << "'-' with lines lw 4.0 dt " << lines.size() << " title '" <<  lines.back().name << "'\n";
-  gp << "'-' with lines lt rgb 'red' lw 4.0 title '" <<  lines.back().name << "'\n";
+  gp << "'-' with lines lw 4.0 dt " << lines.size() << " title '" <<  lines.back().name << "'\n";
+  //gp << "'-' with lines lw 4.0 title '" <<  lines.back().name << "'\n";
   for (int i=0; i<lines.size(); ++i) {
     gp.send1d( boost::make_tuple( lines[i].x, lines[i].y ) );
   }
@@ -157,6 +171,41 @@ void plot::plot_lines_generated(const std::vector<double>& s, std::vector<unsign
   }
   plot::plot_lines(lines, p);
 }
+void plot::plot_bars_generated(const std::vector<double>& s, std::vector<unsigned int> x, std::vector<LineGenerator> y_gens, PlotDetails p)
+{
+  if (y_gens.size() == 0 || x.size() == 0) return;
+  vector<std::string> x_d(x.size());
+  std::transform(x.begin(), x.end(), x_d.begin(), [](unsigned int& i){ return  std::to_string(i);}); 
+
+  vector<vector<double>> y_vecs;
+  vector<Series> lines;
+  for (auto& y_f : y_gens) {
+    y_vecs.push_back({});
+    for (unsigned int i : x) {
+      y_vecs.back().push_back( y_f.result_gen(s,i) );
+    }
+    lines.push_back({ y_vecs.back(), y_f.method_name});
+  }
+  plot::barplot_many_series(lines, x_d, p);
+}
+void plot::plot_barsPG_generated(const std::vector<double>& s, std::vector<double> x, std::vector<LinePGGenerator> y_gens, PlotDetails p)
+{
+  if (y_gens.size() == 0 || x.size() == 0) return;
+  vector<std::string> x_d(x.size());
+  std::transform(x.begin(), x.end(), x_d.begin(), [](double& i){ return  std::to_string(i);}); 
+
+  vector<vector<double>> y_vecs;
+  vector<Series> lines;
+  for (auto& y_f : y_gens) {
+    y_vecs.push_back({});
+    for (double e : x) {
+      y_vecs.back().push_back( y_f.result_gen(s,e) );
+    }
+    lines.push_back({ y_vecs.back(), y_f.method_name});
+  }
+  plot::barplot_many_series(lines, x_d, p);
+}
+
 void plot::plot_lines_generated_ucr_average(const std::vector<std::string>& dataset_names, std::string dataset_filepath, unsigned int ds_size,
 				      std::vector<unsigned int> x, std::vector<LineGenerator> y_gens, PlotDetails p)
 {

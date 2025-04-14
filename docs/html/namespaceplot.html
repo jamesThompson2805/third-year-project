@@ -89,9 +89,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aa7743ec830f3d475c11741c63ae6351c" id="r_aa7743ec830f3d475c11741c63ae6351c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7743ec830f3d475c11741c63ae6351c">plot_many_series</a> (std::vector&lt; <a class="el" href="structSeries.html">Series</a> &gt; &amp;vs, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
 <tr class="memdesc:aa7743ec830f3d475c11741c63ae6351c"><td class="mdescLeft">&#160;</td><td class="mdescRight">plot_many_series plots multiple series.  <br /></td></tr>
 <tr class="separator:aa7743ec830f3d475c11741c63ae6351c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4e7e6864221609200a47e52b1dacd3e" id="r_ad4e7e6864221609200a47e52b1dacd3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4e7e6864221609200a47e52b1dacd3e">barplot_many_series</a> (std::vector&lt; <a class="el" href="structSeries.html">Series</a> &gt; &amp;vs, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
-<tr class="memdesc:ad4e7e6864221609200a47e52b1dacd3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">barplot_many_series plots multiple series, here each series is viewed as a value for each set of bars.  <br /></td></tr>
-<tr class="separator:ad4e7e6864221609200a47e52b1dacd3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46dfb3302745ceaf93f28d372828fd13" id="r_a46dfb3302745ceaf93f28d372828fd13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46dfb3302745ceaf93f28d372828fd13">barplot_many_series</a> (const std::vector&lt; <a class="el" href="structSeries.html">Series</a> &gt; &amp;vs, const std::vector&lt; std::string &gt; &amp;group_labels, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
+<tr class="memdesc:a46dfb3302745ceaf93f28d372828fd13"><td class="mdescLeft">&#160;</td><td class="mdescRight">barplot_many_series plots multiple series, here each series is viewed as a value for each set of bars.  <br /></td></tr>
+<tr class="separator:a46dfb3302745ceaf93f28d372828fd13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10979c227275b61b2e0b2070337c606f" id="r_a10979c227275b61b2e0b2070337c606f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10979c227275b61b2e0b2070337c606f">plot_series_diff</a> (<a class="el" href="structSeries.html">Series</a> &amp;s1, <a class="el" href="structSeries.html">Series</a> &amp;s2, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
 <tr class="memdesc:a10979c227275b61b2e0b2070337c606f"><td class="mdescLeft">&#160;</td><td class="mdescRight">plot_series_diff plots two series and adds error lines imbetween to highlight their disagreements.  <br /></td></tr>
 <tr class="separator:a10979c227275b61b2e0b2070337c606f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,8 +108,8 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>plot namespace defines useful functions for plotting series and actions performed on series. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ad4e7e6864221609200a47e52b1dacd3e" name="ad4e7e6864221609200a47e52b1dacd3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4e7e6864221609200a47e52b1dacd3e">&#9670;&#160;</a></span>barplot_many_series()</h2>
+<a id="a46dfb3302745ceaf93f28d372828fd13" name="a46dfb3302745ceaf93f28d372828fd13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46dfb3302745ceaf93f28d372828fd13">&#9670;&#160;</a></span>barplot_many_series()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,7 +117,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void plot::barplot_many_series </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="structSeries.html">Series</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vs</em>, </span></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structSeries.html">Series</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vs</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>group_labels</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -130,7 +135,8 @@ Functions</h2></td></tr>
 <p>barplot_many_series plots multiple series, here each series is viewed as a value for each set of bars. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vs</td><td>Is the vector of all <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> to be plotted. </td></tr>
+    <tr><td class="paramname">vs</td><td>Is the vector of all <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> to be plotted. Each series should denote one 'case's set of bars for each group, for example, perhaps you are comparing price of apples and pears bought by Alice, Bob and Charlie. Then passing { {1,3}, {4,3}, {5,6} } indicates Alice bought 1 apple, 3 pears, Bob bought 4 apples, 3 pears and so forth. </td></tr>
+    <tr><td class="paramname">group_labels</td><td>Is a vector that gives a label to each group which should be of a length equal or greater to that of the inner lists. Using the example beforehand, passing { "apple", "pear" } would be the correct labels for the groups </td></tr>
     <tr><td class="paramname">p</td><td>Is the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a>. </td></tr>
   </table>
   </dd>
