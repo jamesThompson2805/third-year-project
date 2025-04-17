@@ -602,7 +602,7 @@ double RTree<R,I>::pruning_power(const std::vector<double>& q, FPtrRetrievalMeth
     }
 
     if (next.index() == 0) { // next is an entry
-      objects_scanned++;
+      objects_scanned+=1.0;
       for (auto s : retrieve_f( std::get<0>(next)->st_index, s ) ) {
 	if (ptr_error(s) < min_actual_error) {
 	  min_actual_error = ptr_error(s);

@@ -16,6 +16,9 @@ namespace segmerge {
   void segment_k(const Seqd& s, Seqddt& s_compr, unsigned int k);
   void segment_to_dim(const Seqd& s, Seqddt& s_compr, unsigned int k);
   
+  void segment_k_opt(const Seqd& s, Seqddt& s_compr, unsigned int k);
+  void merge_k_opt(const Seqd& s, Seqddt& s_compr, unsigned int k);
+
   void maxdev_merge_1(const Seqd& s, Seqddt& s_compr);
   void maxdev_merge_k(const Seqd& s, Seqddt& s_compr, unsigned int k);
   void maxdev_segment_1(const Seqd& s, Seqddt& s_compr);

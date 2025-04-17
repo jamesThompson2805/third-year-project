@@ -68,11 +68,10 @@ int main()
   }
   */
 
-
   // Used in reports : 5 is Arrowhead, 13 is Chlorine, 28 is ECG200, 39 is Fifty Words, 128 is yoga, 46 is GuestureMidAirD1
   // 109 is Strawberry, 25 is Dodgers loop day
   unsigned int di = 13;
-  vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN);
+  vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN_APPEND_TEST);
   std::cout << dataset.size() << std::endl;
   z_norm::z_normalise(dataset);
 
@@ -88,6 +87,7 @@ int main()
 
   auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::simple_pla(s, num_params, 5, 5)); };
   auto d_w_proj_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::y_proj_pla(s, num_params, 5, 5)); };
+  auto d_w_proj_apla_f_uncompr = [](const vector<double>& s, unsigned int num_params){ return d_w::y_proj_pla(s, num_params, 5, 5); };
 
   auto exact_apaa_f = [](const vector<double>& s, unsigned int num_params){ return paa::apca_to_seq(exact_dp::min_mse_paa(s, num_params)); }; 
   auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(exact_dp::min_mse_pla(s, num_params)); }; 
@@ -114,8 +114,16 @@ int main()
     if (apla.size() > parameter/3) segmerge::merge_to_dim(s,apla,parameter);
     return apla;
   };
-  auto sw_f = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(sw_f_uncompr(s,parameter)); };
+  auto sw_f_compr = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(sw_f_uncompr(s,parameter)); };
+  auto swing_f_uncompr = [&](const Seqd& s, unsigned int parameter){ 
+    auto apla = swing::swing(s, 0.1);
+    if (apla.size() < parameter/3) segmerge::segment_to_dim(s,apla,parameter);
+    if (apla.size() > parameter/3) segmerge::merge_to_dim(s,apla,parameter);
+    return apla;
+  };
+  auto swing_f_compr = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(swing_f_uncompr(s,parameter)); };
 
+  auto sw_f = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(sw_f_uncompr(s,parameter)); };
   auto swing_f = [&](const Seqd& s) { return swing::swing(s,0.1); };
 
   vector<double> ldist = { 1.0/3.0, 1.0/3.0, 1.0/3.0};
@@ -183,6 +191,11 @@ int main()
   LineGenerator rdp_gen_l2 = { rdp_gen_l2_f, "RDP" };
   auto bot_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,bottom_up_f); };
   LineGenerator bot_gen_l2 = { bot_gen_l2_f, "B-U" };
+
+  auto sw_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,sw_f_compr); };
+  LineGenerator sw_gen_l2 = { sw_gen_l2_f, "SW" };
+  auto swing_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,swing_f_compr); };
+  LineGenerator swing_gen_l2 = { swing_gen_l2_f, "SWING" };
   vector<LineGenerator> l2_generators = {
 	paa_gen_l2
 	, pla_gen_l2
@@ -191,9 +204,11 @@ int main()
 	, d_w_proj_apla_gen_l2
 	, c_d_w_mean_s1_gen_l2
 	, c_d_w_tri_gen_l2
-	, apla_gen_l2
-	//, rdp_gen_l2
-	//, bot_gen_l2
+	//, apla_gen_l2
+	, rdp_gen_l2
+	, bot_gen_l2
+	, sw_gen_l2
+	, swing_gen_l2
   };
   /**************/
 
@@ -227,6 +242,11 @@ int main()
   LineGenerator rdp_gen_maxdev = { rdp_gen_maxdev_f, "RDP" };
   auto bot_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s,parameter,bottom_up_f); };
   LineGenerator bot_gen_maxdev = { bot_gen_maxdev_f, "B-U" };
+
+  auto sw_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s,parameter,sw_f_compr); };
+  LineGenerator sw_gen_maxdev = { sw_gen_maxdev_f, "SW" };
+  auto swing_gen_maxdev_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::maxdev_of_method(s,parameter,swing_f_compr); };
+  LineGenerator swing_gen_maxdev = { swing_gen_maxdev_f, "SWING" };
   vector<LineGenerator> maxdev_generators = {
 	paa_gen_maxdev
 	, pla_gen_maxdev
@@ -235,9 +255,11 @@ int main()
 	, d_w_proj_apla_gen_maxdev
 	, c_d_w_mean_s1_gen_maxdev
 	, c_d_w_tri_gen_maxdev
-	, apla_gen_maxdev
-	//, rdp_gen_maxdev
-	//, bot_gen_maxdev
+	//, apla_gen_maxdev
+	, rdp_gen_maxdev
+	, bot_gen_maxdev
+	, sw_gen_maxdev
+	, swing_gen_maxdev
   };
   /**************/
 
@@ -271,6 +293,11 @@ int main()
   LineGenerator rdp_gen_time = { rdp_gen_time_f, "RDP" };
   auto bot_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s,parameter,bottom_up_f); };
   LineGenerator bot_gen_time = { bot_gen_time_f, "B-U" };
+
+  auto sw_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s,parameter,sw_f_compr); };
+  LineGenerator sw_gen_time = { sw_gen_time_f, "SW" };
+  auto swing_gen_time_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::cputime_ms_of_method(s,parameter,swing_f_compr); };
+  LineGenerator swing_gen_time = { swing_gen_time_f, "SWING" };
   vector<LineGenerator> time_generators = {
 	paa_gen_time
 	, apca_gen_time
@@ -279,9 +306,11 @@ int main()
 	, d_w_proj_apla_gen_time
 	, c_d_w_mean_s1_gen_time
 	, c_d_w_tri_gen_time
-	, apla_gen_time
-	//, rdp_gen_time
-	//, bot_gen_time
+	//, apla_gen_time
+	, rdp_gen_time
+	, bot_gen_time
+	, sw_gen_time
+	, swing_gen_time
   };
   /**************/
 
@@ -386,23 +415,27 @@ int main()
 
   LinePGGenerator top_down_gen_time = { top_down_time, "Top Down" };
   LinePGGenerator bottom_up_gen_time = { bottom_up_time, "Bottom Up" };
-  LinePGGenerator sw_gen_time = { sliding_w_time, "Sliding Window" };
-  LinePGGenerator swing_gen_time = { swing_time, "Swing" };
+  LinePGGenerator sw_eps_gen_time = { sliding_w_time, "Sliding Window" };
+  LinePGGenerator swing_eps_gen_time = { swing_time, "Swing" };
 
   vector<LinePGGenerator> compr_generators = { top_down_gen, bottom_up_gen, sw_gen, swing_gen };
-  vector<LinePGGenerator> etime_generators = { top_down_gen_time, bottom_up_gen_time, sw_gen_time, swing_gen_time };
+  vector<LinePGGenerator> etime_generators = { top_down_gen_time, bottom_up_gen_time, sw_eps_gen_time, swing_eps_gen_time };
 
+  /*
   vector<unsigned int> compr_ds = { 5, 13, 25, 109 };
-  for (auto compr_i : compr_ds) {
+  for (unsigned int compr_i=0; compr_i < datasets.size(); compr_i++) {
     dataset = parse_ucr_dataset(datasets[compr_i], ucr_datasets_loc,  DatasetType::TRAIN_APPEND_TEST);
-    std::cout << dataset.size() << std::endl;
-    dataset.resize(20'000);
+    //std::cout << dataset.size() << std::endl;
+    if (dataset.size() < 2000) continue;
+    dataset.resize(2000);
     z_norm::z_normalise(dataset);
-    PlotDetails pd_compr = { "Compression Ratio of DRTs on " + datasets[compr_i] + " dataset", "Epsilon Value", "Compression Ratio", "img/drt_comparisons/", PDF };
-    PlotDetails pd_etime = { "CPU Time of DRTs on " + datasets[compr_i] + " dataset", "Epsilon Value", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
-    plot::plot_barsPG_generated(dataset, { 0.05, 0.1, 0.15, 0.2, 0.25 }, compr_generators, pd_compr);
-    plot::plot_barsPG_generated(dataset, { 0.05, 0.1, 0.15, 0.2, 0.25 }, etime_generators, pd_etime);
+    std::cout << compr_i <<std::endl;
+    if (bottom_up_compr_ratio(dataset, 0.15) < sliding_w_compr_ratio(dataset, 0.15) ) {
+      std::cout <<"	" <<compr_i << std::endl;
+    }
+
   }
+  */
   
 
   /**************/
@@ -415,185 +448,197 @@ int main()
   PlotDetails p_time = { "CPU Time of DRTs on Synthetic dataset", "Target Dimension m", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
   PlotDetails p_time_size = { "CPU Time of fewer DRTs (to target dimension 150) against size of datasets", "Dataset Size n", "CPU Execution Time (ns)", "img/drt_comparisons", X11 };
 
-  /*
-  vector<unsigned int> ds_indexes;
-  for (int i=0; i<datasets.size(); i+=4) ds_indexes.push_back(i);
-  vector<string> names; std::for_each(ds_indexes.begin(), ds_indexes.end(), [&](unsigned int i){ names.push_back(datasets[i]); });
-  plot::plot_lines_generated_ucr_average(names, ucr_datasets_loc, 4096
-      //, {300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000}
-      , {30, 60, 90, 120, 150, 180, 210, 240, 270, 300}
-      , l2_generators, p_l2);
-  */
+  /*  L2, MaxDev and CPUTime for all datasets and all DRTs except APLA
+  for (int di = 0; di<2; di++) {
+    dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN_APPEND_TEST);
+    if (dataset.size() < 10'000)
+      continue;
 
-  //PlotDetails pd_l2 = { "Euclidean Distance of DRTs on Synthetic dataset", "Target Dimension m", "L2", "img/drt_comparisons/", PDF };
-  //PlotDetails pd_maxdev = { "Maximum Deviation of DRTs on Synthetic dataset", "Target Dimension m", "Maximum Deviation", "img/drt_comparisons/", PDF };
-  //PlotDetails pd_time = { "CPU Time of DRTs on Synthetic dataset", "Target Dimension m", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
+    dataset.resize(10'000);
+    z_norm::z_normalise(dataset);
+
+    string command = "mkdir -p img/drt_comparisons/all_datasets/" + datasets[di];
+    system(command.c_str());
+
+    PlotDetails pd_l2 = { "Euclidean Distance of all DRTs on " + datasets[di] + " dataset", "Target Dimension m", "L2"
+      , "img/drt_comparisons/all_datasets/"+datasets[di]+"/", PDF };
+    PlotDetails pd_maxdev = { "Maximum Deviation of all DRTs on " + datasets[di] + " dataset", "Target Dimension m", "Maximum Deviation"
+      , "img/drt_comparisons/all_datasets/"+datasets[di]+"/", PDF };
+    PlotDetails pd_time = { "CPU Time of all DRTs on " + datasets[di] + " dataset", "Target Dimension m", "CPU Execution Time (ns)"
+      , "img/drt_comparisons/all_datasets/"+datasets[di]+"/", PDF };
+    plot::plot_bars_generated(dataset, { 300, 600, 900, 1200 }, l2_generators, pd_l2);
+    plot::plot_bars_generated(dataset, { 300, 600, 900, 1200 }, maxdev_generators, pd_maxdev);
+    // plot::plot_bars_generated(dataset, { 300, 600, 900, 1200 }, time_generators, pd_time);
+    std::cout << "done " << di+1 << " / " << datasets.size() << std::endl;
+  }
+  */
+  PlotDetails pd_l2 = { "Euclidean Distance of all DRTs on Synthetic dataset", "Target Dimension m", "L2", "img/drt_comparisons/", PDF };
+  PlotDetails pd_maxdev = { "Maximum Deviation of all DRTs on Synthetic dataset", "Target Dimension m", "Maximum Deviation", "img/drt_comparisons/", PDF };
+  PlotDetails pd_time = { "CPU Time of all DRTs on Synthetic dataset", "Target Dimension m", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
   //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, l2_generators, pd_l2);
   //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, maxdev_generators, pd_maxdev);
   //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, time_generators, pd_time);
 
 
-
   /********************************** R Tree implementation **************************************/
-  // choose to have 30 segments for subsequences of size 300
-  const unsigned int seq_size = 1024;
-  const unsigned int NS = 21;
-  const unsigned int NS2 = 11;
-  const unsigned int NS3 = 5;
+  /*
+  vector<unsigned int> divs = { 5, 13, 25, 109 };
+  for (auto di : divs) {
+    dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN_APPEND_TEST);
 
-  double capla_pp_ns1, rdp_pp_ns1, b_u_pp_ns1;
-  double capla_pp_ns2, rdp_pp_ns2, b_u_pp_ns2;
-  double capla_pp_ns3, rdp_pp_ns3, b_u_pp_ns3;
+    dataset.resize(20'000);
+    z_norm::z_normalise(dataset);
+
+    //z_norm::z_normalise(dataset);
+    // choose to have 30 segments for subsequences of size 300
+    const unsigned int seq_size = 600;
+    const unsigned int NS1 = 15;
+    const unsigned int NS2 = 30;
+    const unsigned int NS3 = 60;
+
+    vector<pla::APLA_DRT> apla_drts = { capla_eval::generate_mean_DRT_COMPR(5)
+    , d_w_proj_apla_f_uncompr
+    , rdp_f_uncompr
+    , bottom_up_f_uncompr
+    , sw_f_uncompr };
+    for (int apla_i=0; apla_i < apla_drts.size(); apla_i++) {
+      pla::APLA_DRT apla_drt = apla_drts[apla_i];
+      double pp_ns1, pp_ns2, pp_ns3;
+
+      auto retrieval_f = [](const unsigned int& i, const vector<double>& q) {
+	return std::vector<std::array<const double*,2>>( {{ q.data()+i, q.data()+i+seq_size-1 }} );
+      };
+      // test on 100 trials
+      unsigned int trial_incr = dataset.size() / 100;
+
+
+      {
+
+      RTree<apla_bounds::AplaMBR<NS1>, unsigned int> r_tree2(40,10 , apla_bounds::mbr_area<NS1> , apla_bounds::mbr_merge<NS1> , apla_bounds::dist_to_mbr_sqr<NS1>);
+
+      //std::cout << "mbrs for apla NS1 calculating" << std::endl;
+      auto vec2_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS1>(dataset,seq_size,apla_drt);
+
+      //std::cout << "inserting" << std::endl;
+      for (int i=0; i<vec2_of_mbrs.size(); i++) {
+	r_tree2.insert( vec2_of_mbrs[i], i );
+	if (i % (dataset.size()/10) == 0) {
+	  //std::cout << (i / (dataset.size()/10)) << "0%..";
+	}
+      }
+      //std::cout << std::endl;
+
+      //std::cout << "searching" << std::endl;
+      unsigned int trials = 0;
+      for (int i=0;i<dataset.size()-seq_size; i+=trial_incr) {
+	trials++;
+	std::vector<double> query( dataset.begin()+i, dataset.begin()+seq_size+i);
+	NormalFunctor noise(0,0.0,0.1);
+	for (int i=0; i<seq_size; i++) { // perturb query a bit to make it new
+	  query[i]+=noise();
+	}
+	pp_ns1 += r_tree2.pruning_power(query, retrieval_f, dataset);
+      }
+      //std::cout << "done NS1" << std::endl;
+      pp_ns1/=trials;
+
+      }
+
+      {
+      RTree<apla_bounds::AplaMBR<NS2>, unsigned int> r_tree2_NS2(40,10 , apla_bounds::mbr_area<NS2> , apla_bounds::mbr_merge<NS2> , apla_bounds::dist_to_mbr_sqr<NS2>);
+
+      //std::cout << "mbrs for apla 11 calculating" << std::endl;
+      auto vec2_of_mbrs_NS2 = apla_bounds::vec_to_subseq_mbrs<NS2>(dataset,seq_size,capla_eval::generate_mean_DRT_COMPR(5));
+
+      //std::cout << "inserting" << std::endl;
+      for (int i=0; i<vec2_of_mbrs_NS2.size(); i++) {
+	r_tree2_NS2.insert( vec2_of_mbrs_NS2[i], i );
+	if (i % (dataset.size()/10) == 0) {
+	  //std::cout << (i / (dataset.size()/10)) << "0%..";
+	}
+      }
+      //std::cout << std::endl;
+
+      //std::cout << "searching" << std::endl;
+      unsigned int trials = 0;
+      for (int i=0;i<dataset.size()-seq_size; i+=trial_incr) {
+	trials++;
+	std::vector<double> query( dataset.begin()+i, dataset.begin()+seq_size+i);
+	NormalFunctor noise(0,0.0,0.1);
+	for (int i=0; i<seq_size; i++) { // perturb query a bit to make it new
+	  query[i]+=noise();
+	}
+
+	pp_ns2 += r_tree2_NS2.pruning_power(query, retrieval_f, dataset);
+      }
+      //std::cout << "done NS2" << std::endl;
+      pp_ns2/=trials;
+
+      }
+
+      {
+      RTree<apla_bounds::AplaMBR<NS3>, unsigned int> r_tree2_NS3(40,10 , apla_bounds::mbr_area<NS3> , apla_bounds::mbr_merge<NS3> , apla_bounds::dist_to_mbr_sqr<NS3>);
+      
+      //std::cout << "mbrs for apla NS3 calculating" << std::endl;
+      auto vec2_of_mbrs_NS3 = apla_bounds::vec_to_subseq_mbrs<NS3>(dataset,seq_size,capla_eval::generate_mean_DRT_COMPR(5));
+      
+      //std::cout << "inserting" << std::endl;
+      for (int i=0; i<vec2_of_mbrs_NS3.size(); i++) {
+	r_tree2_NS3.insert( vec2_of_mbrs_NS3[i], i );
+	if (i % (dataset.size()/10) == 0) {
+	  //std::cout << (i / (dataset.size()/10)) << "0%..";
+	}
+      }
+      //std::cout << std::endl;
+
+      //std::cout << "searching" << std::endl;
+      unsigned int trials = 0;
+      for (int i=0;i<dataset.size()-seq_size; i+=trial_incr) {
+	trials++;
+	std::vector<double> query( dataset.begin()+i, dataset.begin()+seq_size+i);
+	NormalFunctor noise(0,0.0,0.1);
+	for (int i=0; i<seq_size; i++) { // perturb query a bit to make it new
+	  query[i]+=noise();
+	}
+
+	pp_ns3 += r_tree2_NS3.pruning_power(query, retrieval_f, dataset);
+      }
+
+      //std::cout << "done NS3" << std::endl;
+      pp_ns3/=trials;
+      
+      //std::cout << "trials : "<< trials << std::endl;
+      }
+
+	std::cout << pp_ns1 << "," 
+	<< pp_ns2 << "," 
+	<< pp_ns3 << std::endl;
+    }
+  }
+  */
+  /********************************************************************************************/
+
+  /************************* GEMINI vs SeqScan ************************************************/
+  /*
+  {
+  RandomWalk walk( NormalFunctor(1) ); 
+  walk.gen_steps(50'000);
+  dataset = std::vector<double>(walk.get_walk().cbegin(), walk.get_walk().cend()); 
+
+  std::cout << dataset.size() << std::endl;
+  z_norm::z_normalise(dataset);
+
+
+  const unsigned int seq_size = 600;
+  const unsigned int NS1 = 30;
+  RTree<apla_bounds::AplaMBR<NS1>, unsigned int> r_tree4(40,10 , apla_bounds::mbr_area<NS1> , apla_bounds::mbr_merge<NS1> , apla_bounds::dist_to_mbr_sqr<NS1>);
 
   auto retrieval_f = [](const unsigned int& i, const vector<double>& q) {
     return std::vector<std::array<const double*,2>>( {{ q.data()+i, q.data()+i+seq_size-1 }} );
   };
 
-  /*
-  {
-
-  RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
-  RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree2(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
-  RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree3(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
-  RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree4(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
-
-  //auto vec_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS>(dataset,300,exact_dp::min_mse_pla);
-  std::cout << "mbrs for capla 21 calculating" << std::endl;
-  auto vec2_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS>(dataset,seq_size,capla_eval::generate_mean_DRT_COMPR(4));
-  std::cout << "mbrs for rdp 21 calculating" << std::endl;
-  auto vec3_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS>(dataset,seq_size,rdp_f_uncompr);
-  std::cout << "mbrs for b-u 21 calculating" << std::endl;
-  auto vec4_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS>(dataset,seq_size,bottom_up_f_uncompr);
-
-  std::cout << "inserting" << std::endl;
-  for (int i=0; i<vec2_of_mbrs.size(); i++) {
-    //r_tree.insert( vec_of_mbrs[i], i );
-    r_tree2.insert( vec2_of_mbrs[i], i );
-    r_tree3.insert( vec3_of_mbrs[i], i );
-    r_tree4.insert( vec4_of_mbrs[i], i );
-  }
-
-  std::cout << "searching" << std::endl;
-  unsigned int trials = 0;
-  for (int i=0;i<dataset.size()-seq_size; i+=741) {
-    trials++;
-    std::vector<double> query( dataset.begin()+i, dataset.begin()+seq_size+i);
-    NormalFunctor noise(0,0.0,0.1);
-    for (int i=0; i<seq_size; i++) { // perturb query a bit to make it new
-      query[i]+=noise();
-    }
-    capla_pp_ns1 += r_tree2.pruning_power(query, retrieval_f, dataset);
-    rdp_pp_ns1 += r_tree3.pruning_power(query, retrieval_f, dataset);
-    b_u_pp_ns1 += r_tree4.pruning_power(query, retrieval_f, dataset);
-  }
-  std::cout << "done 21" << std::endl;
-  capla_pp_ns1/=trials;
-  rdp_pp_ns1/=trials;
-  b_u_pp_ns1/=trials;
-
-  }
-
-  {
-  RTree<apla_bounds::AplaMBR<NS2>, unsigned int> r_tree2_NS2(40,10 , apla_bounds::mbr_area<NS2> , apla_bounds::mbr_merge<NS2> , apla_bounds::dist_to_mbr_sqr<NS2>);
-  RTree<apla_bounds::AplaMBR<NS2>, unsigned int> r_tree3_NS2(40,10 , apla_bounds::mbr_area<NS2> , apla_bounds::mbr_merge<NS2> , apla_bounds::dist_to_mbr_sqr<NS2>);
-  RTree<apla_bounds::AplaMBR<NS2>, unsigned int> r_tree4_NS2(40,10 , apla_bounds::mbr_area<NS2> , apla_bounds::mbr_merge<NS2> , apla_bounds::dist_to_mbr_sqr<NS2>);
-
-  std::cout << "mbrs for capla 11 calculating" << std::endl;
-  auto vec2_of_mbrs_NS2 = apla_bounds::vec_to_subseq_mbrs<NS2>(dataset,seq_size,capla_eval::generate_mean_DRT_COMPR(4));
-  std::cout << "mbrs for rdp 11 calculating" << std::endl;
-  auto vec3_of_mbrs_NS2 = apla_bounds::vec_to_subseq_mbrs<NS2>(dataset,seq_size,rdp_f_uncompr);
-  std::cout << "mbrs for b-u 11 calculating" << std::endl;
-  auto vec4_of_mbrs_NS2 = apla_bounds::vec_to_subseq_mbrs<NS2>(dataset,seq_size,bottom_up_f_uncompr);
-
-  std::cout << "inserting" << std::endl;
-  for (int i=0; i<vec2_of_mbrs_NS2.size(); i++) {
-    r_tree2_NS2.insert( vec2_of_mbrs_NS2[i], i );
-    r_tree3_NS2.insert( vec3_of_mbrs_NS2[i], i );
-    r_tree4_NS2.insert( vec4_of_mbrs_NS2[i], i );
-  }
-
-  std::cout << "searching" << std::endl;
-  unsigned int trials = 0;
-  for (int i=0;i<dataset.size()-seq_size; i+=741) {
-    trials++;
-    std::vector<double> query( dataset.begin()+i, dataset.begin()+seq_size+i);
-    NormalFunctor noise(0,0.0,0.1);
-    for (int i=0; i<seq_size; i++) { // perturb query a bit to make it new
-      query[i]+=noise();
-    }
-
-    capla_pp_ns2 += r_tree2_NS2.pruning_power(query, retrieval_f, dataset);
-    rdp_pp_ns2 += r_tree3_NS2.pruning_power(query, retrieval_f, dataset);
-    b_u_pp_ns2 += r_tree4_NS2.pruning_power(query, retrieval_f, dataset);
-  }
-  std::cout << "done 11" << std::endl;
-  capla_pp_ns2/=trials;
-  rdp_pp_ns2/=trials;
-  b_u_pp_ns2/=trials;
-
-  }
-
-  {
-  RTree<apla_bounds::AplaMBR<NS3>, unsigned int> r_tree2_NS3(40,10 , apla_bounds::mbr_area<NS3> , apla_bounds::mbr_merge<NS3> , apla_bounds::dist_to_mbr_sqr<NS3>);
-  RTree<apla_bounds::AplaMBR<NS3>, unsigned int> r_tree3_NS3(40,10 , apla_bounds::mbr_area<NS3> , apla_bounds::mbr_merge<NS3> , apla_bounds::dist_to_mbr_sqr<NS3>);
-  RTree<apla_bounds::AplaMBR<NS3>, unsigned int> r_tree4_NS3(40,10 , apla_bounds::mbr_area<NS3> , apla_bounds::mbr_merge<NS3> , apla_bounds::dist_to_mbr_sqr<NS3>);
-  
-  std::cout << "mbrs for capla 5 calculating" << std::endl;
-  auto vec2_of_mbrs_NS3 = apla_bounds::vec_to_subseq_mbrs<NS3>(dataset,seq_size,capla_eval::generate_mean_DRT_COMPR(4));
-  std::cout << "mbrs for rdp 5 calculating" << std::endl;
-  auto vec3_of_mbrs_NS3 = apla_bounds::vec_to_subseq_mbrs<NS3>(dataset,seq_size,rdp_f_uncompr);
-  std::cout << "mbrs for b-u 5 calculating" << std::endl;
-  auto vec4_of_mbrs_NS3 = apla_bounds::vec_to_subseq_mbrs<NS3>(dataset,seq_size,bottom_up_f_uncompr);
-  
-  std::cout << "inserting" << std::endl;
-  for (int i=0; i<vec2_of_mbrs_NS3.size(); i++) {
-    r_tree2_NS3.insert( vec2_of_mbrs_NS3[i], i );
-    r_tree3_NS3.insert( vec3_of_mbrs_NS3[i], i );
-    r_tree4_NS3.insert( vec4_of_mbrs_NS3[i], i );
-  }
-
-  std::cout << "searching" << std::endl;
-  unsigned int trials = 0;
-  for (int i=0;i<dataset.size()-seq_size; i+=741) {
-    trials++;
-    std::vector<double> query( dataset.begin()+i, dataset.begin()+seq_size+i);
-    NormalFunctor noise(0,0.0,0.1);
-    for (int i=0; i<seq_size; i++) { // perturb query a bit to make it new
-      query[i]+=noise();
-    }
-
-    capla_pp_ns3 += r_tree2_NS3.pruning_power(query, retrieval_f, dataset);
-    rdp_pp_ns3 += r_tree3_NS3.pruning_power(query, retrieval_f, dataset);
-    b_u_pp_ns3 += r_tree4_NS3.pruning_power(query, retrieval_f, dataset);
-  }
-
-  std::cout << "done 5" << std::endl;
-  capla_pp_ns3/=trials;
-  rdp_pp_ns3/=trials;
-  b_u_pp_ns3/=trials;
-
-  }
-
-  std::cout << "capla pruning powers " << NS3 << " : " << capla_pp_ns3 << ", " << NS2 << " : " << capla_pp_ns2 << ", " << NS << " : " << capla_pp_ns1 << std::endl;
-  std::cout << "rdp pruning powers " << NS3 << " : " << rdp_pp_ns3 << ", " << NS2 << " : " << rdp_pp_ns2 << ", " << NS << " : " << rdp_pp_ns1 << std::endl;
-  std::cout << "b-u pruning powers " << NS3 << " : " << b_u_pp_ns3 << ", " << NS2 << " : " << b_u_pp_ns2 << ", " << NS << " : " << b_u_pp_ns1 << std::endl;
-  */
-
-  /*
-  Series capla_pruning = { { 0.0717536, 0.000605522, 2.71927e-05 }, "Sliding Window" };
-  Series rdp_pruning = { { 0.00894341, 5.63206e-05, 2.86695e-05 }, "RDP" };
-  Series b_u_pruning = { { 0.00896001, 5.49966e-05, 2.87714e-05 }, "B-U" };
-  vector<Series> vs = { capla_pruning, rdp_pruning, b_u_pruning };
-  PlotDetails pd = { "Pruning Power of PLA Methods", "", "Pruning Power", "img/", PDF };
-  plot::barplot_many_series(vs, pd);
-  */
-
-
-  {/*
-  RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree4(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
-
   std::cout << "calculating mbrs" << std::endl;
-  auto vec4_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS>(dataset,seq_size,bottom_up_f_uncompr);
+  auto vec4_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS1>(dataset,seq_size, rdp_f_uncompr);
 
   std::cout << "inserting" << std::endl;
   for (int i=0; i<vec4_of_mbrs.size(); i++) {
@@ -646,27 +691,81 @@ int main()
   seqscan_times[0] /= trials;
   seqscan_times[1] /= trials;
 
-  PlotDetails pd = { "Time taken by Sim Search and K-NN Methods", "", "Time (MS)", "img/", PDF };
+  PlotDetails pd = { "Time taken by Sim Search and K-NN Methods", "", "Time (MS)", "img/sim_search/", PDF };
   Series rtree_series = {rtree_times, "RTree"};
   Series seqscan_series = {seqscan_times, "Sequential Scan"};
+  vector<string> x_labels = { "K-NN", "Similarity Search" };
   vector<Series> vs = {rtree_series, seqscan_series};
-  plot::barplot_many_series(vs, pd);
+  plot::barplot_many_series(vs, x_labels, pd);
 
-  */
   }
+  */
+  /*****************************************/
+
+  /*
+  di = 109; 
+  dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN_APPEND_TEST);
+
+  dataset.resize(1000);
+  z_norm::z_normalise(dataset);
+
+  Seqd x;
+  for (int i=0; i<dataset.size(); i++) {
+    x.push_back(i);
+  }
+
+  Seqd x_subset;
+  for (int i=150; i<231; i++)
+    x_subset.push_back(i);
+  Seqd data_subset(dataset.data() + 150, dataset.data() + 231);
+  Line l1 = { x_subset, data_subset,  "original" };
+
+  const unsigned int seq_size = 80;
+  const unsigned int NS = 8;
+  auto retrieval_f = [](const unsigned int& i, const vector<double>& q) {
+    return std::vector<std::array<const double*,2>>( {{ q.data()+i, q.data()+i+seq_size-1 }} );
+  };
+  RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
+  auto vec_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS>(dataset,seq_size,bottom_up_f_uncompr);
+  for (int i=0; i<vec_of_mbrs.size(); i++) {
+    r_tree.insert(vec_of_mbrs[i], i);
+  }
+  Seqd query(dataset.begin() + 150, dataset.begin() + 231);
+  Seqd dataset_x; for (int i=0; i<dataset.size(); i++) dataset_x.push_back(i);
+  std::vector<Line> vl;
+  Line dataset_line = { dataset_x, dataset, "ECG Data" };
+  vl.push_back(dataset_line);
+  auto sim_results = r_tree.knn_search(query, 15, retrieval_f, dataset);
+  for (const auto& [l_ptr,r_ptr] : sim_results) {
+    Seqd res(l_ptr, r_ptr+1);
+    Seqd res_x; for (int i=0; i<res.size(); i++) res_x.push_back( l_ptr - dataset.data() + i );
+    vl.push_back({res_x, res, "distance 2 away"});
+  }
+  vl.push_back(l1);
+  PlotDetails p_sim = { "K-NN on Strawberry Dataset", "Time", "Value", "./img/sim_search/", PDF };
+  plot::plot_lines(vl,p_sim);
+  */
+
+
+  /*
+  const unsigned int seq_size = ;
+  const unsigned int NS1 = 30;
+  RTree<apla_bounds::AplaMBR<NS1>, unsigned int> r_tree4(40,10 , apla_bounds::mbr_area<NS1> , apla_bounds::mbr_merge<NS1> , apla_bounds::dist_to_mbr_sqr<NS1>);
+
+  auto retrieval_f = [](const unsigned int& i, const vector<double>& q) {
+    return std::vector<std::array<const double*,2>>( {{ q.data()+i, q.data()+i+seq_size-1 }} );
+  };
+
+  std::cout << "calculating mbrs" << std::endl;
+  auto vec4_of_mbrs = apla_bounds::vec_to_subseq_mbrs<NS1>(dataset,seq_size, rdp_f_uncompr);
+
+  std::cout << "inserting" << std::endl;
+  for (int i=0; i<vec4_of_mbrs.size(); i++) {
+    r_tree4.insert( vec4_of_mbrs[i], i );
+  }
+  */
 
   /********************/
-
-  dataset2.resize(120);
-  z_norm::z_normalise(dataset2);
-  CauchyFunctor noise(7, 0.0, 1.0);
-  vector<double> dataset3 = {0.0};
-  for (int i=1; i<dataset2.size(); i++) {
-    dataset3.push_back( dataset3[i-1] + noise());
-  }
-  z_norm::z_normalise(dataset3);
-  Series s2 = { dataset3, "Standard Cauchy Walk" };
-  //
 
   return 0;
 }

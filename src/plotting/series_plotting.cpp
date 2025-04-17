@@ -79,10 +79,11 @@ void plot::barplot_many_series(const std::vector<Series> &vs, const std::vector<
   gp << "set boxwidth 0.9\n";
   gp << "set xtics format ''\n";
 
-  //gp << "set key rmargin\n";
-  gp << "set key off\n";
+  gp << "set logscale y 10\n";
+  gp << "set key rmargin\n";
+  //gp << "set key off\n";
 
-  //gp << "set yrange [0:500]\n";
+  //gp << "set yrange [0:20000]\n";
 
   gp << "set xtics (";
   for (int i=0; i<group_labels.size()-1; i++)
@@ -137,16 +138,16 @@ void plot::plot_lines(vector<Line> lines, PlotDetails p)
 
   Gnuplot gp;
   plot_setup::setup_gnuplot(gp, p);
-  //gp << "set key off\n";
-  gp << "set key outside\n";
+  gp << "set key off\n";
+  //gp << "set key outside\n";
   gp << "plot ";
-  gp << "'-' with lines lw 4.0 title '" <<  lines[0].name << "', ";
+  gp << "'-' with lines lt rgb 'dark-violet' lw 4.0 title '" <<  lines[0].name << "', ";
   for (int i=1; i<lines.size()-1; ++i) {
-    gp << "'-' with lines lw 4.0 dt " << i+1 << " title '" <<  lines[i].name << "', ";
-    //gp << "'-' with lines lw 4.0 title '" <<  lines[i].name << "', ";
+    //gp << "'-' with lines lw 4.0 dt " << i+1 << " title '" <<  lines[i].name << "', ";
+    gp << "'-' with lines lt rgb 'green' lw 4.0 title '" <<  lines[i].name << "', ";
   }
-  gp << "'-' with lines lw 4.0 dt " << lines.size() << " title '" <<  lines.back().name << "'\n";
-  //gp << "'-' with lines lw 4.0 title '" <<  lines.back().name << "'\n";
+  //gp << "'-' with lines lw 4.0 dt " << lines.size() << " title '" <<  lines.back().name << "'\n";
+  gp << "'-' with lines lt rgb 'magenta' lw 4.0 title '" <<  lines.back().name << "'\n";
   for (int i=0; i<lines.size(); ++i) {
     gp.send1d( boost::make_tuple( lines[i].x, lines[i].y ) );
   }

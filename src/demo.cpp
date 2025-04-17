@@ -21,7 +21,7 @@
 using std::vector, std::string;
 
 /**
- * @brief The demo function automatically runs all sections of the demo in order, displaying a full end to end demonstration. It requires firefox to run.
+ * @brief The demo function automatically runs all sections of the demo in order, displaying a full end to end demonstration. It requires floorp browser to run.
  */
 void demo()
 {

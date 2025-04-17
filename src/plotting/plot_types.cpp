@@ -39,6 +39,7 @@ void plot_setup::setup_gnuplot(Gnuplot &gp, PlotDetails p)
  */
 void plot_setup::open_pdf(PlotDetails p)
 {
+  return;
   if (p.b == PDF) {
     std::string command = "floorp '" + p.filepath + p.title + ".pdf'";
     int a = system(command.c_str()); 
