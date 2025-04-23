@@ -100,15 +100,40 @@ namespace plot {
 
   /**
    * @brief plot_lines_generated plots all of the lines passed to it using the PlotDetails also passed.
-   * @param s ls the baseline series.
+   * @param s Is the baseline series.
    * @param x Is the underlying x-axis to plot on (and the values passed to the parameter of LineGenerator).
    * @param y_gens Is the vector of LineGenerator that provide method to vary approximation of s.
    * @param p Is the PlotDetails to render the graph.
    */
   void plot_lines_generated(const std::vector<double>& s, std::vector<unsigned int> x, std::vector<LineGenerator> y_gens, PlotDetails p);
 
+
+  /**
+   * @brief plot_bars_generated plots all of the lines passed to it using the PlotDetails also passed, these are plotted as individual bars.
+   * @param s ls the baseline series.
+   * @param x Is the underlying x-axis to plot on (and the values passed to the parameter of LineGenerator).
+   * @param y_gens Is the vector of LineGenerator that provide method to vary approximation of s.
+   * @param p Is the PlotDetails to render the graph.
+   */
   void plot_bars_generated(const std::vector<double>& s, std::vector<unsigned int> x, std::vector<LineGenerator> y_gens, PlotDetails p);
+
+  /**
+   * @brief plot_barsPG_generated plots all of the lines passed to it using the PlotDetails also passed, these are plotted as individual bars.
+   * @param s Is the baseline series.
+   * @param x Is the underlying x-axis to plot on (and the values passed to the parameter of LineGenerator).
+   * @param y_gens Is the vector of LineGenerator that provide method to vary approximation of s.
+   * @param p Is the PlotDetails to render the graph.
+   */
   void plot_barsPG_generated(const std::vector<double>& s, std::vector<double> x, std::vector<LinePGGenerator> y_gens, PlotDetails p);
+
+  /**
+   * @brief plot_mean_bars_generated plots all of the lines passed to it using the PlotDetails also passed, the point plotted is the mean result of the datasets.
+   * @param vs Is a collection of datasets to perform the DRTs on.
+   * @param x Is the underlying x-axis to plot on (and the values passed to the parameter of LineGenerator).
+   * @param y_gens Is the vector of LineGenerator that provide method to vary approximation of s.
+   * @param p Is the PlotDetails to render the graph.
+   */
+  void plot_mean_bars_generated(const std::vector<std::vector<double>>& vs, std::vector<unsigned int> x, std::vector<LineGenerator> y_gens, PlotDetails p);
 
   /**
    * @brief plot_lines_generated_ucr_average plots all of the lines passed to it using the PlotDetails also passed, utilising multiple UCR datasets.

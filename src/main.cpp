@@ -70,9 +70,9 @@ int main()
 
   // Used in reports : 5 is Arrowhead, 13 is Chlorine, 28 is ECG200, 39 is Fifty Words, 128 is yoga, 46 is GuestureMidAirD1
   // 109 is Strawberry, 25 is Dodgers loop day
-  unsigned int di = 13;
+  unsigned int di = 5;
   vector<double> dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN_APPEND_TEST);
-  std::cout << dataset.size() << std::endl;
+  //std::cout << dataset.size() << std::endl;
   z_norm::z_normalise(dataset);
 
   Series s_ucr = { dataset, "Chlorine Dataset" };
@@ -136,7 +136,11 @@ int main()
   vector<double> dataset2 = parse_tsv("./tsv/testwalk1.tsv",-1);
   z_norm::z_normalise(dataset2);
   Series s = { dataset2, "Normal Walk" };
-  //     demo();
+  
+  /************************************* DEMO ******************************************/
+  
+  demo();
+  return 0;
   
   /*
   dataset.resize(100);
@@ -207,7 +211,7 @@ int main()
 	//, apla_gen_l2
 	, rdp_gen_l2
 	, bot_gen_l2
-	, sw_gen_l2
+	//, sw_gen_l2
 	, swing_gen_l2
   };
   /**************/
@@ -258,7 +262,7 @@ int main()
 	//, apla_gen_maxdev
 	, rdp_gen_maxdev
 	, bot_gen_maxdev
-	, sw_gen_maxdev
+	//, sw_gen_maxdev
 	, swing_gen_maxdev
   };
   /**************/
@@ -309,7 +313,7 @@ int main()
 	//, apla_gen_time
 	, rdp_gen_time
 	, bot_gen_time
-	, sw_gen_time
+	//, sw_gen_time
 	, swing_gen_time
   };
   /**************/
@@ -448,36 +452,34 @@ int main()
   PlotDetails p_time = { "CPU Time of DRTs on Synthetic dataset", "Target Dimension m", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
   PlotDetails p_time_size = { "CPU Time of fewer DRTs (to target dimension 150) against size of datasets", "Dataset Size n", "CPU Execution Time (ns)", "img/drt_comparisons", X11 };
 
-  /*  L2, MaxDev and CPUTime for all datasets and all DRTs except APLA
-  for (int di = 0; di<2; di++) {
+  /*
+  //  L2, MaxDev and CPUTime for all datasets and all DRTs except APLA
+  vector<vector<double>> dataset_samples;
+  for (int di = 0; di<datasets.size(); di++) {
     dataset = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  DatasetType::TRAIN_APPEND_TEST);
     if (dataset.size() < 10'000)
       continue;
 
     dataset.resize(10'000);
-    z_norm::z_normalise(dataset);
+    for (int i=0; i<10; i++) {
+      vector<double> dataset_sample(dataset.begin()+1000*i, dataset.begin()+1000*i+1000 );
+      z_norm::z_normalise(dataset_sample);
+      dataset_samples.push_back(dataset_sample);
+    }
 
-    string command = "mkdir -p img/drt_comparisons/all_datasets/" + datasets[di];
-    system(command.c_str());
-
-    PlotDetails pd_l2 = { "Euclidean Distance of all DRTs on " + datasets[di] + " dataset", "Target Dimension m", "L2"
-      , "img/drt_comparisons/all_datasets/"+datasets[di]+"/", PDF };
-    PlotDetails pd_maxdev = { "Maximum Deviation of all DRTs on " + datasets[di] + " dataset", "Target Dimension m", "Maximum Deviation"
-      , "img/drt_comparisons/all_datasets/"+datasets[di]+"/", PDF };
-    PlotDetails pd_time = { "CPU Time of all DRTs on " + datasets[di] + " dataset", "Target Dimension m", "CPU Execution Time (ns)"
-      , "img/drt_comparisons/all_datasets/"+datasets[di]+"/", PDF };
-    plot::plot_bars_generated(dataset, { 300, 600, 900, 1200 }, l2_generators, pd_l2);
-    plot::plot_bars_generated(dataset, { 300, 600, 900, 1200 }, maxdev_generators, pd_maxdev);
-    // plot::plot_bars_generated(dataset, { 300, 600, 900, 1200 }, time_generators, pd_time);
-    std::cout << "done " << di+1 << " / " << datasets.size() << std::endl;
   }
+  PlotDetails pd_l2 = { "Mean Euclidean Distance of DRTs on UCR datasets", "Target Dimension m", "L2"
+    , "img/drt_comparisons/all_datasets/", PDF };
+  PlotDetails pd_maxdev = { "Mean Maximum Deviation of DRTs on UCR datasets", "Target Dimension m", "Maximum Deviation"
+    , "img/drt_comparisons/all_datasets/", PDF };
+
+  PlotDetails pd_time = { "Mean CPU Time of DRTs on UCR datasets", "Target Dimension m", "CPU Execution Time (ns)"
+    , "img/drt_comparisons/all_datasets/", PDF };
+  //plot::plot_mean_bars_generated(dataset_samples, { 15, 30, 60, 90 }, l2_generators, pd_l2);
+  //plot::plot_mean_bars_generated(dataset_samples, { 15, 30, 60, 90 }, maxdev_generators, pd_maxdev);
+  plot::plot_mean_bars_generated(dataset_samples, { 15, 30, 60, 90 }, time_generators, pd_time);
+  return 0;
   */
-  PlotDetails pd_l2 = { "Euclidean Distance of all DRTs on Synthetic dataset", "Target Dimension m", "L2", "img/drt_comparisons/", PDF };
-  PlotDetails pd_maxdev = { "Maximum Deviation of all DRTs on Synthetic dataset", "Target Dimension m", "Maximum Deviation", "img/drt_comparisons/", PDF };
-  PlotDetails pd_time = { "CPU Time of all DRTs on Synthetic dataset", "Target Dimension m", "CPU Execution Time (ns)", "img/drt_comparisons/", PDF };
-  //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, l2_generators, pd_l2);
-  //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, maxdev_generators, pd_maxdev);
-  //plot::plot_bars_generated(dataset2, { 60, 120, 180, 240 }, time_generators, pd_time);
 
 
   /********************************** R Tree implementation **************************************/

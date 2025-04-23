@@ -55,9 +55,9 @@ void plot::plot_many_series(vector<Series>& vs, PlotDetails p)
   plot_setup::setup_gnuplot(gp, p);
   gp << "plot ";
   for (int i=0; i<vs.size()-1; ++i) {
-    gp << "'-' with lines dt " << i+1 << " title '" <<  vs[i].name << "', ";
+    gp << "'-' with lines title '" <<  vs[i].name << "', ";
   }
-  gp << "'-' with lines dt " << vs.size() << " title '" <<  vs.back().name << "'\n";
+  gp << "'-' with lines title '" <<  vs.back().name << "'\n";
   for (int i=0; i<vs.size(); ++i) {
     gp.send1d( boost::make_tuple( vx[i], vy[i] ) );
   }
@@ -79,7 +79,7 @@ void plot::barplot_many_series(const std::vector<Series> &vs, const std::vector<
   gp << "set boxwidth 0.9\n";
   gp << "set xtics format ''\n";
 
-  gp << "set logscale y 10\n";
+  //gp << "set logscale y 10\n";
   gp << "set key rmargin\n";
   //gp << "set key off\n";
 
@@ -201,6 +201,27 @@ void plot::plot_barsPG_generated(const std::vector<double>& s, std::vector<doubl
     y_vecs.push_back({});
     for (double e : x) {
       y_vecs.back().push_back( y_f.result_gen(s,e) );
+    }
+    lines.push_back({ y_vecs.back(), y_f.method_name});
+  }
+  plot::barplot_many_series(lines, x_d, p);
+}
+void plot::plot_mean_bars_generated(const std::vector<std::vector<double>> &vs, std::vector<unsigned int> x, std::vector<LineGenerator> y_gens, PlotDetails p)
+{
+  if (y_gens.size() == 0 || x.size() == 0) return;
+  vector<std::string> x_d(x.size());
+  std::transform(x.begin(), x.end(), x_d.begin(), [](unsigned int& i){ return  std::to_string(i);}); 
+
+  vector<vector<double>> y_vecs;
+  vector<Series> lines;
+  for (auto& y_f : y_gens) {
+    y_vecs.push_back({});
+    for (unsigned int i : x) {
+      y_vecs.back().push_back({});
+      for (const auto& s : vs) {
+	y_vecs.back().back() += y_f.result_gen(s,i) ;
+      }
+      y_vecs.back().back() /= vs.size();
     }
     lines.push_back({ y_vecs.back(), y_f.method_name});
   }

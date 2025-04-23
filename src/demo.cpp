@@ -8,6 +8,14 @@
 #include "z_norm.h"
 
 #include "bottom_up.h"
+#include "pla.h"
+#include "double_window.h"
+#include "dac_curve_fitting.h"
+#include "exact_dp.h"
+#include "apla_segment_and_merge.h"
+#include "swing.h"
+#include "conv_double_window.h"
+#include "sliding_window.h"
 
 #include "r_tree.h"
 #include "lower_bounds_apla.h"
@@ -15,6 +23,8 @@
 #include "plotting/series_plotting.h"
 #include "plotting/plot_dimreduct_pla.h"
 #include "evaluations/capla.h"
+
+#include <iostream>
 
 #include <vector>
 #include <string>
@@ -25,54 +35,194 @@ using std::vector, std::string;
  */
 void demo()
 {
-  /**** GENERATE RANDOM WALK **********/
-  RandomWalk walk( NormalFunctor(11) ); 
-  walk.gen_steps(100'000);
-  walk.save_walk("./tsv/testwalk1.tsv");
-  vector<double> synth_data = ucr_parsing::parse_tsv("./tsv/testwalk1.tsv",-1);
-  z_norm::z_normalise(synth_data);
-  vector<double> short_synth( synth_data.begin(), synth_data.begin()+2000);
+  std::cout << "Third Year Project Demonstration" << std::endl;
 
-  Series s_walk = { synth_data, "Normal Walk" };
-  Series s_walk_short = { short_synth, "Normal Walk" };
-  PlotDetails p_walk = { "Plot of generated random walk", "Time", "Value", "./img/", PDF };
-  PlotDetails p_walk_short = { "Plot of subsequence of generated random walk", "Time", "Value", "./img/", PDF };
-  plot::plot_series(s_walk, p_walk);
-  plot::plot_series(s_walk_short, p_walk_short);
+  std::cout << " > hit enter to continue" << std::endl;
+  string line;
+  std::getline(std::cin, line);
 
   /**** LOAD REAL DATA ****************/
+  std::cout << "Load UCR Dataset" << std::endl;
   string ucr_datasets_loc = "external/data/UCRArchive_2018/";
   vector<string> datasets = ucr_parsing::parse_folder_names(ucr_datasets_loc);
+  std::cout << std::endl;
 
   unsigned int di = 30;
-  vector<double> real_data = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  ucr_parsing::DatasetType::TEST);
-  z_norm::z_normalise(real_data);
-  vector<double> short_real( real_data.begin(), real_data.begin()+2000);
+  std::cout << " > Dataset ID :  ";
+  std::cin >> di;
 
-  Series s_real = { real_data, "ECG Scan" };
-  Series s_real_short = { short_real, "ECG Scan" };
-  PlotDetails p_real = { "Plot of ECG Data", "Time", "Voltage", "./img/", PDF };
-  PlotDetails p_real_short = { "Plot of subsequence of ECG Data", "Time", "Voltage", "./img/", PDF };
-  plot::plot_series(s_real, p_real);
-  plot::plot_series(s_real_short, p_real_short);
+  vector<double> real_data = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  ucr_parsing::DatasetType::TRAIN_APPEND_TEST);
+  vector<double> short_real( real_data.begin(), real_data.begin()+2000);
+  z_norm::z_normalise(short_real);
+
+  std::cout << " > Size of loaded dataset : " << real_data.size() << std::endl; 
+  Series s_real = { real_data, datasets[di] };
+  Series s_short_real = { short_real, datasets[di] };
+  PlotDetails p_real = { "Plot of " + datasets[di], "Time", "Value", "./img/demo/", PDF };
+  PlotDetails p_short_real = { "Plot of subsequence of " + datasets[di], "Time", "Value", "./img/demo/", PDF };
+  //plot::plot_series(s_real, p_real);
+  plot::plot_series(s_short_real, p_short_real);
+
+  std::cout << " > hit enter to continue" << std::endl;
+  std::getline(std::cin, line);
+  std::getline(std::cin, line);
 
   /***** TEST SOME DRT'S ************/
-  auto capla_tri_f = capla_eval::generate_tri_DRT(5);
-  auto capla_drt = [](const Seqd& s){ return capla_eval::generate_mean_DRT_COMPR(5)(s, 33); };
+  std::cout << "Display some Dimension Reduction Techniques on dataset" << std::endl;
+
+  auto d_w_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::simple_pla(s, num_params, 5, 5)); };
+  auto d_w_proj_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::y_proj_pla(s, num_params, 5, 5)); };
+  auto d_w_proj_apla_f_uncompr = [](const vector<double>& s, unsigned int num_params){ return d_w::y_proj_pla(s, num_params, 5, 5); };
+
+  auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(exact_dp::min_mse_pla(s, num_params)); }; 
+
+  auto rdp_f_uncompr = [&](const Seqd& s, unsigned int parameter){ 
+    auto apla = dac_curve_fitting::dac_linear(s, 0.1);
+    if (apla.size() < parameter/3) segmerge::segment_to_dim(s,apla,parameter);
+    if (apla.size() > parameter/3) segmerge::merge_to_dim(s,apla,parameter);
+    return apla;
+  };
+  auto rdp_f = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(rdp_f_uncompr(s,parameter)); };
   auto bottom_up_f_uncompr = [&](const Seqd& s, unsigned int parameter){ 
     auto apla = bottom_up::bottom_up(s, 0.1, bottom_up::se);
     if (apla.size() < parameter/3) segmerge::segment_to_dim(s,apla,parameter);
     if (apla.size() > parameter/3) segmerge::merge_to_dim(s,apla,parameter);
     return apla;
   };
-  auto b_u_drt = [&bottom_up_f_uncompr](const Seqd& s){ return bottom_up_f_uncompr(s, 63); };
+  auto bottom_up_f = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(bottom_up_f_uncompr(s,parameter)); };
+  auto sw_f_uncompr = [&](const Seqd& s, unsigned int parameter){ 
+    auto apla = sw::sliding_window(s, 0.1);
+    if (apla.size() < parameter/3) segmerge::segment_to_dim(s,apla,parameter);
+    if (apla.size() > parameter/3) segmerge::merge_to_dim(s,apla,parameter);
+    return apla;
+  };
+  auto sw_f_compr = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(sw_f_uncompr(s,parameter)); };
+  auto swing_f_uncompr = [&](const Seqd& s, unsigned int parameter){ 
+    auto apla = swing::swing(s, 0.1);
+    if (apla.size() < parameter/3) segmerge::segment_to_dim(s,apla,parameter);
+    if (apla.size() > parameter/3) segmerge::merge_to_dim(s,apla,parameter);
+    return apla;
+  };
+  auto swing_f_compr = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(swing_f_uncompr(s,parameter)); };
 
-  PlotDetails p_capla_drt = { "Plot of Sliding Window upon ECG", "Time", "Voltage", "./img/", PDF };
-  //plot_pla::plot_any_apla(short_real, "ECG Scan", capla_drt, "Sliding Window", p_capla_drt);
-  PlotDetails p_b_u_drt = { "Plot of Bottom Up Approach upon ECG", "Time", "Voltage", "./img/", PDF };
-  //plot_pla::plot_any_apla(short_real, "ECG Scan", b_u_drt, "Bottom Up", p_capla_drt);
+  auto sw_f = [&](const Seqd& s, unsigned int parameter) { return pla::apla_to_seq(sw_f_uncompr(s,parameter)); };
+  auto swing_f = [&](const Seqd& s) { return swing::swing(s,0.1); };
+
+
+
+  unsigned int input;
+  std::cout << " 1 : Average Value Double Window	 2 : Interval Projection Double Window" << std::endl;
+  std::cout << " 3 : Exact Dynamic Programming		 4 : Top Down" << std::endl;
+  std::cout << " 5 : Bottom Up				 6 : Sliding Window" << std::endl;
+  std::cout << " 7 : SWING Filter			 0 : Exit Loop" << std::endl;
+  std::cout << " > Choose an adaptive PLA method: "; 
+  std::cin >> input;
+  while (input != 0) {
+    if (input < 1 || input > 7)
+      break;
+
+    unsigned int num_params=100;
+    std::cout << " > Choose data storage of approximation: ";
+    std::cin >> num_params;
+
+    Seqd approx;
+    std::string name;
+    switch (input) {
+      case 1: 
+	approx = d_w_apla_f(short_real, num_params);
+	name = "Average Value Double Window";
+	break;
+      case 2: 
+	approx = d_w_proj_apla_f(short_real, num_params);
+	name = "Interval Projection Double Window";
+	break;
+      case 3: 
+	approx = exact_apla_f(short_real, num_params);
+	name = "Exact Dynamic Programming";
+	break;
+      case 4: 
+	approx = rdp_f(short_real, num_params);
+	name = "Top Down";
+	break;
+      case 5: 
+	approx = bottom_up_f(short_real, num_params);
+	name = "Bottom Up";
+	break;
+      case 6: 
+	approx = sw_f(short_real, num_params);
+	name = "Sliding Window";
+	break;
+      default:
+	approx = swing_f_compr(short_real, num_params);
+	name = "SWING Filter";
+	break;
+    }
+    Series s_approx = { approx, name };
+    PlotDetails pd_drt = { "Plot of DRT upon "+datasets[di], "Time", "Value", "./img/demo/", PDF };
+    std::vector<Series> v2 = { s_short_real, s_approx };
+    plot::plot_many_series(v2, pd_drt);
+
+    std::cout << " 1 : Average Value Double Window	 2 : Interval Projection Double Window" << std::endl;
+    std::cout << " 3 : Exact Dynamic Programming	 4 : Top Down" << std::endl;
+    std::cout << " 5 : Bottom Up			 6 : Sliding Window" << std::endl;
+    std::cout << " 7 : SWING Filter			 0 : Exit Loop" << std::endl;
+    std::cout << " > Choose an adaptive PLA method: "; 
+    std::cin.sync();
+    std::cin >> input;
+  }
+
+
+  /****** GENERATE SOME EVALUATIONS *******/
+  std::cout << "\nEvaluate the Adaptive PLA methods" << std::endl;
+  std::cout << "hit enter to continue: " << std::endl;
+  std::getline(std::cin, line);
+  std::getline(std::cin, line);
+
+  // Double Window PLA and Proj
+  auto d_w_apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, d_w_apla_f); };
+  LineGenerator d_w_apla_gen_l2 = { d_w_apla_gen_l2_f, "AV PLA" };
+  auto d_w_proj_apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, d_w_proj_apla_f); };
+  LineGenerator d_w_proj_apla_gen_l2 = { d_w_proj_apla_gen_l2_f, "IP PLA" };
+  auto rdp_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,rdp_f); };
+  LineGenerator rdp_gen_l2 = { rdp_gen_l2_f, "RDP" };
+  auto bot_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,bottom_up_f); };
+  LineGenerator bot_gen_l2 = { bot_gen_l2_f, "B-U" };
+  auto sw_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,sw_f_compr); };
+  LineGenerator sw_gen_l2 = { sw_gen_l2_f, "SW" };
+  auto swing_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,swing_f_compr); };
+  LineGenerator swing_gen_l2 = { swing_gen_l2_f, "SWING" };
+  vector<LineGenerator> l2_generators = {
+	d_w_apla_gen_l2
+	, d_w_proj_apla_gen_l2
+	//, apla_gen_l2
+	, rdp_gen_l2
+	, bot_gen_l2
+	, sw_gen_l2
+	, swing_gen_l2
+  };
+  PlotDetails p_l2 = { "Mean Euclidean Distance of DRTs on " + datasets[di], "Target Dimension m", "L2", "img/demo/", PDF };
+  std::vector<Seqd> dataset_samples;
+  real_data.resize(10'000);
+  z_norm::z_normalise(real_data);
+  for (int i=0; i<10; i++) {
+    vector<double> dataset_sample(real_data.begin()+1000*i, real_data.begin()+1000*i+1000 );
+    z_norm::z_normalise(dataset_sample);
+    dataset_samples.push_back(dataset_sample);
+  }
+  plot::plot_mean_bars_generated(dataset_samples, { 45, 90, 180, 270 }, l2_generators, p_l2);
+
 
   /****** FIND SOME HEART-BEATS *****/
+  std::cout << "\nUse similarity search to find heartbeats" << std::endl;
+  std::cout << "hit enter to continue: " << std::endl;
+  std::getline(std::cin, line);
+
+  di = 30;
+  real_data = parse_ucr_dataset(datasets[di], ucr_datasets_loc,  ucr_parsing::DatasetType::TEST);
+  z_norm::z_normalise(real_data);
+  short_real = std::vector<double>( real_data.begin(), real_data.begin()+2000);
+  z_norm::z_normalise(short_real);
+
   const unsigned int seq_size = 50;
   const unsigned int NS = 5;
   auto retrieval_f = [](const unsigned int& i, const vector<double>& q) {
@@ -84,40 +234,21 @@ void demo()
     r_tree.insert(vec_of_mbrs[i], i);
   }
   Seqd query(short_real.begin() + 51, short_real.begin() + 101);
+  Seqd query_x; for (int i=0; i<query.size(); i++) query_x.push_back( 51 + i );
   Seqd short_real_x; for (int i=0; i<short_real.size(); i++) short_real_x.push_back(i);
   std::vector<Line> vl;
   Line short_real_line = { short_real_x, short_real, "ECG Data" };
   vl.push_back(short_real_line);
   auto sim_results = r_tree.sim_search_exact(query, 7.0, retrieval_f, short_real);
+  std::cout << "Start Indexes for similar subsequences : " << std::endl;
   for (const auto& [l_ptr,r_ptr] : sim_results) {
     std::cout << l_ptr - short_real.data() << std::endl;
     Seqd res(l_ptr, r_ptr+1);
     Seqd res_x; for (int i=0; i<res.size(); i++) res_x.push_back( l_ptr - short_real.data() + i );
     vl.push_back({res_x, res, "distance 2 away"});
   }
-  PlotDetails p_sim = { "Plot of closest to first heart beat upon ECG", "Time", "Voltage", "./img/", PDF };
-  plot::plot_lines(vl,p_sim);
-
-  /************ Find Some Similar Subsequences ***********/
-  RTree<apla_bounds::AplaMBR<NS>, unsigned int> r_tree2(40,10 , apla_bounds::mbr_area<NS> , apla_bounds::mbr_merge<NS> , apla_bounds::dist_to_mbr_sqr<NS>);
-  auto vec_of_mbrs_synth = apla_bounds::vec_to_subseq_mbrs<NS>(short_synth,seq_size,bottom_up_f_uncompr);
-  for (int i=0; i<vec_of_mbrs_synth.size(); i++) {
-    r_tree2.insert(vec_of_mbrs_synth[i], i);
-  }
-  Seqd query_synth(short_synth.begin(), short_synth.begin() + 50);
-  Seqd short_synth_x; for (int i=0; i<short_synth.size(); i++) short_synth_x.push_back(i);
-  vl.clear();
-  Line short_synth_line = { short_synth_x, short_synth, "Synthetic Data" };
-  vl.push_back(short_synth_line);
-  auto knn_results = r_tree2.knn_search(query_synth, 8, retrieval_f, short_synth);
+  vl.push_back({query_x, query, "query"});
   std::cout << std::endl;
-  for (const auto& [l_ptr,r_ptr] : knn_results) {
-    std::cout << l_ptr - short_synth.data() << std::endl;
-    Seqd res(l_ptr, r_ptr+1);
-    Seqd res_x; for (int i=0; i<res.size(); i++) res_x.push_back( l_ptr - short_synth.data() + i );
-    vl.push_back({res_x, res, "k-nn close"});
-  }
-  PlotDetails p_knn = { "Plot of 8 closest to beginning", "Time", "Value", "./img/", PDF };
-  plot::plot_lines(vl,p_knn);
-
+  PlotDetails p_sim = { "Plot of subsequences close to first heart beat in ECG (epsilon=7.0)", "Time", "Voltage", "./img/demo/", PDF };
+  plot::plot_lines(vl,p_sim);
 }
