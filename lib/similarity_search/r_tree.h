@@ -11,15 +11,26 @@ using std::queue;
 
 #include "error_measures.h"
 
+/**
+ * @file r_tree.h
+ * @brief r_tree.h holds the definition and implementation of a r_tree suitable to use the new indexing scheme
+ */
+
 template <typename R, typename I>
 struct RTreeNode;
 
+/**
+ * @brief LeafEntry is a struct denoting a leaf in the tree meaning it holds indexes of the sequences the cover covers
+ */
 template <typename R, typename I>
 struct LeafEntry {
   R mbr;
   I st_index;
   LeafEntry(R mbr, I st_index) : mbr(mbr), st_index(st_index) {}
 };
+/**
+ * @brief RTreeNode is a non leaf node holding as children either other non-leaf nodes or leaves, the mbr covers all children
+ */
 template <typename R, typename I>
 struct RTreeNode {
   R mbr;
@@ -39,6 +50,9 @@ using FPtrRetrievalMethod = std::vector<std::array<const double*, 2>> (*)(const 
 
 
 #include <iostream>
+/**
+ * @brief RTree is the partial implementation of a r tree from R-TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL SEARCHING
+ */
 template <typename R, typename I>
 class RTree {
 private:
@@ -52,6 +66,14 @@ private:
   unsigned int total_num_entries;
 
 public:
+  /**
+   * @brief constructor for the r tree
+   * @param max_entries is the desired maximum number of entries per node (recommended is 40)
+   * @param min_entries is the desired minimum number of entries per node (recommended is 10)
+   * @param area_f is a function to determine the area of a MBR
+   * @param merge_f is a function to merge two MBR's
+   * @param p_dist_f is a function to determine the distance from a series to a MBR (squared for comparison speed ups)
+   */
   RTree(unsigned int max_entries, unsigned int min_entries, FPtrArea<R> area_f, FPtrAreaMerge<R> merge_f, FPtrMBRDistSqr<R> p_dist_f)
     : max_entries(max_entries)
       , min_entries(min_entries)
@@ -60,30 +82,98 @@ public:
       , uncompr_point_dist_sqr_f(p_dist_f)
       , root(nullptr)
       , total_num_entries(0) {}
+  /**
+   * @brief destructor for r tree
+   * Requires a recursive (implemented non recursive to not crash stack) deletion of information from tree
+   */
   ~RTree()
   {
     destroy_tree_from(root);
     root = nullptr;
   }
 
+  /**
+   * @brief get_size_tree calculates the total number of entries in the tree
+   * @return integer of number of entries in tree
+   */
   unsigned int get_size_tree();
+  /**
+   * @brief get_size_leaves calculates the total number of leaves in the tree
+   * @return integer of number of leaves in tree
+   */
   unsigned int get_size_leaves();
+  /**
+   * @brief get_num_leaves yields the total number of leaves in the tree, counted as they are entered
+   * @return integer of number of leaves in tree
+   */
   inline unsigned int get_num_leaves() { return total_num_entries; }
 
+  /**
+   * @brief insert inserts a new sequence into the r tree
+   * @param mbr is the mbr of the sequence
+   * @param st_index is the indexing methods to retrieve the original sequence
+   */
   void insert(R mbr, I st_index);
 
+  /**
+   * @brief sim_search finds all subsequences of series that are within epsilon of query
+   * @param query is the query sequence to search for similar sequences to
+   * @param epsilon is the maximum allowed l2 error between a query and returned subseqence
+   * @return array of indexing tools representing the retrieval indexes for the sequences
+   * This function returns with false positives
+   */
   std::vector<I> sim_search(const std::vector<double>& q, double epsilon);
+  /**
+   * @brief knn_search finds k subsequences of series closest to q
+   * @param query is the query sequence to search for similar sequences to
+   * @param k is the number of sequences to find closest to q
+   * @param retrieve_f a method to retrieve the original sequence using the indexing tool and a larger sequence
+   * @param s the larger sequence containing all additions to the r tree
+   * @return array of pointers to the sequences in the larger sequence s
+   */
   std::vector<std::array<const double*, 2>> knn_search(const std::vector<double>& q, unsigned int k, FPtrRetrievalMethod<I> retrieve_f, const std::vector<double>& s);
+  /**
+   * @brief sim_search_exact finds all subsequences of series that are within epsilon of query
+   * @param query is the query sequence to search for similar sequences to
+   * @param epsilon is the maximum allowed l2 error between a query and returned subseqence
+   * @param retrieve_f a method to retrieve the original sequence using the indexing tool and a larger sequence
+   * @param s the larger sequence containing all additions to the r tree
+   * @return array of pointers to the sequences in the larger sequence s
+   */
   std::vector<std::array<const double*, 2>> sim_search_exact(const std::vector<double>& q, double epsilon, FPtrRetrievalMethod<I> retrieve_f, const std::vector<double>& s);
+  /**
+   * @brief pruning_power returns the pruning power observed by trying a 1-NN search for q
+   * @param q is the query sequence
+   * @param retrieve_f a method to retrieve the original sequence using the indexing tool and a larger sequence
+   * @param s the larger sequence containing all additions to the r tree
+   * @return the pruning power (number of sequences fetched) / (number of sequences in r tree)
+   */
   double pruning_power(const std::vector<double>& q, FPtrRetrievalMethod<I> retrieve_f, const std::vector<double>& s);
 
 
+  /**
+   * @brief split_node modifies the current node and returns the additional node created in the split
+   * @param node is the node to split
+   * @return new node holding other half of entries
+   */
   RTreeNode<R,I>* split_node(RTreeNode<R,I>* const node);
 
+  /**
+   * @brief quad_pick_seeds uses quadratic algorithm from paper to pick entries to start split from
+   * @param mbrs is array of children to pick seeds from
+   * @return the two seeds
+   */
   std::array<unsigned int, 2> quad_pick_seeds(const std::vector<const R*>& mbrs);
-  std::array<unsigned int, 2> lin_pick_seeds(const RTreeNode<R,I>* const node);
+  /**
+   * @brief quad_pick_next_node picks the next node to be added to one of the splits
+   * @param mbrs is array of children to pick seeds from
+   * @param g1 is set of children in first node
+   * @param g1mbr is current mbr covering its children
+   * @param g2 is set of children in second node
+   * @param g2mbr is current mbr covering its children
+   * @return the index of the next node to move to a set
+   */
   unsigned int quad_pick_next_node(const std::vector<const R*>& mbrs, const std::set<unsigned int>& g1, const R& g1mbr, const std::set<unsigned int>& g2, const R& g2mbr);
-  unsigned int lin_pick_next_node(const std::vector<const R*>& mbrs, const std::set<unsigned int>& g1, const R& g1mbr, const std::set<unsigned int>& g2, const R& g2mbr);
 
 private:
 

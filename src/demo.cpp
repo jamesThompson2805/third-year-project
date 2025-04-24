@@ -114,12 +114,57 @@ void demo()
   std::cout << " 1 : Average Value Double Window	 2 : Interval Projection Double Window" << std::endl;
   std::cout << " 3 : Exact Dynamic Programming		 4 : Top Down" << std::endl;
   std::cout << " 5 : Bottom Up				 6 : Sliding Window" << std::endl;
-  std::cout << " 7 : SWING Filter			 0 : Exit Loop" << std::endl;
+  std::cout << " 7 : SWING Filter			 8 : Show Evaluations" << std::endl;
+  std::cout << " 0 : Exit Loop" << std::endl;
   std::cout << " > Choose an adaptive PLA method: "; 
   std::cin >> input;
   while (input != 0) {
-    if (input < 1 || input > 7)
+    if (input < 1 || input > 8)
       break;
+
+    if (input == 8) {
+      auto d_w_apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, d_w_apla_f); };
+      LineGenerator d_w_apla_gen_l2 = { d_w_apla_gen_l2_f, "AV PLA" };
+      auto d_w_proj_apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, d_w_proj_apla_f); };
+      LineGenerator d_w_proj_apla_gen_l2 = { d_w_proj_apla_gen_l2_f, "IP PLA" };
+      auto rdp_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,rdp_f); };
+      LineGenerator rdp_gen_l2 = { rdp_gen_l2_f, "RDP" };
+      auto bot_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,bottom_up_f); };
+      LineGenerator bot_gen_l2 = { bot_gen_l2_f, "B-U" };
+      auto sw_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,sw_f_compr); };
+      LineGenerator sw_gen_l2 = { sw_gen_l2_f, "SW" };
+      auto swing_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,swing_f_compr); };
+      LineGenerator swing_gen_l2 = { swing_gen_l2_f, "SWING" };
+      vector<LineGenerator> l2_generators = {
+	    d_w_apla_gen_l2
+	    , d_w_proj_apla_gen_l2
+	    //, apla_gen_l2
+	    , rdp_gen_l2
+	    , bot_gen_l2
+	    , sw_gen_l2
+	    , swing_gen_l2
+      };
+      PlotDetails p_l2 = { "Mean Euclidean Distance of DRTs on " + datasets[di], "Target Dimension m", "L2", "img/demo/", PDF };
+      std::vector<Seqd> dataset_samples;
+      real_data.resize(10'000);
+      z_norm::z_normalise(real_data);
+      for (int i=0; i<10; i++) {
+	vector<double> dataset_sample(real_data.begin()+1000*i, real_data.begin()+1000*i+1000 );
+	z_norm::z_normalise(dataset_sample);
+	dataset_samples.push_back(dataset_sample);
+      }
+      plot::plot_mean_bars_generated(dataset_samples, { 45, 90, 180, 270 }, l2_generators, p_l2);
+      std::cout << " 1 : Average Value Double Window	 2 : Interval Projection Double Window" << std::endl;
+      std::cout << " 3 : Exact Dynamic Programming		 4 : Top Down" << std::endl;
+      std::cout << " 5 : Bottom Up				 6 : Sliding Window" << std::endl;
+      std::cout << " 7 : SWING Filter			 8 : Show Evaluations" << std::endl;
+      std::cout << " 0 : Exit Loop" << std::endl;
+      std::cout << " > Choose an adaptive PLA method: "; 
+      std::cin.sync();
+      std::cin >> input;
+
+      continue;
+    }
 
     unsigned int num_params=100;
     std::cout << " > Choose data storage of approximation: ";
@@ -163,58 +208,19 @@ void demo()
     plot::plot_many_series(v2, pd_drt);
 
     std::cout << " 1 : Average Value Double Window	 2 : Interval Projection Double Window" << std::endl;
-    std::cout << " 3 : Exact Dynamic Programming	 4 : Top Down" << std::endl;
-    std::cout << " 5 : Bottom Up			 6 : Sliding Window" << std::endl;
-    std::cout << " 7 : SWING Filter			 0 : Exit Loop" << std::endl;
+    std::cout << " 3 : Exact Dynamic Programming		 4 : Top Down" << std::endl;
+    std::cout << " 5 : Bottom Up				 6 : Sliding Window" << std::endl;
+    std::cout << " 7 : SWING Filter			 8 : Show Evaluations" << std::endl;
+    std::cout << " 0 : Exit Loop" << std::endl;
     std::cout << " > Choose an adaptive PLA method: "; 
     std::cin.sync();
     std::cin >> input;
   }
 
-
-  /****** GENERATE SOME EVALUATIONS *******/
-  std::cout << "\nEvaluate the Adaptive PLA methods" << std::endl;
-  std::cout << "hit enter to continue: " << std::endl;
-  std::getline(std::cin, line);
-  std::getline(std::cin, line);
-
-  // Double Window PLA and Proj
-  auto d_w_apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, d_w_apla_f); };
-  LineGenerator d_w_apla_gen_l2 = { d_w_apla_gen_l2_f, "AV PLA" };
-  auto d_w_proj_apla_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s, parameter, d_w_proj_apla_f); };
-  LineGenerator d_w_proj_apla_gen_l2 = { d_w_proj_apla_gen_l2_f, "IP PLA" };
-  auto rdp_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,rdp_f); };
-  LineGenerator rdp_gen_l2 = { rdp_gen_l2_f, "RDP" };
-  auto bot_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,bottom_up_f); };
-  LineGenerator bot_gen_l2 = { bot_gen_l2_f, "B-U" };
-  auto sw_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,sw_f_compr); };
-  LineGenerator sw_gen_l2 = { sw_gen_l2_f, "SW" };
-  auto swing_gen_l2_f = [&](const Seqd& s, unsigned int parameter){ return general_eval::l2_of_method(s,parameter,swing_f_compr); };
-  LineGenerator swing_gen_l2 = { swing_gen_l2_f, "SWING" };
-  vector<LineGenerator> l2_generators = {
-	d_w_apla_gen_l2
-	, d_w_proj_apla_gen_l2
-	//, apla_gen_l2
-	, rdp_gen_l2
-	, bot_gen_l2
-	, sw_gen_l2
-	, swing_gen_l2
-  };
-  PlotDetails p_l2 = { "Mean Euclidean Distance of DRTs on " + datasets[di], "Target Dimension m", "L2", "img/demo/", PDF };
-  std::vector<Seqd> dataset_samples;
-  real_data.resize(10'000);
-  z_norm::z_normalise(real_data);
-  for (int i=0; i<10; i++) {
-    vector<double> dataset_sample(real_data.begin()+1000*i, real_data.begin()+1000*i+1000 );
-    z_norm::z_normalise(dataset_sample);
-    dataset_samples.push_back(dataset_sample);
-  }
-  plot::plot_mean_bars_generated(dataset_samples, { 45, 90, 180, 270 }, l2_generators, p_l2);
-
-
   /****** FIND SOME HEART-BEATS *****/
   std::cout << "\nUse similarity search to find heartbeats" << std::endl;
   std::cout << "hit enter to continue: " << std::endl;
+  std::getline(std::cin, line);
   std::getline(std::cin, line);
 
   di = 30;

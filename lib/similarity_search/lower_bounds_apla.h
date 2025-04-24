@@ -9,13 +9,23 @@
 
 #include "pla.h"
 
-#include <iostream>
+/**
+ * @file lower_bounds_apla.h
+ * @brief Header file for creation and merging of Partition Covers
+ */
+
 template <unsigned int S>
 using AplaPt =  std::array<std::tuple<DoublePair, unsigned int>,S>;
 typedef std::vector<double> Seqd;
 
+/**
+ * @brief apla_bounds namespace holds the functions for creation and merging of Partition Covers
+ */
 namespace apla_bounds {
 
+  /**
+   * @brief Region is a struct storing information about a segment of the Partition Cover
+   */
   struct Region { 
     DoublePair min_dp;
     unsigned int min_i;
@@ -26,6 +36,11 @@ namespace apla_bounds {
   using AplaMBR = std::array<Region, S>;
 
   using std::max, std::min;
+  /**
+   * @brief region_area calculates the sum of the area of the region in the plane
+   * @param r is the region to determine this area for
+   * @return non-negative number representing area of region in plane
+   */
   inline double region_area( const Region& r) {
     double width = r.max_i - r.min_i;
     double min_a = r.min_dp[0];
@@ -36,6 +51,12 @@ namespace apla_bounds {
 	   + (max(max_a,max_b) - min(max_a,max_b)) * width * 0.5
 	   + (max(min_a,min_b) - min(min_a,min_b)) * width * 0.5;
   }
+  /**
+   * @brief region_merge calculates the merge of two segments (regions)
+   * @param r1 is the first region
+   * @param r2 is the second region
+   * @return new region that contains the previous two
+   */
   inline Region region_merge( const Region& r1, const Region& r2)
   {
     int min_i = min(r1.min_i, r2.min_i);
@@ -67,6 +88,13 @@ namespace apla_bounds {
     return { {r_lmin, (r_rmin-r_lmin)/double(max_i-min_i)}, (unsigned int) min_i , {r_lmax, (r_rmax-r_lmax)/double(max_i-min_i)}, (unsigned int) max_i};
   }
 
+  /**
+   * @brief dist_to_region_sqr takes a current point (global_offset, qi) and calcuates the distance to the region r
+   * @param qi is the value of the uncompressed time series at time global_offset
+   * @param r is the region to measure the distance to
+   * @param global_offset is the time index of qi from the time series
+   * @return non negative number representing distance to the region
+   */
   inline double dist_to_region_sqr( const double& qi, const Region& r, unsigned int global_offset)
   {
     double r_min_est = r.min_dp[1] * (global_offset - r.min_i) + r.min_dp[0];
@@ -76,6 +104,14 @@ namespace apla_bounds {
     if (qi > r_max_est) return (qi-r_max_est)*(qi-r_max_est);
     return 0.0;
   }
+  /**
+   * @brief dist_to_regions_sqr takes a current point (global_offset, qi) and calcuates the distance to the array of regions 
+   * @param qi is the value of the uncompressed time series at time global_offset
+   * @param rstart is a constant pointer to an array of regions (a partition cover)
+   * @param rend is a constant pointer to an array of regions (a partition cover)
+   * @param global_offset is the time index of qi from the time series
+   * @return non negative number representing distance to the region
+   */
   inline double dist_to_regions_sqr( const double& qi, const Region* const rstart, const Region* const rend, unsigned int global_offset)
   {
     auto min_f = [&](const double& min_d, const Region& r){
@@ -86,11 +122,21 @@ namespace apla_bounds {
     return std::accumulate(rstart, rend+1, -1.0, min_f);
   }
 
+  /**
+   * @brief mbr_area calculates the total area of the partition cover in the plane as the sum of area of regions
+   * @param mbr is a Partition Cover
+   */
   template <unsigned int S>
   double mbr_area(const AplaMBR<S>& mbr)
   {
     return std::accumulate( mbr.begin(), mbr.end(), 0.0, [](const double& d, const Region& r){ return d+region_area(r); });
   }
+  /**
+   * @brief mbr_merge merges two partition covers by region wise merges
+   * @param mbr1 is a Partition Cover
+   * @param mbr2 is a Partition Cover
+   * @return a Partition Cover that contains both Partition Covers
+   */
   template <unsigned int S>
   AplaMBR<S> mbr_merge(const AplaMBR<S>& mbr1, const AplaMBR<S>& mbr2)
   {
@@ -100,6 +146,12 @@ namespace apla_bounds {
     }
     return ret;
   }
+  /**
+   * @brief dist_to_mbr_sqr takes a time series q and Partition Cover mbr and returns the distance between the two
+   * @param q is a time series (uncompressed)
+   * @param mbr is a constant reference to a Partition Cover
+   * @return non negative number representing distance to the mbr
+   */
   template <unsigned int S>
   double dist_to_mbr_sqr( const Seqd& q, const AplaMBR<S>& mbr ) {
     int active_start_i = 0;
@@ -126,6 +178,13 @@ namespace apla_bounds {
     return dist;
   }
   
+  /**
+   * @brief ptrs_to_region converts an array of doubles into a region that bounds them
+   * @param start points to the array beginning
+   * @param end points to the arrays end (final element)
+   * @param g_start_i is the starting index of this in the larger time series being approximated
+   * @return region that bounds the contiguous array of points
+   */
   inline Region ptrs_to_region(const double* const start, const double* const end, unsigned int g_start_i)
   {
     if (start == end) return { {start[0], 0}, g_start_i, {start[0], 0}, g_start_i };
@@ -157,6 +216,12 @@ namespace apla_bounds {
     }
     return ret;
   }
+  /**
+   * @brief vec_to_mbr takes a series q and a Adaptive PLA algorithm and returns a Partition Cover that covers q using the algorithm
+   * @param q is the uncompressed time series to cover
+   * @param f is the DRT function to q to an approximation
+   * @return Partition Cover that covers q
+   */
   template <unsigned int S>
   AplaMBR<S> vec_to_mbr(const std::vector<double>& q, pla::APLA_DRT f)
   {
@@ -171,6 +236,13 @@ namespace apla_bounds {
     }
     return mbr;
   }
+  /**
+   * @brief vec_to_subseq_mbrs takes a series q and a Adaptive PLA algorithm, returning an array of PC that cover the subsequences of q
+   * @param q is the uncompressed time series to cover
+   * @param subseq_size is the desired size of the subsequence
+   * @param f is the DRT function to q to an approximation
+   * @return array of partition covers, the ith PC covers the ith subsequence
+   */
   template <unsigned int S>
   std::vector<AplaMBR<S>> vec_to_subseq_mbrs( const std::vector<double>& q, unsigned int subseq_size, pla::APLA_DRT f)
   {

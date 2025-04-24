@@ -5,11 +5,11 @@ using std::vector;
 
 double seq_scan::l2_sqr(const double* const s1start, const double* const s2start, unsigned int len)
 {
-  double mse = 0;
+  double se = 0;
   for (int i=0; i < len; ++i) {
-    mse += ( *(s1start+i) - *(s2start+i) ) * ( *(s1start+i) - *(s2start+i) );
+    se += ( *(s1start+i) - *(s2start+i) ) * ( *(s1start+i) - *(s2start+i) );
   }
-  return mse;
+  return se;
 }
 
 vector<unsigned int> seq_scan::find_similar_subseq_indexes(const vector<double>& series, const vector<double>& query, double epsilon)
