@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['normalfunctor_0',['NormalFunctor',['../classNormalFunctor.html',1,'']]]
+  ['plotdetails_0',['PlotDetails',['../structPlotDetails.html',1,'']]]
 ];

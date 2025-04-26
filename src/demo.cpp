@@ -74,7 +74,7 @@ void demo()
   auto d_w_proj_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(d_w::y_proj_pla(s, num_params, 5, 5)); };
   auto d_w_proj_apla_f_uncompr = [](const vector<double>& s, unsigned int num_params){ return d_w::y_proj_pla(s, num_params, 5, 5); };
 
-  auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(exact_dp::min_mse_pla(s, num_params)); }; 
+  auto exact_apla_f = [](const vector<double>& s, unsigned int num_params){ return pla::apla_to_seq(exact_dp::min_l2_pla(s, num_params)); }; 
 
   auto rdp_f_uncompr = [&](const Seqd& s, unsigned int parameter){ 
     auto apla = dac_curve_fitting::dac_linear(s, 0.1);

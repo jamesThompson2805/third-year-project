@@ -84,30 +84,42 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="pla_8h_source.html">pla.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="apla__segment__and__merge_8h_source.html">apla_segment_and_merge.h</a>&quot;</code><br />
 </div>
 <p><a href="bottom__up_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacebottom__up" id="r_namespacebottom__up"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebottom__up.html">bottom_up</a></td></tr>
+<tr class="memdesc:namespacebottom__up"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespacebottom__up.html" title="bottom_up namespace containts methods for bottom up">bottom_up</a> namespace containts methods for bottom up <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aad60b0215298e504984342391e3263a9" id="r_aad60b0215298e504984342391e3263a9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebottom__up.html#aad60b0215298e504984342391e3263a9">bottom_up::ERROR_F</a> = double (*)(const double *const, const <a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>&amp;, unsigned int)</td></tr>
+<tr class="memitem:aad60b0215298e504984342391e3263a9" id="r_aad60b0215298e504984342391e3263a9"><td class="memItemLeft" align="right" valign="top"><a id="aad60b0215298e504984342391e3263a9" name="aad60b0215298e504984342391e3263a9"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>bottom_up::ERROR_F</b> = double (*)(const double *const, const <a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>&amp;, unsigned int)</td></tr>
+<tr class="memdesc:aad60b0215298e504984342391e3263a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">ERROR_F is a function taking a pointer to an array, straight line and length of array and returning a distance. <br /></td></tr>
 <tr class="separator:aad60b0215298e504984342391e3263a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8cf79da540a5816497434ec4edb900ab" id="r_a8cf79da540a5816497434ec4edb900ab"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebottom__up.html#a8cf79da540a5816497434ec4edb900ab">bottom_up::se</a> (const double *const, const <a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &amp;, unsigned int)</td></tr>
+<tr class="memitem:a8cf79da540a5816497434ec4edb900ab" id="r_a8cf79da540a5816497434ec4edb900ab"><td class="memItemLeft" align="right" valign="top"><a id="a8cf79da540a5816497434ec4edb900ab" name="a8cf79da540a5816497434ec4edb900ab"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>bottom_up::se</b> (const double *const, const <a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &amp;, unsigned int)</td></tr>
+<tr class="memdesc:a8cf79da540a5816497434ec4edb900ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">se is function returning squared error of approximation, se is an example of ERROR_F <br /></td></tr>
 <tr class="separator:a8cf79da540a5816497434ec4edb900ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab07fbdc3536386d35124eb176e4f9440" id="r_ab07fbdc3536386d35124eb176e4f9440"><td class="memItemLeft" align="right" valign="top"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebottom__up.html#ab07fbdc3536386d35124eb176e4f9440">bottom_up::bottom_up</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;, double, <a class="el" href="namespacebottom__up.html#aad60b0215298e504984342391e3263a9">ERROR_F</a>)</td></tr>
-<tr class="separator:ab07fbdc3536386d35124eb176e4f9440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8824af0bf9709ddc6a30444ab974a61f" id="r_a8824af0bf9709ddc6a30444ab974a61f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebottom__up.html#a8824af0bf9709ddc6a30444ab974a61f">bottom_up::bottom_up_early_cutoff</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;, double, <a class="el" href="namespacebottom__up.html#aad60b0215298e504984342391e3263a9">ERROR_F</a>, unsigned int)</td></tr>
-<tr class="separator:a8824af0bf9709ddc6a30444ab974a61f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba91537fdb2e70e53ea6b151d231c0e4" id="r_aba91537fdb2e70e53ea6b151d231c0e4"><td class="memItemLeft" align="right" valign="top"><a id="aba91537fdb2e70e53ea6b151d231c0e4" name="aba91537fdb2e70e53ea6b151d231c0e4"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>bottom_up::maxdev</b> (const double *const, const <a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &amp;, unsigned int)</td></tr>
+<tr class="memdesc:aba91537fdb2e70e53ea6b151d231c0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">maxdev is function returning maximum deviation of approximation, maxdev is an example of ERROR_F <br /></td></tr>
+<tr class="separator:aba91537fdb2e70e53ea6b151d231c0e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88b367b84a73f6a64a14b3a2d0316cc" id="r_ac88b367b84a73f6a64a14b3a2d0316cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebottom__up.html#ac88b367b84a73f6a64a14b3a2d0316cc">bottom_up::bottom_up</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, double num_params, <a class="el" href="namespacebottom__up.html#aad60b0215298e504984342391e3263a9">ERROR_F</a> err)</td></tr>
+<tr class="memdesc:ac88b367b84a73f6a64a14b3a2d0316cc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespacebottom__up.html" title="bottom_up namespace containts methods for bottom up">bottom_up</a> function calculates bottom up on a sequence using some measurement to assess error of segments  <br /></td></tr>
+<tr class="separator:ac88b367b84a73f6a64a14b3a2d0316cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e086e9f21c861b00744998c94f79e4c" id="r_a0e086e9f21c861b00744998c94f79e4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebottom__up.html#a0e086e9f21c861b00744998c94f79e4c">bottom_up::bottom_up_early_cutoff</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, double num_params, <a class="el" href="namespacebottom__up.html#aad60b0215298e504984342391e3263a9">ERROR_F</a> err, unsigned int k)</td></tr>
+<tr class="memdesc:a0e086e9f21c861b00744998c94f79e4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">bottom_up_early_cutoff function operates same as <a class="el" href="namespacebottom__up.html" title="bottom_up namespace containts methods for bottom up">bottom_up</a> but ends early if it reaches the target dimension  <br /></td></tr>
+<tr class="separator:a0e086e9f21c861b00744998c94f79e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>is a header file containing methods for bottom up approximation </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0

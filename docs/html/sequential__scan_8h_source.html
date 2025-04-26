@@ -84,21 +84,26 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">sequential_scan.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SEQUENTIAL_SCAN_H</span></div>
+<a href="sequential__scan_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SEQUENTIAL_SCAN_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SEQUENTIAL_SCAN_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span>seq_scan {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">double</span> l2_sqr(<span class="keyword">const</span> <span class="keywordtype">double</span>* <span class="keyword">const</span> s1start, <span class="keyword">const</span> <span class="keywordtype">double</span>* <span class="keyword">const</span> s2start, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> len);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>std::vector&lt;unsigned int&gt; find_similar_subseq_indexes(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; series, <span class="keyword">const</span> std::vector&lt;double&gt;&amp; query, <span class="keywordtype">double</span> epsilon);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>std::vector&lt;unsigned int&gt; find_k_closest_indexes(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; series, <span class="keyword">const</span> std::vector&lt;double&gt;&amp; query, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> k);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>};</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespaceseq__scan.html">   14</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceseq__scan.html">seq_scan</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceseq__scan.html#a1935c2507450b83d4a577291bcff2160">l2_sqr</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>* <span class="keyword">const</span> s1start, <span class="keyword">const</span> <span class="keywordtype">double</span>* <span class="keyword">const</span> s2start, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> len);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespaceseq__scan.html#a40153bf4066521b14e3a1c59fd282ecf">   32</a></span>  std::vector&lt;unsigned int&gt; <a class="code hl_function" href="namespaceseq__scan.html#a40153bf4066521b14e3a1c59fd282ecf">find_similar_subseq_indexes</a>(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; series, <span class="keyword">const</span> std::vector&lt;double&gt;&amp; query, <span class="keywordtype">double</span> epsilon);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  std::vector&lt;unsigned int&gt; <a class="code hl_function" href="namespaceseq__scan.html#aabba1db0fbefa1e36cf02922e325db55">find_k_closest_indexes</a>(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; series, <span class="keyword">const</span> std::vector&lt;double&gt;&amp; query, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> k);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespaceseq__scan_html"><div class="ttname"><a href="namespaceseq__scan.html">seq_scan</a></div><div class="ttdoc">seq_scan is namespace for solutions to simsearch and k-nn by sequential scan</div><div class="ttdef"><b>Definition</b> sequential_scan.h:14</div></div>
+<div class="ttc" id="anamespaceseq__scan_html_a1935c2507450b83d4a577291bcff2160"><div class="ttname"><a href="namespaceseq__scan.html#a1935c2507450b83d4a577291bcff2160">seq_scan::l2_sqr</a></div><div class="ttdeci">double l2_sqr(const double *const s1start, const double *const s2start, unsigned int len)</div><div class="ttdoc">l2_sqr returns the squared error of the two sequences</div><div class="ttdef"><b>Definition</b> sequential_scan.cpp:6</div></div>
+<div class="ttc" id="anamespaceseq__scan_html_a40153bf4066521b14e3a1c59fd282ecf"><div class="ttname"><a href="namespaceseq__scan.html#a40153bf4066521b14e3a1c59fd282ecf">seq_scan::find_similar_subseq_indexes</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; find_similar_subseq_indexes(const std::vector&lt; double &gt; &amp;series, const std::vector&lt; double &gt; &amp;query, double epsilon)</div><div class="ttdoc">find_similar_subseq_indexes finds all subsequences of series that are within epsilon of query</div></div>
+<div class="ttc" id="anamespaceseq__scan_html_aabba1db0fbefa1e36cf02922e325db55"><div class="ttname"><a href="namespaceseq__scan.html#aabba1db0fbefa1e36cf02922e325db55">seq_scan::find_k_closest_indexes</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; find_k_closest_indexes(const std::vector&lt; double &gt; &amp;series, const std::vector&lt; double &gt; &amp;query, unsigned int k)</div><div class="ttdoc">find_k_closest_indexes finds all the k closest subsequences to a query</div><div class="ttdef"><b>Definition</b> sequential_scan.cpp:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

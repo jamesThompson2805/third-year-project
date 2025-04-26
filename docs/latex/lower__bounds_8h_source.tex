@@ -1,6 +1,6 @@
 \doxysection{lower\+\_\+bounds.\+h}
 \hypertarget{lower__bounds_8h_source}{}\label{lower__bounds_8h_source}\index{lib/similarity\_search/lower\_bounds.h@{lib/similarity\_search/lower\_bounds.h}}
-
+\mbox{\hyperlink{lower__bounds_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LOWER\_BOUNDS\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LOWER\_BOUNDS\_H}}
@@ -9,27 +9,26 @@
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <tuple>}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <array>}}
 \DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pla_8h}{pla.h}}"{}}}
 \DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ Seqddt;}
-\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ std::vector<double>\ Seqd;}
-\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRegion}{Region}}\ \{}
-\DoxyCodeLine{00013\ \ \ DoublePair\ min\_dp;}
-\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_i;}
-\DoxyCodeLine{00015\ \ \ DoublePair\ max\_dp;}
-\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_i;}
-\DoxyCodeLine{00017\ \};}
-\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ std::vector<Region>\ PlaMbr;}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }lower\_bounds\ \{}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{double}\ dist\_pla\_lb\_sqr(\textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ Seqddt\&\ s);}
-\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{double}\ dist\_pla\_lb(\textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ Seqddt\&\ s);}
-\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{double}\ dist\_mbr\_lb\_sqr(\textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ PlaMbr\&\ r);}
-\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{double}\ dist\_mbr\_lb(\textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ PlaMbr\&\ r);}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ std::vector<double>\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRegion}{Region}}\ \{}
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{DoublePair}}\ min\_dp;}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_i;}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{DoublePair}}\ max\_dp;}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_i;}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ std::vector<Region>\ PlaMbr;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacelower__bounds}{lower\_bounds}}\ \{}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacelower__bounds_a8bef2c8184ffc2e53e34f9210c587a71}{dist\_pla\_lb\_sqr}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ q,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s);}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacelower__bounds_a7bc2a4661980ce912309ff18ef4053cf}{dist\_pla\_lb}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ q,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s);}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacelower__bounds_af0b1c12ae1e9634b83faf73f7ffc94e7}{dist\_mbr\_lb\_sqr}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ q,\ \textcolor{keyword}{const}\ PlaMbr\&\ r);}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacelower__bounds_aa64133748369b134fcda1d252d063ad8}{dist\_mbr\_lb}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ q,\ \textcolor{keyword}{const}\ PlaMbr\&\ r);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

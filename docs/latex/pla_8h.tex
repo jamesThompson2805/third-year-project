@@ -9,69 +9,53 @@
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacepla}{pla}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em pla namespace holds functions for PLA algorithm and decompression \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef std\+::array$<$ double, 2 $>$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}
-\item 
-typedef std\+::vector$<$ double $>$ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}
-\item 
-typedef std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{pla_8h_a60727584f5467b36a144216eacf25bdd}{Seqdd}}
-\item 
-typedef std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}
-\item 
-using \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{pla\+::\+APLA\+\_\+\+DRT}} = std\+::function$<$ std\+::vector$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int$>$$>$(const std\+::vector$<$double$>$\&, unsigned int)$>$
-\item 
-{\footnotesize template$<$unsigned int NS$>$ }\\using \mbox{\hyperlink{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4}{pla\+::\+APLA}} = std\+::array$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}},unsigned int$>$,NS$>$
-\end{DoxyCompactItemize}
+\Hypertarget{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}\label{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786} 
+typedef std\+::array$<$ double, 2 $>$ {\bfseries Double\+Pair}
+\begin{DoxyCompactList}\small\item\em Double\+Pair describes a line using two parameters, the first is the y-\/intercept and the second the gradient It is customary for a PLA algorithm to have each segments linear approximation approximate as if the segment starts at 0. \end{DoxyCompactList}\item 
+\Hypertarget{pla_8h_a5d3953cd3e75718fc534b351149f9f98}\label{pla_8h_a5d3953cd3e75718fc534b351149f9f98} 
+typedef std\+::vector$<$ double $>$ {\bfseries Seqd}
+\begin{DoxyCompactList}\small\item\em Seqd is an array of double values, representing a sequence. \end{DoxyCompactList}\item 
+\Hypertarget{pla_8h_a60727584f5467b36a144216eacf25bdd}\label{pla_8h_a60727584f5467b36a144216eacf25bdd} 
+typedef std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ {\bfseries Seqdd}
+\begin{DoxyCompactList}\small\item\em Seqdd is an array of pair of doubles, representing a series of lines. \end{DoxyCompactList}\item 
+\Hypertarget{pla_8h_abdf22d5cee75eed0991db20be5b1efcc}\label{pla_8h_abdf22d5cee75eed0991db20be5b1efcc} 
+typedef std\+::vector$<$ unsigned int $>$ {\bfseries Sequi}
+\begin{DoxyCompactList}\small\item\em Sequi is an array of unsigned integers. \end{DoxyCompactList}\item 
+\Hypertarget{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}\label{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc} 
+typedef std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ {\bfseries Seqddt}
+\begin{DoxyCompactList}\small\item\em Seqddt is an array of triples, representing the information for an adaptive PLA segment. \end{DoxyCompactList}\item 
+\Hypertarget{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}\label{namespacepla_a6a3d8a0f973d3b199407f277870e4c00} 
+using {\bfseries pla\+::\+APLA\+\_\+\+DRT} = std\+::function$<$ std\+::vector$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int$>$$>$(const std\+::vector$<$double$>$\&, unsigned int)$>$
+\begin{DoxyCompactList}\small\item\em APLA\+\_\+\+DRT represents a function that takes a series and target dimension and returns the sorted array of APLA segments. \end{DoxyCompactList}\item 
+\Hypertarget{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4}\label{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4} 
+{\footnotesize template$<$unsigned int NS$>$ }\\using {\bfseries pla\+::\+APLA} = std\+::array$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}},unsigned int$>$,NS$>$
+\begin{DoxyCompactList}\small\item\em APLA is a fixed length array of segments that ensures the dimension of an approximation are all the same. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{namespacepla_a54deab779fcb06a1e40fddadb3575e58}{pla\+::chunk\+\_\+series}} (std\+::vector$<$ double $>$ series, unsigned int chunk\+\_\+size)
-\item 
+\begin{DoxyCompactList}\small\item\em chunk\+\_\+series takes a series and returns the series segmented into chunks \end{DoxyCompactList}\item 
 \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \mbox{\hyperlink{namespacepla_acf95cd1dd69140bbfa8f0a677c36fcdb}{pla\+::regression}} (const double \texorpdfstring{$\ast$}{*}const start, const double \texorpdfstring{$\ast$}{*}const end)
-\item 
+\begin{DoxyCompactList}\small\item\em regression calculates the line of best fit on an array of points \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespacepla_a317cb9110bf6260a914e2c683297f8ad}{pla\+::regression\+\_\+thru\+\_\+point}} (double first\+\_\+point, const double \texorpdfstring{$\ast$}{*}const start, const double \texorpdfstring{$\ast$}{*}const end)
-\item 
-std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{namespacepla_af6438fa7ac15f2e620352db7cc5c2984}{pla\+::sliding\+\_\+window\+\_\+regression}} (const std\+::vector$<$ double $>$ \&series, unsigned int w)
-\item 
-std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{namespacepla_a3ae7e9fb7afda5d688edb8bc50c6deab}{pla\+::chunk\+\_\+regression}} (const std\+::vector$<$ double $>$ \&series, unsigned int num\+\_\+params)
-\item 
-std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{namespacepla_ad4a679bfb7ce04a858c4354da743727d}{pla\+::pla}} (const std\+::vector$<$ double $>$ \&series, unsigned int num\+\_\+params)
-\item 
+\begin{DoxyCompactList}\small\item\em regression\+\_\+thru\+\_\+point calculates line of best fit that starts at first point and approximates rest \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{namespacepla_adc2204968460bfeedcf17169701a450a}{pla\+::subsequence\+\_\+regression}} (const std\+::vector$<$ double $>$ \&series, unsigned int w)
+\begin{DoxyCompactList}\small\item\em subsequence\+\_\+regression calculates the line of best fit for every subsequence of size w \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ \mbox{\hyperlink{namespacepla_abfd2f080eda13393bf959a233003eab7}{pla\+::pla}} (const std\+::vector$<$ double $>$ \&series, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em pla calculates the pla algorithm on a series \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespacepla_abc6491b74ce05f48e3bd54e0ec5e6514}{pla\+::pla\+\_\+mse}} (const std\+::vector$<$ double $>$ \&series, unsigned int interval\+\_\+size)
-\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepla_afe5dd11aadc38e9c3a562860e0a00d25}{pla\+::pla\+\_\+to\+\_\+seq}} (const std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$, unsigned int int\+\_\+size)
-\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepla_ab32753f980424f3e0a740e4c2da1dcc9}{pla\+::apla\+\_\+to\+\_\+seq}} (const std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$)
-\item 
+\begin{DoxyCompactList}\small\item\em pla\+\_\+mse calculates pla on the series and returns the mean squared error of the approximation to the original \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepla_aa6f914d1adcda1b216a3801316cdb384}{pla\+::pla\+\_\+to\+\_\+seq}} (const std\+::vector$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} $>$ pla\+\_\+s, unsigned int int\+\_\+size)
+\begin{DoxyCompactList}\small\item\em pla\+\_\+to\+\_\+seq takes a pla approximation and its segment size and returns the full size approximation \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepla_ab4acdbcceda3e0a8d90a41b5848ad8f6}{pla\+::apla\+\_\+to\+\_\+seq}} (const std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ apla\+\_\+s)
+\begin{DoxyCompactList}\small\item\em apla\+\_\+to\+\_\+seq takes a apla approximation and returns the uncompressed approximation \end{DoxyCompactList}\item 
 {\footnotesize template$<$unsigned int NS$>$ }\\std\+::vector$<$ \mbox{\hyperlink{namespacepla_ab44773fad0df6bd9b9816ddbaa0bfbb4}{APLA}}$<$ NS $>$ $>$ \mbox{\hyperlink{namespacepla_ac82c30c4f0758c7fc125822ce389542c}{pla\+::apla\+\_\+drt\+\_\+on\+\_\+subseqs}} (const std\+::vector$<$ double $>$ \&q, unsigned int subseq\+\_\+size, \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{APLA\+\_\+\+DRT}} f)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em apla\+\_\+drt\+\_\+on\+\_\+subseqs calculates Adaptive PLA on every subsequence of the given size and returns the array of approximations \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Typedef Documentation}
-\Hypertarget{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}\label{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786} 
-\index{pla.h@{pla.h}!DoublePair@{DoublePair}}
-\index{DoublePair@{DoublePair}!pla.h@{pla.h}}
-\doxysubsubsection{\texorpdfstring{DoublePair}{DoublePair}}
-{\footnotesize\ttfamily typedef std\+::array$<$double, 2$>$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}}
-
-\Hypertarget{pla_8h_a5d3953cd3e75718fc534b351149f9f98}\label{pla_8h_a5d3953cd3e75718fc534b351149f9f98} 
-\index{pla.h@{pla.h}!Seqd@{Seqd}}
-\index{Seqd@{Seqd}!pla.h@{pla.h}}
-\doxysubsubsection{\texorpdfstring{Seqd}{Seqd}}
-{\footnotesize\ttfamily typedef std\+::vector$<$double$>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}}
-
-\Hypertarget{pla_8h_a60727584f5467b36a144216eacf25bdd}\label{pla_8h_a60727584f5467b36a144216eacf25bdd} 
-\index{pla.h@{pla.h}!Seqdd@{Seqdd}}
-\index{Seqdd@{Seqdd}!pla.h@{pla.h}}
-\doxysubsubsection{\texorpdfstring{Seqdd}{Seqdd}}
-{\footnotesize\ttfamily typedef std\+::vector$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}$>$ \mbox{\hyperlink{pla_8h_a60727584f5467b36a144216eacf25bdd}{Seqdd}}}
-
-\Hypertarget{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}\label{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc} 
-\index{pla.h@{pla.h}!Seqddt@{Seqddt}}
-\index{Seqddt@{Seqddt}!pla.h@{pla.h}}
-\doxysubsubsection{\texorpdfstring{Seqddt}{Seqddt}}
-{\footnotesize\ttfamily typedef std\+::vector$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}},unsigned int$>$ $>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}}}
-
+\doxysubsection{Detailed Description}
+contains the pla approximation and utilitiy definitions adjacent to it 

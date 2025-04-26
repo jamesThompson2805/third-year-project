@@ -1,11 +1,19 @@
 \doxysection{apca Namespace Reference}
 \hypertarget{namespaceapca}{}\label{namespaceapca}\index{apca@{apca}}
+
+
+apca namespace contains only the apca approximation  
+
+
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceapca_a947309cf543ab81054c6186648baf0ae}{apca}} (const std\+::vector$<$ double $>$ \&s, unsigned int num\+\_\+params)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em apca function converts a time series to an APCA form \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+apca namespace contains only the apca approximation 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{namespaceapca_a947309cf543ab81054c6186648baf0ae}\label{namespaceapca_a947309cf543ab81054c6186648baf0ae} 
@@ -14,3 +22,17 @@ std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{n
 \doxysubsubsection{\texorpdfstring{apca()}{apca()}}
 {\footnotesize\ttfamily vector$<$ tuple$<$ double, unsigned int $>$ $>$ apca\+::apca (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{s,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
 
+
+
+apca function converts a time series to an APCA form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a series to convert \\
+\hline
+{\em num\+\_\+params} & is the dimension the approximation will occupy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an array of pairs of a value and index where the value is the mean on the segment ending at the index, the array is sorted 
+\end{DoxyReturn}

@@ -1,26 +1,23 @@
 \doxysection{bottom\+\_\+up.\+h}
 \hypertarget{bottom__up_8h_source}{}\label{bottom__up_8h_source}\index{lib/dimension\_reductions/bottom\_up.h@{lib/dimension\_reductions/bottom\_up.h}}
-
+\mbox{\hyperlink{bottom__up_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BOTTOM\_UP\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BOTTOM\_UP\_H}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pla_8h}{pla.h}}"{}}}
 \DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}apla\_segment\_and\_merge.h"{}}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }bottom\_up\ \{}
-\DoxyCodeLine{00011\ \ \ \textcolor{keyword}{using\ }ERROR\_F\ =\ double\ (*)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\textcolor{keyword}{const},\ \textcolor{keyword}{const}\ DoublePair\&,\ \textcolor{keywordtype}{unsigned}\ int);}
-\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{double}\ se(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\textcolor{keyword}{const},\ \textcolor{keyword}{const}\ DoublePair\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00013\ \ \ Seqddt\ bottom\_up(\textcolor{keyword}{const}\ Seqd\&,\ \textcolor{keywordtype}{double},\ ERROR\_F);}
-\DoxyCodeLine{00014\ \ \ Seqddt\ bottom\_up\_early\_cutoff(\textcolor{keyword}{const}\ Seqd\&,\ \textcolor{keywordtype}{double},\ ERROR\_F,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00015\ \};}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebottom__up}{bottom\_up}}\ \{}
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\_F}}\ =\ double\ (*)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\textcolor{keyword}{const},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{DoublePair}}\&,\ \textcolor{keywordtype}{unsigned}\ int);}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacebottom__up_a8cf79da540a5816497434ec4edb900ab}{se}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\textcolor{keyword}{const},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{DoublePair}}\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacebottom__up_aba91537fdb2e70e53ea6b151d231c0e4}{maxdev}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\textcolor{keyword}{const},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{DoublePair}}\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\ \mbox{\hyperlink{namespacebottom__up}{bottom\_up}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \textcolor{keywordtype}{double}\ num\_params,\ \mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\_F}}\ err);}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\ \mbox{\hyperlink{namespacebottom__up_a0e086e9f21c861b00744998c94f79e4c}{bottom\_up\_early\_cutoff}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \textcolor{keywordtype}{double}\ num\_params,\ \mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\_F}}\ err,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

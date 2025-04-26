@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['cauchyfunctor_0',['CauchyFunctor',['../classCauchyFunctor.html#aad0c348e8578e687a90af614d22efb4c',1,'CauchyFunctor']]],
-  ['comp_5fof_5fmethod_1',['comp_of_method',['../namespacegeneral__eval.html#a9a677b8a83cd29e8c5f2c72476524b10',1,'general_eval']]],
-  ['cputime_5fms_5fof_5fmethod_2',['cputime_ms_of_method',['../namespacegeneral__eval.html#a1a6c338fe30d46ca4b472644605cb651',1,'general_eval']]]
+  ['barplot_5fmany_5fseries_0',['barplot_many_series',['../namespaceplot.html#a46dfb3302745ceaf93f28d372828fd13',1,'plot']]],
+  ['bernfunctor_1',['BernFunctor',['../classBernFunctor.html#a03a8b5cd0d2df126f280476d3bd173da',1,'BernFunctor']]],
+  ['bottom_5fup_2',['bottom_up',['../namespacebottom__up.html#ac88b367b84a73f6a64a14b3a2d0316cc',1,'bottom_up']]],
+  ['bottom_5fup_5fearly_5fcutoff_3',['bottom_up_early_cutoff',['../namespacebottom__up.html#a0e086e9f21c861b00744998c94f79e4c',1,'bottom_up']]]
 ];

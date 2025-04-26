@@ -1,5 +1,4 @@
 #include "r_tree.h"
-#include "lower_bounds_apca.h"
 
 #include <gtest/gtest.h>
 

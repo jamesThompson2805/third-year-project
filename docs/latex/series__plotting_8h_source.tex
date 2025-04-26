@@ -12,7 +12,7 @@
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{plot__types_8h}{plot\_types.h}}"{}}}
 \DoxyCodeLine{00009\ }
 \DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSeries}{Series}}\ \{}
-\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ series;}
+\DoxyCodeLine{00021\ \ \ std::vector<double>\ series;}
 \DoxyCodeLine{00022\ \ \ std::string\ name;}
 \DoxyCodeLine{00023\ \};}
 \DoxyCodeLine{00024\ }
@@ -27,23 +27,36 @@
 \DoxyCodeLine{00045\ \ \ std::string\ method\_name;}
 \DoxyCodeLine{00046\ \};}
 \DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00052\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceplot}{plot}}\ \{\ }
-\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_ac04d391973e1e722dd94cf196023cdcd}{plot\_series}}(\mbox{\hyperlink{structSeries}{Series}}\&\ s,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00053\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLinePGGenerator}{LinePGGenerator}}\ \{}
+\DoxyCodeLine{00054\ \ \ std::function<\ double(\textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{double})\ >\ result\_gen;}
+\DoxyCodeLine{00055\ \ \ std::string\ method\_name;}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
 \DoxyCodeLine{00059\ }
-\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_aa7743ec830f3d475c11741c63ae6351c}{plot\_many\_series}}(std::vector<Series>\&\ vs,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
-\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a46dfb3302745ceaf93f28d372828fd13}{barplot\_many\_series}}(\textcolor{keyword}{const}\ std::vector<Series>\ \&vs,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ group\_labels,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a10979c227275b61b2e0b2070337c606f}{plot\_series\_diff}}(\mbox{\hyperlink{structSeries}{Series}}\&\ s1,\ \mbox{\hyperlink{structSeries}{Series}}\&\ s2,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a0dd6558f40503eb05365b2265a5327e7}{plot\_lines}}(std::vector<Line>\ ls,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_aeee601ec3f6e6fdecf57bafad3e6bc81}{plot\_lines\_generated}}(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ std::vector<unsigned\ int>\ x,\ std::vector<LineGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2}{plot\_lines\_generated\_ucr\_average}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ dataset\_names,\ std::string\ dataset\_filepath,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ ds\_size,}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<unsigned\ int>\ x,\ std::vector<LineGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
-\DoxyCodeLine{00111\ \}}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00063\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceplot}{plot}}\ \{\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_ac04d391973e1e722dd94cf196023cdcd}{plot\_series}}(\mbox{\hyperlink{structSeries}{Series}}\&\ s,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_aa7743ec830f3d475c11741c63ae6351c}{plot\_many\_series}}(std::vector<Series>\&\ vs,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a46dfb3302745ceaf93f28d372828fd13}{barplot\_many\_series}}(\textcolor{keyword}{const}\ std::vector<Series>\ \&vs,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ group\_labels,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a10979c227275b61b2e0b2070337c606f}{plot\_series\_diff}}(\mbox{\hyperlink{structSeries}{Series}}\&\ s1,\ \mbox{\hyperlink{structSeries}{Series}}\&\ s2,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a0dd6558f40503eb05365b2265a5327e7}{plot\_lines}}(std::vector<Line>\ ls,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_aeee601ec3f6e6fdecf57bafad3e6bc81}{plot\_lines\_generated}}(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ std::vector<unsigned\ int>\ x,\ std::vector<LineGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a7cc9d7fb165975ac04d03074341e77bb}{plot\_bars\_generated}}(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ std::vector<unsigned\ int>\ x,\ std::vector<LineGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a6f3b8d742538c3570b021543d9ed75dc}{plot\_barsPG\_generated}}(\textcolor{keyword}{const}\ std::vector<double>\&\ s,\ std::vector<double>\ x,\ std::vector<LinePGGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00136\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_aa92ac515f026f7d38a82b8cb04c2a1b8}{plot\_mean\_bars\_generated}}(\textcolor{keyword}{const}\ std::vector<std::vector<double>>\&\ vs,\ std::vector<unsigned\ int>\ x,\ std::vector<LineGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00148\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2}{plot\_lines\_generated\_ucr\_average}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ dataset\_names,\ std::string\ dataset\_filepath,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ ds\_size,}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<unsigned\ int>\ x,\ std::vector<LineGenerator>\ y\_gens,\ \mbox{\hyperlink{structPlotDetails}{PlotDetails}}\ p);}
+\DoxyCodeLine{00150\ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

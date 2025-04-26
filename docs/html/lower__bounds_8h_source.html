@@ -84,38 +84,48 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">lower_bounds.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef LOWER_BOUNDS_H</span></div>
+<a href="lower__bounds_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef LOWER_BOUNDS_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define LOWER_BOUNDS_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;pla.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="pla_8h.html">pla.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">typedef</span> std::vector&lt;std::tuple&lt;DoublePair, unsigned int&gt;&gt; Seqddt;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">typedef</span> std::vector&lt;double&gt; Seqd;</div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structRegion.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structRegion.html">Region</a> {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  DoublePair min_dp;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> min_i;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  DoublePair max_dp;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_i;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">typedef</span> std::vector&lt;std::tuple&lt;DoublePair, unsigned int&gt;&gt; <a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">typedef</span> std::vector&lt;double&gt; <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>;</div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structRegion.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structRegion.html">Region</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <a class="code hl_typedef" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> min_dp;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> min_i;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <a class="code hl_typedef" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> max_dp;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_i;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">typedef</span> std::vector&lt;Region&gt; PlaMbr;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span>lower_bounds {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">double</span> dist_pla_lb_sqr(<span class="keyword">const</span> Seqd&amp; q, <span class="keyword">const</span> Seqddt&amp; s);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordtype">double</span> dist_pla_lb(<span class="keyword">const</span> Seqd&amp; q, <span class="keyword">const</span> Seqddt&amp; s);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keywordtype">double</span> dist_mbr_lb_sqr(<span class="keyword">const</span> Seqd&amp; q, <span class="keyword">const</span> PlaMbr&amp; r);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordtype">double</span> dist_mbr_lb(<span class="keyword">const</span> Seqd&amp; q, <span class="keyword">const</span> PlaMbr&amp; r);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructRegion_html"><div class="ttname"><a href="structRegion.html">Region</a></div><div class="ttdef"><b>Definition</b> lower_bounds.h:12</div></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">typedef</span> std::vector&lt;Region&gt; PlaMbr;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespacelower__bounds.html">   28</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacelower__bounds.html">lower_bounds</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keywordtype">double</span> <a class="code hl_function" href="namespacelower__bounds.html#a8bef2c8184ffc2e53e34f9210c587a71">dist_pla_lb_sqr</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; q, <span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a>&amp; s);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keywordtype">double</span> <a class="code hl_function" href="namespacelower__bounds.html#a7bc2a4661980ce912309ff18ef4053cf">dist_pla_lb</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; q, <span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a>&amp; s);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keywordtype">double</span> <a class="code hl_function" href="namespacelower__bounds.html#af0b1c12ae1e9634b83faf73f7ffc94e7">dist_mbr_lb_sqr</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; q, <span class="keyword">const</span> PlaMbr&amp; r);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="namespacelower__bounds.html#aa64133748369b134fcda1d252d063ad8">   53</a></span>  <span class="keywordtype">double</span> <a class="code hl_function" href="namespacelower__bounds.html#aa64133748369b134fcda1d252d063ad8">dist_mbr_lb</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; q, <span class="keyword">const</span> PlaMbr&amp; r);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespacelower__bounds_html"><div class="ttname"><a href="namespacelower__bounds.html">lower_bounds</a></div><div class="ttdoc">lower_bounds handles distances to a MBR (Partition Cover) or individual approximation</div><div class="ttdef"><b>Definition</b> lower_bounds.h:28</div></div>
+<div class="ttc" id="anamespacelower__bounds_html_a7bc2a4661980ce912309ff18ef4053cf"><div class="ttname"><a href="namespacelower__bounds.html#a7bc2a4661980ce912309ff18ef4053cf">lower_bounds::dist_pla_lb</a></div><div class="ttdeci">double dist_pla_lb(const Seqd &amp;q, const Seqddt &amp;s)</div><div class="ttdoc">dist_pla_lb returns the l2 distance between series q and compressed s</div><div class="ttdef"><b>Definition</b> lower_bounds.cpp:25</div></div>
+<div class="ttc" id="anamespacelower__bounds_html_a8bef2c8184ffc2e53e34f9210c587a71"><div class="ttname"><a href="namespacelower__bounds.html#a8bef2c8184ffc2e53e34f9210c587a71">lower_bounds::dist_pla_lb_sqr</a></div><div class="ttdeci">double dist_pla_lb_sqr(const Seqd &amp;q, const Seqddt &amp;s)</div><div class="ttdoc">dist_pla_lb_sqr returns the squared l2 distance between series q and compressed s</div><div class="ttdef"><b>Definition</b> lower_bounds.cpp:13</div></div>
+<div class="ttc" id="anamespacelower__bounds_html_aa64133748369b134fcda1d252d063ad8"><div class="ttname"><a href="namespacelower__bounds.html#aa64133748369b134fcda1d252d063ad8">lower_bounds::dist_mbr_lb</a></div><div class="ttdeci">double dist_mbr_lb(const Seqd &amp;q, const PlaMbr &amp;r)</div><div class="ttdoc">dist_mbr_lb returns the l2 distance between series q and Partition Cover r</div></div>
+<div class="ttc" id="anamespacelower__bounds_html_af0b1c12ae1e9634b83faf73f7ffc94e7"><div class="ttname"><a href="namespacelower__bounds.html#af0b1c12ae1e9634b83faf73f7ffc94e7">lower_bounds::dist_mbr_lb_sqr</a></div><div class="ttdeci">double dist_mbr_lb_sqr(const Seqd &amp;q, const PlaMbr &amp;r)</div><div class="ttdoc">dist_mbr_lb_sqr returns the squared l2 distance between series q and Partition Cover r</div><div class="ttdef"><b>Definition</b> lower_bounds.cpp:66</div></div>
+<div class="ttc" id="apla_8h_html"><div class="ttname"><a href="pla_8h.html">pla.h</a></div></div>
+<div class="ttc" id="apla_8h_html_a5d3953cd3e75718fc534b351149f9f98"><div class="ttname"><a href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></div><div class="ttdeci">std::vector&lt; double &gt; Seqd</div><div class="ttdoc">Seqd is an array of double values, representing a sequence.</div><div class="ttdef"><b>Definition</b> pla.h:24</div></div>
+<div class="ttc" id="apla_8h_html_a6718cbd537740aa7243c3b2c3cbd6786"><div class="ttname"><a href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a></div><div class="ttdeci">std::array&lt; double, 2 &gt; DoublePair</div><div class="ttdoc">DoublePair describes a line using two parameters, the first is the y-intercept and the second the gra...</div><div class="ttdef"><b>Definition</b> pla.h:19</div></div>
+<div class="ttc" id="apla_8h_html_ad8b9cde7efeaabcc857cf363312e58fc"><div class="ttname"><a href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; DoublePair, unsigned int &gt; &gt; Seqddt</div><div class="ttdoc">Seqddt is an array of triples, representing the information for an adaptive PLA segment.</div><div class="ttdef"><b>Definition</b> pla.h:36</div></div>
+<div class="ttc" id="astructRegion_html"><div class="ttname"><a href="structRegion.html">Region</a></div><div class="ttdef"><b>Definition</b> lower_bounds.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,38 @@
+\doxysection{sw Namespace Reference}
+\hypertarget{namespacesw}{}\label{namespacesw}\index{sw@{sw}}
+
+
+sw namespace holds the sliding window approximation  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespacesw_a89cda69202e5343981112f9e86f58d1f}{sliding\+\_\+window}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, double epsilon)
+\begin{DoxyCompactList}\small\item\em sliding\+\_\+window approximates the series q by segments such that every point of a segment is within epsilon of its linear approximation \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+sw namespace holds the sliding window approximation 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacesw_a89cda69202e5343981112f9e86f58d1f}\label{namespacesw_a89cda69202e5343981112f9e86f58d1f} 
+\index{sw@{sw}!sliding\_window@{sliding\_window}}
+\index{sliding\_window@{sliding\_window}!sw@{sw}}
+\doxysubsubsection{\texorpdfstring{sliding\_window()}{sliding\_window()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} sw\+::sliding\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{q,  }\item[{double}]{epsilon }\end{DoxyParamCaption})}
+
+
+
+sliding\+\_\+window approximates the series q by segments such that every point of a segment is within epsilon of its linear approximation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & is the series to compress \\
+\hline
+{\em epsilon} & is the maximum error value of the approximation (maxdev(approximation) \texorpdfstring{$<$}{<}= epsilon) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the Adaptive PLA representation of the series q 
+\end{DoxyReturn}

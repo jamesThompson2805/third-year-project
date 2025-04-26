@@ -1,32 +1,60 @@
 \doxysection{swing Namespace Reference}
 \hypertarget{namespaceswing}{}\label{namespaceswing}\index{swing@{swing}}
+
+
+swing namespace contains swing approximation  
+
+
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \mbox{\hyperlink{namespaceswing_a67382ec4d48e68ce20d62a6c3d3ce565}{swing}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
-\item 
-std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceswing_a1a084dbba070beb6485f42b8bfe600ff}{swing\+\_\+compr}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
-\item 
-\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \mbox{\hyperlink{namespaceswing_adb5f90a6408d9e74ab50b5684091962d}{slide}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespaceswing_a67382ec4d48e68ce20d62a6c3d3ce565}{swing}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
+\begin{DoxyCompactList}\small\item\em swing converts series s to Adaptive PLA by use of maximum error epsilon \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceswing_a1a084dbba070beb6485f42b8bfe600ff}{swing\+\_\+compr}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
+\begin{DoxyCompactList}\small\item\em swing\+\_\+compr converts series s to Adaptive PLA and exploits that segments share endpoints to reduce space \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+swing namespace contains swing approximation 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespaceswing_adb5f90a6408d9e74ab50b5684091962d}\label{namespaceswing_adb5f90a6408d9e74ab50b5684091962d} 
-\index{swing@{swing}!slide@{slide}}
-\index{slide@{slide}!swing@{swing}}
-\doxysubsubsection{\texorpdfstring{slide()}{slide()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} swing\+::slide (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{epsilon }\end{DoxyParamCaption})}
-
 \Hypertarget{namespaceswing_a67382ec4d48e68ce20d62a6c3d3ce565}\label{namespaceswing_a67382ec4d48e68ce20d62a6c3d3ce565} 
 \index{swing@{swing}!swing@{swing}}
 \index{swing@{swing}!swing@{swing}}
 \doxysubsubsection{\texorpdfstring{swing()}{swing()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} swing\+::swing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{epsilon }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} swing\+::swing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{epsilon }\end{DoxyParamCaption})}
 
+
+
+swing converts series s to Adaptive PLA by use of maximum error epsilon 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the series to compress \\
+\hline
+{\em epsilon} & is the maximum error value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+approximation of s in the Adaptive PLA format 
+\end{DoxyReturn}
 \Hypertarget{namespaceswing_a1a084dbba070beb6485f42b8bfe600ff}\label{namespaceswing_a1a084dbba070beb6485f42b8bfe600ff} 
 \index{swing@{swing}!swing\_compr@{swing\_compr}}
 \index{swing\_compr@{swing\_compr}!swing@{swing}}
 \doxysubsubsection{\texorpdfstring{swing\_compr()}{swing\_compr()}}
-{\footnotesize\ttfamily vector$<$ tuple$<$ double, unsigned int $>$ $>$ swing\+::swing\+\_\+compr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{epsilon }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily vector$<$ tuple$<$ double, unsigned int $>$ $>$ swing\+::swing\+\_\+compr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{epsilon }\end{DoxyParamCaption})}
 
+
+
+swing\+\_\+compr converts series s to Adaptive PLA and exploits that segments share endpoints to reduce space 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the series to compress \\
+\hline
+{\em epsilon} & is the maximum error value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+approximation of s, only the gradient given and not y intercept as this can be determined by end of previous segment 
+\end{DoxyReturn}

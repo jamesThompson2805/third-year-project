@@ -1,15 +1,17 @@
 \doxysection{lib/dimension\+\_\+reductions/conv\+\_\+double\+\_\+window.h File Reference}
 \hypertarget{conv__double__window_8h}{}\label{conv__double__window_8h}\index{lib/dimension\_reductions/conv\_double\_window.h@{lib/dimension\_reductions/conv\_double\_window.h}}
-{\ttfamily \#include $<$vector$>$}\newline
-{\ttfamily \#include $<$tuple$>$}\newline
 {\ttfamily \#include "{}pla.\+h"{}}\newline
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacec__d__w}{c\+\_\+d\+\_\+w}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespacec__d__w}{c\+\_\+d\+\_\+w} namespace holds methods for optimised weighted average value double window \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ \mbox{\hyperlink{namespacec__d__w_aac6266e090963f3b457238e53881e6e5}{c\+\_\+d\+\_\+w\+::conv\+\_\+pla}} (const std\+::vector$<$ double $>$ \&s, unsigned int num\+\_\+params, const std\+::vector$<$ double $>$ \&l, const std\+::vector$<$ double $>$ \&r)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespacec__d__w_ab9519817e244791fa9499b9cace20b78}{c\+\_\+d\+\_\+w\+::conv\+\_\+pla}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, unsigned int num\+\_\+params, const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&l, const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&r)
+\begin{DoxyCompactList}\small\item\em conv\+\_\+pla calculates the segment split locations by the difference between the gradients of points weighted by distributions l and r \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+is the optimised version of weighted average value double window 

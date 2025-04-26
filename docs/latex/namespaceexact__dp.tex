@@ -1,40 +1,104 @@
 \doxysection{exact\+\_\+dp Namespace Reference}
 \hypertarget{namespaceexact__dp}{}\label{namespaceexact__dp}\index{exact\_dp@{exact\_dp}}
+
+
+\doxylink{namespaceexact__dp}{exact\+\_\+dp} namespace contains all methods of \doxylink{exact__dp_8h}{exact\+\_\+dp.\+h}  
+
+
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceexact__dp_a92cadd0aa26695d8c1c7e2ea329fcb68}{min\+\_\+mse\+\_\+paa}} (const std\+::vector$<$ double $>$ \&, unsigned int num\+\_\+params)
-\item 
-std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceexact__dp_a807b1e3a6ce6c4429426a820064d2497}{min\+\_\+mse\+\_\+pla}} (const std\+::vector$<$ double $>$ \&, unsigned int num\+\_\+params)
-\item 
-std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceexact__dp_ae55fba7cdeb7a5737f3597fa492e6874}{min\+\_\+maxdev\+\_\+paa}} (const std\+::vector$<$ double $>$ \&, unsigned int num\+\_\+params)
-\item 
-std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceexact__dp_a0466736511c1513d15480f8ef2df28c1}{min\+\_\+maxdev\+\_\+pla}} (const std\+::vector$<$ double $>$ \&, unsigned int num\+\_\+params)
-\end{DoxyCompactItemize}
+std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceexact__dp_ade4f0471277226224c2f1165a1991b5c}{min\+\_\+l2\+\_\+paa}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em min\+\_\+l2\+\_\+paa finds optimal partition for paa under euclidean distance \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespaceexact__dp_a429b32d3d5616f005721cf5bd3df037f}{min\+\_\+l2\+\_\+pla}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em min\+\_\+l2\+\_\+pla finds optimal partition for pla under euclidean distance \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceexact__dp_a8d42d15c1bc8429e8f1b3c1ed5c6954c}{min\+\_\+maxdev\+\_\+paa}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em min\+\_\+maxdev\+\_\+paa finds optimal partition for paa under maximum deviation \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespaceexact__dp_a1dc775b8d4e515b880382a7444e37e9f}{min\+\_\+maxdev\+\_\+pla}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em min\+\_\+maxdev\+\_\+pla finds optimal partition for pla under maximum deviation \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+\doxylink{namespaceexact__dp}{exact\+\_\+dp} namespace contains all methods of \doxylink{exact__dp_8h}{exact\+\_\+dp.\+h} 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespaceexact__dp_ae55fba7cdeb7a5737f3597fa492e6874}\label{namespaceexact__dp_ae55fba7cdeb7a5737f3597fa492e6874} 
+\Hypertarget{namespaceexact__dp_ade4f0471277226224c2f1165a1991b5c}\label{namespaceexact__dp_ade4f0471277226224c2f1165a1991b5c} 
+\index{exact\_dp@{exact\_dp}!min\_l2\_paa@{min\_l2\_paa}}
+\index{min\_l2\_paa@{min\_l2\_paa}!exact\_dp@{exact\_dp}}
+\doxysubsubsection{\texorpdfstring{min\_l2\_paa()}{min\_l2\_paa()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ exact\+\_\+dp\+::min\+\_\+l2\+\_\+paa (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+min\+\_\+l2\+\_\+paa finds optimal partition for paa under euclidean distance 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is series to compress \\
+\hline
+{\em num\+\_\+params} & is the target dimension \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sorted array of segments 
+\end{DoxyReturn}
+\Hypertarget{namespaceexact__dp_a429b32d3d5616f005721cf5bd3df037f}\label{namespaceexact__dp_a429b32d3d5616f005721cf5bd3df037f} 
+\index{exact\_dp@{exact\_dp}!min\_l2\_pla@{min\_l2\_pla}}
+\index{min\_l2\_pla@{min\_l2\_pla}!exact\_dp@{exact\_dp}}
+\doxysubsubsection{\texorpdfstring{min\_l2\_pla()}{min\_l2\_pla()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} exact\+\_\+dp\+::min\+\_\+l2\+\_\+pla (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+min\+\_\+l2\+\_\+pla finds optimal partition for pla under euclidean distance 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is series to compress \\
+\hline
+{\em num\+\_\+params} & is the target dimension \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sorted array of segments 
+\end{DoxyReturn}
+\Hypertarget{namespaceexact__dp_a8d42d15c1bc8429e8f1b3c1ed5c6954c}\label{namespaceexact__dp_a8d42d15c1bc8429e8f1b3c1ed5c6954c} 
 \index{exact\_dp@{exact\_dp}!min\_maxdev\_paa@{min\_maxdev\_paa}}
 \index{min\_maxdev\_paa@{min\_maxdev\_paa}!exact\_dp@{exact\_dp}}
 \doxysubsubsection{\texorpdfstring{min\_maxdev\_paa()}{min\_maxdev\_paa()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ exact\+\_\+dp\+::min\+\_\+maxdev\+\_\+paa (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ exact\+\_\+dp\+::min\+\_\+maxdev\+\_\+paa (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
 
-\Hypertarget{namespaceexact__dp_a0466736511c1513d15480f8ef2df28c1}\label{namespaceexact__dp_a0466736511c1513d15480f8ef2df28c1} 
+
+
+min\+\_\+maxdev\+\_\+paa finds optimal partition for paa under maximum deviation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is series to compress \\
+\hline
+{\em num\+\_\+params} & is the target dimension \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sorted array of segments 
+\end{DoxyReturn}
+\Hypertarget{namespaceexact__dp_a1dc775b8d4e515b880382a7444e37e9f}\label{namespaceexact__dp_a1dc775b8d4e515b880382a7444e37e9f} 
 \index{exact\_dp@{exact\_dp}!min\_maxdev\_pla@{min\_maxdev\_pla}}
 \index{min\_maxdev\_pla@{min\_maxdev\_pla}!exact\_dp@{exact\_dp}}
 \doxysubsubsection{\texorpdfstring{min\_maxdev\_pla()}{min\_maxdev\_pla()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ exact\+\_\+dp\+::min\+\_\+maxdev\+\_\+pla (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} exact\+\_\+dp\+::min\+\_\+maxdev\+\_\+pla (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
 
-\Hypertarget{namespaceexact__dp_a92cadd0aa26695d8c1c7e2ea329fcb68}\label{namespaceexact__dp_a92cadd0aa26695d8c1c7e2ea329fcb68} 
-\index{exact\_dp@{exact\_dp}!min\_mse\_paa@{min\_mse\_paa}}
-\index{min\_mse\_paa@{min\_mse\_paa}!exact\_dp@{exact\_dp}}
-\doxysubsubsection{\texorpdfstring{min\_mse\_paa()}{min\_mse\_paa()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ exact\+\_\+dp\+::min\+\_\+mse\+\_\+paa (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
 
-\Hypertarget{namespaceexact__dp_a807b1e3a6ce6c4429426a820064d2497}\label{namespaceexact__dp_a807b1e3a6ce6c4429426a820064d2497} 
-\index{exact\_dp@{exact\_dp}!min\_mse\_pla@{min\_mse\_pla}}
-\index{min\_mse\_pla@{min\_mse\_pla}!exact\_dp@{exact\_dp}}
-\doxysubsubsection{\texorpdfstring{min\_mse\_pla()}{min\_mse\_pla()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ exact\+\_\+dp\+::min\+\_\+mse\+\_\+pla (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{,  }\item[{unsigned int}]{num\+\_\+params }\end{DoxyParamCaption})}
 
+min\+\_\+maxdev\+\_\+pla finds optimal partition for pla under maximum deviation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is series to compress \\
+\hline
+{\em num\+\_\+params} & is the target dimension \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sorted array of segments 
+\end{DoxyReturn}

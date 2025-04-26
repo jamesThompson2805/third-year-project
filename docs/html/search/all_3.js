@@ -1,8 +1,23 @@
 var searchData=
 [
-  ['datasettype_0',['DatasetType',['../namespaceucr__parsing.html#a8ecda92826a9d7143cc0dac958266007',1,'ucr_parsing']]],
-  ['demo_1',['demo',['../demo_8cpp.html#ac474183ee901f1980a9963e75699b6a1',1,'demo.cpp']]],
-  ['demo_2ecpp_2',['demo.cpp',['../demo_8cpp.html',1,'']]],
-  ['drt_3',['DRT',['../general_8h.html#a8e616e954dd9975c25aae7f381bd9da1',1,'general.h']]],
-  ['drt_5fcompr_4',['DRT_COMPR',['../capla_8h.html#ae01166a5b5e32fca34d1365517c5bb8f',1,'capla.h']]]
+  ['d_5fw_0',['d_w',['../namespaced__w.html',1,'']]],
+  ['dac_5fcurve_5ffitting_1',['dac_curve_fitting',['../namespacedac__curve__fitting.html',1,'']]],
+  ['dac_5fcurve_5ffitting_2eh_2',['dac_curve_fitting.h',['../dac__curve__fitting_8h.html',1,'']]],
+  ['dac_5flinear_3',['dac_linear',['../namespacedac__curve__fitting.html#ae9506ade13e213ffa8c42de4c61bfa79',1,'dac_curve_fitting']]],
+  ['dac_5flinear_5fearly_5fcutoff_4',['dac_linear_early_cutoff',['../namespacedac__curve__fitting.html#a100f685848f4518e364a9357e49e5c13',1,'dac_curve_fitting']]],
+  ['datasettype_5',['DatasetType',['../namespaceucr__parsing.html#a8ecda92826a9d7143cc0dac958266007',1,'ucr_parsing']]],
+  ['demo_6',['demo',['../demo_8cpp.html#ac474183ee901f1980a9963e75699b6a1',1,'demo.cpp']]],
+  ['demo_2ecpp_7',['demo.cpp',['../demo_8cpp.html',1,'']]],
+  ['dist_5fmbr_5flb_8',['dist_mbr_lb',['../namespacelower__bounds.html#aa64133748369b134fcda1d252d063ad8',1,'lower_bounds']]],
+  ['dist_5fmbr_5flb_5fsqr_9',['dist_mbr_lb_sqr',['../namespacelower__bounds.html#af0b1c12ae1e9634b83faf73f7ffc94e7',1,'lower_bounds']]],
+  ['dist_5fpla_5flb_10',['dist_pla_lb',['../namespacelower__bounds.html#a7bc2a4661980ce912309ff18ef4053cf',1,'lower_bounds']]],
+  ['dist_5fpla_5flb_5fsqr_11',['dist_pla_lb_sqr',['../namespacelower__bounds.html#a8bef2c8184ffc2e53e34f9210c587a71',1,'lower_bounds']]],
+  ['dist_5fto_5fmbr_5fsqr_12',['dist_to_mbr_sqr',['../namespaceapla__bounds.html#a23bacc956ed90bf9e04bca707db17552',1,'apla_bounds']]],
+  ['dist_5fto_5fregion_5fsqr_13',['dist_to_region_sqr',['../namespaceapla__bounds.html#a36a8e851dddf94226d6e5002586e2ed3',1,'apla_bounds']]],
+  ['dist_5fto_5fregions_5fsqr_14',['dist_to_regions_sqr',['../namespaceapla__bounds.html#a1c2f80f1b1ed60089ce402fc04ca6fea',1,'apla_bounds']]],
+  ['double_5fwindow_2eh_15',['double_window.h',['../double__window_8h.html',1,'']]],
+  ['doublepair_16',['DoublePair',['../pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786',1,'pla.h']]],
+  ['drt_17',['DRT',['../general_8h.html#a8e616e954dd9975c25aae7f381bd9da1',1,'general.h']]],
+  ['drt_5fcompr_18',['DRT_COMPR',['../capla_8h.html#ae01166a5b5e32fca34d1365517c5bb8f',1,'capla.h']]],
+  ['drt_5fcompr_5fpg_19',['DRT_COMPR_PG',['../e__guarantee__eval_8h.html#ae05b3426e239cbbdea27ed8799bf37d5',1,'e_guarantee_eval.h']]]
 ];

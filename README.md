@@ -1,8 +1,16 @@
 # third-year-project
 
-A draft of the final report is also included in this repository.
+The final report is also included in this repository under project.pdf .
 
 For usage of this project, either consider installation of Nix to handle management of required libraries for you or open flake.nix and read requirements from the list defined within ```packages = with pkgs; [```.
+
+Some method for compiling cpp (gcc, clang or other) is needed alongside cmake.
+The boost library needs to be accessible to the project by adjusting CMakeLists.txt, installing system wide or using Nix.
+Gnuplot is needed for graph rendering and results will attempt to be viewed with the Floorp browser if PDF is selected (the pdf will be saved regardless).
+Directories used in code are in style of Linux so will need to be adjusted for use with windows (replace / with \).
+
+The directory _lib_ holds all the implemented library code for parsing, cleaning, approximation, indexing and similarity Search.
+The directory _src_ code for the main, demo, evaluations and plotting.
 
 
 ### Abstract:

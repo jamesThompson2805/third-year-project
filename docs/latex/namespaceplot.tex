@@ -20,6 +20,12 @@ void \mbox{\hyperlink{namespaceplot_a0dd6558f40503eb05365b2265a5327e7}{plot\+\_\
 \begin{DoxyCompactList}\small\item\em plot\+\_\+lines plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespaceplot_aeee601ec3f6e6fdecf57bafad3e6bc81}{plot\+\_\+lines\+\_\+generated}} (const std\+::vector$<$ double $>$ \&s, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
 \begin{DoxyCompactList}\small\item\em plot\+\_\+lines\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_a7cc9d7fb165975ac04d03074341e77bb}{plot\+\_\+bars\+\_\+generated}} (const std\+::vector$<$ double $>$ \&s, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+bars\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, these are plotted as individual bars. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_a6f3b8d742538c3570b021543d9ed75dc}{plot\+\_\+bars\+PG\+\_\+generated}} (const std\+::vector$<$ double $>$ \&s, std\+::vector$<$ double $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLinePGGenerator}{Line\+PGGenerator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+bars\+PG\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, these are plotted as individual bars. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_aa92ac515f026f7d38a82b8cb04c2a1b8}{plot\+\_\+mean\+\_\+bars\+\_\+generated}} (const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&vs, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+mean\+\_\+bars\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, the point plotted is the mean result of the datasets. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2}{plot\+\_\+lines\+\_\+generated\+\_\+ucr\+\_\+average}} (const std\+::vector$<$ std\+::string $>$ \&dataset\+\_\+names, std\+::string dataset\+\_\+filepath, unsigned int ds\+\_\+size, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
 \begin{DoxyCompactList}\small\item\em plot\+\_\+lines\+\_\+generated\+\_\+ucr\+\_\+average plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, utilising multiple UCR datasets. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -45,6 +51,48 @@ barplot\+\_\+many\+\_\+series plots multiple series, here each series is viewed 
 {\em group\+\_\+labels} & Is a vector that gives a label to each group which should be of a length equal or greater to that of the inner lists. Using the example beforehand, passing \{ "{}apple"{}, "{}pear"{} \} would be the correct labels for the groups \\
 \hline
 {\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_a7cc9d7fb165975ac04d03074341e77bb}\label{namespaceplot_a7cc9d7fb165975ac04d03074341e77bb} 
+\index{plot@{plot}!plot\_bars\_generated@{plot\_bars\_generated}}
+\index{plot\_bars\_generated@{plot\_bars\_generated}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_bars\_generated()}{plot\_bars\_generated()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+bars\+\_\+generated (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{s,  }\item[{std\+::vector$<$ unsigned int $>$}]{x,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$}]{y\+\_\+gens,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+bars\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, these are plotted as individual bars. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & ls the baseline series. \\
+\hline
+{\em x} & Is the underlying x-\/axis to plot on (and the values passed to the parameter of \doxylink{structLineGenerator}{Line\+Generator}). \\
+\hline
+{\em y\+\_\+gens} & Is the vector of \doxylink{structLineGenerator}{Line\+Generator} that provide method to vary approximation of s. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details} to render the graph. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_a6f3b8d742538c3570b021543d9ed75dc}\label{namespaceplot_a6f3b8d742538c3570b021543d9ed75dc} 
+\index{plot@{plot}!plot\_barsPG\_generated@{plot\_barsPG\_generated}}
+\index{plot\_barsPG\_generated@{plot\_barsPG\_generated}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_barsPG\_generated()}{plot\_barsPG\_generated()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+bars\+PG\+\_\+generated (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{s,  }\item[{std\+::vector$<$ double $>$}]{x,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structLinePGGenerator}{Line\+PGGenerator}} $>$}]{y\+\_\+gens,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+bars\+PG\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, these are plotted as individual bars. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Is the baseline series. \\
+\hline
+{\em x} & Is the underlying x-\/axis to plot on (and the values passed to the parameter of \doxylink{structLineGenerator}{Line\+Generator}). \\
+\hline
+{\em y\+\_\+gens} & Is the vector of \doxylink{structLineGenerator}{Line\+Generator} that provide method to vary approximation of s. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details} to render the graph. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{namespaceplot_a0dd6558f40503eb05365b2265a5327e7}\label{namespaceplot_a0dd6558f40503eb05365b2265a5327e7} 
@@ -76,7 +124,7 @@ plot\+\_\+lines\+\_\+generated plots all of the lines passed to it using the \do
 
 
 \begin{DoxyParams}{Parameters}
-{\em s} & ls the baseline series. \\
+{\em s} & Is the baseline series. \\
 \hline
 {\em x} & Is the underlying x-\/axis to plot on (and the values passed to the parameter of \doxylink{structLineGenerator}{Line\+Generator}). \\
 \hline
@@ -125,6 +173,27 @@ plot\+\_\+many\+\_\+series plots multiple series.
 {\em vs} & Is the vector of all \doxylink{structSeries}{Series} to be plotted. \\
 \hline
 {\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceplot_aa92ac515f026f7d38a82b8cb04c2a1b8}\label{namespaceplot_aa92ac515f026f7d38a82b8cb04c2a1b8} 
+\index{plot@{plot}!plot\_mean\_bars\_generated@{plot\_mean\_bars\_generated}}
+\index{plot\_mean\_bars\_generated@{plot\_mean\_bars\_generated}!plot@{plot}}
+\doxysubsubsection{\texorpdfstring{plot\_mean\_bars\_generated()}{plot\_mean\_bars\_generated()}}
+{\footnotesize\ttfamily void plot\+::plot\+\_\+mean\+\_\+bars\+\_\+generated (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{vs,  }\item[{std\+::vector$<$ unsigned int $>$}]{x,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$}]{y\+\_\+gens,  }\item[{\mbox{\hyperlink{structPlotDetails}{Plot\+Details}}}]{p }\end{DoxyParamCaption})}
+
+
+
+plot\+\_\+mean\+\_\+bars\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, the point plotted is the mean result of the datasets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vs} & Is a collection of datasets to perform the DRTs on. \\
+\hline
+{\em x} & Is the underlying x-\/axis to plot on (and the values passed to the parameter of \doxylink{structLineGenerator}{Line\+Generator}). \\
+\hline
+{\em y\+\_\+gens} & Is the vector of \doxylink{structLineGenerator}{Line\+Generator} that provide method to vary approximation of s. \\
+\hline
+{\em p} & Is the \doxylink{structPlotDetails}{Plot\+Details} to render the graph. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{namespaceplot_ac04d391973e1e722dd94cf196023cdcd}\label{namespaceplot_ac04d391973e1e722dd94cf196023cdcd} 

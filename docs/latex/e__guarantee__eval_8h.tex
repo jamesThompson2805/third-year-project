@@ -1,0 +1,37 @@
+\doxysection{src/evaluations/e\+\_\+guarantee\+\_\+eval.h File Reference}
+\hypertarget{e__guarantee__eval_8h}{}\label{e__guarantee__eval_8h}\index{src/evaluations/e\_guarantee\_eval.h@{src/evaluations/e\_guarantee\_eval.h}}
+
+
+Header file declaring functions for analysing PLA algorithms that operate via an epsilon precision guarantee.  
+
+
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceprecision__eval}{precision\+\_\+eval}}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespaceprecision__eval}{precision\+\_\+eval} Namespace encompasses functions for evaluating on epsilon guarantee algorithms \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}\label{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5} 
+typedef std\+::function$<$ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}(const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&, double) {\bfseries DRT\+\_\+\+COMPR\+\_\+\+PG})
+\begin{DoxyCompactList}\small\item\em type definition of a epsilon precision DRT, taking series and epsilon and returns the compressed approximation that used that has the guarantee \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespaceprecision__eval_a6678bfd5e055d2cba099b6d4a21730d6}{precision\+\_\+eval\+::compr\+\_\+ratio\+\_\+of\+\_\+method}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon, \mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}} f)
+\begin{DoxyCompactList}\small\item\em compr\+\_\+ratio\+\_\+of\+\_\+method returns the compression ratio of DRT with the precision. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceprecision__eval_ac215dfb293a050bac61de978dc6afc2d}{precision\+\_\+eval\+::cputime\+\_\+of\+\_\+method}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon, \mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}} f)
+\begin{DoxyCompactList}\small\item\em segments\+\_\+of\+\_\+method returns the time DRT took to achieve the precision \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \mbox{\hyperlink{namespaceprecision__eval_ad505117b5569d263e9e52b13d5e47c16}{precision\+\_\+eval\+::get\+\_\+segments\+\_\+over\+\_\+epsilons}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} epsilons, \mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}} f)
+\begin{DoxyCompactList}\small\item\em get\+\_\+segments\+\_\+over\+\_\+epsilon returns the compression ratios of the DRT with the epsilons. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \mbox{\hyperlink{namespaceprecision__eval_ace8152badad6a18c1ed79ecfd78b57ee}{precision\+\_\+eval\+::get\+\_\+cputime\+\_\+over\+\_\+epsilons}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} epsilons, \mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}} f)
+\begin{DoxyCompactList}\small\item\em get\+\_\+cputime\+\_\+over\+\_\+epsilon returns the number of segments the DRT used to achieve the precision for a variety of epsilons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file declaring functions for analysing PLA algorithms that operate via an epsilon precision guarantee. 
+

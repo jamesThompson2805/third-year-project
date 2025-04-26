@@ -84,19 +84,24 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">swing.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SWING_H</span></div>
+<a href="swing_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SWING_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SWING_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;pla.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="pla_8h.html">pla.h</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>swing {</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>  Seqddt swing(<span class="keyword">const</span> Seqd&amp; s, <span class="keywordtype">double</span> epsilon);</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  std::vector&lt;std::tuple&lt;double, unsigned int&gt;&gt; swing_compr(<span class="keyword">const</span> Seqd&amp; s, <span class="keywordtype">double</span> epsilon);</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  Seqddt slide(<span class="keyword">const</span> Seqd&amp; s, <span class="keywordtype">double</span> epsilon);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>};</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespaceswing.html">   14</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceswing.html">swing</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> <a class="code hl_namespace" href="namespaceswing.html">swing</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; s, <span class="keywordtype">double</span> epsilon);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  std::vector&lt;std::tuple&lt;double, unsigned int&gt;&gt; <a class="code hl_function" href="namespaceswing.html#a1a084dbba070beb6485f42b8bfe600ff">swing_compr</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; s, <span class="keywordtype">double</span> epsilon);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="ttc" id="anamespaceswing_html"><div class="ttname"><a href="namespaceswing.html">swing</a></div><div class="ttdoc">swing namespace contains swing approximation</div><div class="ttdef"><b>Definition</b> swing.h:14</div></div>
+<div class="ttc" id="anamespaceswing_html_a1a084dbba070beb6485f42b8bfe600ff"><div class="ttname"><a href="namespaceswing.html#a1a084dbba070beb6485f42b8bfe600ff">swing::swing_compr</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt; swing_compr(const Seqd &amp;s, double epsilon)</div><div class="ttdoc">swing_compr converts series s to Adaptive PLA and exploits that segments share endpoints to reduce sp...</div><div class="ttdef"><b>Definition</b> swing.cpp:53</div></div>
+<div class="ttc" id="apla_8h_html"><div class="ttname"><a href="pla_8h.html">pla.h</a></div></div>
+<div class="ttc" id="apla_8h_html_a5d3953cd3e75718fc534b351149f9f98"><div class="ttname"><a href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></div><div class="ttdeci">std::vector&lt; double &gt; Seqd</div><div class="ttdoc">Seqd is an array of double values, representing a sequence.</div><div class="ttdef"><b>Definition</b> pla.h:24</div></div>
+<div class="ttc" id="apla_8h_html_ad8b9cde7efeaabcc857cf363312e58fc"><div class="ttname"><a href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; DoublePair, unsigned int &gt; &gt; Seqddt</div><div class="ttdoc">Seqddt is an array of triples, representing the information for an adaptive PLA segment.</div><div class="ttdef"><b>Definition</b> pla.h:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -78,52 +78,493 @@ $(function() {
   <div class="headertitle"><div class="title">RTree&lt; R, I &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classRTree.html" title="RTree is the partial implementation of a r tree from R-TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL S...">RTree</a> is the partial implementation of a r tree from R-TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL SEARCHING.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="r__tree_8h_source.html">r_tree.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a97b0f3741fd2b8c3e288bc9406e70c86" id="r_a97b0f3741fd2b8c3e288bc9406e70c86"><td class="memItemLeft" align="right" valign="top"><a id="a97b0f3741fd2b8c3e288bc9406e70c86" name="a97b0f3741fd2b8c3e288bc9406e70c86"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>RTree</b> (unsigned int max_entries, unsigned int min_entries, FPtrArea&lt; R &gt; area_f, FPtrAreaMerge&lt; R &gt; merge_f, FPtrMBRDistSqr&lt; R &gt; p_dist_f)</td></tr>
+<tr class="memitem:a97b0f3741fd2b8c3e288bc9406e70c86" id="r_a97b0f3741fd2b8c3e288bc9406e70c86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97b0f3741fd2b8c3e288bc9406e70c86">RTree</a> (unsigned int max_entries, unsigned int min_entries, FPtrArea&lt; R &gt; area_f, FPtrAreaMerge&lt; R &gt; merge_f, FPtrMBRDistSqr&lt; R &gt; p_dist_f)</td></tr>
+<tr class="memdesc:a97b0f3741fd2b8c3e288bc9406e70c86"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for the r tree  <br /></td></tr>
 <tr class="separator:a97b0f3741fd2b8c3e288bc9406e70c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92841af75aaec6a807c54d006bfb338b" id="r_a92841af75aaec6a807c54d006bfb338b"><td class="memItemLeft" align="right" valign="top"><a id="a92841af75aaec6a807c54d006bfb338b" name="a92841af75aaec6a807c54d006bfb338b"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_size_tree</b> ()</td></tr>
+<tr class="memitem:a86cfb0f17dd80e253e1cc674576510fc" id="r_a86cfb0f17dd80e253e1cc674576510fc"><td class="memItemLeft" align="right" valign="top"><a id="a86cfb0f17dd80e253e1cc674576510fc" name="a86cfb0f17dd80e253e1cc674576510fc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~RTree</b> ()</td></tr>
+<tr class="memdesc:a86cfb0f17dd80e253e1cc674576510fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor for r tree Requires a recursive (implemented non recursive to not crash stack) deletion of information from tree <br /></td></tr>
+<tr class="separator:a86cfb0f17dd80e253e1cc674576510fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92841af75aaec6a807c54d006bfb338b" id="r_a92841af75aaec6a807c54d006bfb338b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92841af75aaec6a807c54d006bfb338b">get_size_tree</a> ()</td></tr>
+<tr class="memdesc:a92841af75aaec6a807c54d006bfb338b"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_size_tree calculates the total number of entries in the tree  <br /></td></tr>
 <tr class="separator:a92841af75aaec6a807c54d006bfb338b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad358f2ca0d4f40e8bd1ea21621e64c4b" id="r_ad358f2ca0d4f40e8bd1ea21621e64c4b"><td class="memItemLeft" align="right" valign="top"><a id="ad358f2ca0d4f40e8bd1ea21621e64c4b" name="ad358f2ca0d4f40e8bd1ea21621e64c4b"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_size_leaves</b> ()</td></tr>
+<tr class="memitem:ad358f2ca0d4f40e8bd1ea21621e64c4b" id="r_ad358f2ca0d4f40e8bd1ea21621e64c4b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad358f2ca0d4f40e8bd1ea21621e64c4b">get_size_leaves</a> ()</td></tr>
+<tr class="memdesc:ad358f2ca0d4f40e8bd1ea21621e64c4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_size_leaves calculates the total number of leaves in the tree  <br /></td></tr>
 <tr class="separator:ad358f2ca0d4f40e8bd1ea21621e64c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addf261f84ef6b766d6512f31b6a648bc" id="r_addf261f84ef6b766d6512f31b6a648bc"><td class="memItemLeft" align="right" valign="top"><a id="addf261f84ef6b766d6512f31b6a648bc" name="addf261f84ef6b766d6512f31b6a648bc"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_num_leaves</b> ()</td></tr>
+<tr class="memitem:addf261f84ef6b766d6512f31b6a648bc" id="r_addf261f84ef6b766d6512f31b6a648bc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addf261f84ef6b766d6512f31b6a648bc">get_num_leaves</a> ()</td></tr>
+<tr class="memdesc:addf261f84ef6b766d6512f31b6a648bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_num_leaves yields the total number of leaves in the tree, counted as they are entered  <br /></td></tr>
 <tr class="separator:addf261f84ef6b766d6512f31b6a648bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a8761afebb62466aefe3cc06bbb1035" id="r_a3a8761afebb62466aefe3cc06bbb1035"><td class="memItemLeft" align="right" valign="top"><a id="a3a8761afebb62466aefe3cc06bbb1035" name="a3a8761afebb62466aefe3cc06bbb1035"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (R mbr, I st_index)</td></tr>
+<tr class="memitem:a3a8761afebb62466aefe3cc06bbb1035" id="r_a3a8761afebb62466aefe3cc06bbb1035"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a8761afebb62466aefe3cc06bbb1035">insert</a> (R mbr, I st_index)</td></tr>
+<tr class="memdesc:a3a8761afebb62466aefe3cc06bbb1035"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert inserts a new sequence into the r tree  <br /></td></tr>
 <tr class="separator:a3a8761afebb62466aefe3cc06bbb1035"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f17d051df33e1ff819680500e1f420e" id="r_a3f17d051df33e1ff819680500e1f420e"><td class="memItemLeft" align="right" valign="top"><a id="a3f17d051df33e1ff819680500e1f420e" name="a3f17d051df33e1ff819680500e1f420e"></a>
-std::vector&lt; I &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sim_search</b> (const std::vector&lt; double &gt; &amp;q, double epsilon)</td></tr>
+<tr class="memitem:a3f17d051df33e1ff819680500e1f420e" id="r_a3f17d051df33e1ff819680500e1f420e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; I &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f17d051df33e1ff819680500e1f420e">sim_search</a> (const std::vector&lt; double &gt; &amp;q, double epsilon)</td></tr>
+<tr class="memdesc:a3f17d051df33e1ff819680500e1f420e"><td class="mdescLeft">&#160;</td><td class="mdescRight">sim_search finds all subsequences of series that are within epsilon of query  <br /></td></tr>
 <tr class="separator:a3f17d051df33e1ff819680500e1f420e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5146f5bb5caa00709a605b59dbf3205b" id="r_a5146f5bb5caa00709a605b59dbf3205b"><td class="memItemLeft" align="right" valign="top"><a id="a5146f5bb5caa00709a605b59dbf3205b" name="a5146f5bb5caa00709a605b59dbf3205b"></a>
-std::vector&lt; std::array&lt; const double *, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>knn_search</b> (const std::vector&lt; double &gt; &amp;q, unsigned int k, FPtrRetrievalMethod&lt; I &gt; retrieve_f, const std::vector&lt; double &gt; &amp;s)</td></tr>
+<tr class="memitem:a5146f5bb5caa00709a605b59dbf3205b" id="r_a5146f5bb5caa00709a605b59dbf3205b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; const double *, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5146f5bb5caa00709a605b59dbf3205b">knn_search</a> (const std::vector&lt; double &gt; &amp;q, unsigned int k, FPtrRetrievalMethod&lt; I &gt; retrieve_f, const std::vector&lt; double &gt; &amp;s)</td></tr>
+<tr class="memdesc:a5146f5bb5caa00709a605b59dbf3205b"><td class="mdescLeft">&#160;</td><td class="mdescRight">knn_search finds k subsequences of series closest to q  <br /></td></tr>
 <tr class="separator:a5146f5bb5caa00709a605b59dbf3205b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fd4f559b224d20ae204b2c6e83e256a" id="r_a4fd4f559b224d20ae204b2c6e83e256a"><td class="memItemLeft" align="right" valign="top"><a id="a4fd4f559b224d20ae204b2c6e83e256a" name="a4fd4f559b224d20ae204b2c6e83e256a"></a>
-std::vector&lt; std::array&lt; const double *, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sim_search_exact</b> (const std::vector&lt; double &gt; &amp;q, double epsilon, FPtrRetrievalMethod&lt; I &gt; retrieve_f, const std::vector&lt; double &gt; &amp;s)</td></tr>
+<tr class="memitem:a4fd4f559b224d20ae204b2c6e83e256a" id="r_a4fd4f559b224d20ae204b2c6e83e256a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; const double *, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fd4f559b224d20ae204b2c6e83e256a">sim_search_exact</a> (const std::vector&lt; double &gt; &amp;q, double epsilon, FPtrRetrievalMethod&lt; I &gt; retrieve_f, const std::vector&lt; double &gt; &amp;s)</td></tr>
+<tr class="memdesc:a4fd4f559b224d20ae204b2c6e83e256a"><td class="mdescLeft">&#160;</td><td class="mdescRight">sim_search_exact finds all subsequences of series that are within epsilon of query  <br /></td></tr>
 <tr class="separator:a4fd4f559b224d20ae204b2c6e83e256a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a452bf3d8ed2d011a32c2535655a09c07" id="r_a452bf3d8ed2d011a32c2535655a09c07"><td class="memItemLeft" align="right" valign="top"><a id="a452bf3d8ed2d011a32c2535655a09c07" name="a452bf3d8ed2d011a32c2535655a09c07"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>pruning_power</b> (const std::vector&lt; double &gt; &amp;q, FPtrRetrievalMethod&lt; I &gt; retrieve_f, const std::vector&lt; double &gt; &amp;s)</td></tr>
+<tr class="memitem:a452bf3d8ed2d011a32c2535655a09c07" id="r_a452bf3d8ed2d011a32c2535655a09c07"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a452bf3d8ed2d011a32c2535655a09c07">pruning_power</a> (const std::vector&lt; double &gt; &amp;q, FPtrRetrievalMethod&lt; I &gt; retrieve_f, const std::vector&lt; double &gt; &amp;s)</td></tr>
+<tr class="memdesc:a452bf3d8ed2d011a32c2535655a09c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">pruning_power returns the pruning power observed by trying a 1-NN search for q  <br /></td></tr>
 <tr class="separator:a452bf3d8ed2d011a32c2535655a09c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48efff6097e2b92ff8fbe376844561cc" id="r_a48efff6097e2b92ff8fbe376844561cc"><td class="memItemLeft" align="right" valign="top"><a id="a48efff6097e2b92ff8fbe376844561cc" name="a48efff6097e2b92ff8fbe376844561cc"></a>
-<a class="el" href="structRTreeNode.html">RTreeNode</a>&lt; R, I &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>split_node</b> (<a class="el" href="structRTreeNode.html">RTreeNode</a>&lt; R, I &gt; *const node)</td></tr>
+<tr class="memitem:a48efff6097e2b92ff8fbe376844561cc" id="r_a48efff6097e2b92ff8fbe376844561cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structRTreeNode.html">RTreeNode</a>&lt; R, I &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48efff6097e2b92ff8fbe376844561cc">split_node</a> (<a class="el" href="structRTreeNode.html">RTreeNode</a>&lt; R, I &gt; *const node)</td></tr>
+<tr class="memdesc:a48efff6097e2b92ff8fbe376844561cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">split_node modifies the current node and returns the additional node created in the split  <br /></td></tr>
 <tr class="separator:a48efff6097e2b92ff8fbe376844561cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97867888a52ce6cbf8507707d66a7ef5" id="r_a97867888a52ce6cbf8507707d66a7ef5"><td class="memItemLeft" align="right" valign="top"><a id="a97867888a52ce6cbf8507707d66a7ef5" name="a97867888a52ce6cbf8507707d66a7ef5"></a>
-std::array&lt; unsigned int, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>quad_pick_seeds</b> (const std::vector&lt; const R * &gt; &amp;mbrs)</td></tr>
+<tr class="memitem:a97867888a52ce6cbf8507707d66a7ef5" id="r_a97867888a52ce6cbf8507707d66a7ef5"><td class="memItemLeft" align="right" valign="top">std::array&lt; unsigned int, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97867888a52ce6cbf8507707d66a7ef5">quad_pick_seeds</a> (const std::vector&lt; const R * &gt; &amp;mbrs)</td></tr>
+<tr class="memdesc:a97867888a52ce6cbf8507707d66a7ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">quad_pick_seeds uses quadratic algorithm from paper to pick entries to start split from  <br /></td></tr>
 <tr class="separator:a97867888a52ce6cbf8507707d66a7ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab451e6cc72bbc1fbafc0f9533f6f4c19" id="r_ab451e6cc72bbc1fbafc0f9533f6f4c19"><td class="memItemLeft" align="right" valign="top"><a id="ab451e6cc72bbc1fbafc0f9533f6f4c19" name="ab451e6cc72bbc1fbafc0f9533f6f4c19"></a>
-std::array&lt; unsigned int, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lin_pick_seeds</b> (const <a class="el" href="structRTreeNode.html">RTreeNode</a>&lt; R, I &gt; *const node)</td></tr>
-<tr class="separator:ab451e6cc72bbc1fbafc0f9533f6f4c19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a799d76a18114055ef07b8959f67abd4e" id="r_a799d76a18114055ef07b8959f67abd4e"><td class="memItemLeft" align="right" valign="top"><a id="a799d76a18114055ef07b8959f67abd4e" name="a799d76a18114055ef07b8959f67abd4e"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>quad_pick_next_node</b> (const std::vector&lt; const R * &gt; &amp;mbrs, const std::set&lt; unsigned int &gt; &amp;g1, const R &amp;g1mbr, const std::set&lt; unsigned int &gt; &amp;g2, const R &amp;g2mbr)</td></tr>
+<tr class="memitem:a799d76a18114055ef07b8959f67abd4e" id="r_a799d76a18114055ef07b8959f67abd4e"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a799d76a18114055ef07b8959f67abd4e">quad_pick_next_node</a> (const std::vector&lt; const R * &gt; &amp;mbrs, const std::set&lt; unsigned int &gt; &amp;g1, const R &amp;g1mbr, const std::set&lt; unsigned int &gt; &amp;g2, const R &amp;g2mbr)</td></tr>
+<tr class="memdesc:a799d76a18114055ef07b8959f67abd4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">quad_pick_next_node picks the next node to be added to one of the splits  <br /></td></tr>
 <tr class="separator:a799d76a18114055ef07b8959f67abd4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b079cd57a3c09f535e0e98c7a7a604a" id="r_a7b079cd57a3c09f535e0e98c7a7a604a"><td class="memItemLeft" align="right" valign="top"><a id="a7b079cd57a3c09f535e0e98c7a7a604a" name="a7b079cd57a3c09f535e0e98c7a7a604a"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>lin_pick_next_node</b> (const std::vector&lt; const R * &gt; &amp;mbrs, const std::set&lt; unsigned int &gt; &amp;g1, const R &amp;g1mbr, const std::set&lt; unsigned int &gt; &amp;g2, const R &amp;g2mbr)</td></tr>
-<tr class="separator:a7b079cd57a3c09f535e0e98c7a7a604a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename R, typename I&gt;<br />
+class RTree&lt; R, I &gt;</div><p><a class="el" href="classRTree.html" title="RTree is the partial implementation of a r tree from R-TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL S...">RTree</a> is the partial implementation of a r tree from R-TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL SEARCHING. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a97b0f3741fd2b8c3e288bc9406e70c86" name="a97b0f3741fd2b8c3e288bc9406e70c86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97b0f3741fd2b8c3e288bc9406e70c86">&#9670;&#160;</a></span>RTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;<a class="el" href="classRTree.html">::RTree</a> </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>max_entries</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>min_entries</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FPtrArea&lt; R &gt;</td>          <td class="paramname"><span class="paramname"><em>area_f</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FPtrAreaMerge&lt; R &gt;</td>          <td class="paramname"><span class="paramname"><em>merge_f</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FPtrMBRDistSqr&lt; R &gt;</td>          <td class="paramname"><span class="paramname"><em>p_dist_f</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>constructor for the r tree </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max_entries</td><td>is the desired maximum number of entries per node (recommended is 40) </td></tr>
+    <tr><td class="paramname">min_entries</td><td>is the desired minimum number of entries per node (recommended is 10) </td></tr>
+    <tr><td class="paramname">area_f</td><td>is a function to determine the area of a MBR </td></tr>
+    <tr><td class="paramname">merge_f</td><td>is a function to merge two MBR's </td></tr>
+    <tr><td class="paramname">p_dist_f</td><td>is a function to determine the distance from a series to a MBR (squared for comparison speed ups) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="addf261f84ef6b766d6512f31b6a648bc" name="addf261f84ef6b766d6512f31b6a648bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf261f84ef6b766d6512f31b6a648bc">&#9670;&#160;</a></span>get_num_leaves()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::get_num_leaves </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get_num_leaves yields the total number of leaves in the tree, counted as they are entered </p>
+<dl class="section return"><dt>Returns</dt><dd>integer of number of leaves in tree </dd></dl>
+
+</div>
+</div>
+<a id="ad358f2ca0d4f40e8bd1ea21621e64c4b" name="ad358f2ca0d4f40e8bd1ea21621e64c4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad358f2ca0d4f40e8bd1ea21621e64c4b">&#9670;&#160;</a></span>get_size_leaves()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::get_size_leaves </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get_size_leaves calculates the total number of leaves in the tree </p>
+<dl class="section return"><dt>Returns</dt><dd>integer of number of leaves in tree </dd></dl>
+
+</div>
+</div>
+<a id="a92841af75aaec6a807c54d006bfb338b" name="a92841af75aaec6a807c54d006bfb338b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92841af75aaec6a807c54d006bfb338b">&#9670;&#160;</a></span>get_size_tree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::get_size_tree </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get_size_tree calculates the total number of entries in the tree </p>
+<dl class="section return"><dt>Returns</dt><dd>integer of number of entries in tree </dd></dl>
+
+</div>
+</div>
+<a id="a3a8761afebb62466aefe3cc06bbb1035" name="a3a8761afebb62466aefe3cc06bbb1035"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a8761afebb62466aefe3cc06bbb1035">&#9670;&#160;</a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::insert </td>
+          <td>(</td>
+          <td class="paramtype">R</td>          <td class="paramname"><span class="paramname"><em>mbr</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">I</td>          <td class="paramname"><span class="paramname"><em>st_index</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>insert inserts a new sequence into the r tree </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mbr</td><td>is the mbr of the sequence </td></tr>
+    <tr><td class="paramname">st_index</td><td>is the indexing methods to retrieve the original sequence </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5146f5bb5caa00709a605b59dbf3205b" name="a5146f5bb5caa00709a605b59dbf3205b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5146f5bb5caa00709a605b59dbf3205b">&#9670;&#160;</a></span>knn_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::array&lt; const double *, 2 &gt; &gt; <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::knn_search </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>k</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FPtrRetrievalMethod&lt; I &gt;</td>          <td class="paramname"><span class="paramname"><em>retrieve_f</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>knn_search finds k subsequences of series closest to q </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">query</td><td>is the query sequence to search for similar sequences to </td></tr>
+    <tr><td class="paramname">k</td><td>is the number of sequences to find closest to q </td></tr>
+    <tr><td class="paramname">retrieve_f</td><td>a method to retrieve the original sequence using the indexing tool and a larger sequence </td></tr>
+    <tr><td class="paramname">s</td><td>the larger sequence containing all additions to the r tree </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array of pointers to the sequences in the larger sequence s </dd></dl>
+
+</div>
+</div>
+<a id="a452bf3d8ed2d011a32c2535655a09c07" name="a452bf3d8ed2d011a32c2535655a09c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a452bf3d8ed2d011a32c2535655a09c07">&#9670;&#160;</a></span>pruning_power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::pruning_power </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FPtrRetrievalMethod&lt; I &gt;</td>          <td class="paramname"><span class="paramname"><em>retrieve_f</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>pruning_power returns the pruning power observed by trying a 1-NN search for q </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>is the query sequence </td></tr>
+    <tr><td class="paramname">retrieve_f</td><td>a method to retrieve the original sequence using the indexing tool and a larger sequence </td></tr>
+    <tr><td class="paramname">s</td><td>the larger sequence containing all additions to the r tree </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pruning power (number of sequences fetched) / (number of sequences in r tree) </dd></dl>
+
+</div>
+</div>
+<a id="a799d76a18114055ef07b8959f67abd4e" name="a799d76a18114055ef07b8959f67abd4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a799d76a18114055ef07b8959f67abd4e">&#9670;&#160;</a></span>quad_pick_next_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::quad_pick_next_node </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; const R * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbrs</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; unsigned int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>g1</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const R &amp;</td>          <td class="paramname"><span class="paramname"><em>g1mbr</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; unsigned int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>g2</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const R &amp;</td>          <td class="paramname"><span class="paramname"><em>g2mbr</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>quad_pick_next_node picks the next node to be added to one of the splits </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mbrs</td><td>is array of children to pick seeds from </td></tr>
+    <tr><td class="paramname">g1</td><td>is set of children in first node </td></tr>
+    <tr><td class="paramname">g1mbr</td><td>is current mbr covering its children </td></tr>
+    <tr><td class="paramname">g2</td><td>is set of children in second node </td></tr>
+    <tr><td class="paramname">g2mbr</td><td>is current mbr covering its children </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the next node to move to a set </dd></dl>
+
+</div>
+</div>
+<a id="a97867888a52ce6cbf8507707d66a7ef5" name="a97867888a52ce6cbf8507707d66a7ef5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97867888a52ce6cbf8507707d66a7ef5">&#9670;&#160;</a></span>quad_pick_seeds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; unsigned int, 2 &gt; <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::quad_pick_seeds </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; const R * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbrs</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>quad_pick_seeds uses quadratic algorithm from paper to pick entries to start split from </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mbrs</td><td>is array of children to pick seeds from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the two seeds </dd></dl>
+
+</div>
+</div>
+<a id="a3f17d051df33e1ff819680500e1f420e" name="a3f17d051df33e1ff819680500e1f420e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f17d051df33e1ff819680500e1f420e">&#9670;&#160;</a></span>sim_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; I &gt; <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::sim_search </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sim_search finds all subsequences of series that are within epsilon of query </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">query</td><td>is the query sequence to search for similar sequences to </td></tr>
+    <tr><td class="paramname">epsilon</td><td>is the maximum allowed l2 error between a query and returned subseqence </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array of indexing tools representing the retrieval indexes for the sequences This function returns with false positives </dd></dl>
+
+</div>
+</div>
+<a id="a4fd4f559b224d20ae204b2c6e83e256a" name="a4fd4f559b224d20ae204b2c6e83e256a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd4f559b224d20ae204b2c6e83e256a">&#9670;&#160;</a></span>sim_search_exact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::array&lt; const double *, 2 &gt; &gt; <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::sim_search_exact </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>epsilon</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FPtrRetrievalMethod&lt; I &gt;</td>          <td class="paramname"><span class="paramname"><em>retrieve_f</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sim_search_exact finds all subsequences of series that are within epsilon of query </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">query</td><td>is the query sequence to search for similar sequences to </td></tr>
+    <tr><td class="paramname">epsilon</td><td>is the maximum allowed l2 error between a query and returned subseqence </td></tr>
+    <tr><td class="paramname">retrieve_f</td><td>a method to retrieve the original sequence using the indexing tool and a larger sequence </td></tr>
+    <tr><td class="paramname">s</td><td>the larger sequence containing all additions to the r tree </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array of pointers to the sequences in the larger sequence s </dd></dl>
+
+</div>
+</div>
+<a id="a48efff6097e2b92ff8fbe376844561cc" name="a48efff6097e2b92ff8fbe376844561cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48efff6097e2b92ff8fbe376844561cc">&#9670;&#160;</a></span>split_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename I &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structRTreeNode.html">RTreeNode</a>&lt; R, I &gt; * <a class="el" href="classRTree.html">RTree</a>&lt; R, I &gt;::split_node </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structRTreeNode.html">RTreeNode</a>&lt; R, I &gt; *const</td>          <td class="paramname"><span class="paramname"><em>node</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>split_node modifies the current node and returns the additional node created in the split </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>is the node to split </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>new node holding other half of entries </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/similarity_search/<a class="el" href="r__tree_8h_source.html">r_tree.h</a></li>
 </ul>

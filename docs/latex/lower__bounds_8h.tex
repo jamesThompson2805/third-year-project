@@ -1,5 +1,10 @@
 \doxysection{lib/similarity\+\_\+search/lower\+\_\+bounds.h File Reference}
 \hypertarget{lower__bounds_8h}{}\label{lower__bounds_8h}\index{lib/similarity\_search/lower\_bounds.h@{lib/similarity\_search/lower\_bounds.h}}
+
+
+Header file for distance functions for the indexing scheme created.  
+
+
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$tuple$>$}\newline
 {\ttfamily \#include $<$array$>$}\newline
@@ -13,45 +18,32 @@ struct \mbox{\hyperlink{structRegion}{Region}}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacelower__bounds}{lower\+\_\+bounds}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespacelower__bounds}{lower\+\_\+bounds} handles distances to a MBR (Partition Cover) or individual approximation \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ \mbox{\hyperlink{lower__bounds_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}}
+\Hypertarget{lower__bounds_8h_a7adf2503e92395c0baa214b993c3bc95}\label{lower__bounds_8h_a7adf2503e92395c0baa214b993c3bc95} 
+typedef std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int $>$ $>$ {\bfseries Seqddt}
 \item 
-typedef std\+::vector$<$ double $>$ \mbox{\hyperlink{lower__bounds_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}
+\Hypertarget{lower__bounds_8h_a5d3953cd3e75718fc534b351149f9f98}\label{lower__bounds_8h_a5d3953cd3e75718fc534b351149f9f98} 
+typedef std\+::vector$<$ double $>$ {\bfseries Seqd}
 \item 
-typedef std\+::vector$<$ \mbox{\hyperlink{structRegion}{Region}} $>$ \mbox{\hyperlink{lower__bounds_8h_ae6553c5d533f8b223b5080f565708cdd}{Pla\+Mbr}}
+\Hypertarget{lower__bounds_8h_ae6553c5d533f8b223b5080f565708cdd}\label{lower__bounds_8h_ae6553c5d533f8b223b5080f565708cdd} 
+typedef std\+::vector$<$ \mbox{\hyperlink{structRegion}{Region}} $>$ {\bfseries Pla\+Mbr}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{namespacelower__bounds_a8bef2c8184ffc2e53e34f9210c587a71}{lower\+\_\+bounds\+::dist\+\_\+pla\+\_\+lb\+\_\+sqr}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s)
-\item 
-double \mbox{\hyperlink{namespacelower__bounds_a7bc2a4661980ce912309ff18ef4053cf}{lower\+\_\+bounds\+::dist\+\_\+pla\+\_\+lb}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s)
-\item 
-double \mbox{\hyperlink{namespacelower__bounds_af0b1c12ae1e9634b83faf73f7ffc94e7}{lower\+\_\+bounds\+::dist\+\_\+mbr\+\_\+lb\+\_\+sqr}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{lower__bounds_8h_ae6553c5d533f8b223b5080f565708cdd}{Pla\+Mbr}} \&r)
-\item 
-double \mbox{\hyperlink{namespacelower__bounds_aa64133748369b134fcda1d252d063ad8}{lower\+\_\+bounds\+::dist\+\_\+mbr\+\_\+lb}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{lower__bounds_8h_ae6553c5d533f8b223b5080f565708cdd}{Pla\+Mbr}} \&r)
-\end{DoxyCompactItemize}
+double \mbox{\hyperlink{namespacelower__bounds_a8bef2c8184ffc2e53e34f9210c587a71}{lower\+\_\+bounds\+::dist\+\_\+pla\+\_\+lb\+\_\+sqr}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s)
+\begin{DoxyCompactList}\small\item\em dist\+\_\+pla\+\_\+lb\+\_\+sqr returns the squared l2 distance between series q and compressed s \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacelower__bounds_a7bc2a4661980ce912309ff18ef4053cf}{lower\+\_\+bounds\+::dist\+\_\+pla\+\_\+lb}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s)
+\begin{DoxyCompactList}\small\item\em dist\+\_\+pla\+\_\+lb returns the l2 distance between series q and compressed s \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacelower__bounds_af0b1c12ae1e9634b83faf73f7ffc94e7}{lower\+\_\+bounds\+::dist\+\_\+mbr\+\_\+lb\+\_\+sqr}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const Pla\+Mbr \&r)
+\begin{DoxyCompactList}\small\item\em dist\+\_\+mbr\+\_\+lb\+\_\+sqr returns the squared l2 distance between series q and Partition Cover r \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacelower__bounds_aa64133748369b134fcda1d252d063ad8}{lower\+\_\+bounds\+::dist\+\_\+mbr\+\_\+lb}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&q, const Pla\+Mbr \&r)
+\begin{DoxyCompactList}\small\item\em dist\+\_\+mbr\+\_\+lb returns the l2 distance between series q and Partition Cover r \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Typedef Documentation}
-\Hypertarget{lower__bounds_8h_ae6553c5d533f8b223b5080f565708cdd}\label{lower__bounds_8h_ae6553c5d533f8b223b5080f565708cdd} 
-\index{lower\_bounds.h@{lower\_bounds.h}!PlaMbr@{PlaMbr}}
-\index{PlaMbr@{PlaMbr}!lower\_bounds.h@{lower\_bounds.h}}
-\doxysubsubsection{\texorpdfstring{PlaMbr}{PlaMbr}}
-{\footnotesize\ttfamily typedef std\+::vector$<$\mbox{\hyperlink{structRegion}{Region}}$>$ \mbox{\hyperlink{lower__bounds_8h_ae6553c5d533f8b223b5080f565708cdd}{Pla\+Mbr}}}
-
-\Hypertarget{lower__bounds_8h_a5d3953cd3e75718fc534b351149f9f98}\label{lower__bounds_8h_a5d3953cd3e75718fc534b351149f9f98} 
-\index{lower\_bounds.h@{lower\_bounds.h}!Seqd@{Seqd}}
-\index{Seqd@{Seqd}!lower\_bounds.h@{lower\_bounds.h}}
-\doxysubsubsection{\texorpdfstring{Seqd}{Seqd}}
-{\footnotesize\ttfamily typedef std\+::vector$<$double$>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}}
-
-\Hypertarget{lower__bounds_8h_a7adf2503e92395c0baa214b993c3bc95}\label{lower__bounds_8h_a7adf2503e92395c0baa214b993c3bc95} 
-\index{lower\_bounds.h@{lower\_bounds.h}!Seqddt@{Seqddt}}
-\index{Seqddt@{Seqddt}!lower\_bounds.h@{lower\_bounds.h}}
-\doxysubsubsection{\texorpdfstring{Seqddt}{Seqddt}}
-{\footnotesize\ttfamily typedef std\+::vector$<$std\+::tuple$<$\mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}, unsigned int$>$ $>$ \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}}}
+\doxysubsection{Detailed Description}
+Header file for distance functions for the indexing scheme created. 
 

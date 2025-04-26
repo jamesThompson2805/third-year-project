@@ -1,0 +1,25 @@
+\doxysection{lib/dimension\+\_\+reductions/exact\+\_\+dp.h File Reference}
+\hypertarget{exact__dp_8h}{}\label{exact__dp_8h}\index{lib/dimension\_reductions/exact\_dp.h@{lib/dimension\_reductions/exact\_dp.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include "{}pla.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceexact__dp}{exact\+\_\+dp}}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespaceexact__dp}{exact\+\_\+dp} namespace contains all methods of \doxylink{exact__dp_8h}{exact\+\_\+dp.\+h} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceexact__dp_ade4f0471277226224c2f1165a1991b5c}{exact\+\_\+dp\+::min\+\_\+l2\+\_\+paa}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em min\+\_\+l2\+\_\+paa finds optimal partition for paa under euclidean distance \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespaceexact__dp_a429b32d3d5616f005721cf5bd3df037f}{exact\+\_\+dp\+::min\+\_\+l2\+\_\+pla}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em min\+\_\+l2\+\_\+pla finds optimal partition for pla under euclidean distance \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceexact__dp_a8d42d15c1bc8429e8f1b3c1ed5c6954c}{exact\+\_\+dp\+::min\+\_\+maxdev\+\_\+paa}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em min\+\_\+maxdev\+\_\+paa finds optimal partition for paa under maximum deviation \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespaceexact__dp_a1dc775b8d4e515b880382a7444e37e9f}{exact\+\_\+dp\+::min\+\_\+maxdev\+\_\+pla}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&, unsigned int num\+\_\+params)
+\begin{DoxyCompactList}\small\item\em min\+\_\+maxdev\+\_\+pla finds optimal partition for pla under maximum deviation \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+contains methods for computing the optimal partitions for constant and linear approximations 

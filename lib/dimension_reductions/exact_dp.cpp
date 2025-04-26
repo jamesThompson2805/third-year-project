@@ -23,7 +23,7 @@ inline double quick_se_with_mean( const double *const f1, const double *const f2
   return se;
 }
 
-vector< tuple< double, unsigned int>> exact_dp::min_mse_paa( const vector<double>& s, unsigned int num_params)
+vector< tuple< double, unsigned int>> exact_dp::min_l2_paa( const vector<double>& s, unsigned int num_params)
 {
   int num_segments = num_params/2;
   vector< vector< double>> eps( s.size(), vector<double>(num_segments+1,-1.0) );
@@ -98,7 +98,7 @@ inline double quick_se_with_regress( const double *const f1, const double *const
   return se;
 }
 
-vector< tuple< DoublePair, unsigned int>> exact_dp::min_mse_pla( const vector<double>& s, unsigned int num_params)
+vector< tuple< DoublePair, unsigned int>> exact_dp::min_l2_pla( const vector<double>& s, unsigned int num_params)
 {
   int num_segments = num_params/3;
   vector< vector< double>> eps( s.size(), vector<double>(num_segments+1,-1.0) );

@@ -1,19 +1,27 @@
 \doxysection{error\+\_\+measures Namespace Reference}
 \hypertarget{namespaceerror__measures}{}\label{namespaceerror__measures}\index{error\_measures@{error\_measures}}
+
+
+\doxylink{namespaceerror__measures}{error\+\_\+measures} namespace handles utility functions for distance measurement  
+
+
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 double \mbox{\hyperlink{namespaceerror__measures_aab210685ae87e5cbe7c4c13f14aa8efd}{se\+\_\+between\+\_\+seq}} (const std\+::vector$<$ double $>$ \&s1, const std\+::vector$<$ double $>$ \&s2)
-\item 
+\begin{DoxyCompactList}\small\item\em se\+\_\+between\+\_\+seq returns the squared error between two sequences \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespaceerror__measures_a603b138b0d639b74868efeebfce97b5b}{mse\+\_\+between\+\_\+seq}} (const std\+::vector$<$ double $>$ \&s1, const std\+::vector$<$ double $>$ \&s2)
-\item 
+\begin{DoxyCompactList}\small\item\em mse\+\_\+between\+\_\+seq returns the mean squared error between two sequences \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespaceerror__measures_ad82e403463b71adfd8c735c82999db41}{se\+\_\+between\+\_\+ptrs}} (const double \texorpdfstring{$\ast$}{*}const s1\+\_\+start, const double \texorpdfstring{$\ast$}{*}const s1\+\_\+end, const double \texorpdfstring{$\ast$}{*}const s2\+\_\+start, const double \texorpdfstring{$\ast$}{*}const s2\+\_\+end)
-\item 
+\begin{DoxyCompactList}\small\item\em se\+\_\+between\+\_\+ptrs returns the squared error between two sequences, passed as pointers \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespaceerror__measures_aa9c7edd77c8cd70b6803398854ef5b44}{l2\+\_\+between\+\_\+seq}} (const std\+::vector$<$ double $>$ \&s1, const std\+::vector$<$ double $>$ \&s2)
-\item 
+\begin{DoxyCompactList}\small\item\em l2\+\_\+between\+\_\+seq returns the euclidean distance between two sequences \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespaceerror__measures_a68fc80380a9ebcd362bfcdb1c3327d0f}{maxdev\+\_\+between\+\_\+seq}} (const std\+::vector$<$ double $>$ \&s1, const std\+::vector$<$ double $>$ \&s2)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em maxdev\+\_\+between\+\_\+seq returns the maximum deviation between two sequences \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+\doxylink{namespaceerror__measures}{error\+\_\+measures} namespace handles utility functions for distance measurement 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{namespaceerror__measures_aa9c7edd77c8cd70b6803398854ef5b44}\label{namespaceerror__measures_aa9c7edd77c8cd70b6803398854ef5b44} 
@@ -22,27 +30,86 @@ double \mbox{\hyperlink{namespaceerror__measures_a68fc80380a9ebcd362bfcdb1c3327d
 \doxysubsubsection{\texorpdfstring{l2\_between\_seq()}{l2\_between\_seq()}}
 {\footnotesize\ttfamily double error\+\_\+measures\+::l2\+\_\+between\+\_\+seq (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{s1,  }\item[{const std\+::vector$<$ double $>$ \&}]{s2 }\end{DoxyParamCaption})}
 
+
+
+l2\+\_\+between\+\_\+seq returns the euclidean distance between two sequences 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1} & is a constant reference to the first sequence \\
+\hline
+{\em s2} & is a constant reference to the second sequence \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespaceerror__measures_a68fc80380a9ebcd362bfcdb1c3327d0f}\label{namespaceerror__measures_a68fc80380a9ebcd362bfcdb1c3327d0f} 
 \index{error\_measures@{error\_measures}!maxdev\_between\_seq@{maxdev\_between\_seq}}
 \index{maxdev\_between\_seq@{maxdev\_between\_seq}!error\_measures@{error\_measures}}
 \doxysubsubsection{\texorpdfstring{maxdev\_between\_seq()}{maxdev\_between\_seq()}}
 {\footnotesize\ttfamily double error\+\_\+measures\+::maxdev\+\_\+between\+\_\+seq (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{s1,  }\item[{const std\+::vector$<$ double $>$ \&}]{s2 }\end{DoxyParamCaption})}
 
+
+
+maxdev\+\_\+between\+\_\+seq returns the maximum deviation between two sequences 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1} & is a constant reference to the first sequence \\
+\hline
+{\em s2} & is a constant reference to the second sequence \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespaceerror__measures_a603b138b0d639b74868efeebfce97b5b}\label{namespaceerror__measures_a603b138b0d639b74868efeebfce97b5b} 
 \index{error\_measures@{error\_measures}!mse\_between\_seq@{mse\_between\_seq}}
 \index{mse\_between\_seq@{mse\_between\_seq}!error\_measures@{error\_measures}}
 \doxysubsubsection{\texorpdfstring{mse\_between\_seq()}{mse\_between\_seq()}}
 {\footnotesize\ttfamily double error\+\_\+measures\+::mse\+\_\+between\+\_\+seq (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{s1,  }\item[{const std\+::vector$<$ double $>$ \&}]{s2 }\end{DoxyParamCaption})}
 
+
+
+mse\+\_\+between\+\_\+seq returns the mean squared error between two sequences 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1} & is a constant reference to the first sequence \\
+\hline
+{\em s2} & is a constant reference to the second sequence \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespaceerror__measures_ad82e403463b71adfd8c735c82999db41}\label{namespaceerror__measures_ad82e403463b71adfd8c735c82999db41} 
 \index{error\_measures@{error\_measures}!se\_between\_ptrs@{se\_between\_ptrs}}
 \index{se\_between\_ptrs@{se\_between\_ptrs}!error\_measures@{error\_measures}}
 \doxysubsubsection{\texorpdfstring{se\_between\_ptrs()}{se\_between\_ptrs()}}
 {\footnotesize\ttfamily double error\+\_\+measures\+::se\+\_\+between\+\_\+ptrs (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{s1\+\_\+start,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{s1\+\_\+end,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{s2\+\_\+start,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{s2\+\_\+end }\end{DoxyParamCaption})}
 
+
+
+se\+\_\+between\+\_\+ptrs returns the squared error between two sequences, passed as pointers 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1\+\_\+start} & is a constant pointer to a first sequence start \\
+\hline
+{\em s1\+\_\+end} & is a constant pointer to a first sequence end \\
+\hline
+{\em s2\+\_\+start} & is a constant pointer to a second sequence start \\
+\hline
+{\em s2\+\_\+end} & is a constant pointer to a second sequence end \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespaceerror__measures_aab210685ae87e5cbe7c4c13f14aa8efd}\label{namespaceerror__measures_aab210685ae87e5cbe7c4c13f14aa8efd} 
 \index{error\_measures@{error\_measures}!se\_between\_seq@{se\_between\_seq}}
 \index{se\_between\_seq@{se\_between\_seq}!error\_measures@{error\_measures}}
 \doxysubsubsection{\texorpdfstring{se\_between\_seq()}{se\_between\_seq()}}
 {\footnotesize\ttfamily double error\+\_\+measures\+::se\+\_\+between\+\_\+seq (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{s1,  }\item[{const std\+::vector$<$ double $>$ \&}]{s2 }\end{DoxyParamCaption})}
 
+
+
+se\+\_\+between\+\_\+seq returns the squared error between two sequences 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1} & is a constant reference to the first sequence \\
+\hline
+{\em s2} & is a constant reference to the second sequence \\
+\hline
+\end{DoxyParams}

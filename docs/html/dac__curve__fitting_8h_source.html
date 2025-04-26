@@ -84,27 +84,26 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">dac_curve_fitting.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DAC_CURVE_FITTING_H</span></div>
+<a href="dac__curve__fitting_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DAC_CURVE_FITTING_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define DAC_CURVE_FITTING_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//Algorithms used and adapted from paper &quot;Approximate Queries and Representations for Large Data Sequences&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">//</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;pla.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span>dac_curve_fitting {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  std::vector&lt;std::tuple&lt;double, unsigned int&gt;&gt; dac_constant( <span class="keyword">const</span> std::vector&lt;double&gt;&amp; s, <span class="keywordtype">double</span> epsilon); </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  std::vector&lt;std::tuple&lt;double, unsigned int&gt;&gt; dac_constant_params( <span class="keyword">const</span> std::vector&lt;double&gt;&amp; s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params); </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  std::vector&lt;std::tuple&lt;DoublePair, unsigned int&gt;&gt; dac_linear( <span class="keyword">const</span> std::vector&lt;double&gt;&amp; s, <span class="keywordtype">double</span> epsilon);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  std::vector&lt;std::tuple&lt;DoublePair, unsigned int&gt;&gt; dac_linear_early_cutoff( <span class="keyword">const</span> std::vector&lt;double&gt;&amp; s, <span class="keywordtype">double</span> epsilon, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_seg);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="pla_8h.html">pla.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespacedac__curve__fitting.html">   14</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacedac__curve__fitting.html">dac_curve_fitting</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespacedac__curve__fitting.html#ae9506ade13e213ffa8c42de4c61bfa79">   21</a></span>  <a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> <a class="code hl_function" href="namespacedac__curve__fitting.html#ae9506ade13e213ffa8c42de4c61bfa79">dac_linear</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; s, <span class="keywordtype">double</span> epsilon);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespacedac__curve__fitting.html#a100f685848f4518e364a9357e49e5c13">   29</a></span>  <a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> <a class="code hl_function" href="namespacedac__curve__fitting.html#a100f685848f4518e364a9357e49e5c13">dac_linear_early_cutoff</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; s, <span class="keywordtype">double</span> epsilon, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_seg);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespacedac__curve__fitting_html"><div class="ttname"><a href="namespacedac__curve__fitting.html">dac_curve_fitting</a></div><div class="ttdoc">dac_curve_fitting namespace holds function for top down approximation</div><div class="ttdef"><b>Definition</b> dac_curve_fitting.h:14</div></div>
+<div class="ttc" id="anamespacedac__curve__fitting_html_a100f685848f4518e364a9357e49e5c13"><div class="ttname"><a href="namespacedac__curve__fitting.html#a100f685848f4518e364a9357e49e5c13">dac_curve_fitting::dac_linear_early_cutoff</a></div><div class="ttdeci">Seqddt dac_linear_early_cutoff(const Seqd &amp;s, double epsilon, unsigned int num_seg)</div><div class="ttdoc">dac_linear_early_cutoff is the RDP form of the top down algorithm that cuts off early if it reaches t...</div></div>
+<div class="ttc" id="anamespacedac__curve__fitting_html_ae9506ade13e213ffa8c42de4c61bfa79"><div class="ttname"><a href="namespacedac__curve__fitting.html#ae9506ade13e213ffa8c42de4c61bfa79">dac_curve_fitting::dac_linear</a></div><div class="ttdeci">Seqddt dac_linear(const Seqd &amp;s, double epsilon)</div><div class="ttdoc">dac_linear is the RDP form of the top down algorithm</div></div>
+<div class="ttc" id="apla_8h_html"><div class="ttname"><a href="pla_8h.html">pla.h</a></div></div>
+<div class="ttc" id="apla_8h_html_a5d3953cd3e75718fc534b351149f9f98"><div class="ttname"><a href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></div><div class="ttdeci">std::vector&lt; double &gt; Seqd</div><div class="ttdoc">Seqd is an array of double values, representing a sequence.</div><div class="ttdef"><b>Definition</b> pla.h:24</div></div>
+<div class="ttc" id="apla_8h_html_ad8b9cde7efeaabcc857cf363312e58fc"><div class="ttname"><a href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; DoublePair, unsigned int &gt; &gt; Seqddt</div><div class="ttdoc">Seqddt is an array of triples, representing the information for an adaptive PLA segment.</div><div class="ttdef"><b>Definition</b> pla.h:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

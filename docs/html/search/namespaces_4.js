@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['z_5fnorm_0',['z_norm',['../namespacez__norm.html',1,'']]]
+  ['error_5fmeasures_0',['error_measures',['../namespaceerror__measures.html',1,'']]],
+  ['exact_5fdp_1',['exact_dp',['../namespaceexact__dp.html',1,'']]]
 ];

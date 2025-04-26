@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['vec_5fto_5fmbr_0',['vec_to_mbr',['../namespaceapla__bounds.html#a18678a7d9d73451fe2cc8f9f8fa83478',1,'apla_bounds']]],
-  ['vec_5fto_5fsubseq_5fmbrs_1',['vec_to_subseq_mbrs',['../namespaceapla__bounds.html#ac47c3b7ea4820955ef0e1abdc019cf72',1,'apla_bounds']]]
+  ['z_5fnorm_0',['z_norm',['../namespacez__norm.html',1,'']]],
+  ['z_5fnorm_2eh_1',['z_norm.h',['../z__norm_8h.html',1,'']]],
+  ['z_5fnormalise_2',['z_normalise',['../namespacez__norm.html#aa356cedca43e989885ceb0fee1e2d660',1,'z_norm']]]
 ];

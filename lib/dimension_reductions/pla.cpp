@@ -63,7 +63,7 @@ double pla::regression_thru_point(double first_point, const double* const start,
 }
 
 // w is num items compressed to a linear function
-vector<DoublePair> pla::sliding_window_regression( const vector<double>& series, unsigned int w)
+vector<DoublePair> pla::subsequence_regression( const vector<double>& series, unsigned int w)
 {
   vector<DoublePair> r_pairs;
   for (int i=0; i<series.size() - w; ++i) {
@@ -72,7 +72,7 @@ vector<DoublePair> pla::sliding_window_regression( const vector<double>& series,
   return r_pairs;
 }
 
-vector<DoublePair> pla::chunk_regression( const vector<double>& series, unsigned int num_params)
+vector<DoublePair> pla::pla( const vector<double>& series, unsigned int num_params)
 {
   unsigned int interval_size = (2*series.size() / num_params) + ( (2*series.size()) % num_params != 0);
   vector<DoublePair> r_pairs;
@@ -86,14 +86,10 @@ vector<DoublePair> pla::chunk_regression( const vector<double>& series, unsigned
   return r_pairs;
 }
 
-vector<DoublePair> pla::pla(const std::vector<double> &series, unsigned int num_params)
-{
-  return chunk_regression(series, num_params);
-};
 
 double pla::pla_mse(const vector<double> &series, unsigned int num_params)
 {
-  vector<DoublePair> pla_series = pla::chunk_regression(series, num_params);
+  vector<DoublePair> pla_series = pla::pla(series, num_params);
   unsigned int interval_size = (2*series.size() / num_params) + ( (2*series.size()) % num_params != 0);
 
   double mse = 0.0;

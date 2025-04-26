@@ -1,15 +1,23 @@
 \doxysection{seq\+\_\+scan Namespace Reference}
 \hypertarget{namespaceseq__scan}{}\label{namespaceseq__scan}\index{seq\_scan@{seq\_scan}}
+
+
+\doxylink{namespaceseq__scan}{seq\+\_\+scan} is namespace for solutions to simsearch and k-\/nn by sequential scan  
+
+
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 double \mbox{\hyperlink{namespaceseq__scan_a1935c2507450b83d4a577291bcff2160}{l2\+\_\+sqr}} (const double \texorpdfstring{$\ast$}{*}const s1start, const double \texorpdfstring{$\ast$}{*}const s2start, unsigned int len)
-\item 
+\begin{DoxyCompactList}\small\item\em l2\+\_\+sqr returns the squared error of the two sequences \end{DoxyCompactList}\item 
 std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceseq__scan_a40153bf4066521b14e3a1c59fd282ecf}{find\+\_\+similar\+\_\+subseq\+\_\+indexes}} (const std\+::vector$<$ double $>$ \&series, const std\+::vector$<$ double $>$ \&query, double epsilon)
-\item 
+\begin{DoxyCompactList}\small\item\em find\+\_\+similar\+\_\+subseq\+\_\+indexes finds all subsequences of series that are within epsilon of query \end{DoxyCompactList}\item 
 std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceseq__scan_aabba1db0fbefa1e36cf02922e325db55}{find\+\_\+k\+\_\+closest\+\_\+indexes}} (const std\+::vector$<$ double $>$ \&series, const std\+::vector$<$ double $>$ \&query, unsigned int k)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em find\+\_\+k\+\_\+closest\+\_\+indexes finds all the k closest subsequences to a query \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+\doxylink{namespaceseq__scan}{seq\+\_\+scan} is namespace for solutions to simsearch and k-\/nn by sequential scan 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{namespaceseq__scan_aabba1db0fbefa1e36cf02922e325db55}\label{namespaceseq__scan_aabba1db0fbefa1e36cf02922e325db55} 
@@ -18,15 +26,63 @@ std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceseq__scan_aabba1db0f
 \doxysubsubsection{\texorpdfstring{find\_k\_closest\_indexes()}{find\_k\_closest\_indexes()}}
 {\footnotesize\ttfamily vector$<$ unsigned int $>$ seq\+\_\+scan\+::find\+\_\+k\+\_\+closest\+\_\+indexes (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{series,  }\item[{const std\+::vector$<$ double $>$ \&}]{query,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
 
+
+
+find\+\_\+k\+\_\+closest\+\_\+indexes finds all the k closest subsequences to a query 
+
+
+\begin{DoxyParams}{Parameters}
+{\em series} & is the large time series to search for subsequences in \\
+\hline
+{\em query} & is the query sequence to search for similar sequences to \\
+\hline
+{\em k} & is the number of subsequences to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array of integers representing the start index of the k closest subsequences 
+\end{DoxyReturn}
 \Hypertarget{namespaceseq__scan_a40153bf4066521b14e3a1c59fd282ecf}\label{namespaceseq__scan_a40153bf4066521b14e3a1c59fd282ecf} 
 \index{seq\_scan@{seq\_scan}!find\_similar\_subseq\_indexes@{find\_similar\_subseq\_indexes}}
 \index{find\_similar\_subseq\_indexes@{find\_similar\_subseq\_indexes}!seq\_scan@{seq\_scan}}
 \doxysubsubsection{\texorpdfstring{find\_similar\_subseq\_indexes()}{find\_similar\_subseq\_indexes()}}
 {\footnotesize\ttfamily std\+::vector$<$ unsigned int $>$ seq\+\_\+scan\+::find\+\_\+similar\+\_\+subseq\+\_\+indexes (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{series,  }\item[{const std\+::vector$<$ double $>$ \&}]{query,  }\item[{double}]{epsilon }\end{DoxyParamCaption})}
 
+
+
+find\+\_\+similar\+\_\+subseq\+\_\+indexes finds all subsequences of series that are within epsilon of query 
+
+
+\begin{DoxyParams}{Parameters}
+{\em series} & is the large time series to search for subsequences in \\
+\hline
+{\em query} & is the query sequence to search for similar sequences to \\
+\hline
+{\em epsilon} & is the maximum allowed l2 error between a query and returned subseqence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array of integers representing the start index of a subsequence within epsilon 
+\end{DoxyReturn}
 \Hypertarget{namespaceseq__scan_a1935c2507450b83d4a577291bcff2160}\label{namespaceseq__scan_a1935c2507450b83d4a577291bcff2160} 
 \index{seq\_scan@{seq\_scan}!l2\_sqr@{l2\_sqr}}
 \index{l2\_sqr@{l2\_sqr}!seq\_scan@{seq\_scan}}
 \doxysubsubsection{\texorpdfstring{l2\_sqr()}{l2\_sqr()}}
 {\footnotesize\ttfamily double seq\+\_\+scan\+::l2\+\_\+sqr (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*}const}]{s1start,  }\item[{const double \texorpdfstring{$\ast$}{*}const}]{s2start,  }\item[{unsigned int}]{len }\end{DoxyParamCaption})}
 
+
+
+l2\+\_\+sqr returns the squared error of the two sequences 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1start} & points to beginning of s1 array \\
+\hline
+{\em s2start} & points to beginning of s2 array \\
+\hline
+{\em len} & is the length of both arrays \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the squared error between the sequences 
+\end{DoxyReturn}

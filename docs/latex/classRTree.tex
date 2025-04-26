@@ -1,52 +1,300 @@
 \doxysection{RTree\texorpdfstring{$<$}{<} R, I \texorpdfstring{$>$}{>} Class Template Reference}
 \hypertarget{classRTree}{}\label{classRTree}\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+
+
+\doxylink{classRTree}{RTree} is the partial implementation of a r tree from R-\/\+TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL SEARCHING.  
+
+
+
+
+{\ttfamily \#include $<$r\+\_\+tree.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classRTree_a97b0f3741fd2b8c3e288bc9406e70c86}{RTree}} (unsigned int max\+\_\+entries, unsigned int min\+\_\+entries, FPtr\+Area$<$ R $>$ area\+\_\+f, FPtr\+Area\+Merge$<$ R $>$ merge\+\_\+f, FPtr\+MBRDist\+Sqr$<$ R $>$ p\+\_\+dist\+\_\+f)
+\begin{DoxyCompactList}\small\item\em constructor for the r tree \end{DoxyCompactList}\item 
+\Hypertarget{classRTree_a86cfb0f17dd80e253e1cc674576510fc}\label{classRTree_a86cfb0f17dd80e253e1cc674576510fc} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+RTree} ()
+\begin{DoxyCompactList}\small\item\em destructor for r tree Requires a recursive (implemented non recursive to not crash stack) deletion of information from tree \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classRTree_a92841af75aaec6a807c54d006bfb338b}{get\+\_\+size\+\_\+tree}} ()
+\begin{DoxyCompactList}\small\item\em get\+\_\+size\+\_\+tree calculates the total number of entries in the tree \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classRTree_ad358f2ca0d4f40e8bd1ea21621e64c4b}{get\+\_\+size\+\_\+leaves}} ()
+\begin{DoxyCompactList}\small\item\em get\+\_\+size\+\_\+leaves calculates the total number of leaves in the tree \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classRTree_addf261f84ef6b766d6512f31b6a648bc}{get\+\_\+num\+\_\+leaves}} ()
+\begin{DoxyCompactList}\small\item\em get\+\_\+num\+\_\+leaves yields the total number of leaves in the tree, counted as they are entered \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRTree_a3a8761afebb62466aefe3cc06bbb1035}{insert}} (R mbr, I st\+\_\+index)
+\begin{DoxyCompactList}\small\item\em insert inserts a new sequence into the r tree \end{DoxyCompactList}\item 
+std\+::vector$<$ I $>$ \mbox{\hyperlink{classRTree_a3f17d051df33e1ff819680500e1f420e}{sim\+\_\+search}} (const std\+::vector$<$ double $>$ \&q, double epsilon)
+\begin{DoxyCompactList}\small\item\em sim\+\_\+search finds all subsequences of series that are within epsilon of query \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::array$<$ const double \texorpdfstring{$\ast$}{*}, 2 $>$ $>$ \mbox{\hyperlink{classRTree_a5146f5bb5caa00709a605b59dbf3205b}{knn\+\_\+search}} (const std\+::vector$<$ double $>$ \&q, unsigned int k, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
+\begin{DoxyCompactList}\small\item\em knn\+\_\+search finds k subsequences of series closest to q \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::array$<$ const double \texorpdfstring{$\ast$}{*}, 2 $>$ $>$ \mbox{\hyperlink{classRTree_a4fd4f559b224d20ae204b2c6e83e256a}{sim\+\_\+search\+\_\+exact}} (const std\+::vector$<$ double $>$ \&q, double epsilon, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
+\begin{DoxyCompactList}\small\item\em sim\+\_\+search\+\_\+exact finds all subsequences of series that are within epsilon of query \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classRTree_a452bf3d8ed2d011a32c2535655a09c07}{pruning\+\_\+power}} (const std\+::vector$<$ double $>$ \&q, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
+\begin{DoxyCompactList}\small\item\em pruning\+\_\+power returns the pruning power observed by trying a 1-\/NN search for q \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRTree_a48efff6097e2b92ff8fbe376844561cc}{split\+\_\+node}} (\mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*}const node)
+\begin{DoxyCompactList}\small\item\em split\+\_\+node modifies the current node and returns the additional node created in the split \end{DoxyCompactList}\item 
+std\+::array$<$ unsigned int, 2 $>$ \mbox{\hyperlink{classRTree_a97867888a52ce6cbf8507707d66a7ef5}{quad\+\_\+pick\+\_\+seeds}} (const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&mbrs)
+\begin{DoxyCompactList}\small\item\em quad\+\_\+pick\+\_\+seeds uses quadratic algorithm from paper to pick entries to start split from \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classRTree_a799d76a18114055ef07b8959f67abd4e}{quad\+\_\+pick\+\_\+next\+\_\+node}} (const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&mbrs, const std\+::set$<$ unsigned int $>$ \&g1, const R \&g1mbr, const std\+::set$<$ unsigned int $>$ \&g2, const R \&g2mbr)
+\begin{DoxyCompactList}\small\item\em quad\+\_\+pick\+\_\+next\+\_\+node picks the next node to be added to one of the splits \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename R, typename I$>$\newline
+class RTree$<$ R, I $>$}
+\doxylink{classRTree}{RTree} is the partial implementation of a r tree from R-\/\+TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL SEARCHING. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classRTree_a97b0f3741fd2b8c3e288bc9406e70c86}\label{classRTree_a97b0f3741fd2b8c3e288bc9406e70c86} 
-{\bfseries RTree} (unsigned int max\+\_\+entries, unsigned int min\+\_\+entries, FPtr\+Area$<$ R $>$ area\+\_\+f, FPtr\+Area\+Merge$<$ R $>$ merge\+\_\+f, FPtr\+MBRDist\+Sqr$<$ R $>$ p\+\_\+dist\+\_\+f)
-\item 
-\Hypertarget{classRTree_a92841af75aaec6a807c54d006bfb338b}\label{classRTree_a92841af75aaec6a807c54d006bfb338b} 
-unsigned int {\bfseries get\+\_\+size\+\_\+tree} ()
-\item 
-\Hypertarget{classRTree_ad358f2ca0d4f40e8bd1ea21621e64c4b}\label{classRTree_ad358f2ca0d4f40e8bd1ea21621e64c4b} 
-unsigned int {\bfseries get\+\_\+size\+\_\+leaves} ()
-\item 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!RTree@{RTree}}
+\index{RTree@{RTree}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{RTree()}{RTree()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+\mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\mbox{\hyperlink{classRTree}{\+::\+RTree}} (\begin{DoxyParamCaption}\item[{unsigned int}]{max\+\_\+entries,  }\item[{unsigned int}]{min\+\_\+entries,  }\item[{FPtr\+Area$<$ R $>$}]{area\+\_\+f,  }\item[{FPtr\+Area\+Merge$<$ R $>$}]{merge\+\_\+f,  }\item[{FPtr\+MBRDist\+Sqr$<$ R $>$}]{p\+\_\+dist\+\_\+f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+constructor for the r tree 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+entries} & is the desired maximum number of entries per node (recommended is 40) \\
+\hline
+{\em min\+\_\+entries} & is the desired minimum number of entries per node (recommended is 10) \\
+\hline
+{\em area\+\_\+f} & is a function to determine the area of a MBR \\
+\hline
+{\em merge\+\_\+f} & is a function to merge two MBR\textquotesingle{}s \\
+\hline
+{\em p\+\_\+dist\+\_\+f} & is a function to determine the distance from a series to a MBR (squared for comparison speed ups) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \Hypertarget{classRTree_addf261f84ef6b766d6512f31b6a648bc}\label{classRTree_addf261f84ef6b766d6512f31b6a648bc} 
-unsigned int {\bfseries get\+\_\+num\+\_\+leaves} ()
-\item 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!get\_num\_leaves@{get\_num\_leaves}}
+\index{get\_num\_leaves@{get\_num\_leaves}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{get\_num\_leaves()}{get\_num\_leaves()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+unsigned int \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::get\+\_\+num\+\_\+leaves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get\+\_\+num\+\_\+leaves yields the total number of leaves in the tree, counted as they are entered 
+
+\begin{DoxyReturn}{Returns}
+integer of number of leaves in tree 
+\end{DoxyReturn}
+\Hypertarget{classRTree_ad358f2ca0d4f40e8bd1ea21621e64c4b}\label{classRTree_ad358f2ca0d4f40e8bd1ea21621e64c4b} 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!get\_size\_leaves@{get\_size\_leaves}}
+\index{get\_size\_leaves@{get\_size\_leaves}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{get\_size\_leaves()}{get\_size\_leaves()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+unsigned int \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::get\+\_\+size\+\_\+leaves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+size\+\_\+leaves calculates the total number of leaves in the tree 
+
+\begin{DoxyReturn}{Returns}
+integer of number of leaves in tree 
+\end{DoxyReturn}
+\Hypertarget{classRTree_a92841af75aaec6a807c54d006bfb338b}\label{classRTree_a92841af75aaec6a807c54d006bfb338b} 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!get\_size\_tree@{get\_size\_tree}}
+\index{get\_size\_tree@{get\_size\_tree}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{get\_size\_tree()}{get\_size\_tree()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+unsigned int \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::get\+\_\+size\+\_\+tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+size\+\_\+tree calculates the total number of entries in the tree 
+
+\begin{DoxyReturn}{Returns}
+integer of number of entries in tree 
+\end{DoxyReturn}
 \Hypertarget{classRTree_a3a8761afebb62466aefe3cc06bbb1035}\label{classRTree_a3a8761afebb62466aefe3cc06bbb1035} 
-void {\bfseries insert} (R mbr, I st\+\_\+index)
-\item 
-\Hypertarget{classRTree_a3f17d051df33e1ff819680500e1f420e}\label{classRTree_a3f17d051df33e1ff819680500e1f420e} 
-std\+::vector$<$ I $>$ {\bfseries sim\+\_\+search} (const std\+::vector$<$ double $>$ \&q, double epsilon)
-\item 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!insert@{insert}}
+\index{insert@{insert}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+void \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::insert (\begin{DoxyParamCaption}\item[{R}]{mbr,  }\item[{I}]{st\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+insert inserts a new sequence into the r tree 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mbr} & is the mbr of the sequence \\
+\hline
+{\em st\+\_\+index} & is the indexing methods to retrieve the original sequence \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classRTree_a5146f5bb5caa00709a605b59dbf3205b}\label{classRTree_a5146f5bb5caa00709a605b59dbf3205b} 
-std\+::vector$<$ std\+::array$<$ const double \texorpdfstring{$\ast$}{*}, 2 $>$ $>$ {\bfseries knn\+\_\+search} (const std\+::vector$<$ double $>$ \&q, unsigned int k, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
-\item 
-\Hypertarget{classRTree_a4fd4f559b224d20ae204b2c6e83e256a}\label{classRTree_a4fd4f559b224d20ae204b2c6e83e256a} 
-std\+::vector$<$ std\+::array$<$ const double \texorpdfstring{$\ast$}{*}, 2 $>$ $>$ {\bfseries sim\+\_\+search\+\_\+exact} (const std\+::vector$<$ double $>$ \&q, double epsilon, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
-\item 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!knn\_search@{knn\_search}}
+\index{knn\_search@{knn\_search}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{knn\_search()}{knn\_search()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+std\+::vector$<$ std\+::array$<$ const double \texorpdfstring{$\ast$}{*}, 2 $>$ $>$ \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::knn\+\_\+search (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{q,  }\item[{unsigned int}]{k,  }\item[{FPtr\+Retrieval\+Method$<$ I $>$}]{retrieve\+\_\+f,  }\item[{const std\+::vector$<$ double $>$ \&}]{s }\end{DoxyParamCaption})}
+
+
+
+knn\+\_\+search finds k subsequences of series closest to q 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & is the query sequence to search for similar sequences to \\
+\hline
+{\em k} & is the number of sequences to find closest to q \\
+\hline
+{\em retrieve\+\_\+f} & a method to retrieve the original sequence using the indexing tool and a larger sequence \\
+\hline
+{\em s} & the larger sequence containing all additions to the r tree \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array of pointers to the sequences in the larger sequence s 
+\end{DoxyReturn}
 \Hypertarget{classRTree_a452bf3d8ed2d011a32c2535655a09c07}\label{classRTree_a452bf3d8ed2d011a32c2535655a09c07} 
-double {\bfseries pruning\+\_\+power} (const std\+::vector$<$ double $>$ \&q, FPtr\+Retrieval\+Method$<$ I $>$ retrieve\+\_\+f, const std\+::vector$<$ double $>$ \&s)
-\item 
-\Hypertarget{classRTree_a48efff6097e2b92ff8fbe376844561cc}\label{classRTree_a48efff6097e2b92ff8fbe376844561cc} 
-\mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*} {\bfseries split\+\_\+node} (\mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*}const node)
-\item 
-\Hypertarget{classRTree_a97867888a52ce6cbf8507707d66a7ef5}\label{classRTree_a97867888a52ce6cbf8507707d66a7ef5} 
-std\+::array$<$ unsigned int, 2 $>$ {\bfseries quad\+\_\+pick\+\_\+seeds} (const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&mbrs)
-\item 
-\Hypertarget{classRTree_ab451e6cc72bbc1fbafc0f9533f6f4c19}\label{classRTree_ab451e6cc72bbc1fbafc0f9533f6f4c19} 
-std\+::array$<$ unsigned int, 2 $>$ {\bfseries lin\+\_\+pick\+\_\+seeds} (const \mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*}const node)
-\item 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!pruning\_power@{pruning\_power}}
+\index{pruning\_power@{pruning\_power}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{pruning\_power()}{pruning\_power()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+double \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::pruning\+\_\+power (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{q,  }\item[{FPtr\+Retrieval\+Method$<$ I $>$}]{retrieve\+\_\+f,  }\item[{const std\+::vector$<$ double $>$ \&}]{s }\end{DoxyParamCaption})}
+
+
+
+pruning\+\_\+power returns the pruning power observed by trying a 1-\/NN search for q 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & is the query sequence \\
+\hline
+{\em retrieve\+\_\+f} & a method to retrieve the original sequence using the indexing tool and a larger sequence \\
+\hline
+{\em s} & the larger sequence containing all additions to the r tree \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the pruning power (number of sequences fetched) / (number of sequences in r tree) 
+\end{DoxyReturn}
 \Hypertarget{classRTree_a799d76a18114055ef07b8959f67abd4e}\label{classRTree_a799d76a18114055ef07b8959f67abd4e} 
-unsigned int {\bfseries quad\+\_\+pick\+\_\+next\+\_\+node} (const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&mbrs, const std\+::set$<$ unsigned int $>$ \&g1, const R \&g1mbr, const std\+::set$<$ unsigned int $>$ \&g2, const R \&g2mbr)
-\item 
-\Hypertarget{classRTree_a7b079cd57a3c09f535e0e98c7a7a604a}\label{classRTree_a7b079cd57a3c09f535e0e98c7a7a604a} 
-unsigned int {\bfseries lin\+\_\+pick\+\_\+next\+\_\+node} (const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&mbrs, const std\+::set$<$ unsigned int $>$ \&g1, const R \&g1mbr, const std\+::set$<$ unsigned int $>$ \&g2, const R \&g2mbr)
-\end{DoxyCompactItemize}
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!quad\_pick\_next\_node@{quad\_pick\_next\_node}}
+\index{quad\_pick\_next\_node@{quad\_pick\_next\_node}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{quad\_pick\_next\_node()}{quad\_pick\_next\_node()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+unsigned int \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::quad\+\_\+pick\+\_\+next\+\_\+node (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&}]{mbrs,  }\item[{const std\+::set$<$ unsigned int $>$ \&}]{g1,  }\item[{const R \&}]{g1mbr,  }\item[{const std\+::set$<$ unsigned int $>$ \&}]{g2,  }\item[{const R \&}]{g2mbr }\end{DoxyParamCaption})}
+
+
+
+quad\+\_\+pick\+\_\+next\+\_\+node picks the next node to be added to one of the splits 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mbrs} & is array of children to pick seeds from \\
+\hline
+{\em g1} & is set of children in first node \\
+\hline
+{\em g1mbr} & is current mbr covering its children \\
+\hline
+{\em g2} & is set of children in second node \\
+\hline
+{\em g2mbr} & is current mbr covering its children \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the next node to move to a set 
+\end{DoxyReturn}
+\Hypertarget{classRTree_a97867888a52ce6cbf8507707d66a7ef5}\label{classRTree_a97867888a52ce6cbf8507707d66a7ef5} 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!quad\_pick\_seeds@{quad\_pick\_seeds}}
+\index{quad\_pick\_seeds@{quad\_pick\_seeds}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{quad\_pick\_seeds()}{quad\_pick\_seeds()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+std\+::array$<$ unsigned int, 2 $>$ \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::quad\+\_\+pick\+\_\+seeds (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ const R \texorpdfstring{$\ast$}{*} $>$ \&}]{mbrs }\end{DoxyParamCaption})}
+
+
+
+quad\+\_\+pick\+\_\+seeds uses quadratic algorithm from paper to pick entries to start split from 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mbrs} & is array of children to pick seeds from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the two seeds 
+\end{DoxyReturn}
+\Hypertarget{classRTree_a3f17d051df33e1ff819680500e1f420e}\label{classRTree_a3f17d051df33e1ff819680500e1f420e} 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!sim\_search@{sim\_search}}
+\index{sim\_search@{sim\_search}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{sim\_search()}{sim\_search()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+std\+::vector$<$ I $>$ \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::sim\+\_\+search (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{q,  }\item[{double}]{epsilon }\end{DoxyParamCaption})}
+
+
+
+sim\+\_\+search finds all subsequences of series that are within epsilon of query 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & is the query sequence to search for similar sequences to \\
+\hline
+{\em epsilon} & is the maximum allowed l2 error between a query and returned subseqence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array of indexing tools representing the retrieval indexes for the sequences This function returns with false positives 
+\end{DoxyReturn}
+\Hypertarget{classRTree_a4fd4f559b224d20ae204b2c6e83e256a}\label{classRTree_a4fd4f559b224d20ae204b2c6e83e256a} 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!sim\_search\_exact@{sim\_search\_exact}}
+\index{sim\_search\_exact@{sim\_search\_exact}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{sim\_search\_exact()}{sim\_search\_exact()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+std\+::vector$<$ std\+::array$<$ const double \texorpdfstring{$\ast$}{*}, 2 $>$ $>$ \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::sim\+\_\+search\+\_\+exact (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{q,  }\item[{double}]{epsilon,  }\item[{FPtr\+Retrieval\+Method$<$ I $>$}]{retrieve\+\_\+f,  }\item[{const std\+::vector$<$ double $>$ \&}]{s }\end{DoxyParamCaption})}
+
+
+
+sim\+\_\+search\+\_\+exact finds all subsequences of series that are within epsilon of query 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & is the query sequence to search for similar sequences to \\
+\hline
+{\em epsilon} & is the maximum allowed l2 error between a query and returned subseqence \\
+\hline
+{\em retrieve\+\_\+f} & a method to retrieve the original sequence using the indexing tool and a larger sequence \\
+\hline
+{\em s} & the larger sequence containing all additions to the r tree \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array of pointers to the sequences in the larger sequence s 
+\end{DoxyReturn}
+\Hypertarget{classRTree_a48efff6097e2b92ff8fbe376844561cc}\label{classRTree_a48efff6097e2b92ff8fbe376844561cc} 
+\index{RTree$<$ R, I $>$@{RTree$<$ R, I $>$}!split\_node@{split\_node}}
+\index{split\_node@{split\_node}!RTree$<$ R, I $>$@{RTree$<$ R, I $>$}}
+\doxysubsubsection{\texorpdfstring{split\_node()}{split\_node()}}
+{\footnotesize\ttfamily template$<$typename R , typename I $>$ \\
+\mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRTree}{RTree}}$<$ R, I $>$\+::split\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRTreeNode}{RTree\+Node}}$<$ R, I $>$ \texorpdfstring{$\ast$}{*}const}]{node }\end{DoxyParamCaption})}
+
+
+
+split\+\_\+node modifies the current node and returns the additional node created in the split 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & is the node to split \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new node holding other half of entries 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-lib/similarity\+\_\+search/r\+\_\+tree.\+h\end{DoxyCompactItemize}
+lib/similarity\+\_\+search/\mbox{\hyperlink{r__tree_8h}{r\+\_\+tree.\+h}}\end{DoxyCompactItemize}

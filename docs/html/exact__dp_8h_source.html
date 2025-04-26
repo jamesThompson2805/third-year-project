@@ -84,26 +84,35 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">exact_dp.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef EXACT_H</span></div>
+<a href="exact__dp_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef EXACT_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define EXACT_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;pla.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>exact_dp { </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>std::vector&lt; std::tuple&lt; double, unsigned int&gt; &gt; min_mse_paa( <span class="keyword">const</span> std::vector&lt;double&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>std::vector&lt; std::tuple&lt; DoublePair, unsigned int&gt; &gt; min_mse_pla( <span class="keyword">const</span> std::vector&lt;double&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>std::vector&lt; std::tuple&lt; double, unsigned int&gt; &gt; min_maxdev_paa( <span class="keyword">const</span> std::vector&lt;double&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>std::vector&lt; std::tuple&lt; DoublePair, unsigned int&gt; &gt; min_maxdev_pla( <span class="keyword">const</span> std::vector&lt;double&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="pla_8h.html">pla.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespaceexact__dp.html">   16</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceexact__dp.html">exact_dp</a> { </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespaceexact__dp.html#ade4f0471277226224c2f1165a1991b5c">   23</a></span>std::vector&lt; std::tuple&lt; double, unsigned int&gt; &gt; <a class="code hl_function" href="namespaceexact__dp.html#ade4f0471277226224c2f1165a1991b5c">min_l2_paa</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespaceexact__dp.html#a429b32d3d5616f005721cf5bd3df037f">   30</a></span><a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> <a class="code hl_function" href="namespaceexact__dp.html#a429b32d3d5616f005721cf5bd3df037f">min_l2_pla</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespaceexact__dp.html#a8d42d15c1bc8429e8f1b3c1ed5c6954c">   38</a></span>std::vector&lt; std::tuple&lt; double, unsigned int&gt; &gt; <a class="code hl_function" href="namespaceexact__dp.html#a8d42d15c1bc8429e8f1b3c1ed5c6954c">min_maxdev_paa</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespaceexact__dp.html#a1dc775b8d4e515b880382a7444e37e9f">   45</a></span><a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> <a class="code hl_function" href="namespaceexact__dp.html#a1dc775b8d4e515b880382a7444e37e9f">min_maxdev_pla</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="ttc" id="anamespaceexact__dp_html"><div class="ttname"><a href="namespaceexact__dp.html">exact_dp</a></div><div class="ttdoc">exact_dp namespace contains all methods of exact_dp.h</div><div class="ttdef"><b>Definition</b> exact_dp.h:16</div></div>
+<div class="ttc" id="anamespaceexact__dp_html_a1dc775b8d4e515b880382a7444e37e9f"><div class="ttname"><a href="namespaceexact__dp.html#a1dc775b8d4e515b880382a7444e37e9f">exact_dp::min_maxdev_pla</a></div><div class="ttdeci">Seqddt min_maxdev_pla(const Seqd &amp;, unsigned int num_params)</div><div class="ttdoc">min_maxdev_pla finds optimal partition for pla under maximum deviation</div></div>
+<div class="ttc" id="anamespaceexact__dp_html_a429b32d3d5616f005721cf5bd3df037f"><div class="ttname"><a href="namespaceexact__dp.html#a429b32d3d5616f005721cf5bd3df037f">exact_dp::min_l2_pla</a></div><div class="ttdeci">Seqddt min_l2_pla(const Seqd &amp;, unsigned int num_params)</div><div class="ttdoc">min_l2_pla finds optimal partition for pla under euclidean distance</div></div>
+<div class="ttc" id="anamespaceexact__dp_html_a8d42d15c1bc8429e8f1b3c1ed5c6954c"><div class="ttname"><a href="namespaceexact__dp.html#a8d42d15c1bc8429e8f1b3c1ed5c6954c">exact_dp::min_maxdev_paa</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt; min_maxdev_paa(const Seqd &amp;s, unsigned int num_params)</div><div class="ttdoc">min_maxdev_paa finds optimal partition for paa under maximum deviation</div></div>
+<div class="ttc" id="anamespaceexact__dp_html_ade4f0471277226224c2f1165a1991b5c"><div class="ttname"><a href="namespaceexact__dp.html#ade4f0471277226224c2f1165a1991b5c">exact_dp::min_l2_paa</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt; min_l2_paa(const Seqd &amp;s, unsigned int num_params)</div><div class="ttdoc">min_l2_paa finds optimal partition for paa under euclidean distance</div></div>
+<div class="ttc" id="apla_8h_html"><div class="ttname"><a href="pla_8h.html">pla.h</a></div></div>
+<div class="ttc" id="apla_8h_html_a5d3953cd3e75718fc534b351149f9f98"><div class="ttname"><a href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></div><div class="ttdeci">std::vector&lt; double &gt; Seqd</div><div class="ttdoc">Seqd is an array of double values, representing a sequence.</div><div class="ttdef"><b>Definition</b> pla.h:24</div></div>
+<div class="ttc" id="apla_8h_html_ad8b9cde7efeaabcc857cf363312e58fc"><div class="ttname"><a href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; DoublePair, unsigned int &gt; &gt; Seqddt</div><div class="ttdoc">Seqddt is an array of triples, representing the information for an adaptive PLA segment.</div><div class="ttdef"><b>Definition</b> pla.h:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

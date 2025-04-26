@@ -6,17 +6,21 @@
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacepaa}{paa}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em paa namespace contains methods to convert sequence to paa, convert paa to sequence and convert adaptive paa to sequence \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 double \mbox{\hyperlink{namespacepaa_a68ac74e7b16183ec8ec20bb14324e5ad}{paa\+::get\+\_\+mean}} (const double \texorpdfstring{$\ast$}{*}const first, const double \texorpdfstring{$\ast$}{*}const last)
-\item 
+\begin{DoxyCompactList}\small\item\em get\+\_\+mean is fast method to find mean of an array, passed by a start and end pointer \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepaa_aa1a3e00d318ad80e92a4e44d28528558}{paa\+::paa}} (const std\+::vector$<$ double $>$ \&series, unsigned int num\+\_\+params)
-\item 
+\begin{DoxyCompactList}\small\item\em paa calculates the paa of a series \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespacepaa_a875071bc8994a59f1db28bc7e4776797}{paa\+::paa\+\_\+mse}} (const std\+::vector$<$ double $>$ \&series, unsigned int num\+\_\+params)
-\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepaa_a20c646514fbb9e98aaf78ae9166b59c8}{paa\+::paa\+\_\+to\+\_\+seq}} (const std\+::vector$<$ double $>$, unsigned int int\+\_\+size)
-\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepaa_a3191baa1967026df4e110d4c55d87d6c}{paa\+::apca\+\_\+to\+\_\+seq}} (const std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em paa\+\_\+mse calculates paa of series and finds the mean squared error of the approximation \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepaa_a07d3fab7f34492454e11cf92a17c8cc9}{paa\+::paa\+\_\+to\+\_\+seq}} (const std\+::vector$<$ double $>$ paa\+\_\+s, unsigned int int\+\_\+size)
+\begin{DoxyCompactList}\small\item\em paa\+\_\+to\+\_\+seq takes a paa approximation and its segment size and returns the full size approximation \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacepaa_a21e7d71ca678e0072f5e8098797e6b02}{paa\+::apca\+\_\+to\+\_\+seq}} (const std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ apca\+\_\+s)
+\begin{DoxyCompactList}\small\item\em apca\+\_\+to\+\_\+seq takes a apca approximation and returns the uncompressed approximation \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+contains the paa approximation 

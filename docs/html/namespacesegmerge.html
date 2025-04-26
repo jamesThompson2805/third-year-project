@@ -77,125 +77,40 @@ $(function() {
   <div class="headertitle"><div class="title">segmerge Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>segmerge namespace holds functions for splitting and merging approximations given the original sequence  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a003be0fe9132444b97aa8431ce28c43e" id="r_a003be0fe9132444b97aa8431ce28c43e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a003be0fe9132444b97aa8431ce28c43e">merge_1</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr)</td></tr>
+<tr class="memitem:a003be0fe9132444b97aa8431ce28c43e" id="r_a003be0fe9132444b97aa8431ce28c43e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a003be0fe9132444b97aa8431ce28c43e">merge_1</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;s_compr)</td></tr>
+<tr class="memdesc:a003be0fe9132444b97aa8431ce28c43e"><td class="mdescLeft">&#160;</td><td class="mdescRight">merge_1 function merges one segment in the approximation with its neighbour, merging only the closest two  <br /></td></tr>
 <tr class="separator:a003be0fe9132444b97aa8431ce28c43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7372588f2639347269b7162c00f0a7b9" id="r_a7372588f2639347269b7162c00f0a7b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7372588f2639347269b7162c00f0a7b9">merge_k</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="memitem:a7372588f2639347269b7162c00f0a7b9" id="r_a7372588f2639347269b7162c00f0a7b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7372588f2639347269b7162c00f0a7b9">merge_k</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="memdesc:a7372588f2639347269b7162c00f0a7b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">merge_k function merges k segments in the approximation with its neighbour, merging only the closest two each time  <br /></td></tr>
 <tr class="separator:a7372588f2639347269b7162c00f0a7b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b763f928c581ad8b36cb69467146f14" id="r_a6b763f928c581ad8b36cb69467146f14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b763f928c581ad8b36cb69467146f14">merge_to_dim</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="memitem:a6b763f928c581ad8b36cb69467146f14" id="r_a6b763f928c581ad8b36cb69467146f14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b763f928c581ad8b36cb69467146f14">merge_to_dim</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="memdesc:a6b763f928c581ad8b36cb69467146f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">merge_to_dim merges until the number of segments is k/3, making the dimension of the approximation k  <br /></td></tr>
 <tr class="separator:a6b763f928c581ad8b36cb69467146f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62dd1710f7bc31617f46fd3a72871155" id="r_a62dd1710f7bc31617f46fd3a72871155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62dd1710f7bc31617f46fd3a72871155">segment_1</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr)</td></tr>
+<tr class="memitem:a62dd1710f7bc31617f46fd3a72871155" id="r_a62dd1710f7bc31617f46fd3a72871155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62dd1710f7bc31617f46fd3a72871155">segment_1</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;s_compr)</td></tr>
+<tr class="memdesc:a62dd1710f7bc31617f46fd3a72871155"><td class="mdescLeft">&#160;</td><td class="mdescRight">segment_1 function splits one segment in the approximation  <br /></td></tr>
 <tr class="separator:a62dd1710f7bc31617f46fd3a72871155"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0840de794865d86f88de3ba422299e2d" id="r_a0840de794865d86f88de3ba422299e2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0840de794865d86f88de3ba422299e2d">segment_k</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="memitem:a0840de794865d86f88de3ba422299e2d" id="r_a0840de794865d86f88de3ba422299e2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0840de794865d86f88de3ba422299e2d">segment_k</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="memdesc:a0840de794865d86f88de3ba422299e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">segment_k function splits k segments in the approximation  <br /></td></tr>
 <tr class="separator:a0840de794865d86f88de3ba422299e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e2f34f54b29362bd04797382db7a43e" id="r_a7e2f34f54b29362bd04797382db7a43e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e2f34f54b29362bd04797382db7a43e">segment_to_dim</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="memitem:a7e2f34f54b29362bd04797382db7a43e" id="r_a7e2f34f54b29362bd04797382db7a43e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e2f34f54b29362bd04797382db7a43e">segment_to_dim</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="memdesc:a7e2f34f54b29362bd04797382db7a43e"><td class="mdescLeft">&#160;</td><td class="mdescRight">segment_to_dim splits until the number of segments is k/3, making the dimension of the approximation k  <br /></td></tr>
 <tr class="separator:a7e2f34f54b29362bd04797382db7a43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9de07ab2e62852c887dd73b4b709c21c" id="r_a9de07ab2e62852c887dd73b4b709c21c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9de07ab2e62852c887dd73b4b709c21c">maxdev_merge_1</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr)</td></tr>
-<tr class="separator:a9de07ab2e62852c887dd73b4b709c21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b81308934ee33c6fba9d1027fdea5dc" id="r_a6b81308934ee33c6fba9d1027fdea5dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b81308934ee33c6fba9d1027fdea5dc">maxdev_merge_k</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
-<tr class="separator:a6b81308934ee33c6fba9d1027fdea5dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a766f7ed3d66261ce3d7bb2945bd2dbb3" id="r_a766f7ed3d66261ce3d7bb2945bd2dbb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a766f7ed3d66261ce3d7bb2945bd2dbb3">maxdev_segment_1</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr)</td></tr>
-<tr class="separator:a766f7ed3d66261ce3d7bb2945bd2dbb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f31aaa6e041478bbeb1b9369ac0d704" id="r_a9f31aaa6e041478bbeb1b9369ac0d704"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f31aaa6e041478bbeb1b9369ac0d704">maxdev_segment_k</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
-<tr class="separator:a9f31aaa6e041478bbeb1b9369ac0d704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58ab3fb6dc7e7ba84904757e61b5c399" id="r_a58ab3fb6dc7e7ba84904757e61b5c399"><td class="memItemLeft" align="right" valign="top"><a id="a58ab3fb6dc7e7ba84904757e61b5c399" name="a58ab3fb6dc7e7ba84904757e61b5c399"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>segment_k_opt</b> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="separator:a58ab3fb6dc7e7ba84904757e61b5c399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d096119bea93bf4319a4e0f9141e9b3" id="r_a1d096119bea93bf4319a4e0f9141e9b3"><td class="memItemLeft" align="right" valign="top"><a id="a1d096119bea93bf4319a4e0f9141e9b3" name="a1d096119bea93bf4319a4e0f9141e9b3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>merge_k_opt</b> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, <a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;s_compr, unsigned int k)</td></tr>
+<tr class="separator:a1d096119bea93bf4319a4e0f9141e9b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a9de07ab2e62852c887dd73b4b709c21c" name="a9de07ab2e62852c887dd73b4b709c21c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9de07ab2e62852c887dd73b4b709c21c">&#9670;&#160;</a></span>maxdev_merge_1()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void segmerge::maxdev_merge_1 </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6b81308934ee33c6fba9d1027fdea5dc" name="a6b81308934ee33c6fba9d1027fdea5dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b81308934ee33c6fba9d1027fdea5dc">&#9670;&#160;</a></span>maxdev_merge_k()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void segmerge::maxdev_merge_k </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>k</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a766f7ed3d66261ce3d7bb2945bd2dbb3" name="a766f7ed3d66261ce3d7bb2945bd2dbb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a766f7ed3d66261ce3d7bb2945bd2dbb3">&#9670;&#160;</a></span>maxdev_segment_1()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void segmerge::maxdev_segment_1 </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9f31aaa6e041478bbeb1b9369ac0d704" name="a9f31aaa6e041478bbeb1b9369ac0d704"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f31aaa6e041478bbeb1b9369ac0d704">&#9670;&#160;</a></span>maxdev_segment_k()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void segmerge::maxdev_segment_k </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>k</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>segmerge namespace holds functions for splitting and merging approximations given the original sequence </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a003be0fe9132444b97aa8431ce28c43e" name="a003be0fe9132444b97aa8431ce28c43e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a003be0fe9132444b97aa8431ce28c43e">&#9670;&#160;</a></span>merge_1()</h2>
 
@@ -205,15 +120,24 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void segmerge::merge_1 </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>merge_1 function merges one segment in the approximation with its neighbour, merging only the closest two </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>is the original sequence </td></tr>
+    <tr><td class="paramname">s_compr</td><td>is its compressed representation </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -226,12 +150,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void segmerge::merge_k </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
+          <td class="paramtype"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -240,6 +164,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>merge_k function merges k segments in the approximation with its neighbour, merging only the closest two each time </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>is the original sequence </td></tr>
+    <tr><td class="paramname">s_compr</td><td>is its compressed representation </td></tr>
+    <tr><td class="paramname">k</td><td>is the number of merges to perform </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -252,12 +186,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void segmerge::merge_to_dim </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
+          <td class="paramtype"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -266,6 +200,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>merge_to_dim merges until the number of segments is k/3, making the dimension of the approximation k </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>is the original sequence </td></tr>
+    <tr><td class="paramname">s_compr</td><td>is its compressed representation </td></tr>
+    <tr><td class="paramname">k</td><td>is the dimension to leave the approximation at </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -278,15 +222,24 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void segmerge::segment_1 </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>segment_1 function splits one segment in the approximation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>is the original sequence </td></tr>
+    <tr><td class="paramname">s_compr</td><td>is its compressed representation </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -299,12 +252,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void segmerge::segment_k </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
+          <td class="paramtype"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -313,6 +266,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>segment_k function splits k segments in the approximation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>is the original sequence </td></tr>
+    <tr><td class="paramname">s_compr</td><td>is its compressed representation </td></tr>
+    <tr><td class="paramname">k</td><td>is the number of segments to perform </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -325,12 +288,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void segmerge::segment_to_dim </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
+          <td class="paramtype"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_compr</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -339,6 +302,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>segment_to_dim splits until the number of segments is k/3, making the dimension of the approximation k </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>is the original sequence </td></tr>
+    <tr><td class="paramname">s_compr</td><td>is its compressed representation </td></tr>
+    <tr><td class="paramname">k</td><td>is the dimension to leave the approximation at </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

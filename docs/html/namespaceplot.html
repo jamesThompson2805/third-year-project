@@ -101,6 +101,15 @@ Functions</h2></td></tr>
 <tr class="memitem:aeee601ec3f6e6fdecf57bafad3e6bc81" id="r_aeee601ec3f6e6fdecf57bafad3e6bc81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeee601ec3f6e6fdecf57bafad3e6bc81">plot_lines_generated</a> (const std::vector&lt; double &gt; &amp;s, std::vector&lt; unsigned int &gt; x, std::vector&lt; <a class="el" href="structLineGenerator.html">LineGenerator</a> &gt; y_gens, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
 <tr class="memdesc:aeee601ec3f6e6fdecf57bafad3e6bc81"><td class="mdescLeft">&#160;</td><td class="mdescRight">plot_lines_generated plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed.  <br /></td></tr>
 <tr class="separator:aeee601ec3f6e6fdecf57bafad3e6bc81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cc9d7fb165975ac04d03074341e77bb" id="r_a7cc9d7fb165975ac04d03074341e77bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cc9d7fb165975ac04d03074341e77bb">plot_bars_generated</a> (const std::vector&lt; double &gt; &amp;s, std::vector&lt; unsigned int &gt; x, std::vector&lt; <a class="el" href="structLineGenerator.html">LineGenerator</a> &gt; y_gens, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
+<tr class="memdesc:a7cc9d7fb165975ac04d03074341e77bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">plot_bars_generated plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed, these are plotted as individual bars.  <br /></td></tr>
+<tr class="separator:a7cc9d7fb165975ac04d03074341e77bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f3b8d742538c3570b021543d9ed75dc" id="r_a6f3b8d742538c3570b021543d9ed75dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f3b8d742538c3570b021543d9ed75dc">plot_barsPG_generated</a> (const std::vector&lt; double &gt; &amp;s, std::vector&lt; double &gt; x, std::vector&lt; <a class="el" href="structLinePGGenerator.html">LinePGGenerator</a> &gt; y_gens, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
+<tr class="memdesc:a6f3b8d742538c3570b021543d9ed75dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">plot_barsPG_generated plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed, these are plotted as individual bars.  <br /></td></tr>
+<tr class="separator:a6f3b8d742538c3570b021543d9ed75dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa92ac515f026f7d38a82b8cb04c2a1b8" id="r_aa92ac515f026f7d38a82b8cb04c2a1b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa92ac515f026f7d38a82b8cb04c2a1b8">plot_mean_bars_generated</a> (const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;vs, std::vector&lt; unsigned int &gt; x, std::vector&lt; <a class="el" href="structLineGenerator.html">LineGenerator</a> &gt; y_gens, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
+<tr class="memdesc:aa92ac515f026f7d38a82b8cb04c2a1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">plot_mean_bars_generated plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed, the point plotted is the mean result of the datasets.  <br /></td></tr>
+<tr class="separator:aa92ac515f026f7d38a82b8cb04c2a1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26ef79e3b6b6e5dcf436afb3e2310ae2" id="r_a26ef79e3b6b6e5dcf436afb3e2310ae2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26ef79e3b6b6e5dcf436afb3e2310ae2">plot_lines_generated_ucr_average</a> (const std::vector&lt; std::string &gt; &amp;dataset_names, std::string dataset_filepath, unsigned int ds_size, std::vector&lt; unsigned int &gt; x, std::vector&lt; <a class="el" href="structLineGenerator.html">LineGenerator</a> &gt; y_gens, <a class="el" href="structPlotDetails.html">PlotDetails</a> p)</td></tr>
 <tr class="memdesc:a26ef79e3b6b6e5dcf436afb3e2310ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">plot_lines_generated_ucr_average plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed, utilising multiple UCR datasets.  <br /></td></tr>
 <tr class="separator:a26ef79e3b6b6e5dcf436afb3e2310ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,6 +147,90 @@ Functions</h2></td></tr>
     <tr><td class="paramname">vs</td><td>Is the vector of all <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> to be plotted. Each series should denote one 'case's set of bars for each group, for example, perhaps you are comparing price of apples and pears bought by Alice, Bob and Charlie. Then passing { {1,3}, {4,3}, {5,6} } indicates Alice bought 1 apple, 3 pears, Bob bought 4 apples, 3 pears and so forth. </td></tr>
     <tr><td class="paramname">group_labels</td><td>Is a vector that gives a label to each group which should be of a length equal or greater to that of the inner lists. Using the example beforehand, passing { "apple", "pear" } would be the correct labels for the groups </td></tr>
     <tr><td class="paramname">p</td><td>Is the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7cc9d7fb165975ac04d03074341e77bb" name="a7cc9d7fb165975ac04d03074341e77bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cc9d7fb165975ac04d03074341e77bb">&#9670;&#160;</a></span>plot_bars_generated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void plot::plot_bars_generated </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; unsigned int &gt;</td>          <td class="paramname"><span class="paramname"><em>x</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structLineGenerator.html">LineGenerator</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>y_gens</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPlotDetails.html">PlotDetails</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>plot_bars_generated plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed, these are plotted as individual bars. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>ls the baseline series. </td></tr>
+    <tr><td class="paramname">x</td><td>Is the underlying x-axis to plot on (and the values passed to the parameter of <a class="el" href="structLineGenerator.html" title="Struct stores a method for plotting approximations that vary according to some unsigned int parameter...">LineGenerator</a>). </td></tr>
+    <tr><td class="paramname">y_gens</td><td>Is the vector of <a class="el" href="structLineGenerator.html" title="Struct stores a method for plotting approximations that vary according to some unsigned int parameter...">LineGenerator</a> that provide method to vary approximation of s. </td></tr>
+    <tr><td class="paramname">p</td><td>Is the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> to render the graph. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6f3b8d742538c3570b021543d9ed75dc" name="a6f3b8d742538c3570b021543d9ed75dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f3b8d742538c3570b021543d9ed75dc">&#9670;&#160;</a></span>plot_barsPG_generated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void plot::plot_barsPG_generated </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt;</td>          <td class="paramname"><span class="paramname"><em>x</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structLinePGGenerator.html">LinePGGenerator</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>y_gens</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPlotDetails.html">PlotDetails</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>plot_barsPG_generated plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed, these are plotted as individual bars. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Is the baseline series. </td></tr>
+    <tr><td class="paramname">x</td><td>Is the underlying x-axis to plot on (and the values passed to the parameter of <a class="el" href="structLineGenerator.html" title="Struct stores a method for plotting approximations that vary according to some unsigned int parameter...">LineGenerator</a>). </td></tr>
+    <tr><td class="paramname">y_gens</td><td>Is the vector of <a class="el" href="structLineGenerator.html" title="Struct stores a method for plotting approximations that vary according to some unsigned int parameter...">LineGenerator</a> that provide method to vary approximation of s. </td></tr>
+    <tr><td class="paramname">p</td><td>Is the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> to render the graph. </td></tr>
   </table>
   </dd>
 </dl>
@@ -206,7 +299,7 @@ Functions</h2></td></tr>
 <p>plot_lines_generated plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>ls the baseline series. </td></tr>
+    <tr><td class="paramname">s</td><td>Is the baseline series. </td></tr>
     <tr><td class="paramname">x</td><td>Is the underlying x-axis to plot on (and the values passed to the parameter of <a class="el" href="structLineGenerator.html" title="Struct stores a method for plotting approximations that vary according to some unsigned int parameter...">LineGenerator</a>). </td></tr>
     <tr><td class="paramname">y_gens</td><td>Is the vector of <a class="el" href="structLineGenerator.html" title="Struct stores a method for plotting approximations that vary according to some unsigned int parameter...">LineGenerator</a> that provide method to vary approximation of s. </td></tr>
     <tr><td class="paramname">p</td><td>Is the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> to render the graph. </td></tr>
@@ -294,6 +387,48 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">vs</td><td>Is the vector of all <a class="el" href="structSeries.html" title="Struct stores a series and its name together.">Series</a> to be plotted. </td></tr>
     <tr><td class="paramname">p</td><td>Is the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa92ac515f026f7d38a82b8cb04c2a1b8" name="aa92ac515f026f7d38a82b8cb04c2a1b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa92ac515f026f7d38a82b8cb04c2a1b8">&#9670;&#160;</a></span>plot_mean_bars_generated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void plot::plot_mean_bars_generated </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vs</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; unsigned int &gt;</td>          <td class="paramname"><span class="paramname"><em>x</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structLineGenerator.html">LineGenerator</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>y_gens</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPlotDetails.html">PlotDetails</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>plot_mean_bars_generated plots all of the lines passed to it using the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> also passed, the point plotted is the mean result of the datasets. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vs</td><td>Is a collection of datasets to perform the DRTs on. </td></tr>
+    <tr><td class="paramname">x</td><td>Is the underlying x-axis to plot on (and the values passed to the parameter of <a class="el" href="structLineGenerator.html" title="Struct stores a method for plotting approximations that vary according to some unsigned int parameter...">LineGenerator</a>). </td></tr>
+    <tr><td class="paramname">y_gens</td><td>Is the vector of <a class="el" href="structLineGenerator.html" title="Struct stores a method for plotting approximations that vary according to some unsigned int parameter...">LineGenerator</a> that provide method to vary approximation of s. </td></tr>
+    <tr><td class="paramname">p</td><td>Is the <a class="el" href="structPlotDetails.html" title="Struct containing parameters to be passed to any function wanting to render a plot.">PlotDetails</a> to render the graph. </td></tr>
   </table>
   </dd>
 </dl>

@@ -90,22 +90,30 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacepaa" id="r_namespacepaa"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepaa.html">paa</a></td></tr>
+<tr class="memdesc:namespacepaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">paa namespace contains methods to convert sequence to paa, convert paa to sequence and convert adaptive paa to sequence <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a68ac74e7b16183ec8ec20bb14324e5ad" id="r_a68ac74e7b16183ec8ec20bb14324e5ad"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepaa.html#a68ac74e7b16183ec8ec20bb14324e5ad">paa::get_mean</a> (const double *const first, const double *const last)</td></tr>
+<tr class="memdesc:a68ac74e7b16183ec8ec20bb14324e5ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_mean is fast method to find mean of an array, passed by a start and end pointer  <br /></td></tr>
 <tr class="separator:a68ac74e7b16183ec8ec20bb14324e5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1a3e00d318ad80e92a4e44d28528558" id="r_aa1a3e00d318ad80e92a4e44d28528558"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepaa.html#aa1a3e00d318ad80e92a4e44d28528558">paa::paa</a> (const std::vector&lt; double &gt; &amp;series, unsigned int num_params)</td></tr>
+<tr class="memdesc:aa1a3e00d318ad80e92a4e44d28528558"><td class="mdescLeft">&#160;</td><td class="mdescRight">paa calculates the paa of a series  <br /></td></tr>
 <tr class="separator:aa1a3e00d318ad80e92a4e44d28528558"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a875071bc8994a59f1db28bc7e4776797" id="r_a875071bc8994a59f1db28bc7e4776797"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepaa.html#a875071bc8994a59f1db28bc7e4776797">paa::paa_mse</a> (const std::vector&lt; double &gt; &amp;series, unsigned int num_params)</td></tr>
+<tr class="memdesc:a875071bc8994a59f1db28bc7e4776797"><td class="mdescLeft">&#160;</td><td class="mdescRight">paa_mse calculates paa of series and finds the mean squared error of the approximation  <br /></td></tr>
 <tr class="separator:a875071bc8994a59f1db28bc7e4776797"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20c646514fbb9e98aaf78ae9166b59c8" id="r_a20c646514fbb9e98aaf78ae9166b59c8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepaa.html#a20c646514fbb9e98aaf78ae9166b59c8">paa::paa_to_seq</a> (const std::vector&lt; double &gt;, unsigned int int_size)</td></tr>
-<tr class="separator:a20c646514fbb9e98aaf78ae9166b59c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3191baa1967026df4e110d4c55d87d6c" id="r_a3191baa1967026df4e110d4c55d87d6c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepaa.html#a3191baa1967026df4e110d4c55d87d6c">paa::apca_to_seq</a> (const std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt;)</td></tr>
-<tr class="separator:a3191baa1967026df4e110d4c55d87d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d3fab7f34492454e11cf92a17c8cc9" id="r_a07d3fab7f34492454e11cf92a17c8cc9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepaa.html#a07d3fab7f34492454e11cf92a17c8cc9">paa::paa_to_seq</a> (const std::vector&lt; double &gt; paa_s, unsigned int int_size)</td></tr>
+<tr class="memdesc:a07d3fab7f34492454e11cf92a17c8cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">paa_to_seq takes a paa approximation and its segment size and returns the full size approximation  <br /></td></tr>
+<tr class="separator:a07d3fab7f34492454e11cf92a17c8cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e7d71ca678e0072f5e8098797e6b02" id="r_a21e7d71ca678e0072f5e8098797e6b02"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepaa.html#a21e7d71ca678e0072f5e8098797e6b02">paa::apca_to_seq</a> (const std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt; apca_s)</td></tr>
+<tr class="memdesc:a21e7d71ca678e0072f5e8098797e6b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">apca_to_seq takes a apca approximation and returns the uncompressed approximation  <br /></td></tr>
+<tr class="separator:a21e7d71ca678e0072f5e8098797e6b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>contains the paa approximation </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0

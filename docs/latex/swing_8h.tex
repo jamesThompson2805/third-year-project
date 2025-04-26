@@ -5,13 +5,15 @@
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespaceswing}{swing}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em swing namespace contains swing approximation \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \mbox{\hyperlink{namespaceswing_a67382ec4d48e68ce20d62a6c3d3ce565}{swing\+::swing}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
-\item 
-std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceswing_a1a084dbba070beb6485f42b8bfe600ff}{swing\+::swing\+\_\+compr}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
-\item 
-\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \mbox{\hyperlink{namespaceswing_adb5f90a6408d9e74ab50b5684091962d}{swing\+::slide}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespaceswing_a67382ec4d48e68ce20d62a6c3d3ce565}{swing\+::swing}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
+\begin{DoxyCompactList}\small\item\em swing converts series s to Adaptive PLA by use of maximum error epsilon \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::tuple$<$ double, unsigned int $>$ $>$ \mbox{\hyperlink{namespaceswing_a1a084dbba070beb6485f42b8bfe600ff}{swing\+::swing\+\_\+compr}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon)
+\begin{DoxyCompactList}\small\item\em swing\+\_\+compr converts series s to Adaptive PLA and exploits that segments share endpoints to reduce space \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+is header file containing implementation of SWING Filter Online Piece-\/wise Linear Approximation of Numerical Streams with Precision Guarantees 

@@ -84,23 +84,31 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">paa.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PAA_H</span></div>
+<a href="paa_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PAA_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PAA_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>paa {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  <span class="keywordtype">double</span> get_mean(<span class="keyword">const</span> <span class="keywordtype">double</span>* <span class="keyword">const</span> first, <span class="keyword">const</span> <span class="keywordtype">double</span>* <span class="keyword">const</span> last);</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  std::vector&lt;double&gt; paa(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; series, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keywordtype">double</span> paa_mse(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; series, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params); </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  std::vector&lt;double&gt; paa_to_seq(<span class="keyword">const</span> std::vector&lt;double&gt;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> int_size);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  std::vector&lt;double&gt; apca_to_seq(<span class="keyword">const</span> std::vector&lt; std::tuple&lt;double, unsigned int&gt;&gt;);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespacepaa.html">   14</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacepaa.html">paa</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordtype">double</span> <a class="code hl_function" href="namespacepaa.html#a68ac74e7b16183ec8ec20bb14324e5ad">get_mean</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>* <span class="keyword">const</span> first, <span class="keyword">const</span> <span class="keywordtype">double</span>* <span class="keyword">const</span> last);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespacepaa.html#aa1a3e00d318ad80e92a4e44d28528558">   29</a></span>  std::vector&lt;double&gt; <a class="code hl_namespace" href="namespacepaa.html">paa</a>(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; series, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespacepaa.html#a875071bc8994a59f1db28bc7e4776797">   37</a></span>  <span class="keywordtype">double</span> <a class="code hl_function" href="namespacepaa.html#a875071bc8994a59f1db28bc7e4776797">paa_mse</a>(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; series, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num_params); </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  std::vector&lt;double&gt; <a class="code hl_function" href="namespacepaa.html#a07d3fab7f34492454e11cf92a17c8cc9">paa_to_seq</a>(<span class="keyword">const</span> std::vector&lt;double&gt; paa_s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> int_size);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  std::vector&lt;double&gt; <a class="code hl_function" href="namespacepaa.html#a21e7d71ca678e0072f5e8098797e6b02">apca_to_seq</a>(<span class="keyword">const</span> std::vector&lt; std::tuple&lt;double, unsigned int&gt;&gt; apca_s);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespacepaa_html"><div class="ttname"><a href="namespacepaa.html">paa</a></div><div class="ttdoc">paa namespace contains methods to convert sequence to paa, convert paa to sequence and convert adapti...</div><div class="ttdef"><b>Definition</b> paa.h:14</div></div>
+<div class="ttc" id="anamespacepaa_html_a07d3fab7f34492454e11cf92a17c8cc9"><div class="ttname"><a href="namespacepaa.html#a07d3fab7f34492454e11cf92a17c8cc9">paa::paa_to_seq</a></div><div class="ttdeci">std::vector&lt; double &gt; paa_to_seq(const std::vector&lt; double &gt; paa_s, unsigned int int_size)</div><div class="ttdoc">paa_to_seq takes a paa approximation and its segment size and returns the full size approximation</div><div class="ttdef"><b>Definition</b> paa.cpp:50</div></div>
+<div class="ttc" id="anamespacepaa_html_a21e7d71ca678e0072f5e8098797e6b02"><div class="ttname"><a href="namespacepaa.html#a21e7d71ca678e0072f5e8098797e6b02">paa::apca_to_seq</a></div><div class="ttdeci">std::vector&lt; double &gt; apca_to_seq(const std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt; apca_s)</div><div class="ttdoc">apca_to_seq takes a apca approximation and returns the uncompressed approximation</div><div class="ttdef"><b>Definition</b> paa.cpp:60</div></div>
+<div class="ttc" id="anamespacepaa_html_a68ac74e7b16183ec8ec20bb14324e5ad"><div class="ttname"><a href="namespacepaa.html#a68ac74e7b16183ec8ec20bb14324e5ad">paa::get_mean</a></div><div class="ttdeci">double get_mean(const double *const first, const double *const last)</div><div class="ttdoc">get_mean is fast method to find mean of an array, passed by a start and end pointer</div><div class="ttdef"><b>Definition</b> paa.cpp:5</div></div>
+<div class="ttc" id="anamespacepaa_html_a875071bc8994a59f1db28bc7e4776797"><div class="ttname"><a href="namespacepaa.html#a875071bc8994a59f1db28bc7e4776797">paa::paa_mse</a></div><div class="ttdeci">double paa_mse(const std::vector&lt; double &gt; &amp;series, unsigned int num_params)</div><div class="ttdoc">paa_mse calculates paa of series and finds the mean squared error of the approximation</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

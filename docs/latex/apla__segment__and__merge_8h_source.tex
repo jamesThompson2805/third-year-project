@@ -1,32 +1,24 @@
 \doxysection{apla\+\_\+segment\+\_\+and\+\_\+merge.\+h}
 \hypertarget{apla__segment__and__merge_8h_source}{}\label{apla__segment__and__merge_8h_source}\index{lib/dimension\_reductions/apla\_segment\_and\_merge.h@{lib/dimension\_reductions/apla\_segment\_and\_merge.h}}
-
+\mbox{\hyperlink{apla__segment__and__merge_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ APLA\_SEGMENT\_AND\_MERGE\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ APLA\_SEGMENT\_AND\_MERGE\_H}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <tuple>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ Seqddt;}
-\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ std::vector<double>\ Seqd;}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }segmerge\ \{}
-\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{void}\ merge\_1(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr);}
-\DoxyCodeLine{00013\ \ \ \textcolor{keywordtype}{void}\ merge\_k(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
-\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{void}\ merge\_to\_dim(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
-\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{void}\ segment\_1(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr);}
-\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{void}\ segment\_k(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
-\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{void}\ segment\_to\_dim(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
-\DoxyCodeLine{00018\ \ \ }
-\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ maxdev\_merge\_1(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr);}
-\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{void}\ maxdev\_merge\_k(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
-\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ maxdev\_segment\_1(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr);}
-\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{void}\ maxdev\_segment\_k(\textcolor{keyword}{const}\ Seqd\&\ s,\ Seqddt\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pla_8h}{pla.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacesegmerge}{segmerge}}\ \{}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacesegmerge_a003be0fe9132444b97aa8431ce28c43e}{merge\_1}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s\_compr);}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacesegmerge_a7372588f2639347269b7162c00f0a7b9}{merge\_k}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacesegmerge_a6b763f928c581ad8b36cb69467146f14}{merge\_to\_dim}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacesegmerge_a62dd1710f7bc31617f46fd3a72871155}{segment\_1}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s\_compr);}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacesegmerge_a0840de794865d86f88de3ba422299e2d}{segment\_k}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacesegmerge_a7e2f34f54b29362bd04797382db7a43e}{segment\_to\_dim}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00055\ \ \ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ segment\_k\_opt(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ merge\_k\_opt(\textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\&\ s\_compr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -1,0 +1,37 @@
+\doxysection{Line\+PGGenerator Struct Reference}
+\hypertarget{structLinePGGenerator}{}\label{structLinePGGenerator}\index{LinePGGenerator@{LinePGGenerator}}
+
+
+Struct stores a method for plotting approximations that vary according to some double.  
+
+
+
+
+{\ttfamily \#include $<$series\+\_\+plotting.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structLinePGGenerator_a5126546a04d58a37a56a1609b8e19bb9}\label{structLinePGGenerator_a5126546a04d58a37a56a1609b8e19bb9} 
+std\+::function$<$ double(const std\+::vector$<$ double $>$ \&, double) {\bfseries result\+\_\+gen} )
+\item 
+\Hypertarget{structLinePGGenerator_a98cf1387d29ff8798b721ef6dbb7178b}\label{structLinePGGenerator_a98cf1387d29ff8798b721ef6dbb7178b} 
+std\+::string {\bfseries method\+\_\+name}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct stores a method for plotting approximations that vary according to some double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result\+\_\+gen} & Is a function that provides better or worse approximations of the passed in series based on parameter double. \\
+\hline
+{\em method\+\_\+name} & Is the name you want associated with the function. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/plotting/\mbox{\hyperlink{series__plotting_8h}{series\+\_\+plotting.\+h}}\end{DoxyCompactItemize}

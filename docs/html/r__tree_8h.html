@@ -82,6 +82,9 @@ $(function() {
   <div class="headertitle"><div class="title">r_tree.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="r__tree_8h.html" title="r_tree.h holds the definition and implementation of a r_tree suitable to use the new indexing scheme">r_tree.h</a> holds the definition and implementation of a r_tree suitable to use the new indexing scheme  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;set&gt;</code><br />
@@ -96,93 +99,37 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLeafEntry.html">LeafEntry&lt; R, I &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structLeafEntry.html" title="LeafEntry is a struct denoting a leaf in the tree meaning it holds indexes of the sequences the cover...">LeafEntry</a> is a struct denoting a leaf in the tree meaning it holds indexes of the sequences the cover covers.  <a href="structLeafEntry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRTreeNode.html">RTreeNode&lt; R, I &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structRTreeNode.html" title="RTreeNode is a non leaf node holding as children either other non-leaf nodes or leaves,...">RTreeNode</a> is a non leaf node holding as children either other non-leaf nodes or leaves, the mbr covers all children.  <a href="structRTreeNode.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTree.html">RTree&lt; R, I &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTree.html" title="RTree is the partial implementation of a r tree from R-TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL S...">RTree</a> is the partial implementation of a r tree from R-TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL SEARCHING.  <a href="classRTree.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ad60bfc97fde8786083d7bf328576bae1" id="r_ad60bfc97fde8786083d7bf328576bae1"><td class="memTemplParams" colspan="2">template&lt;typename R &gt; </td></tr>
-<tr class="memitem:ad60bfc97fde8786083d7bf328576bae1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad60bfc97fde8786083d7bf328576bae1">FPtrArea</a> = double (*)(const R&amp;)</td></tr>
+<tr class="memitem:ad60bfc97fde8786083d7bf328576bae1" id="r_ad60bfc97fde8786083d7bf328576bae1"><td class="memTemplParams" colspan="2"><a id="ad60bfc97fde8786083d7bf328576bae1" name="ad60bfc97fde8786083d7bf328576bae1"></a>
+template&lt;typename R &gt; </td></tr>
+<tr class="memitem:ad60bfc97fde8786083d7bf328576bae1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>FPtrArea</b> = double (*)(const R&amp;)</td></tr>
 <tr class="separator:ad60bfc97fde8786083d7bf328576bae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f54e54e5db6c31e6437761288cec7c4" id="r_a1f54e54e5db6c31e6437761288cec7c4"><td class="memTemplParams" colspan="2">template&lt;typename R &gt; </td></tr>
-<tr class="memitem:a1f54e54e5db6c31e6437761288cec7c4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1f54e54e5db6c31e6437761288cec7c4">FPtrAreaMerge</a> = R (*)(const R&amp;, const R&amp;)</td></tr>
+<tr class="memitem:a1f54e54e5db6c31e6437761288cec7c4" id="r_a1f54e54e5db6c31e6437761288cec7c4"><td class="memTemplParams" colspan="2"><a id="a1f54e54e5db6c31e6437761288cec7c4" name="a1f54e54e5db6c31e6437761288cec7c4"></a>
+template&lt;typename R &gt; </td></tr>
+<tr class="memitem:a1f54e54e5db6c31e6437761288cec7c4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>FPtrAreaMerge</b> = R (*)(const R&amp;, const R&amp;)</td></tr>
 <tr class="separator:a1f54e54e5db6c31e6437761288cec7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a872f76b0c4a5cbe12360cb8d0fa894f0" id="r_a872f76b0c4a5cbe12360cb8d0fa894f0"><td class="memTemplParams" colspan="2">template&lt;typename R &gt; </td></tr>
-<tr class="memitem:a872f76b0c4a5cbe12360cb8d0fa894f0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a872f76b0c4a5cbe12360cb8d0fa894f0">FPtrMBRDistSqr</a> = double (*)(const std::vector&lt;double&gt;&amp; q, const R&amp;)</td></tr>
+<tr class="memitem:a872f76b0c4a5cbe12360cb8d0fa894f0" id="r_a872f76b0c4a5cbe12360cb8d0fa894f0"><td class="memTemplParams" colspan="2"><a id="a872f76b0c4a5cbe12360cb8d0fa894f0" name="a872f76b0c4a5cbe12360cb8d0fa894f0"></a>
+template&lt;typename R &gt; </td></tr>
+<tr class="memitem:a872f76b0c4a5cbe12360cb8d0fa894f0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>FPtrMBRDistSqr</b> = double (*)(const std::vector&lt;double&gt;&amp; q, const R&amp;)</td></tr>
 <tr class="separator:a872f76b0c4a5cbe12360cb8d0fa894f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a764dcad950290738241fe961370f5d19" id="r_a764dcad950290738241fe961370f5d19"><td class="memTemplParams" colspan="2">template&lt;typename I &gt; </td></tr>
-<tr class="memitem:a764dcad950290738241fe961370f5d19"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a764dcad950290738241fe961370f5d19">FPtrRetrievalMethod</a> = std::vector&lt;std::array&lt;const double*, 2&gt;&gt; (*)(const I&amp;, const std::vector&lt;double&gt;&amp;)</td></tr>
+<tr class="memitem:a764dcad950290738241fe961370f5d19" id="r_a764dcad950290738241fe961370f5d19"><td class="memTemplParams" colspan="2"><a id="a764dcad950290738241fe961370f5d19" name="a764dcad950290738241fe961370f5d19"></a>
+template&lt;typename I &gt; </td></tr>
+<tr class="memitem:a764dcad950290738241fe961370f5d19"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>FPtrRetrievalMethod</b> = std::vector&lt;std::array&lt;const double*, 2&gt;&gt; (*)(const I&amp;, const std::vector&lt;double&gt;&amp;)</td></tr>
 <tr class="separator:a764dcad950290738241fe961370f5d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="ad60bfc97fde8786083d7bf328576bae1" name="ad60bfc97fde8786083d7bf328576bae1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad60bfc97fde8786083d7bf328576bae1">&#9670;&#160;</a></span>FPtrArea</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#ad60bfc97fde8786083d7bf328576bae1">FPtrArea</a> = double (*)(const R&amp;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1f54e54e5db6c31e6437761288cec7c4" name="a1f54e54e5db6c31e6437761288cec7c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f54e54e5db6c31e6437761288cec7c4">&#9670;&#160;</a></span>FPtrAreaMerge</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a1f54e54e5db6c31e6437761288cec7c4">FPtrAreaMerge</a> = R (*)(const R&amp;, const R&amp;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a872f76b0c4a5cbe12360cb8d0fa894f0" name="a872f76b0c4a5cbe12360cb8d0fa894f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a872f76b0c4a5cbe12360cb8d0fa894f0">&#9670;&#160;</a></span>FPtrMBRDistSqr</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename R &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a872f76b0c4a5cbe12360cb8d0fa894f0">FPtrMBRDistSqr</a> = double (*)(const std::vector&lt;double&gt;&amp; q, const R&amp;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a764dcad950290738241fe961370f5d19" name="a764dcad950290738241fe961370f5d19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a764dcad950290738241fe961370f5d19">&#9670;&#160;</a></span>FPtrRetrievalMethod</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename I &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a764dcad950290738241fe961370f5d19">FPtrRetrievalMethod</a> = std::vector&lt;std::array&lt;const double*, 2&gt;&gt; (*)(const I&amp;, const std::vector&lt;double&gt;&amp;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="r__tree_8h.html" title="r_tree.h holds the definition and implementation of a r_tree suitable to use the new indexing scheme">r_tree.h</a> holds the definition and implementation of a r_tree suitable to use the new indexing scheme </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0

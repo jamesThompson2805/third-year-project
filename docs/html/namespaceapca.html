@@ -77,13 +77,19 @@ $(function() {
   <div class="headertitle"><div class="title">apca Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>apca namespace contains only the apca approximation  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a947309cf543ab81054c6186648baf0ae" id="r_a947309cf543ab81054c6186648baf0ae"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a947309cf543ab81054c6186648baf0ae">apca</a> (const std::vector&lt; double &gt; &amp;s, unsigned int num_params)</td></tr>
+<tr class="memdesc:a947309cf543ab81054c6186648baf0ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">apca function converts a time series to an APCA form  <br /></td></tr>
 <tr class="separator:a947309cf543ab81054c6186648baf0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>apca namespace contains only the apca approximation </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a947309cf543ab81054c6186648baf0ae" name="a947309cf543ab81054c6186648baf0ae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a947309cf543ab81054c6186648baf0ae">&#9670;&#160;</a></span>apca()</h2>
 
@@ -102,6 +108,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>apca function converts a time series to an APCA form </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>is a series to convert </td></tr>
+    <tr><td class="paramname">num_params</td><td>is the dimension the approximation will occupy </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an array of pairs of a value and index where the value is the mean on the segment ending at the index, the array is sorted </dd></dl>
 
 </div>
 </div>

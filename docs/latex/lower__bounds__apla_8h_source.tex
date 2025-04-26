@@ -1,6 +1,6 @@
 \doxysection{lower\+\_\+bounds\+\_\+apla.\+h}
 \hypertarget{lower__bounds__apla_8h_source}{}\label{lower__bounds__apla_8h_source}\index{lib/similarity\_search/lower\_bounds\_apla.h@{lib/similarity\_search/lower\_bounds\_apla.h}}
-
+\mbox{\hyperlink{lower__bounds__apla_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LOWER\_BOUNDS\_APLA\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LOWER\_BOUNDS\_APLA\_H}}
@@ -11,182 +11,181 @@
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <cmath>}}
 \DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pla_8h}{pla.h}}"{}}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00013\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
-\DoxyCodeLine{00014\ \textcolor{keyword}{using\ }AplaPt\ =\ \ std::array<std::tuple<DoublePair,\ unsigned\ int>,S>;}
-\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ std::vector<double>\ Seqd;}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }apla\_bounds\ \{}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\ \{\ }
-\DoxyCodeLine{00020\ \ \ \ \ DoublePair\ min\_dp;}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_i;}
-\DoxyCodeLine{00022\ \ \ \ \ DoublePair\ max\_dp;}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_i;}
-\DoxyCodeLine{00024\ \ \ \};}
-\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
-\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{using\ }AplaMBR\ =\ std::array<Region,\ S>;}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{using\ }std::max,\ std::min;}
-\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ region\_area(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\&\ r)\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ width\ =\ r.max\_i\ -\/\ r.min\_i;}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{double}\ min\_a\ =\ r.min\_dp[0];}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{double}\ min\_b=\ \ r.min\_dp[0]\ +\ width*r.min\_dp[1];}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_a\ =\ r.max\_dp[0];}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_b=\ \ r.max\_dp[0]\ +\ width*r.max\_dp[1];}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ (min(max\_a,max\_b)\ -\/\ max(min\_a,min\_b))\ *\ width}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ +\ (max(max\_a,max\_b)\ -\/\ min(max\_a,max\_b))\ *\ width\ *\ 0.5}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ +\ (max(min\_a,min\_b)\ -\/\ min(min\_a,min\_b))\ *\ width\ *\ 0.5;}
-\DoxyCodeLine{00038\ \ \ \}}
-\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structRegion}{Region}}\ region\_merge(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r2)}
-\DoxyCodeLine{00040\ \ \ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_i\ =\ min(r1.min\_i,\ r2.min\_i);}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\ =\ max(r1.max\_i,\ r2.max\_i);}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\_i\ ==\ min\_i)\ \textcolor{keywordflow}{return}\ \{\ \{\ min(r1.min\_dp[0],r2.min\_dp[0]),0\}}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ (\textcolor{keywordtype}{unsigned}\ int)\ min\_i}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \{\ max(r1.max\_dp[0],r2.max\_dp[0]),0\}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ (\textcolor{keywordtype}{unsigned}\ int)\ max\_i\ \};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_i\_rel\_r1\ =\ min\_i\ -\/\ r1.min\_i;}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\_rel\_r1\ =\ max\_i\ -\/\ r1.min\_i;}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_i\_rel\_r2\ =\ min\_i\ -\/\ r2.min\_i;}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\_rel\_r2\ =\ max\_i\ -\/\ r2.min\_i;}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{double}\ r1\_lmax\ =\ r1.max\_dp[1]*min\_i\_rel\_r1\ +\ r1.max\_dp[0];}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{double}\ r1\_rmax\ =\ r1.max\_dp[1]*max\_i\_rel\_r1\ +\ r1.max\_dp[0];}
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{double}\ r2\_lmax\ =\ r2.max\_dp[1]*min\_i\_rel\_r2\ +\ r2.max\_dp[0];}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{double}\ r2\_rmax\ =\ r2.max\_dp[1]*max\_i\_rel\_r2\ +\ r2.max\_dp[0];}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{double}\ r1\_lmin\ =\ r1.min\_dp[1]*min\_i\_rel\_r1\ +\ r1.min\_dp[0];}
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{double}\ r1\_rmin\ =\ r1.min\_dp[1]*max\_i\_rel\_r1\ +\ r1.min\_dp[0];}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{double}\ r2\_lmin\ =\ r2.min\_dp[1]*min\_i\_rel\_r2\ +\ r2.min\_dp[0];}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{double}\ r2\_rmin\ =\ r2.min\_dp[1]*max\_i\_rel\_r2\ +\ r2.min\_dp[0];}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_lmax\ =\ max(\ max(r1\_lmax,\ r2\_lmax),\ max(r1\_lmin,\ r2\_lmin)\ );}
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_lmin\ =\ min(\ min(r1\_lmax,\ r2\_lmax),\ min(r1\_lmin,\ r2\_lmin)\ );}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_rmax\ =\ max(\ max(r1\_rmax,\ r2\_rmax),\ max(r1\_rmin,\ r2\_rmin)\ );}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_rmin\ =\ min(\ min(r1\_rmax,\ r2\_rmax),\ min(r1\_rmin,\ r2\_rmin)\ );}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ \{r\_lmin,\ (r\_rmin-\/r\_lmin)/\textcolor{keywordtype}{double}(max\_i-\/min\_i)\},\ (\textcolor{keywordtype}{unsigned}\ int)\ min\_i\ ,\ \{r\_lmax,\ (r\_rmax-\/r\_lmax)/\textcolor{keywordtype}{double}(max\_i-\/min\_i)\},\ (\textcolor{keywordtype}{unsigned}\ int)\ max\_i\};}
-\DoxyCodeLine{00068\ \ \ \}}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ dist\_to\_region\_sqr(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ qi,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ global\_offset)}
-\DoxyCodeLine{00071\ \ \ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_min\_est\ =\ r.min\_dp[1]\ *\ (global\_offset\ -\/\ r.min\_i)\ +\ r.min\_dp[0];}
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_max\_est\ =\ r.max\_dp[1]\ *\ (global\_offset\ -\/\ r.min\_i)\ +\ r.max\_dp[0];}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordflow}{if}\ (qi\ <\ r\_min\_est)\ \textcolor{keywordflow}{return}\ (qi-\/r\_min\_est)*(qi-\/r\_min\_est);}
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (qi\ >\ r\_max\_est)\ \textcolor{keywordflow}{return}\ (qi-\/r\_max\_est)*(qi-\/r\_max\_est);}
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0;}
-\DoxyCodeLine{00078\ \ \ \}}
-\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ dist\_to\_regions\_sqr(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ qi,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}*\ \textcolor{keyword}{const}\ rstart,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}*\ \textcolor{keyword}{const}\ rend,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ global\_offset)}
-\DoxyCodeLine{00080\ \ \ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{auto}\ min\_f\ =\ [\&](\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ min\_d,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r)\{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{double}\ rd\ =\ dist\_to\_region\_sqr(qi,r,global\_offset);\ min\_d\ <\ 0\ ||\ rd\ <\ min\_d)}
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{return}\ rd;}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ min\_d;}
-\DoxyCodeLine{00085\ \ \ \ \ \};}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{return}\ std::accumulate(rstart,\ rend+1,\ -\/1.0,\ min\_f);}
-\DoxyCodeLine{00087\ \ \ \}}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
-\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{double}\ mbr\_area(\textcolor{keyword}{const}\ AplaMBR<S>\&\ mbr)}
-\DoxyCodeLine{00091\ \ \ \{}
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{return}\ std::accumulate(\ mbr.begin(),\ mbr.end(),\ 0.0,\ [](\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ d,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRegion}{Region}}\&\ r)\{\ return\ d+region\_area(r);\ \});}
-\DoxyCodeLine{00093\ \ \ \}}
-\DoxyCodeLine{00094\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
-\DoxyCodeLine{00095\ \ \ AplaMBR<S>\ mbr\_merge(\textcolor{keyword}{const}\ AplaMBR<S>\&\ mbr1,\ \textcolor{keyword}{const}\ AplaMBR<S>\&\ mbr2)}
-\DoxyCodeLine{00096\ \ \ \{}
-\DoxyCodeLine{00097\ \ \ \ \ AplaMBR<S>\ ret;}
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<S;\ i++)\ \{}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ ret[i]\ =\ region\_merge(mbr1[i],\ mbr2[i]);}
-\DoxyCodeLine{00100\ \ \ \ \ \}}
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
-\DoxyCodeLine{00102\ \ \ \}}
-\DoxyCodeLine{00103\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
-\DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{double}\ dist\_to\_mbr\_sqr(\ \textcolor{keyword}{const}\ Seqd\&\ q,\ \textcolor{keyword}{const}\ AplaMBR<S>\&\ mbr\ )\ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_start\_i\ =\ 0;}
-\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_end\_i\ =\ 0;}
-\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ active\_end\_i\ <\ mbr.size()\ \&\&\ mbr[active\_end\_i].min\_i\ ==\ 0\ )\{}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ active\_end\_i++;}
-\DoxyCodeLine{00109\ \ \ \ \ \}}
-\DoxyCodeLine{00110\ \ \ \ \ active\_end\_i-\/-\/;}
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{double}\ dist\ =\ 0.0;}
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<q.size();\ i++)\ \{}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \textcolor{comment}{//\ adjust\ window\ of\ regions}}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ active\_start\_i\ <\ mbr.size()-\/1\ \&\&\ mbr[active\_start\_i].max\_i\ <\ i\ )\ \{}
-\DoxyCodeLine{00116\ \ \ \ \ active\_start\_i++;}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\ active\_end\_i\ <\ mbr.size()-\/1\ \&\&\ mbr[active\_end\_i+1].min\_i\ <=\ i\ )\{}
-\DoxyCodeLine{00119\ \ \ \ \ active\_end\_i++;}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00122\ \ \ \ \ \ \ dist\ +=\ dist\_to\_regions\_sqr(q[i],\ \&mbr[0]\ +\ active\_start\_i,\ \&mbr[0]\ +\ active\_end\_i,\ i);\ }
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00124\ \ \ \ \ \}}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{return}\ dist;}
-\DoxyCodeLine{00127\ \ \ \}}
-\DoxyCodeLine{00128\ \ \ }
-\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structRegion}{Region}}\ ptrs\_to\_region(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ end,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ g\_start\_i)}
-\DoxyCodeLine{00130\ \ \ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ ==\ end)\ \textcolor{keywordflow}{return}\ \{\ \{start[0],\ 0\},\ g\_start\_i,\ \{start[0],\ 0\},\ g\_start\_i\ \};}
-\DoxyCodeLine{00132\ \ \ \ \ DoublePair\ dp\ =\ pla::regression(start,\ end);}
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{if}\ (start+1\ ==\ end)\ \textcolor{keywordflow}{return}\ \{\ \{dp[0],\ dp[1]\},\ g\_start\_i,\ \{dp[0],\ dp[1]\},\ g\_start\_i+1\ \};}
-\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ dp\ "{}\ <<\ dp[0]\ <<\ "{}\ :\ "{}\ <<\ dp[1]\ <<\ "{}\ width\ :\ "{}\ <<\ end\ -\/\ start\ <<\ \ std::endl;}}
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\ =\ 0,\ \ min\_i\ =\ 0;}
-\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_v\ =\ -\/1,\ min\_v\ =\ -\/1;}
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=end-\/start;\ i++)\ \{}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist\_to\_line\_sqr\ =\ (dp[1]*i\ -\/\ start[i]\ +dp[0])*(dp[1]*i\ -\/\ start[i]\ +dp[0])\ /\ std::abs(\ dp[1]*dp[1]\ +\ 1\ )\ ;}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ \ \ \ \ index\ :\ "{}\ <<\ g\_start\_i\ +\ i\ <<"{}\ val\ "{}\ <<\ start[i]\ <<\ "{}\ dist\ to\ line\ "{}\ <<\ dist\_to\_line\_sqr\ <<\ std::endl;\ \ }}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\_to\_line\_sqr\ >\ max\_v\ \&\&\ start[i]\ >=\ dp[0]+dp[1]*i)\ \{}
-\DoxyCodeLine{00141\ \ \ \ \ max\_i\ =\ i;}
-\DoxyCodeLine{00142\ \ \ \ \ max\_v\ =\ dist\_to\_line\_sqr;}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\_to\_line\_sqr\ >\ min\_v\ \&\&\ start[i]\ <=\ dp[0]+dp[1]*i)\ \{}
-\DoxyCodeLine{00145\ \ \ \ \ min\_i\ =\ i;}
-\DoxyCodeLine{00146\ \ \ \ \ min\_v\ =\ dist\_to\_line\_sqr;}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00148\ \ \ \ \ \}}
-\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ \ \ chose\ min\ i\ :\ "{}\ <<\ min\_i\ <<\ "{},\ max\ i\ :\ "{}\ <<\ max\_i\ <<\ std::endl;}}
-\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{int}\ width\ =\ end\ -\/\ start;}
-\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{structRegion}{Region}}\ ret\ =\ \{\ \{start[min\_i]-\/dp[1]*min\_i,\ dp[1]\}}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ ,\ g\_start\_i}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ ,\ \{start[max\_i]-\/dp[1]*max\_i,\ dp[1]\}}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ ,\ g\_start\_i+width\ \};}
-\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=end-\/start;\ i++)\ \{}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<"{}\ \ \ \ \ \ \ index\ :\ "{}\ <<\ i+g\_start\_i\ <<\ "{}\ dist\ to\ region\ "{}\ <<\ dist\_to\_region\_sqr(start[i],\ ret,\ g\_start\_i+i)\ <<\ std::endl;}}
-\DoxyCodeLine{00157\ \ \ \ \ \}}
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
-\DoxyCodeLine{00159\ \ \ \}}
-\DoxyCodeLine{00160\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
-\DoxyCodeLine{00161\ \ \ AplaMBR<S>\ vec\_to\_mbr(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ pla::APLA\_DRT\ f)}
-\DoxyCodeLine{00162\ \ \ \{}
-\DoxyCodeLine{00163\ \ \ \ \ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ apla\ =\ f(q,3*S);}
-\DoxyCodeLine{00164\ \ \ \ \ AplaMBR<S>\ mbr;}
-\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{int}\ start\_i\ =\ 0;}
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ apla\_i\ =\ 0;\ apla\_i\ <\ S;\ apla\_i++\ )\ \{}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ [dp,end\_i]\ =\ apla[apla\_i];}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ mbr[apla\_i]\ =\ ptrs\_to\_region(q.data()+start\_i,\ q.data()+end\_i,\ start\_i);}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ mbr[apla\_i].min\_dp[0]\ <<\ "{}\ "{}\ <<\ mbr[apla\_i].min\_dp[1]\ <<\ "{}\ "{}\ <<\ mbr[apla\_i].min\_i\ <<\ "{}\ "{}\ <<\ mbr[apla\_i].max\_dp[0]<<\ "{}\ "{}\ <<\ mbr[apla\_i].max\_dp[1]<<\ "{}\ "{}\ <<\ mbr[apla\_i].max\_i\ <<\ std::endl;}}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ start\_i\ =\ end\_i+1;}
-\DoxyCodeLine{00171\ \ \ \ \ \}}
-\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{return}\ mbr;}
-\DoxyCodeLine{00173\ \ \ \}}
-\DoxyCodeLine{00174\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
-\DoxyCodeLine{00175\ \ \ std::vector<AplaMBR<S>>\ vec\_to\_subseq\_mbrs(\ \textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ subseq\_size,\ pla::APLA\_DRT\ f)}
-\DoxyCodeLine{00176\ \ \ \{}
-\DoxyCodeLine{00177\ \ \ \ \ std::vector<AplaMBR<S>>\ subseqs\_compr;}
-\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<q.size()\ -\/\ subseq\_size;\ i++)\ \{}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ std::vector<double>\ q\_i(\ q.cbegin()+i,\ q.cbegin()+i+subseq\_size);\ }
-\DoxyCodeLine{00180\ \ \ \ \ \ \ subseqs\_compr.push\_back(\ vec\_to\_mbr<S>(q\_i,\ f)\ );}
-\DoxyCodeLine{00181\ \ \ \ \ \}}
-\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordflow}{return}\ subseqs\_compr;}
-\DoxyCodeLine{00183\ \ \ \}}
-\DoxyCodeLine{00184\ \};}
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ }AplaPt\ =\ \ std::array<std::tuple<DoublePair,\ unsigned\ int>,S>;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ std::vector<double>\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceapla__bounds}{apla\_bounds}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\ \{\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{DoublePair}}\ min\_dp;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_i;}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{DoublePair}}\ max\_dp;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_i;}
+\DoxyCodeLine{00034\ \ \ \};}
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{using\ }AplaMBR\ =\ std::array<Region,\ S>;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{using\ }std::max,\ std::min;}
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceapla__bounds_a87166e319f0d76d736e08677ee44903c}{region\_area}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\&\ r)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{double}\ width\ =\ r.max\_i\ -\/\ r.min\_i;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}\ min\_a\ =\ r.min\_dp[0];}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{double}\ min\_b=\ \ r.min\_dp[0]\ +\ width*r.min\_dp[1];}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_a\ =\ r.max\_dp[0];}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_b=\ \ r.max\_dp[0]\ +\ width*r.max\_dp[1];}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ (min(max\_a,max\_b)\ -\/\ max(min\_a,min\_b))\ *\ width}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ +\ (max(max\_a,max\_b)\ -\/\ min(max\_a,max\_b))\ *\ width\ *\ 0.5}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ +\ (max(min\_a,min\_b)\ -\/\ min(min\_a,min\_b))\ *\ width\ *\ 0.5;}
+\DoxyCodeLine{00053\ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\ \mbox{\hyperlink{namespaceapla__bounds_abdcc600dfae926c1bf68b7a068099a67}{region\_merge}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\&\ r1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\&\ r2)}
+\DoxyCodeLine{00061\ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_i\ =\ min(r1.min\_i,\ r2.min\_i);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\ =\ max(r1.max\_i,\ r2.max\_i);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\_i\ ==\ min\_i)\ \textcolor{keywordflow}{return}\ \{\ \{\ min(r1.min\_dp[0],r2.min\_dp[0]),0\}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ (\textcolor{keywordtype}{unsigned}\ int)\ min\_i}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \{\ max(r1.max\_dp[0],r2.max\_dp[0]),0\}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ (\textcolor{keywordtype}{unsigned}\ int)\ max\_i\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_i\_rel\_r1\ =\ min\_i\ -\/\ r1.min\_i;}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\_rel\_r1\ =\ max\_i\ -\/\ r1.min\_i;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_i\_rel\_r2\ =\ min\_i\ -\/\ r2.min\_i;}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\_rel\_r2\ =\ max\_i\ -\/\ r2.min\_i;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{double}\ r1\_lmax\ =\ r1.max\_dp[1]*min\_i\_rel\_r1\ +\ r1.max\_dp[0];}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{double}\ r1\_rmax\ =\ r1.max\_dp[1]*max\_i\_rel\_r1\ +\ r1.max\_dp[0];}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{double}\ r2\_lmax\ =\ r2.max\_dp[1]*min\_i\_rel\_r2\ +\ r2.max\_dp[0];}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{double}\ r2\_rmax\ =\ r2.max\_dp[1]*max\_i\_rel\_r2\ +\ r2.max\_dp[0];}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{double}\ r1\_lmin\ =\ r1.min\_dp[1]*min\_i\_rel\_r1\ +\ r1.min\_dp[0];}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{double}\ r1\_rmin\ =\ r1.min\_dp[1]*max\_i\_rel\_r1\ +\ r1.min\_dp[0];}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{double}\ r2\_lmin\ =\ r2.min\_dp[1]*min\_i\_rel\_r2\ +\ r2.min\_dp[0];}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{double}\ r2\_rmin\ =\ r2.min\_dp[1]*max\_i\_rel\_r2\ +\ r2.min\_dp[0];}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_lmax\ =\ max(\ max(r1\_lmax,\ r2\_lmax),\ max(r1\_lmin,\ r2\_lmin)\ );}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_lmin\ =\ min(\ min(r1\_lmax,\ r2\_lmax),\ min(r1\_lmin,\ r2\_lmin)\ );}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_rmax\ =\ max(\ max(r1\_rmax,\ r2\_rmax),\ max(r1\_rmin,\ r2\_rmin)\ );}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_rmin\ =\ min(\ min(r1\_rmax,\ r2\_rmax),\ min(r1\_rmin,\ r2\_rmin)\ );}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ \{r\_lmin,\ (r\_rmin-\/r\_lmin)/\textcolor{keywordtype}{double}(max\_i-\/min\_i)\},\ (\textcolor{keywordtype}{unsigned}\ int)\ min\_i\ ,\ \{r\_lmax,\ (r\_rmax-\/r\_lmax)/\textcolor{keywordtype}{double}(max\_i-\/min\_i)\},\ (\textcolor{keywordtype}{unsigned}\ int)\ max\_i\};}
+\DoxyCodeLine{00089\ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceapla__bounds_a36a8e851dddf94226d6e5002586e2ed3}{dist\_to\_region\_sqr}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ qi,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\&\ r,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ global\_offset)}
+\DoxyCodeLine{00099\ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_min\_est\ =\ r.min\_dp[1]\ *\ (global\_offset\ -\/\ r.min\_i)\ +\ r.min\_dp[0];}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{double}\ r\_max\_est\ =\ r.max\_dp[1]\ *\ (global\_offset\ -\/\ r.min\_i)\ +\ r.max\_dp[0];}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}\ (qi\ <\ r\_min\_est)\ \textcolor{keywordflow}{return}\ (qi-\/r\_min\_est)*(qi-\/r\_min\_est);}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (qi\ >\ r\_max\_est)\ \textcolor{keywordflow}{return}\ (qi-\/r\_max\_est)*(qi-\/r\_max\_est);}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0;}
+\DoxyCodeLine{00106\ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceapla__bounds_a1c2f80f1b1ed60089ce402fc04ca6fea}{dist\_to\_regions\_sqr}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ qi,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}*\ \textcolor{keyword}{const}\ rstart,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}*\ \textcolor{keyword}{const}\ rend,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ global\_offset)}
+\DoxyCodeLine{00116\ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{auto}\ min\_f\ =\ [\&](\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ min\_d,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\&\ r)\{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{double}\ rd\ =\ \mbox{\hyperlink{namespaceapla__bounds_a36a8e851dddf94226d6e5002586e2ed3}{dist\_to\_region\_sqr}}(qi,r,global\_offset);\ min\_d\ <\ 0\ ||\ rd\ <\ min\_d)}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{return}\ rd;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ min\_d;}
+\DoxyCodeLine{00121\ \ \ \ \ \};}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{return}\ std::accumulate(rstart,\ rend+1,\ -\/1.0,\ min\_f);}
+\DoxyCodeLine{00123\ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceapla__bounds_ab06dc8fad148ed5207e06767e0739bef}{mbr\_area}}(\textcolor{keyword}{const}\ AplaMBR<S>\&\ mbr)}
+\DoxyCodeLine{00131\ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{return}\ std::accumulate(\ mbr.begin(),\ mbr.end(),\ 0.0,\ [](\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ d,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\&\ r)\{\ return\ d+region\_area(r);\ \});}
+\DoxyCodeLine{00133\ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00141\ \ \ AplaMBR<S>\ \mbox{\hyperlink{namespaceapla__bounds_a2db27f8c06fecff0bd1a19cd95e1da9f}{mbr\_merge}}(\textcolor{keyword}{const}\ AplaMBR<S>\&\ mbr1,\ \textcolor{keyword}{const}\ AplaMBR<S>\&\ mbr2)}
+\DoxyCodeLine{00142\ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ AplaMBR<S>\ ret;}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<S;\ i++)\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ ret[i]\ =\ \mbox{\hyperlink{namespaceapla__bounds_abdcc600dfae926c1bf68b7a068099a67}{region\_merge}}(mbr1[i],\ mbr2[i]);}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00148\ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00156\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceapla__bounds_a23bacc956ed90bf9e04bca707db17552}{dist\_to\_mbr\_sqr}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ q,\ \textcolor{keyword}{const}\ AplaMBR<S>\&\ mbr\ )\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_start\_i\ =\ 0;}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_end\_i\ =\ 0;}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ active\_end\_i\ <\ mbr.size()\ \&\&\ mbr[active\_end\_i].min\_i\ ==\ 0\ )\{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ active\_end\_i++;}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ active\_end\_i-\/-\/;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{double}\ dist\ =\ 0.0;}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<q.size();\ i++)\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \textcolor{comment}{//\ adjust\ window\ of\ regions}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ active\_start\_i\ <\ mbr.size()-\/1\ \&\&\ mbr[active\_start\_i].max\_i\ <\ i\ )\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ active\_start\_i++;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\ active\_end\_i\ <\ mbr.size()-\/1\ \&\&\ mbr[active\_end\_i+1].min\_i\ <=\ i\ )\{}
+\DoxyCodeLine{00171\ \ \ \ \ active\_end\_i++;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ dist\ +=\ \mbox{\hyperlink{namespaceapla__bounds_a1c2f80f1b1ed60089ce402fc04ca6fea}{dist\_to\_regions\_sqr}}(q[i],\ \&mbr[0]\ +\ active\_start\_i,\ \&mbr[0]\ +\ active\_end\_i,\ i);\ }
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{return}\ dist;}
+\DoxyCodeLine{00179\ \ \ \}}
+\DoxyCodeLine{00180\ \ \ }
+\DoxyCodeLine{00188\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\ \mbox{\hyperlink{namespaceapla__bounds_a3e5340b3e347dd10e79500532f961dd8}{ptrs\_to\_region}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ end,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ g\_start\_i)}
+\DoxyCodeLine{00189\ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ ==\ end)\ \textcolor{keywordflow}{return}\ \{\ \{start[0],\ 0\},\ g\_start\_i,\ \{start[0],\ 0\},\ g\_start\_i\ \};}
+\DoxyCodeLine{00191\ \ \ \ \ \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{DoublePair}}\ dp\ =\ \mbox{\hyperlink{namespacepla_acf95cd1dd69140bbfa8f0a677c36fcdb}{pla::regression}}(start,\ end);}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordflow}{if}\ (start+1\ ==\ end)\ \textcolor{keywordflow}{return}\ \{\ \{dp[0],\ dp[1]\},\ g\_start\_i,\ \{dp[0],\ dp[1]\},\ g\_start\_i+1\ \};}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ dp\ "{}\ <<\ dp[0]\ <<\ "{}\ :\ "{}\ <<\ dp[1]\ <<\ "{}\ width\ :\ "{}\ <<\ end\ -\/\ start\ <<\ \ std::endl;}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_i\ =\ 0,\ \ min\_i\ =\ 0;}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_v\ =\ -\/1,\ min\_v\ =\ -\/1;}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=end-\/start;\ i++)\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist\_to\_line\_sqr\ =\ (dp[1]*i\ -\/\ start[i]\ +dp[0])*(dp[1]*i\ -\/\ start[i]\ +dp[0])\ /\ std::abs(\ dp[1]*dp[1]\ +\ 1\ )\ ;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ \ \ \ \ index\ :\ "{}\ <<\ g\_start\_i\ +\ i\ <<"{}\ val\ "{}\ <<\ start[i]\ <<\ "{}\ dist\ to\ line\ "{}\ <<\ dist\_to\_line\_sqr\ <<\ std::endl;\ \ }}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\_to\_line\_sqr\ >\ max\_v\ \&\&\ start[i]\ >=\ dp[0]+dp[1]*i)\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ max\_i\ =\ i;}
+\DoxyCodeLine{00201\ \ \ \ \ max\_v\ =\ dist\_to\_line\_sqr;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\_to\_line\_sqr\ >\ min\_v\ \&\&\ start[i]\ <=\ dp[0]+dp[1]*i)\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ min\_i\ =\ i;}
+\DoxyCodeLine{00205\ \ \ \ \ min\_v\ =\ dist\_to\_line\_sqr;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\ \ \ \ chose\ min\ i\ :\ "{}\ <<\ min\_i\ <<\ "{},\ max\ i\ :\ "{}\ <<\ max\_i\ <<\ std::endl;}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{int}\ width\ =\ end\ -\/\ start;}
+\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{structapla__bounds_1_1Region}{Region}}\ ret\ =\ \{\ \{start[min\_i]-\/dp[1]*min\_i,\ dp[1]\}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ ,\ g\_start\_i}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ ,\ \{start[max\_i]-\/dp[1]*max\_i,\ dp[1]\}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ ,\ g\_start\_i+width\ \};}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=end-\/start;\ i++)\ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<"{}\ \ \ \ \ \ \ index\ :\ "{}\ <<\ i+g\_start\_i\ <<\ "{}\ dist\ to\ region\ "{}\ <<\ dist\_to\_region\_sqr(start[i],\ ret,\ g\_start\_i+i)\ <<\ std::endl;}}
+\DoxyCodeLine{00216\ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00218\ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00226\ \ \ AplaMBR<S>\ \mbox{\hyperlink{namespaceapla__bounds_a18678a7d9d73451fe2cc8f9f8fa83478}{vec\_to\_mbr}}(\textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{pla::APLA\_DRT}}\ f)}
+\DoxyCodeLine{00227\ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ std::vector<std::tuple<DoublePair,\ unsigned\ int>>\ apla\ =\ f(q,3*S);}
+\DoxyCodeLine{00229\ \ \ \ \ AplaMBR<S>\ mbr;}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordtype}{int}\ start\_i\ =\ 0;}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ apla\_i\ =\ 0;\ apla\_i\ <\ S;\ apla\_i++\ )\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ [dp,end\_i]\ =\ apla[apla\_i];}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ mbr[apla\_i]\ =\ \mbox{\hyperlink{namespaceapla__bounds_a3e5340b3e347dd10e79500532f961dd8}{ptrs\_to\_region}}(q.data()+start\_i,\ q.data()+end\_i,\ start\_i);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ mbr[apla\_i].min\_dp[0]\ <<\ "{}\ "{}\ <<\ mbr[apla\_i].min\_dp[1]\ <<\ "{}\ "{}\ <<\ mbr[apla\_i].min\_i\ <<\ "{}\ "{}\ <<\ mbr[apla\_i].max\_dp[0]<<\ "{}\ "{}\ <<\ mbr[apla\_i].max\_dp[1]<<\ "{}\ "{}\ <<\ mbr[apla\_i].max\_i\ <<\ std::endl;}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ start\_i\ =\ end\_i+1;}
+\DoxyCodeLine{00236\ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordflow}{return}\ mbr;}
+\DoxyCodeLine{00238\ \ \ \}}
+\DoxyCodeLine{00246\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ S>}
+\DoxyCodeLine{00247\ \ \ std::vector<AplaMBR<S>>\ \mbox{\hyperlink{namespaceapla__bounds_ac47c3b7ea4820955ef0e1abdc019cf72}{vec\_to\_subseq\_mbrs}}(\ \textcolor{keyword}{const}\ std::vector<double>\&\ q,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ subseq\_size,\ \mbox{\hyperlink{namespacepla_a6a3d8a0f973d3b199407f277870e4c00}{pla::APLA\_DRT}}\ f)}
+\DoxyCodeLine{00248\ \ \ \{}
+\DoxyCodeLine{00249\ \ \ \ \ std::vector<AplaMBR<S>>\ subseqs\_compr;}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<q.size()\ -\/\ subseq\_size;\ i++)\ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ std::vector<double>\ q\_i(\ q.cbegin()+i,\ q.cbegin()+i+subseq\_size);\ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ subseqs\_compr.push\_back(\ vec\_to\_mbr<S>(q\_i,\ f)\ );}
+\DoxyCodeLine{00253\ \ \ \ \ \}}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordflow}{return}\ subseqs\_compr;}
+\DoxyCodeLine{00255\ \ \ \}}
+\DoxyCodeLine{00256\ \};}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

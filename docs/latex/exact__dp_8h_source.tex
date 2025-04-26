@@ -1,26 +1,25 @@
 \doxysection{exact\+\_\+dp.\+h}
 \hypertarget{exact__dp_8h_source}{}\label{exact__dp_8h_source}\index{lib/dimension\_reductions/exact\_dp.h@{lib/dimension\_reductions/exact\_dp.h}}
-
+\mbox{\hyperlink{exact__dp_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ EXACT\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ EXACT\_H}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <tuple>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <array>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}pla.h"{}}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }exact\_dp\ \{\ }
-\DoxyCodeLine{00011\ std::vector<\ std::tuple<\ double,\ unsigned\ int>\ >\ min\_mse\_paa(\ \textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
-\DoxyCodeLine{00012\ std::vector<\ std::tuple<\ DoublePair,\ unsigned\ int>\ >\ min\_mse\_pla(\ \textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ std::vector<\ std::tuple<\ double,\ unsigned\ int>\ >\ min\_maxdev\_paa(\ \textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
-\DoxyCodeLine{00015\ std::vector<\ std::tuple<\ DoublePair,\ unsigned\ int>\ >\ min\_maxdev\_pla(\ \textcolor{keyword}{const}\ std::vector<double>\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \};}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pla_8h}{pla.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceexact__dp}{exact\_dp}}\ \{\ }
+\DoxyCodeLine{00023\ std::vector<\ std::tuple<\ double,\ unsigned\ int>\ >\ \mbox{\hyperlink{namespaceexact__dp_ade4f0471277226224c2f1165a1991b5c}{min\_l2\_paa}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00030\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\ \mbox{\hyperlink{namespaceexact__dp_a429b32d3d5616f005721cf5bd3df037f}{min\_l2\_pla}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ std::vector<\ std::tuple<\ double,\ unsigned\ int>\ >\ \mbox{\hyperlink{namespaceexact__dp_a8d42d15c1bc8429e8f1b3c1ed5c6954c}{min\_maxdev\_paa}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&\ s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00045\ \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}}\ \mbox{\hyperlink{namespaceexact__dp_a1dc775b8d4e515b880382a7444e37e9f}{min\_maxdev\_pla}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}\&,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00050\ }
 
 \end{DoxyCode}

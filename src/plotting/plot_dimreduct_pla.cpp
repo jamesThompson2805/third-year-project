@@ -20,7 +20,7 @@ void plot_pla::plot_pla(const vector<double>& series, std::string data_name, uns
 {
   if (num_params <= 0) return;
 
-  vector<DoublePair> pla_subseq = pla::chunk_regression(series, num_params);
+  vector<DoublePair> pla_subseq = pla::pla(series, num_params);
 
   unsigned int interval_size = (series.size() / pla_subseq.size()) + (series.size() % pla_subseq.size() != 0);
 

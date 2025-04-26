@@ -1,23 +1,24 @@
 \doxysection{paa.\+h}
 \hypertarget{paa_8h_source}{}\label{paa_8h_source}\index{lib/dimension\_reductions/paa.h@{lib/dimension\_reductions/paa.h}}
-
+\mbox{\hyperlink{paa_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PAA\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PAA\_H}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <tuple>}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }paa\ \{}
-\DoxyCodeLine{00007\ \ \ \textcolor{keywordtype}{double}\ get\_mean(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ first,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ last);}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \ \ std::vector<double>\ paa(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <tuple>}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \ \ \textcolor{keywordtype}{double}\ paa\_mse(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);\ }
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \ \ std::vector<double>\ paa\_to\_seq(\textcolor{keyword}{const}\ std::vector<double>,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ int\_size);}
-\DoxyCodeLine{00014\ \ \ std::vector<double>\ apca\_to\_seq(\textcolor{keyword}{const}\ std::vector<\ std::tuple<double,\ unsigned\ int>>);}
-\DoxyCodeLine{00015\ \}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacepaa}{paa}}\ \{}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacepaa_a68ac74e7b16183ec8ec20bb14324e5ad}{get\_mean}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ first,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ last);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00029\ \ \ std::vector<double>\ \mbox{\hyperlink{namespacepaa}{paa}}(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacepaa_a875071bc8994a59f1db28bc7e4776797}{paa\_mse}}(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_params);\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \ \ std::vector<double>\ \mbox{\hyperlink{namespacepaa_a07d3fab7f34492454e11cf92a17c8cc9}{paa\_to\_seq}}(\textcolor{keyword}{const}\ std::vector<double>\ paa\_s,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ int\_size);}
+\DoxyCodeLine{00051\ \ \ std::vector<double>\ \mbox{\hyperlink{namespacepaa_a21e7d71ca678e0072f5e8098797e6b02}{apca\_to\_seq}}(\textcolor{keyword}{const}\ std::vector<\ std::tuple<double,\ unsigned\ int>>\ apca\_s);}
+\DoxyCodeLine{00052\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

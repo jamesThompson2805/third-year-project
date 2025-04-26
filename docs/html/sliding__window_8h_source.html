@@ -84,16 +84,23 @@ $(function() { codefold.init(0); });
   <div class="headertitle"><div class="title">sliding_window.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SLIDING_WINDOW_H</span></div>
+<a href="sliding__window_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SLIDING_WINDOW_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SLIDING_WINDOW_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;pla.h&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="pla_8h.html">pla.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>sw {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  Seqddt sliding_window(<span class="keyword">const</span> Seqd&amp; q, <span class="keywordtype">double</span> epsilon);</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>};</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="namespacesw.html">   13</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesw.html">sw</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <a class="code hl_typedef" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> <a class="code hl_function" href="namespacesw.html#a89cda69202e5343981112f9e86f58d1f">sliding_window</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a>&amp; q, <span class="keywordtype">double</span> epsilon);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespacesw_html"><div class="ttname"><a href="namespacesw.html">sw</a></div><div class="ttdoc">sw namespace holds the sliding window approximation</div><div class="ttdef"><b>Definition</b> sliding_window.h:13</div></div>
+<div class="ttc" id="anamespacesw_html_a89cda69202e5343981112f9e86f58d1f"><div class="ttname"><a href="namespacesw.html#a89cda69202e5343981112f9e86f58d1f">sw::sliding_window</a></div><div class="ttdeci">Seqddt sliding_window(const Seqd &amp;q, double epsilon)</div><div class="ttdoc">sliding_window approximates the series q by segments such that every point of a segment is within eps...</div><div class="ttdef"><b>Definition</b> sliding_window.cpp:3</div></div>
+<div class="ttc" id="apla_8h_html"><div class="ttname"><a href="pla_8h.html">pla.h</a></div></div>
+<div class="ttc" id="apla_8h_html_a5d3953cd3e75718fc534b351149f9f98"><div class="ttname"><a href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></div><div class="ttdeci">std::vector&lt; double &gt; Seqd</div><div class="ttdoc">Seqd is an array of double values, representing a sequence.</div><div class="ttdef"><b>Definition</b> pla.h:24</div></div>
+<div class="ttc" id="apla_8h_html_ad8b9cde7efeaabcc857cf363312e58fc"><div class="ttname"><a href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; DoublePair, unsigned int &gt; &gt; Seqddt</div><div class="ttdoc">Seqddt is an array of triples, representing the information for an adaptive PLA segment.</div><div class="ttdef"><b>Definition</b> pla.h:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

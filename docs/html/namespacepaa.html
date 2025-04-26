@@ -77,23 +77,33 @@ $(function() {
   <div class="headertitle"><div class="title">paa Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>paa namespace contains methods to convert sequence to paa, convert paa to sequence and convert adaptive paa to sequence  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a68ac74e7b16183ec8ec20bb14324e5ad" id="r_a68ac74e7b16183ec8ec20bb14324e5ad"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68ac74e7b16183ec8ec20bb14324e5ad">get_mean</a> (const double *const first, const double *const last)</td></tr>
+<tr class="memdesc:a68ac74e7b16183ec8ec20bb14324e5ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_mean is fast method to find mean of an array, passed by a start and end pointer  <br /></td></tr>
 <tr class="separator:a68ac74e7b16183ec8ec20bb14324e5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1a3e00d318ad80e92a4e44d28528558" id="r_aa1a3e00d318ad80e92a4e44d28528558"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1a3e00d318ad80e92a4e44d28528558">paa</a> (const std::vector&lt; double &gt; &amp;series, unsigned int num_params)</td></tr>
+<tr class="memdesc:aa1a3e00d318ad80e92a4e44d28528558"><td class="mdescLeft">&#160;</td><td class="mdescRight">paa calculates the paa of a series  <br /></td></tr>
 <tr class="separator:aa1a3e00d318ad80e92a4e44d28528558"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a875071bc8994a59f1db28bc7e4776797" id="r_a875071bc8994a59f1db28bc7e4776797"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a875071bc8994a59f1db28bc7e4776797">paa_mse</a> (const std::vector&lt; double &gt; &amp;series, unsigned int num_params)</td></tr>
+<tr class="memdesc:a875071bc8994a59f1db28bc7e4776797"><td class="mdescLeft">&#160;</td><td class="mdescRight">paa_mse calculates paa of series and finds the mean squared error of the approximation  <br /></td></tr>
 <tr class="separator:a875071bc8994a59f1db28bc7e4776797"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20c646514fbb9e98aaf78ae9166b59c8" id="r_a20c646514fbb9e98aaf78ae9166b59c8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20c646514fbb9e98aaf78ae9166b59c8">paa_to_seq</a> (const std::vector&lt; double &gt;, unsigned int int_size)</td></tr>
-<tr class="separator:a20c646514fbb9e98aaf78ae9166b59c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3191baa1967026df4e110d4c55d87d6c" id="r_a3191baa1967026df4e110d4c55d87d6c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3191baa1967026df4e110d4c55d87d6c">apca_to_seq</a> (const std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt;)</td></tr>
-<tr class="separator:a3191baa1967026df4e110d4c55d87d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d3fab7f34492454e11cf92a17c8cc9" id="r_a07d3fab7f34492454e11cf92a17c8cc9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07d3fab7f34492454e11cf92a17c8cc9">paa_to_seq</a> (const std::vector&lt; double &gt; paa_s, unsigned int int_size)</td></tr>
+<tr class="memdesc:a07d3fab7f34492454e11cf92a17c8cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">paa_to_seq takes a paa approximation and its segment size and returns the full size approximation  <br /></td></tr>
+<tr class="separator:a07d3fab7f34492454e11cf92a17c8cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e7d71ca678e0072f5e8098797e6b02" id="r_a21e7d71ca678e0072f5e8098797e6b02"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21e7d71ca678e0072f5e8098797e6b02">apca_to_seq</a> (const std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt; apca_s)</td></tr>
+<tr class="memdesc:a21e7d71ca678e0072f5e8098797e6b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">apca_to_seq takes a apca approximation and returns the uncompressed approximation  <br /></td></tr>
+<tr class="separator:a21e7d71ca678e0072f5e8098797e6b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a3191baa1967026df4e110d4c55d87d6c" name="a3191baa1967026df4e110d4c55d87d6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3191baa1967026df4e110d4c55d87d6c">&#9670;&#160;</a></span>apca_to_seq()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>paa namespace contains methods to convert sequence to paa, convert paa to sequence and convert adaptive paa to sequence </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a21e7d71ca678e0072f5e8098797e6b02" name="a21e7d71ca678e0072f5e8098797e6b02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21e7d71ca678e0072f5e8098797e6b02">&#9670;&#160;</a></span>apca_to_seq()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -101,11 +111,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">vector&lt; double &gt; paa::apca_to_seq </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>apca_seq</em></span></td><td>)</td>
+          <td class="paramtype">const std::vector&lt; std::tuple&lt; double, unsigned int &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>apca_s</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>apca_to_seq takes a apca approximation and returns the uncompressed approximation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">apca_s</td><td>is the compressed series </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a series representing the uncompressed apca_s </dd></dl>
 
 </div>
 </div>
@@ -128,6 +147,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>get_mean is fast method to find mean of an array, passed by a start and end pointer </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>is pointer to first element </td></tr>
+    <tr><td class="paramname">last</td><td>is pointer to last element </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>mean of all elements </dd></dl>
+
 </div>
 </div>
 <a id="aa1a3e00d318ad80e92a4e44d28528558" name="aa1a3e00d318ad80e92a4e44d28528558"></a>
@@ -148,6 +177,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>paa calculates the paa of a series </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">series</td><td>is the series to compress </td></tr>
+    <tr><td class="paramname">num_params</td><td>is the target dimension </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>sorted array representing the mean of each segment </dd></dl>
 
 </div>
 </div>
@@ -170,10 +209,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>paa_mse calculates paa of series and finds the mean squared error of the approximation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">series</td><td>is the series to compress and analyse compression against </td></tr>
+    <tr><td class="paramname">num_params</td><td>is target dimension of the compression </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the mean squared error of approximation to original </dd></dl>
+
 </div>
 </div>
-<a id="a20c646514fbb9e98aaf78ae9166b59c8" name="a20c646514fbb9e98aaf78ae9166b59c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20c646514fbb9e98aaf78ae9166b59c8">&#9670;&#160;</a></span>paa_to_seq()</h2>
+<a id="a07d3fab7f34492454e11cf92a17c8cc9" name="a07d3fab7f34492454e11cf92a17c8cc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07d3fab7f34492454e11cf92a17c8cc9">&#9670;&#160;</a></span>paa_to_seq()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -190,6 +239,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>paa_to_seq takes a paa approximation and its segment size and returns the full size approximation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">paa_s</td><td>is the compressed series </td></tr>
+    <tr><td class="paramname">int_size</td><td>is the size of a segment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a series representing the uncompressed paa_s </dd></dl>
 
 </div>
 </div>

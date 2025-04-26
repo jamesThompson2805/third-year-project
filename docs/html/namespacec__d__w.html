@@ -77,23 +77,29 @@ $(function() {
   <div class="headertitle"><div class="title">c_d_w Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="namespacec__d__w.html" title="c_d_w namespace holds methods for optimised weighted average value double window">c_d_w</a> namespace holds methods for optimised weighted average value double window  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aac6266e090963f3b457238e53881e6e5" id="r_aac6266e090963f3b457238e53881e6e5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::tuple&lt; <a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac6266e090963f3b457238e53881e6e5">conv_pla</a> (const std::vector&lt; double &gt; &amp;s, unsigned int num_params, const std::vector&lt; double &gt; &amp;l, const std::vector&lt; double &gt; &amp;r)</td></tr>
-<tr class="separator:aac6266e090963f3b457238e53881e6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9519817e244791fa9499b9cace20b78" id="r_ab9519817e244791fa9499b9cace20b78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9519817e244791fa9499b9cace20b78">conv_pla</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;s, unsigned int num_params, const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;l, const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;r)</td></tr>
+<tr class="memdesc:ab9519817e244791fa9499b9cace20b78"><td class="mdescLeft">&#160;</td><td class="mdescRight">conv_pla calculates the segment split locations by the difference between the gradients of points weighted by distributions l and r  <br /></td></tr>
+<tr class="separator:ab9519817e244791fa9499b9cace20b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="aac6266e090963f3b457238e53881e6e5" name="aac6266e090963f3b457238e53881e6e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac6266e090963f3b457238e53881e6e5">&#9670;&#160;</a></span>conv_pla()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="namespacec__d__w.html" title="c_d_w namespace holds methods for optimised weighted average value double window">c_d_w</a> namespace holds methods for optimised weighted average value double window </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ab9519817e244791fa9499b9cace20b78" name="ab9519817e244791fa9499b9cace20b78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9519817e244791fa9499b9cace20b78">&#9670;&#160;</a></span>conv_pla()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::tuple&lt; <a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int &gt; &gt; c_d_w::conv_pla </td>
+          <td class="memname"><a class="el" href="pla_8h.html#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a> c_d_w::conv_pla </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -103,15 +109,27 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>conv_pla calculates the segment split locations by the difference between the gradients of points weighted by distributions l and r </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>is sequence to compress </td></tr>
+    <tr><td class="paramname">num_params</td><td>is the target dimension to compress to </td></tr>
+    <tr><td class="paramname">l</td><td>is an array representing a distribution ie. elements are in range [0,1] and sum to 1, this is the distribution for the first window </td></tr>
+    <tr><td class="paramname">r</td><td>is a distribution for the second window </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an Adaptive PLA representation </dd></dl>
 
 </div>
 </div>

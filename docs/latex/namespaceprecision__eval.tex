@@ -1,0 +1,112 @@
+\doxysection{precision\+\_\+eval Namespace Reference}
+\hypertarget{namespaceprecision__eval}{}\label{namespaceprecision__eval}\index{precision\_eval@{precision\_eval}}
+
+
+\doxylink{namespaceprecision__eval}{precision\+\_\+eval} Namespace encompasses functions for evaluating on epsilon guarantee algorithms  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespaceprecision__eval_a6678bfd5e055d2cba099b6d4a21730d6}{compr\+\_\+ratio\+\_\+of\+\_\+method}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon, \mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}} f)
+\begin{DoxyCompactList}\small\item\em compr\+\_\+ratio\+\_\+of\+\_\+method returns the compression ratio of DRT with the precision. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceprecision__eval_ac215dfb293a050bac61de978dc6afc2d}{cputime\+\_\+of\+\_\+method}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double epsilon, \mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}} f)
+\begin{DoxyCompactList}\small\item\em segments\+\_\+of\+\_\+method returns the time DRT took to achieve the precision \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \mbox{\hyperlink{namespaceprecision__eval_ad505117b5569d263e9e52b13d5e47c16}{get\+\_\+segments\+\_\+over\+\_\+epsilons}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} epsilons, \mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}} f)
+\begin{DoxyCompactList}\small\item\em get\+\_\+segments\+\_\+over\+\_\+epsilon returns the compression ratios of the DRT with the epsilons. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \mbox{\hyperlink{namespaceprecision__eval_ace8152badad6a18c1ed79ecfd78b57ee}{get\+\_\+cputime\+\_\+over\+\_\+epsilons}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} epsilons, \mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}} f)
+\begin{DoxyCompactList}\small\item\em get\+\_\+cputime\+\_\+over\+\_\+epsilon returns the number of segments the DRT used to achieve the precision for a variety of epsilons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{namespaceprecision__eval}{precision\+\_\+eval} Namespace encompasses functions for evaluating on epsilon guarantee algorithms 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceprecision__eval_a6678bfd5e055d2cba099b6d4a21730d6}\label{namespaceprecision__eval_a6678bfd5e055d2cba099b6d4a21730d6} 
+\index{precision\_eval@{precision\_eval}!compr\_ratio\_of\_method@{compr\_ratio\_of\_method}}
+\index{compr\_ratio\_of\_method@{compr\_ratio\_of\_method}!precision\_eval@{precision\_eval}}
+\doxysubsubsection{\texorpdfstring{compr\_ratio\_of\_method()}{compr\_ratio\_of\_method()}}
+{\footnotesize\ttfamily double precision\+\_\+eval\+::compr\+\_\+ratio\+\_\+of\+\_\+method (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{epsilon,  }\item[{\mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}}}]{f }\end{DoxyParamCaption})}
+
+
+
+compr\+\_\+ratio\+\_\+of\+\_\+method returns the compression ratio of DRT with the precision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em epsilon} & is the epsilon for the precision guarantee. \\
+\hline
+{\em f} & is the DRT to be used (eg. Top Down). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The compression ratio. 
+\end{DoxyReturn}
+\Hypertarget{namespaceprecision__eval_ac215dfb293a050bac61de978dc6afc2d}\label{namespaceprecision__eval_ac215dfb293a050bac61de978dc6afc2d} 
+\index{precision\_eval@{precision\_eval}!cputime\_of\_method@{cputime\_of\_method}}
+\index{cputime\_of\_method@{cputime\_of\_method}!precision\_eval@{precision\_eval}}
+\doxysubsubsection{\texorpdfstring{cputime\_of\_method()}{cputime\_of\_method()}}
+{\footnotesize\ttfamily double precision\+\_\+eval\+::cputime\+\_\+of\+\_\+method (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{epsilon,  }\item[{\mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}}}]{f }\end{DoxyParamCaption})}
+
+
+
+segments\+\_\+of\+\_\+method returns the time DRT took to achieve the precision 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em epsilon} & is the epsilon for the precision guarantee. \\
+\hline
+{\em f} & is the DRT to be used (eg. Top Down). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time taken by the DRT. 
+\end{DoxyReturn}
+\Hypertarget{namespaceprecision__eval_ace8152badad6a18c1ed79ecfd78b57ee}\label{namespaceprecision__eval_ace8152badad6a18c1ed79ecfd78b57ee} 
+\index{precision\_eval@{precision\_eval}!get\_cputime\_over\_epsilons@{get\_cputime\_over\_epsilons}}
+\index{get\_cputime\_over\_epsilons@{get\_cputime\_over\_epsilons}!precision\_eval@{precision\_eval}}
+\doxysubsubsection{\texorpdfstring{get\_cputime\_over\_epsilons()}{get\_cputime\_over\_epsilons()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} precision\+\_\+eval\+::get\+\_\+cputime\+\_\+over\+\_\+epsilons (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}}]{epsilons,  }\item[{\mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}}}]{f }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+cputime\+\_\+over\+\_\+epsilon returns the number of segments the DRT used to achieve the precision for a variety of epsilons. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em epsilons} & is a vector of epsilons for the precision guarantee \\
+\hline
+{\em f} & is the DRT to be used (eg. Top Down). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time taken by the DRT for each epsilon. 
+\end{DoxyReturn}
+\Hypertarget{namespaceprecision__eval_ad505117b5569d263e9e52b13d5e47c16}\label{namespaceprecision__eval_ad505117b5569d263e9e52b13d5e47c16} 
+\index{precision\_eval@{precision\_eval}!get\_segments\_over\_epsilons@{get\_segments\_over\_epsilons}}
+\index{get\_segments\_over\_epsilons@{get\_segments\_over\_epsilons}!precision\_eval@{precision\_eval}}
+\doxysubsubsection{\texorpdfstring{get\_segments\_over\_epsilons()}{get\_segments\_over\_epsilons()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} precision\+\_\+eval\+::get\+\_\+segments\+\_\+over\+\_\+epsilons (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}}}]{epsilons,  }\item[{\mbox{\hyperlink{e__guarantee__eval_8h_ae05b3426e239cbbdea27ed8799bf37d5}{DRT\+\_\+\+COMPR\+\_\+\+PG}}}]{f }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+segments\+\_\+over\+\_\+epsilon returns the compression ratios of the DRT with the epsilons. 
+
+compr\+\_\+ratio\+\_\+of\+\_\+method returns the compression ratio of DRT with the precision. 
+\begin{DoxyParams}{Parameters}
+{\em s} & is a reference to the series used. \\
+\hline
+{\em epsilons} & is a vector of epsilons for the precision guarantee. \\
+\hline
+{\em f} & is the DRT to be used (eg. Top Down). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The compression ratios. 
+\end{DoxyReturn}

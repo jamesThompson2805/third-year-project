@@ -77,17 +77,25 @@ $(function() {
   <div class="headertitle"><div class="title">seq_scan Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="namespaceseq__scan.html" title="seq_scan is namespace for solutions to simsearch and k-nn by sequential scan">seq_scan</a> is namespace for solutions to simsearch and k-nn by sequential scan  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1935c2507450b83d4a577291bcff2160" id="r_a1935c2507450b83d4a577291bcff2160"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1935c2507450b83d4a577291bcff2160">l2_sqr</a> (const double *const s1start, const double *const s2start, unsigned int len)</td></tr>
+<tr class="memdesc:a1935c2507450b83d4a577291bcff2160"><td class="mdescLeft">&#160;</td><td class="mdescRight">l2_sqr returns the squared error of the two sequences  <br /></td></tr>
 <tr class="separator:a1935c2507450b83d4a577291bcff2160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40153bf4066521b14e3a1c59fd282ecf" id="r_a40153bf4066521b14e3a1c59fd282ecf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40153bf4066521b14e3a1c59fd282ecf">find_similar_subseq_indexes</a> (const std::vector&lt; double &gt; &amp;series, const std::vector&lt; double &gt; &amp;query, double epsilon)</td></tr>
+<tr class="memdesc:a40153bf4066521b14e3a1c59fd282ecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">find_similar_subseq_indexes finds all subsequences of series that are within epsilon of query  <br /></td></tr>
 <tr class="separator:a40153bf4066521b14e3a1c59fd282ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabba1db0fbefa1e36cf02922e325db55" id="r_aabba1db0fbefa1e36cf02922e325db55"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabba1db0fbefa1e36cf02922e325db55">find_k_closest_indexes</a> (const std::vector&lt; double &gt; &amp;series, const std::vector&lt; double &gt; &amp;query, unsigned int k)</td></tr>
+<tr class="memdesc:aabba1db0fbefa1e36cf02922e325db55"><td class="mdescLeft">&#160;</td><td class="mdescRight">find_k_closest_indexes finds all the k closest subsequences to a query  <br /></td></tr>
 <tr class="separator:aabba1db0fbefa1e36cf02922e325db55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="namespaceseq__scan.html" title="seq_scan is namespace for solutions to simsearch and k-nn by sequential scan">seq_scan</a> is namespace for solutions to simsearch and k-nn by sequential scan </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="aabba1db0fbefa1e36cf02922e325db55" name="aabba1db0fbefa1e36cf02922e325db55"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aabba1db0fbefa1e36cf02922e325db55">&#9670;&#160;</a></span>find_k_closest_indexes()</h2>
 
@@ -111,6 +119,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>find_k_closest_indexes finds all the k closest subsequences to a query </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">series</td><td>is the large time series to search for subsequences in </td></tr>
+    <tr><td class="paramname">query</td><td>is the query sequence to search for similar sequences to </td></tr>
+    <tr><td class="paramname">k</td><td>is the number of subsequences to find </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array of integers representing the start index of the k closest subsequences </dd></dl>
 
 </div>
 </div>
@@ -138,6 +157,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>find_similar_subseq_indexes finds all subsequences of series that are within epsilon of query </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">series</td><td>is the large time series to search for subsequences in </td></tr>
+    <tr><td class="paramname">query</td><td>is the query sequence to search for similar sequences to </td></tr>
+    <tr><td class="paramname">epsilon</td><td>is the maximum allowed l2 error between a query and returned subseqence </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array of integers representing the start index of a subsequence within epsilon </dd></dl>
+
 </div>
 </div>
 <a id="a1935c2507450b83d4a577291bcff2160" name="a1935c2507450b83d4a577291bcff2160"></a>
@@ -163,6 +193,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>l2_sqr returns the squared error of the two sequences </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s1start</td><td>points to beginning of s1 array </td></tr>
+    <tr><td class="paramname">s2start</td><td>points to beginning of s2 array </td></tr>
+    <tr><td class="paramname">len</td><td>is the length of both arrays </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the squared error between the sequences </dd></dl>
 
 </div>
 </div>

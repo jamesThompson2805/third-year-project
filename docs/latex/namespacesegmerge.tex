@@ -1,88 +1,144 @@
 \doxysection{segmerge Namespace Reference}
 \hypertarget{namespacesegmerge}{}\label{namespacesegmerge}\index{segmerge@{segmerge}}
+
+
+segmerge namespace holds functions for splitting and merging approximations given the original sequence  
+
+
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespacesegmerge_a003be0fe9132444b97aa8431ce28c43e}{merge\+\_\+1}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr)
+void \mbox{\hyperlink{namespacesegmerge_a003be0fe9132444b97aa8431ce28c43e}{merge\+\_\+1}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s\+\_\+compr)
+\begin{DoxyCompactList}\small\item\em merge\+\_\+1 function merges one segment in the approximation with its neighbour, merging only the closest two \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesegmerge_a7372588f2639347269b7162c00f0a7b9}{merge\+\_\+k}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\begin{DoxyCompactList}\small\item\em merge\+\_\+k function merges k segments in the approximation with its neighbour, merging only the closest two each time \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesegmerge_a6b763f928c581ad8b36cb69467146f14}{merge\+\_\+to\+\_\+dim}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\begin{DoxyCompactList}\small\item\em merge\+\_\+to\+\_\+dim merges until the number of segments is k/3, making the dimension of the approximation k \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesegmerge_a62dd1710f7bc31617f46fd3a72871155}{segment\+\_\+1}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s\+\_\+compr)
+\begin{DoxyCompactList}\small\item\em segment\+\_\+1 function splits one segment in the approximation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesegmerge_a0840de794865d86f88de3ba422299e2d}{segment\+\_\+k}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\begin{DoxyCompactList}\small\item\em segment\+\_\+k function splits k segments in the approximation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacesegmerge_a7e2f34f54b29362bd04797382db7a43e}{segment\+\_\+to\+\_\+dim}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\begin{DoxyCompactList}\small\item\em segment\+\_\+to\+\_\+dim splits until the number of segments is k/3, making the dimension of the approximation k \end{DoxyCompactList}\item 
+\Hypertarget{namespacesegmerge_a58ab3fb6dc7e7ba84904757e61b5c399}\label{namespacesegmerge_a58ab3fb6dc7e7ba84904757e61b5c399} 
+void {\bfseries segment\+\_\+k\+\_\+opt} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s\+\_\+compr, unsigned int k)
 \item 
-void \mbox{\hyperlink{namespacesegmerge_a7372588f2639347269b7162c00f0a7b9}{merge\+\_\+k}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
-\item 
-void \mbox{\hyperlink{namespacesegmerge_a6b763f928c581ad8b36cb69467146f14}{merge\+\_\+to\+\_\+dim}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
-\item 
-void \mbox{\hyperlink{namespacesegmerge_a62dd1710f7bc31617f46fd3a72871155}{segment\+\_\+1}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr)
-\item 
-void \mbox{\hyperlink{namespacesegmerge_a0840de794865d86f88de3ba422299e2d}{segment\+\_\+k}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
-\item 
-void \mbox{\hyperlink{namespacesegmerge_a7e2f34f54b29362bd04797382db7a43e}{segment\+\_\+to\+\_\+dim}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
-\item 
-void \mbox{\hyperlink{namespacesegmerge_a9de07ab2e62852c887dd73b4b709c21c}{maxdev\+\_\+merge\+\_\+1}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr)
-\item 
-void \mbox{\hyperlink{namespacesegmerge_a6b81308934ee33c6fba9d1027fdea5dc}{maxdev\+\_\+merge\+\_\+k}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
-\item 
-void \mbox{\hyperlink{namespacesegmerge_a766f7ed3d66261ce3d7bb2945bd2dbb3}{maxdev\+\_\+segment\+\_\+1}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr)
-\item 
-void \mbox{\hyperlink{namespacesegmerge_a9f31aaa6e041478bbeb1b9369ac0d704}{maxdev\+\_\+segment\+\_\+k}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&s\+\_\+compr, unsigned int k)
+\Hypertarget{namespacesegmerge_a1d096119bea93bf4319a4e0f9141e9b3}\label{namespacesegmerge_a1d096119bea93bf4319a4e0f9141e9b3} 
+void {\bfseries merge\+\_\+k\+\_\+opt} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&s\+\_\+compr, unsigned int k)
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+segmerge namespace holds functions for splitting and merging approximations given the original sequence 
+
 \doxysubsection{Function Documentation}
-\Hypertarget{namespacesegmerge_a9de07ab2e62852c887dd73b4b709c21c}\label{namespacesegmerge_a9de07ab2e62852c887dd73b4b709c21c} 
-\index{segmerge@{segmerge}!maxdev\_merge\_1@{maxdev\_merge\_1}}
-\index{maxdev\_merge\_1@{maxdev\_merge\_1}!segmerge@{segmerge}}
-\doxysubsubsection{\texorpdfstring{maxdev\_merge\_1()}{maxdev\_merge\_1()}}
-{\footnotesize\ttfamily void segmerge\+::maxdev\+\_\+merge\+\_\+1 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacesegmerge_a6b81308934ee33c6fba9d1027fdea5dc}\label{namespacesegmerge_a6b81308934ee33c6fba9d1027fdea5dc} 
-\index{segmerge@{segmerge}!maxdev\_merge\_k@{maxdev\_merge\_k}}
-\index{maxdev\_merge\_k@{maxdev\_merge\_k}!segmerge@{segmerge}}
-\doxysubsubsection{\texorpdfstring{maxdev\_merge\_k()}{maxdev\_merge\_k()}}
-{\footnotesize\ttfamily void segmerge\+::maxdev\+\_\+merge\+\_\+k (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacesegmerge_a766f7ed3d66261ce3d7bb2945bd2dbb3}\label{namespacesegmerge_a766f7ed3d66261ce3d7bb2945bd2dbb3} 
-\index{segmerge@{segmerge}!maxdev\_segment\_1@{maxdev\_segment\_1}}
-\index{maxdev\_segment\_1@{maxdev\_segment\_1}!segmerge@{segmerge}}
-\doxysubsubsection{\texorpdfstring{maxdev\_segment\_1()}{maxdev\_segment\_1()}}
-{\footnotesize\ttfamily void segmerge\+::maxdev\+\_\+segment\+\_\+1 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr }\end{DoxyParamCaption})}
-
-\Hypertarget{namespacesegmerge_a9f31aaa6e041478bbeb1b9369ac0d704}\label{namespacesegmerge_a9f31aaa6e041478bbeb1b9369ac0d704} 
-\index{segmerge@{segmerge}!maxdev\_segment\_k@{maxdev\_segment\_k}}
-\index{maxdev\_segment\_k@{maxdev\_segment\_k}!segmerge@{segmerge}}
-\doxysubsubsection{\texorpdfstring{maxdev\_segment\_k()}{maxdev\_segment\_k()}}
-{\footnotesize\ttfamily void segmerge\+::maxdev\+\_\+segment\+\_\+k (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
-
 \Hypertarget{namespacesegmerge_a003be0fe9132444b97aa8431ce28c43e}\label{namespacesegmerge_a003be0fe9132444b97aa8431ce28c43e} 
 \index{segmerge@{segmerge}!merge\_1@{merge\_1}}
 \index{merge\_1@{merge\_1}!segmerge@{segmerge}}
 \doxysubsubsection{\texorpdfstring{merge\_1()}{merge\_1()}}
-{\footnotesize\ttfamily void segmerge\+::merge\+\_\+1 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void segmerge\+::merge\+\_\+1 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&}]{s\+\_\+compr }\end{DoxyParamCaption})}
 
+
+
+merge\+\_\+1 function merges one segment in the approximation with its neighbour, merging only the closest two 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the original sequence \\
+\hline
+{\em s\+\_\+compr} & is its compressed representation \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacesegmerge_a7372588f2639347269b7162c00f0a7b9}\label{namespacesegmerge_a7372588f2639347269b7162c00f0a7b9} 
 \index{segmerge@{segmerge}!merge\_k@{merge\_k}}
 \index{merge\_k@{merge\_k}!segmerge@{segmerge}}
 \doxysubsubsection{\texorpdfstring{merge\_k()}{merge\_k()}}
-{\footnotesize\ttfamily void segmerge\+::merge\+\_\+k (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void segmerge\+::merge\+\_\+k (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
 
+
+
+merge\+\_\+k function merges k segments in the approximation with its neighbour, merging only the closest two each time 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the original sequence \\
+\hline
+{\em s\+\_\+compr} & is its compressed representation \\
+\hline
+{\em k} & is the number of merges to perform \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacesegmerge_a6b763f928c581ad8b36cb69467146f14}\label{namespacesegmerge_a6b763f928c581ad8b36cb69467146f14} 
 \index{segmerge@{segmerge}!merge\_to\_dim@{merge\_to\_dim}}
 \index{merge\_to\_dim@{merge\_to\_dim}!segmerge@{segmerge}}
 \doxysubsubsection{\texorpdfstring{merge\_to\_dim()}{merge\_to\_dim()}}
-{\footnotesize\ttfamily void segmerge\+::merge\+\_\+to\+\_\+dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void segmerge\+::merge\+\_\+to\+\_\+dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
 
+
+
+merge\+\_\+to\+\_\+dim merges until the number of segments is k/3, making the dimension of the approximation k 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the original sequence \\
+\hline
+{\em s\+\_\+compr} & is its compressed representation \\
+\hline
+{\em k} & is the dimension to leave the approximation at \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacesegmerge_a62dd1710f7bc31617f46fd3a72871155}\label{namespacesegmerge_a62dd1710f7bc31617f46fd3a72871155} 
 \index{segmerge@{segmerge}!segment\_1@{segment\_1}}
 \index{segment\_1@{segment\_1}!segmerge@{segmerge}}
 \doxysubsubsection{\texorpdfstring{segment\_1()}{segment\_1()}}
-{\footnotesize\ttfamily void segmerge\+::segment\+\_\+1 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void segmerge\+::segment\+\_\+1 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&}]{s\+\_\+compr }\end{DoxyParamCaption})}
 
+
+
+segment\+\_\+1 function splits one segment in the approximation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the original sequence \\
+\hline
+{\em s\+\_\+compr} & is its compressed representation \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacesegmerge_a0840de794865d86f88de3ba422299e2d}\label{namespacesegmerge_a0840de794865d86f88de3ba422299e2d} 
 \index{segmerge@{segmerge}!segment\_k@{segment\_k}}
 \index{segment\_k@{segment\_k}!segmerge@{segmerge}}
 \doxysubsubsection{\texorpdfstring{segment\_k()}{segment\_k()}}
-{\footnotesize\ttfamily void segmerge\+::segment\+\_\+k (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void segmerge\+::segment\+\_\+k (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
 
+
+
+segment\+\_\+k function splits k segments in the approximation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the original sequence \\
+\hline
+{\em s\+\_\+compr} & is its compressed representation \\
+\hline
+{\em k} & is the number of segments to perform \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacesegmerge_a7e2f34f54b29362bd04797382db7a43e}\label{namespacesegmerge_a7e2f34f54b29362bd04797382db7a43e} 
 \index{segmerge@{segmerge}!segment\_to\_dim@{segment\_to\_dim}}
 \index{segment\_to\_dim@{segment\_to\_dim}!segmerge@{segmerge}}
 \doxysubsubsection{\texorpdfstring{segment\_to\_dim()}{segment\_to\_dim()}}
-{\footnotesize\ttfamily void segmerge\+::segment\+\_\+to\+\_\+dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void segmerge\+::segment\+\_\+to\+\_\+dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \&}]{s\+\_\+compr,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
 
+
+
+segment\+\_\+to\+\_\+dim splits until the number of segments is k/3, making the dimension of the approximation k 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is the original sequence \\
+\hline
+{\em s\+\_\+compr} & is its compressed representation \\
+\hline
+{\em k} & is the dimension to leave the approximation at \\
+\hline
+\end{DoxyParams}

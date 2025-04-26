@@ -94,106 +94,75 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacepla" id="r_namespacepla"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html">pla</a></td></tr>
+<tr class="memdesc:namespacepla"><td class="mdescLeft">&#160;</td><td class="mdescRight">pla namespace holds functions for PLA algorithm and decompression <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a6718cbd537740aa7243c3b2c3cbd6786" id="r_a6718cbd537740aa7243c3b2c3cbd6786"><td class="memItemLeft" align="right" valign="top">typedef std::array&lt; double, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a></td></tr>
+<tr class="memitem:a6718cbd537740aa7243c3b2c3cbd6786" id="r_a6718cbd537740aa7243c3b2c3cbd6786"><td class="memItemLeft" align="right" valign="top"><a id="a6718cbd537740aa7243c3b2c3cbd6786" name="a6718cbd537740aa7243c3b2c3cbd6786"></a>
+typedef std::array&lt; double, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DoublePair</b></td></tr>
+<tr class="memdesc:a6718cbd537740aa7243c3b2c3cbd6786"><td class="mdescLeft">&#160;</td><td class="mdescRight">DoublePair describes a line using two parameters, the first is the y-intercept and the second the gradient It is customary for a PLA algorithm to have each segments linear approximation approximate as if the segment starts at 0. <br /></td></tr>
 <tr class="separator:a6718cbd537740aa7243c3b2c3cbd6786"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d3953cd3e75718fc534b351149f9f98" id="r_a5d3953cd3e75718fc534b351149f9f98"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></td></tr>
+<tr class="memitem:a5d3953cd3e75718fc534b351149f9f98" id="r_a5d3953cd3e75718fc534b351149f9f98"><td class="memItemLeft" align="right" valign="top"><a id="a5d3953cd3e75718fc534b351149f9f98" name="a5d3953cd3e75718fc534b351149f9f98"></a>
+typedef std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Seqd</b></td></tr>
+<tr class="memdesc:a5d3953cd3e75718fc534b351149f9f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seqd is an array of double values, representing a sequence. <br /></td></tr>
 <tr class="separator:a5d3953cd3e75718fc534b351149f9f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60727584f5467b36a144216eacf25bdd" id="r_a60727584f5467b36a144216eacf25bdd"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60727584f5467b36a144216eacf25bdd">Seqdd</a></td></tr>
+<tr class="memitem:a60727584f5467b36a144216eacf25bdd" id="r_a60727584f5467b36a144216eacf25bdd"><td class="memItemLeft" align="right" valign="top"><a id="a60727584f5467b36a144216eacf25bdd" name="a60727584f5467b36a144216eacf25bdd"></a>
+typedef std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Seqdd</b></td></tr>
+<tr class="memdesc:a60727584f5467b36a144216eacf25bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seqdd is an array of pair of doubles, representing a series of lines. <br /></td></tr>
 <tr class="separator:a60727584f5467b36a144216eacf25bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8b9cde7efeaabcc857cf363312e58fc" id="r_ad8b9cde7efeaabcc857cf363312e58fc"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::tuple&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8b9cde7efeaabcc857cf363312e58fc">Seqddt</a></td></tr>
+<tr class="memitem:abdf22d5cee75eed0991db20be5b1efcc" id="r_abdf22d5cee75eed0991db20be5b1efcc"><td class="memItemLeft" align="right" valign="top"><a id="abdf22d5cee75eed0991db20be5b1efcc" name="abdf22d5cee75eed0991db20be5b1efcc"></a>
+typedef std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Sequi</b></td></tr>
+<tr class="memdesc:abdf22d5cee75eed0991db20be5b1efcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sequi is an array of unsigned integers. <br /></td></tr>
+<tr class="separator:abdf22d5cee75eed0991db20be5b1efcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8b9cde7efeaabcc857cf363312e58fc" id="r_ad8b9cde7efeaabcc857cf363312e58fc"><td class="memItemLeft" align="right" valign="top"><a id="ad8b9cde7efeaabcc857cf363312e58fc" name="ad8b9cde7efeaabcc857cf363312e58fc"></a>
+typedef std::vector&lt; std::tuple&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Seqddt</b></td></tr>
+<tr class="memdesc:ad8b9cde7efeaabcc857cf363312e58fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seqddt is an array of triples, representing the information for an adaptive PLA segment. <br /></td></tr>
 <tr class="separator:ad8b9cde7efeaabcc857cf363312e58fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a3d8a0f973d3b199407f277870e4c00" id="r_a6a3d8a0f973d3b199407f277870e4c00"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> = std::function&lt; std::vector&lt;std::tuple&lt;<a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int&gt;&gt;(const std::vector&lt;double&gt;&amp;, unsigned int)&gt;</td></tr>
+<tr class="memitem:a6a3d8a0f973d3b199407f277870e4c00" id="r_a6a3d8a0f973d3b199407f277870e4c00"><td class="memItemLeft" align="right" valign="top"><a id="a6a3d8a0f973d3b199407f277870e4c00" name="a6a3d8a0f973d3b199407f277870e4c00"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>pla::APLA_DRT</b> = std::function&lt; std::vector&lt;std::tuple&lt;<a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int&gt;&gt;(const std::vector&lt;double&gt;&amp;, unsigned int)&gt;</td></tr>
+<tr class="memdesc:a6a3d8a0f973d3b199407f277870e4c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">APLA_DRT represents a function that takes a series and target dimension and returns the sorted array of APLA segments. <br /></td></tr>
 <tr class="separator:a6a3d8a0f973d3b199407f277870e4c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab44773fad0df6bd9b9816ddbaa0bfbb4" id="r_ab44773fad0df6bd9b9816ddbaa0bfbb4"><td class="memTemplParams" colspan="2">template&lt;unsigned int NS&gt; </td></tr>
-<tr class="memitem:ab44773fad0df6bd9b9816ddbaa0bfbb4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacepla.html#ab44773fad0df6bd9b9816ddbaa0bfbb4">pla::APLA</a> = std::array&lt;std::tuple&lt;<a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>,unsigned int&gt;,NS&gt;</td></tr>
+<tr class="memitem:ab44773fad0df6bd9b9816ddbaa0bfbb4" id="r_ab44773fad0df6bd9b9816ddbaa0bfbb4"><td class="memTemplParams" colspan="2"><a id="ab44773fad0df6bd9b9816ddbaa0bfbb4" name="ab44773fad0df6bd9b9816ddbaa0bfbb4"></a>
+template&lt;unsigned int NS&gt; </td></tr>
+<tr class="memitem:ab44773fad0df6bd9b9816ddbaa0bfbb4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>pla::APLA</b> = std::array&lt;std::tuple&lt;<a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>,unsigned int&gt;,NS&gt;</td></tr>
+<tr class="memdesc:ab44773fad0df6bd9b9816ddbaa0bfbb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">APLA is a fixed length array of segments that ensures the dimension of an approximation are all the same. <br /></td></tr>
 <tr class="separator:ab44773fad0df6bd9b9816ddbaa0bfbb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a54deab779fcb06a1e40fddadb3575e58" id="r_a54deab779fcb06a1e40fddadb3575e58"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#a54deab779fcb06a1e40fddadb3575e58">pla::chunk_series</a> (std::vector&lt; double &gt; series, unsigned int chunk_size)</td></tr>
+<tr class="memdesc:a54deab779fcb06a1e40fddadb3575e58"><td class="mdescLeft">&#160;</td><td class="mdescRight">chunk_series takes a series and returns the series segmented into chunks  <br /></td></tr>
 <tr class="separator:a54deab779fcb06a1e40fddadb3575e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf95cd1dd69140bbfa8f0a677c36fcdb" id="r_acf95cd1dd69140bbfa8f0a677c36fcdb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#acf95cd1dd69140bbfa8f0a677c36fcdb">pla::regression</a> (const double *const start, const double *const end)</td></tr>
+<tr class="memdesc:acf95cd1dd69140bbfa8f0a677c36fcdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">regression calculates the line of best fit on an array of points  <br /></td></tr>
 <tr class="separator:acf95cd1dd69140bbfa8f0a677c36fcdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a317cb9110bf6260a914e2c683297f8ad" id="r_a317cb9110bf6260a914e2c683297f8ad"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#a317cb9110bf6260a914e2c683297f8ad">pla::regression_thru_point</a> (double first_point, const double *const start, const double *const end)</td></tr>
+<tr class="memdesc:a317cb9110bf6260a914e2c683297f8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">regression_thru_point calculates line of best fit that starts at first point and approximates rest  <br /></td></tr>
 <tr class="separator:a317cb9110bf6260a914e2c683297f8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6438fa7ac15f2e620352db7cc5c2984" id="r_af6438fa7ac15f2e620352db7cc5c2984"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#af6438fa7ac15f2e620352db7cc5c2984">pla::sliding_window_regression</a> (const std::vector&lt; double &gt; &amp;series, unsigned int w)</td></tr>
-<tr class="separator:af6438fa7ac15f2e620352db7cc5c2984"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ae7e9fb7afda5d688edb8bc50c6deab" id="r_a3ae7e9fb7afda5d688edb8bc50c6deab"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#a3ae7e9fb7afda5d688edb8bc50c6deab">pla::chunk_regression</a> (const std::vector&lt; double &gt; &amp;series, unsigned int num_params)</td></tr>
-<tr class="separator:a3ae7e9fb7afda5d688edb8bc50c6deab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4a679bfb7ce04a858c4354da743727d" id="r_ad4a679bfb7ce04a858c4354da743727d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#ad4a679bfb7ce04a858c4354da743727d">pla::pla</a> (const std::vector&lt; double &gt; &amp;series, unsigned int num_params)</td></tr>
-<tr class="separator:ad4a679bfb7ce04a858c4354da743727d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc2204968460bfeedcf17169701a450a" id="r_adc2204968460bfeedcf17169701a450a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#adc2204968460bfeedcf17169701a450a">pla::subsequence_regression</a> (const std::vector&lt; double &gt; &amp;series, unsigned int w)</td></tr>
+<tr class="memdesc:adc2204968460bfeedcf17169701a450a"><td class="mdescLeft">&#160;</td><td class="mdescRight">subsequence_regression calculates the line of best fit for every subsequence of size w  <br /></td></tr>
+<tr class="separator:adc2204968460bfeedcf17169701a450a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfd2f080eda13393bf959a233003eab7" id="r_abfd2f080eda13393bf959a233003eab7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#abfd2f080eda13393bf959a233003eab7">pla::pla</a> (const std::vector&lt; double &gt; &amp;series, unsigned int num_params)</td></tr>
+<tr class="memdesc:abfd2f080eda13393bf959a233003eab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">pla calculates the pla algorithm on a series  <br /></td></tr>
+<tr class="separator:abfd2f080eda13393bf959a233003eab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc6491b74ce05f48e3bd54e0ec5e6514" id="r_abc6491b74ce05f48e3bd54e0ec5e6514"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#abc6491b74ce05f48e3bd54e0ec5e6514">pla::pla_mse</a> (const std::vector&lt; double &gt; &amp;series, unsigned int interval_size)</td></tr>
+<tr class="memdesc:abc6491b74ce05f48e3bd54e0ec5e6514"><td class="mdescLeft">&#160;</td><td class="mdescRight">pla_mse calculates pla on the series and returns the mean squared error of the approximation to the original  <br /></td></tr>
 <tr class="separator:abc6491b74ce05f48e3bd54e0ec5e6514"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe5dd11aadc38e9c3a562860e0a00d25" id="r_afe5dd11aadc38e9c3a562860e0a00d25"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#afe5dd11aadc38e9c3a562860e0a00d25">pla::pla_to_seq</a> (const std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt;, unsigned int int_size)</td></tr>
-<tr class="separator:afe5dd11aadc38e9c3a562860e0a00d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab32753f980424f3e0a740e4c2da1dcc9" id="r_ab32753f980424f3e0a740e4c2da1dcc9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#ab32753f980424f3e0a740e4c2da1dcc9">pla::apla_to_seq</a> (const std::vector&lt; std::tuple&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int &gt; &gt;)</td></tr>
-<tr class="separator:ab32753f980424f3e0a740e4c2da1dcc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f914d1adcda1b216a3801316cdb384" id="r_aa6f914d1adcda1b216a3801316cdb384"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#aa6f914d1adcda1b216a3801316cdb384">pla::pla_to_seq</a> (const std::vector&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a> &gt; pla_s, unsigned int int_size)</td></tr>
+<tr class="memdesc:aa6f914d1adcda1b216a3801316cdb384"><td class="mdescLeft">&#160;</td><td class="mdescRight">pla_to_seq takes a pla approximation and its segment size and returns the full size approximation  <br /></td></tr>
+<tr class="separator:aa6f914d1adcda1b216a3801316cdb384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4acdbcceda3e0a8d90a41b5848ad8f6" id="r_ab4acdbcceda3e0a8d90a41b5848ad8f6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepla.html#ab4acdbcceda3e0a8d90a41b5848ad8f6">pla::apla_to_seq</a> (const std::vector&lt; std::tuple&lt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int &gt; &gt; apla_s)</td></tr>
+<tr class="memdesc:ab4acdbcceda3e0a8d90a41b5848ad8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">apla_to_seq takes a apla approximation and returns the uncompressed approximation  <br /></td></tr>
+<tr class="separator:ab4acdbcceda3e0a8d90a41b5848ad8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac82c30c4f0758c7fc125822ce389542c" id="r_ac82c30c4f0758c7fc125822ce389542c"><td class="memTemplParams" colspan="2">template&lt;unsigned int NS&gt; </td></tr>
 <tr class="memitem:ac82c30c4f0758c7fc125822ce389542c"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacepla.html#ab44773fad0df6bd9b9816ddbaa0bfbb4">APLA</a>&lt; NS &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacepla.html#ac82c30c4f0758c7fc125822ce389542c">pla::apla_drt_on_subseqs</a> (const std::vector&lt; double &gt; &amp;q, unsigned int subseq_size, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">APLA_DRT</a> f)</td></tr>
+<tr class="memdesc:ac82c30c4f0758c7fc125822ce389542c"><td class="mdescLeft">&#160;</td><td class="mdescRight">apla_drt_on_subseqs calculates Adaptive PLA on every subsequence of the given size and returns the array of approximations  <br /></td></tr>
 <tr class="separator:ac82c30c4f0758c7fc125822ce389542c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a6718cbd537740aa7243c3b2c3cbd6786" name="a6718cbd537740aa7243c3b2c3cbd6786"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6718cbd537740aa7243c3b2c3cbd6786">&#9670;&#160;</a></span>DoublePair</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::array&lt;double, 2&gt; <a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5d3953cd3e75718fc534b351149f9f98" name="a5d3953cd3e75718fc534b351149f9f98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d3953cd3e75718fc534b351149f9f98">&#9670;&#160;</a></span>Seqd</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::vector&lt;double&gt; <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a60727584f5467b36a144216eacf25bdd" name="a60727584f5467b36a144216eacf25bdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60727584f5467b36a144216eacf25bdd">&#9670;&#160;</a></span>Seqdd</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::vector&lt;<a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>&gt; <a class="el" href="#a60727584f5467b36a144216eacf25bdd">Seqdd</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad8b9cde7efeaabcc857cf363312e58fc" name="ad8b9cde7efeaabcc857cf363312e58fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8b9cde7efeaabcc857cf363312e58fc">&#9670;&#160;</a></span>Seqddt</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::vector&lt;std::tuple&lt;<a class="el" href="#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>,unsigned int&gt; &gt; <a class="el" href="apla__segment__and__merge_8h.html#a7adf2503e92395c0baa214b993c3bc95">Seqddt</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>contains the pla approximation and utilitiy definitions adjacent to it </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0

@@ -1,18 +1,27 @@
 \doxysection{lib/similarity\+\_\+search/sequential\+\_\+scan.h File Reference}
 \hypertarget{sequential__scan_8h}{}\label{sequential__scan_8h}\index{lib/similarity\_search/sequential\_scan.h@{lib/similarity\_search/sequential\_scan.h}}
+
+
+Header file for sequential scan methods for similarity search and K nearest neighbours.  
+
+
 {\ttfamily \#include $<$vector$>$}\newline
-{\ttfamily \#include $<$iostream$>$}\newline
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespaceseq__scan}{seq\+\_\+scan}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespaceseq__scan}{seq\+\_\+scan} is namespace for solutions to simsearch and k-\/nn by sequential scan \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 double \mbox{\hyperlink{namespaceseq__scan_a1935c2507450b83d4a577291bcff2160}{seq\+\_\+scan\+::l2\+\_\+sqr}} (const double \texorpdfstring{$\ast$}{*}const s1start, const double \texorpdfstring{$\ast$}{*}const s2start, unsigned int len)
-\item 
+\begin{DoxyCompactList}\small\item\em l2\+\_\+sqr returns the squared error of the two sequences \end{DoxyCompactList}\item 
 std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceseq__scan_a40153bf4066521b14e3a1c59fd282ecf}{seq\+\_\+scan\+::find\+\_\+similar\+\_\+subseq\+\_\+indexes}} (const std\+::vector$<$ double $>$ \&series, const std\+::vector$<$ double $>$ \&query, double epsilon)
-\item 
+\begin{DoxyCompactList}\small\item\em find\+\_\+similar\+\_\+subseq\+\_\+indexes finds all subsequences of series that are within epsilon of query \end{DoxyCompactList}\item 
 std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceseq__scan_aabba1db0fbefa1e36cf02922e325db55}{seq\+\_\+scan\+::find\+\_\+k\+\_\+closest\+\_\+indexes}} (const std\+::vector$<$ double $>$ \&series, const std\+::vector$<$ double $>$ \&query, unsigned int k)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em find\+\_\+k\+\_\+closest\+\_\+indexes finds all the k closest subsequences to a query \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for sequential scan methods for similarity search and K nearest neighbours. 
+

@@ -84,97 +84,85 @@ $(function() {
   <div class="headertitle"><div class="title">lower_bounds_apla.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Header file for creation and merging of Partition Covers.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;array&gt;</code><br />
 <code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;numeric&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &quot;<a class="el" href="pla_8h_source.html">pla.h</a>&quot;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
 </div>
 <p><a href="lower__bounds__apla_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structapla__bounds_1_1Region.html">apla_bounds::Region</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structapla__bounds_1_1Region.html" title="Region is a struct storing information about a segment of the Partition Cover.">Region</a> is a struct storing information about a segment of the Partition Cover.  <a href="structapla__bounds_1_1Region.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceapla__bounds" id="r_namespaceapla__bounds"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html">apla_bounds</a></td></tr>
+<tr class="memdesc:namespaceapla__bounds"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceapla__bounds.html" title="apla_bounds namespace holds the functions for creation and merging of Partition Covers">apla_bounds</a> namespace holds the functions for creation and merging of Partition Covers <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a300ccf16bbc252b2a1c26a3525626f7f" id="r_a300ccf16bbc252b2a1c26a3525626f7f"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:a300ccf16bbc252b2a1c26a3525626f7f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a300ccf16bbc252b2a1c26a3525626f7f">AplaPt</a> = std::array&lt;std::tuple&lt;<a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int&gt;,S&gt;</td></tr>
+<tr class="memitem:a300ccf16bbc252b2a1c26a3525626f7f" id="r_a300ccf16bbc252b2a1c26a3525626f7f"><td class="memTemplParams" colspan="2"><a id="a300ccf16bbc252b2a1c26a3525626f7f" name="a300ccf16bbc252b2a1c26a3525626f7f"></a>
+template&lt;unsigned int S&gt; </td></tr>
+<tr class="memitem:a300ccf16bbc252b2a1c26a3525626f7f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>AplaPt</b> = std::array&lt;std::tuple&lt;<a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int&gt;,S&gt;</td></tr>
 <tr class="separator:a300ccf16bbc252b2a1c26a3525626f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d3953cd3e75718fc534b351149f9f98" id="r_a5d3953cd3e75718fc534b351149f9f98"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></td></tr>
+<tr class="memitem:a5d3953cd3e75718fc534b351149f9f98" id="r_a5d3953cd3e75718fc534b351149f9f98"><td class="memItemLeft" align="right" valign="top"><a id="a5d3953cd3e75718fc534b351149f9f98" name="a5d3953cd3e75718fc534b351149f9f98"></a>
+typedef std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Seqd</b></td></tr>
 <tr class="separator:a5d3953cd3e75718fc534b351149f9f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf0249ec44d4389eb686c08b044f8765" id="r_aaf0249ec44d4389eb686c08b044f8765"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:aaf0249ec44d4389eb686c08b044f8765"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#aaf0249ec44d4389eb686c08b044f8765">apla_bounds::AplaMBR</a> = std::array&lt;<a class="el" href="structapla__bounds_1_1Region.html">Region</a>, S&gt;</td></tr>
+<tr class="memitem:aaf0249ec44d4389eb686c08b044f8765" id="r_aaf0249ec44d4389eb686c08b044f8765"><td class="memTemplParams" colspan="2"><a id="aaf0249ec44d4389eb686c08b044f8765" name="aaf0249ec44d4389eb686c08b044f8765"></a>
+template&lt;unsigned int S&gt; </td></tr>
+<tr class="memitem:aaf0249ec44d4389eb686c08b044f8765"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>apla_bounds::AplaMBR</b> = std::array&lt;<a class="el" href="structapla__bounds_1_1Region.html">Region</a>, S&gt;</td></tr>
 <tr class="separator:aaf0249ec44d4389eb686c08b044f8765"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a87166e319f0d76d736e08677ee44903c" id="r_a87166e319f0d76d736e08677ee44903c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a87166e319f0d76d736e08677ee44903c">apla_bounds::region_area</a> (const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> &amp;r)</td></tr>
+<tr class="memdesc:a87166e319f0d76d736e08677ee44903c"><td class="mdescLeft">&#160;</td><td class="mdescRight">region_area calculates the sum of the area of the region in the plane  <br /></td></tr>
 <tr class="separator:a87166e319f0d76d736e08677ee44903c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdcc600dfae926c1bf68b7a068099a67" id="r_abdcc600dfae926c1bf68b7a068099a67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structapla__bounds_1_1Region.html">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#abdcc600dfae926c1bf68b7a068099a67">apla_bounds::region_merge</a> (const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> &amp;r1, const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> &amp;r2)</td></tr>
+<tr class="memdesc:abdcc600dfae926c1bf68b7a068099a67"><td class="mdescLeft">&#160;</td><td class="mdescRight">region_merge calculates the merge of two segments (regions)  <br /></td></tr>
 <tr class="separator:abdcc600dfae926c1bf68b7a068099a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36a8e851dddf94226d6e5002586e2ed3" id="r_a36a8e851dddf94226d6e5002586e2ed3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a36a8e851dddf94226d6e5002586e2ed3">apla_bounds::dist_to_region_sqr</a> (const double &amp;qi, const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> &amp;r, unsigned int global_offset)</td></tr>
+<tr class="memdesc:a36a8e851dddf94226d6e5002586e2ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">dist_to_region_sqr takes a current point (global_offset, qi) and calcuates the distance to the region r  <br /></td></tr>
 <tr class="separator:a36a8e851dddf94226d6e5002586e2ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c2f80f1b1ed60089ce402fc04ca6fea" id="r_a1c2f80f1b1ed60089ce402fc04ca6fea"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a1c2f80f1b1ed60089ce402fc04ca6fea">apla_bounds::dist_to_regions_sqr</a> (const double &amp;qi, const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> *const rstart, const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> *const rend, unsigned int global_offset)</td></tr>
+<tr class="memdesc:a1c2f80f1b1ed60089ce402fc04ca6fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">dist_to_regions_sqr takes a current point (global_offset, qi) and calcuates the distance to the array of regions  <br /></td></tr>
 <tr class="separator:a1c2f80f1b1ed60089ce402fc04ca6fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab06dc8fad148ed5207e06767e0739bef" id="r_ab06dc8fad148ed5207e06767e0739bef"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:ab06dc8fad148ed5207e06767e0739bef"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#ab06dc8fad148ed5207e06767e0739bef">apla_bounds::mbr_area</a> (const <a class="el" href="namespaceapla__bounds.html#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;mbr)</td></tr>
+<tr class="memitem:ab06dc8fad148ed5207e06767e0739bef"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#ab06dc8fad148ed5207e06767e0739bef">apla_bounds::mbr_area</a> (const AplaMBR&lt; S &gt; &amp;mbr)</td></tr>
+<tr class="memdesc:ab06dc8fad148ed5207e06767e0739bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">mbr_area calculates the total area of the partition cover in the plane as the sum of area of regions  <br /></td></tr>
 <tr class="separator:ab06dc8fad148ed5207e06767e0739bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db27f8c06fecff0bd1a19cd95e1da9f" id="r_a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceapla__bounds.html#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a2db27f8c06fecff0bd1a19cd95e1da9f">apla_bounds::mbr_merge</a> (const <a class="el" href="namespaceapla__bounds.html#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;mbr1, const <a class="el" href="namespaceapla__bounds.html#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;mbr2)</td></tr>
+<tr class="memitem:a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="memTemplItemLeft" align="right" valign="top">AplaMBR&lt; S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a2db27f8c06fecff0bd1a19cd95e1da9f">apla_bounds::mbr_merge</a> (const AplaMBR&lt; S &gt; &amp;mbr1, const AplaMBR&lt; S &gt; &amp;mbr2)</td></tr>
+<tr class="memdesc:a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">mbr_merge merges two partition covers by region wise merges  <br /></td></tr>
 <tr class="separator:a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23bacc956ed90bf9e04bca707db17552" id="r_a23bacc956ed90bf9e04bca707db17552"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:a23bacc956ed90bf9e04bca707db17552"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a23bacc956ed90bf9e04bca707db17552">apla_bounds::dist_to_mbr_sqr</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;q, const <a class="el" href="namespaceapla__bounds.html#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;mbr)</td></tr>
+<tr class="memitem:a23bacc956ed90bf9e04bca707db17552"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a23bacc956ed90bf9e04bca707db17552">apla_bounds::dist_to_mbr_sqr</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;q, const AplaMBR&lt; S &gt; &amp;mbr)</td></tr>
+<tr class="memdesc:a23bacc956ed90bf9e04bca707db17552"><td class="mdescLeft">&#160;</td><td class="mdescRight">dist_to_mbr_sqr takes a time series q and Partition Cover mbr and returns the distance between the two  <br /></td></tr>
 <tr class="separator:a23bacc956ed90bf9e04bca707db17552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e5340b3e347dd10e79500532f961dd8" id="r_a3e5340b3e347dd10e79500532f961dd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structapla__bounds_1_1Region.html">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a3e5340b3e347dd10e79500532f961dd8">apla_bounds::ptrs_to_region</a> (const double *const start, const double *const end, unsigned int g_start_i)</td></tr>
+<tr class="memdesc:a3e5340b3e347dd10e79500532f961dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ptrs_to_region converts an array of doubles into a region that bounds them  <br /></td></tr>
 <tr class="separator:a3e5340b3e347dd10e79500532f961dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18678a7d9d73451fe2cc8f9f8fa83478" id="r_a18678a7d9d73451fe2cc8f9f8fa83478"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:a18678a7d9d73451fe2cc8f9f8fa83478"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceapla__bounds.html#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a18678a7d9d73451fe2cc8f9f8fa83478">apla_bounds::vec_to_mbr</a> (const std::vector&lt; double &gt; &amp;q, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> f)</td></tr>
+<tr class="memitem:a18678a7d9d73451fe2cc8f9f8fa83478"><td class="memTemplItemLeft" align="right" valign="top">AplaMBR&lt; S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#a18678a7d9d73451fe2cc8f9f8fa83478">apla_bounds::vec_to_mbr</a> (const std::vector&lt; double &gt; &amp;q, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> f)</td></tr>
+<tr class="memdesc:a18678a7d9d73451fe2cc8f9f8fa83478"><td class="mdescLeft">&#160;</td><td class="mdescRight">vec_to_mbr takes a series q and a Adaptive PLA algorithm and returns a Partition Cover that covers q using the algorithm  <br /></td></tr>
 <tr class="separator:a18678a7d9d73451fe2cc8f9f8fa83478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac47c3b7ea4820955ef0e1abdc019cf72" id="r_ac47c3b7ea4820955ef0e1abdc019cf72"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:ac47c3b7ea4820955ef0e1abdc019cf72"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespaceapla__bounds.html#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#ac47c3b7ea4820955ef0e1abdc019cf72">apla_bounds::vec_to_subseq_mbrs</a> (const std::vector&lt; double &gt; &amp;q, unsigned int subseq_size, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> f)</td></tr>
+<tr class="memitem:ac47c3b7ea4820955ef0e1abdc019cf72"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; AplaMBR&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceapla__bounds.html#ac47c3b7ea4820955ef0e1abdc019cf72">apla_bounds::vec_to_subseq_mbrs</a> (const std::vector&lt; double &gt; &amp;q, unsigned int subseq_size, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> f)</td></tr>
+<tr class="memdesc:ac47c3b7ea4820955ef0e1abdc019cf72"><td class="mdescLeft">&#160;</td><td class="mdescRight">vec_to_subseq_mbrs takes a series q and a Adaptive PLA algorithm, returning an array of PC that cover the subsequences of q  <br /></td></tr>
 <tr class="separator:ac47c3b7ea4820955ef0e1abdc019cf72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a300ccf16bbc252b2a1c26a3525626f7f" name="a300ccf16bbc252b2a1c26a3525626f7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a300ccf16bbc252b2a1c26a3525626f7f">&#9670;&#160;</a></span>AplaPt</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;unsigned int S&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a300ccf16bbc252b2a1c26a3525626f7f">AplaPt</a> = std::array&lt;std::tuple&lt;<a class="el" href="pla_8h.html#a6718cbd537740aa7243c3b2c3cbd6786">DoublePair</a>, unsigned int&gt;,S&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5d3953cd3e75718fc534b351149f9f98" name="a5d3953cd3e75718fc534b351149f9f98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d3953cd3e75718fc534b351149f9f98">&#9670;&#160;</a></span>Seqd</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::vector&lt;double&gt; <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Header file for creation and merging of Partition Covers. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0

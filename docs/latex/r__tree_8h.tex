@@ -1,5 +1,10 @@
 \doxysection{lib/similarity\+\_\+search/r\+\_\+tree.h File Reference}
 \hypertarget{r__tree_8h}{}\label{r__tree_8h}\index{lib/similarity\_search/r\_tree.h@{lib/similarity\_search/r\_tree.h}}
+
+
+\doxylink{r__tree_8h}{r\+\_\+tree.\+h} holds the definition and implementation of a r\+\_\+tree suitable to use the new indexing scheme  
+
+
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$set$>$}\newline
@@ -12,50 +17,28 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structLeafEntry}{Leaf\+Entry$<$ R, I $>$}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{structLeafEntry}{Leaf\+Entry} is a struct denoting a leaf in the tree meaning it holds indexes of the sequences the cover covers. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structRTreeNode}{RTree\+Node$<$ R, I $>$}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{structRTreeNode}{RTree\+Node} is a non leaf node holding as children either other non-\/leaf nodes or leaves, the mbr covers all children. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classRTree}{RTree$<$ R, I $>$}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{classRTree}{RTree} is the partial implementation of a r tree from R-\/\+TREES. A DYNAMIC INDEX STRUCTURE FOR SPATIAL SEARCHING. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename R $>$ }\\using \mbox{\hyperlink{r__tree_8h_ad60bfc97fde8786083d7bf328576bae1}{FPtr\+Area}} = double (\texorpdfstring{$\ast$}{*})(const R\&)
+\Hypertarget{r__tree_8h_ad60bfc97fde8786083d7bf328576bae1}\label{r__tree_8h_ad60bfc97fde8786083d7bf328576bae1} 
+{\footnotesize template$<$typename R $>$ }\\using {\bfseries FPtr\+Area} = double (\texorpdfstring{$\ast$}{*})(const R\&)
 \item 
-{\footnotesize template$<$typename R $>$ }\\using \mbox{\hyperlink{r__tree_8h_a1f54e54e5db6c31e6437761288cec7c4}{FPtr\+Area\+Merge}} = R (\texorpdfstring{$\ast$}{*})(const R\&, const R\&)
+\Hypertarget{r__tree_8h_a1f54e54e5db6c31e6437761288cec7c4}\label{r__tree_8h_a1f54e54e5db6c31e6437761288cec7c4} 
+{\footnotesize template$<$typename R $>$ }\\using {\bfseries FPtr\+Area\+Merge} = R (\texorpdfstring{$\ast$}{*})(const R\&, const R\&)
 \item 
-{\footnotesize template$<$typename R $>$ }\\using \mbox{\hyperlink{r__tree_8h_a872f76b0c4a5cbe12360cb8d0fa894f0}{FPtr\+MBRDist\+Sqr}} = double (\texorpdfstring{$\ast$}{*})(const std\+::vector$<$double$>$\& q, const R\&)
+\Hypertarget{r__tree_8h_a872f76b0c4a5cbe12360cb8d0fa894f0}\label{r__tree_8h_a872f76b0c4a5cbe12360cb8d0fa894f0} 
+{\footnotesize template$<$typename R $>$ }\\using {\bfseries FPtr\+MBRDist\+Sqr} = double (\texorpdfstring{$\ast$}{*})(const std\+::vector$<$double$>$\& q, const R\&)
 \item 
-{\footnotesize template$<$typename I $>$ }\\using \mbox{\hyperlink{r__tree_8h_a764dcad950290738241fe961370f5d19}{FPtr\+Retrieval\+Method}} = std\+::vector$<$std\+::array$<$const double\texorpdfstring{$\ast$}{*}, 2$>$$>$ (\texorpdfstring{$\ast$}{*})(const I\&, const std\+::vector$<$double$>$\&)
+\Hypertarget{r__tree_8h_a764dcad950290738241fe961370f5d19}\label{r__tree_8h_a764dcad950290738241fe961370f5d19} 
+{\footnotesize template$<$typename I $>$ }\\using {\bfseries FPtr\+Retrieval\+Method} = std\+::vector$<$std\+::array$<$const double\texorpdfstring{$\ast$}{*}, 2$>$$>$ (\texorpdfstring{$\ast$}{*})(const I\&, const std\+::vector$<$double$>$\&)
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Typedef Documentation}
-\Hypertarget{r__tree_8h_ad60bfc97fde8786083d7bf328576bae1}\label{r__tree_8h_ad60bfc97fde8786083d7bf328576bae1} 
-\index{r\_tree.h@{r\_tree.h}!FPtrArea@{FPtrArea}}
-\index{FPtrArea@{FPtrArea}!r\_tree.h@{r\_tree.h}}
-\doxysubsubsection{\texorpdfstring{FPtrArea}{FPtrArea}}
-{\footnotesize\ttfamily template$<$typename R $>$ \\
-using \mbox{\hyperlink{r__tree_8h_ad60bfc97fde8786083d7bf328576bae1}{FPtr\+Area}} = double (\texorpdfstring{$\ast$}{*})(const R\&)}
-
-\Hypertarget{r__tree_8h_a1f54e54e5db6c31e6437761288cec7c4}\label{r__tree_8h_a1f54e54e5db6c31e6437761288cec7c4} 
-\index{r\_tree.h@{r\_tree.h}!FPtrAreaMerge@{FPtrAreaMerge}}
-\index{FPtrAreaMerge@{FPtrAreaMerge}!r\_tree.h@{r\_tree.h}}
-\doxysubsubsection{\texorpdfstring{FPtrAreaMerge}{FPtrAreaMerge}}
-{\footnotesize\ttfamily template$<$typename R $>$ \\
-using \mbox{\hyperlink{r__tree_8h_a1f54e54e5db6c31e6437761288cec7c4}{FPtr\+Area\+Merge}} = R (\texorpdfstring{$\ast$}{*})(const R\&, const R\&)}
-
-\Hypertarget{r__tree_8h_a872f76b0c4a5cbe12360cb8d0fa894f0}\label{r__tree_8h_a872f76b0c4a5cbe12360cb8d0fa894f0} 
-\index{r\_tree.h@{r\_tree.h}!FPtrMBRDistSqr@{FPtrMBRDistSqr}}
-\index{FPtrMBRDistSqr@{FPtrMBRDistSqr}!r\_tree.h@{r\_tree.h}}
-\doxysubsubsection{\texorpdfstring{FPtrMBRDistSqr}{FPtrMBRDistSqr}}
-{\footnotesize\ttfamily template$<$typename R $>$ \\
-using \mbox{\hyperlink{r__tree_8h_a872f76b0c4a5cbe12360cb8d0fa894f0}{FPtr\+MBRDist\+Sqr}} = double (\texorpdfstring{$\ast$}{*})(const std\+::vector$<$double$>$\& q, const R\&)}
-
-\Hypertarget{r__tree_8h_a764dcad950290738241fe961370f5d19}\label{r__tree_8h_a764dcad950290738241fe961370f5d19} 
-\index{r\_tree.h@{r\_tree.h}!FPtrRetrievalMethod@{FPtrRetrievalMethod}}
-\index{FPtrRetrievalMethod@{FPtrRetrievalMethod}!r\_tree.h@{r\_tree.h}}
-\doxysubsubsection{\texorpdfstring{FPtrRetrievalMethod}{FPtrRetrievalMethod}}
-{\footnotesize\ttfamily template$<$typename I $>$ \\
-using \mbox{\hyperlink{r__tree_8h_a764dcad950290738241fe961370f5d19}{FPtr\+Retrieval\+Method}} = std\+::vector$<$std\+::array$<$const double\texorpdfstring{$\ast$}{*}, 2$>$$>$ (\texorpdfstring{$\ast$}{*})(const I\&, const std\+::vector$<$double$>$\&)}
+\doxysubsection{Detailed Description}
+\doxylink{r__tree_8h}{r\+\_\+tree.\+h} holds the definition and implementation of a r\+\_\+tree suitable to use the new indexing scheme 
 

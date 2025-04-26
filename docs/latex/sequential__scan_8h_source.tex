@@ -1,21 +1,20 @@
 \doxysection{sequential\+\_\+scan.\+h}
 \hypertarget{sequential__scan_8h_source}{}\label{sequential__scan_8h_source}\index{lib/similarity\_search/sequential\_scan.h@{lib/similarity\_search/sequential\_scan.h}}
-
+\mbox{\hyperlink{sequential__scan_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SEQUENTIAL\_SCAN\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SEQUENTIAL\_SCAN\_H}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }seq\_scan\ \{}
-\DoxyCodeLine{00009\ \textcolor{keywordtype}{double}\ l2\_sqr(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ s1start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ s2start,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ len);}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ std::vector<unsigned\ int>\ find\_similar\_subseq\_indexes(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keyword}{const}\ std::vector<double>\&\ query,\ \textcolor{keywordtype}{double}\ epsilon);}
-\DoxyCodeLine{00012\ std::vector<unsigned\ int>\ find\_k\_closest\_indexes(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keyword}{const}\ std::vector<double>\&\ query,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
-\DoxyCodeLine{00013\ \};}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceseq__scan}{seq\_scan}}\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceseq__scan_a1935c2507450b83d4a577291bcff2160}{l2\_sqr}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ s1start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \textcolor{keyword}{const}\ s2start,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ len);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00032\ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{namespaceseq__scan_a40153bf4066521b14e3a1c59fd282ecf}{find\_similar\_subseq\_indexes}}(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keyword}{const}\ std::vector<double>\&\ query,\ \textcolor{keywordtype}{double}\ epsilon);}
+\DoxyCodeLine{00040\ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{namespaceseq__scan_aabba1db0fbefa1e36cf02922e325db55}{find\_k\_closest\_indexes}}(\textcolor{keyword}{const}\ std::vector<double>\&\ series,\ \textcolor{keyword}{const}\ std::vector<double>\&\ query,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

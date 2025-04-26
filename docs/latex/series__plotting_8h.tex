@@ -17,7 +17,9 @@ struct \mbox{\hyperlink{structSeries}{Series}}
 struct \mbox{\hyperlink{structLine}{Line}}
 \begin{DoxyCompactList}\small\item\em Struct slightly more complicated than \doxylink{structSeries}{Series} also specifying the x values for the corresponding y. Functions using this may or may not check that x and y are same length, this should be maintained for usage. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structLineGenerator}{Line\+Generator}}
-\begin{DoxyCompactList}\small\item\em Struct stores a method for plotting approximations that vary according to some unsigned int parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Struct stores a method for plotting approximations that vary according to some unsigned int parameter. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structLinePGGenerator}{Line\+PGGenerator}}
+\begin{DoxyCompactList}\small\item\em Struct stores a method for plotting approximations that vary according to some double. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,6 +40,12 @@ void \mbox{\hyperlink{namespaceplot_a0dd6558f40503eb05365b2265a5327e7}{plot\+::p
 \begin{DoxyCompactList}\small\item\em plot\+\_\+lines plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespaceplot_aeee601ec3f6e6fdecf57bafad3e6bc81}{plot\+::plot\+\_\+lines\+\_\+generated}} (const std\+::vector$<$ double $>$ \&s, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
 \begin{DoxyCompactList}\small\item\em plot\+\_\+lines\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_a7cc9d7fb165975ac04d03074341e77bb}{plot\+::plot\+\_\+bars\+\_\+generated}} (const std\+::vector$<$ double $>$ \&s, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+bars\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, these are plotted as individual bars. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_a6f3b8d742538c3570b021543d9ed75dc}{plot\+::plot\+\_\+bars\+PG\+\_\+generated}} (const std\+::vector$<$ double $>$ \&s, std\+::vector$<$ double $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLinePGGenerator}{Line\+PGGenerator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+bars\+PG\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, these are plotted as individual bars. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceplot_aa92ac515f026f7d38a82b8cb04c2a1b8}{plot\+::plot\+\_\+mean\+\_\+bars\+\_\+generated}} (const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&vs, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
+\begin{DoxyCompactList}\small\item\em plot\+\_\+mean\+\_\+bars\+\_\+generated plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, the point plotted is the mean result of the datasets. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespaceplot_a26ef79e3b6b6e5dcf436afb3e2310ae2}{plot\+::plot\+\_\+lines\+\_\+generated\+\_\+ucr\+\_\+average}} (const std\+::vector$<$ std\+::string $>$ \&dataset\+\_\+names, std\+::string dataset\+\_\+filepath, unsigned int ds\+\_\+size, std\+::vector$<$ unsigned int $>$ x, std\+::vector$<$ \mbox{\hyperlink{structLineGenerator}{Line\+Generator}} $>$ y\+\_\+gens, \mbox{\hyperlink{structPlotDetails}{Plot\+Details}} p)
 \begin{DoxyCompactList}\small\item\em plot\+\_\+lines\+\_\+generated\+\_\+ucr\+\_\+average plots all of the lines passed to it using the \doxylink{structPlotDetails}{Plot\+Details} also passed, utilising multiple UCR datasets. \end{DoxyCompactList}\end{DoxyCompactItemize}
 

@@ -79,64 +79,64 @@ $(function() {
   <div class="headertitle"><div class="title">apla_bounds Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="namespaceapla__bounds.html" title="apla_bounds namespace holds the functions for creation and merging of Partition Covers">apla_bounds</a> namespace holds the functions for creation and merging of Partition Covers  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structapla__bounds_1_1Region.html">Region</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structapla__bounds_1_1Region.html" title="Region is a struct storing information about a segment of the Partition Cover.">Region</a> is a struct storing information about a segment of the Partition Cover.  <a href="structapla__bounds_1_1Region.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aaf0249ec44d4389eb686c08b044f8765" id="r_aaf0249ec44d4389eb686c08b044f8765"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:aaf0249ec44d4389eb686c08b044f8765"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a> = std::array&lt;<a class="el" href="structapla__bounds_1_1Region.html">Region</a>, S&gt;</td></tr>
+<tr class="memitem:aaf0249ec44d4389eb686c08b044f8765" id="r_aaf0249ec44d4389eb686c08b044f8765"><td class="memTemplParams" colspan="2"><a id="aaf0249ec44d4389eb686c08b044f8765" name="aaf0249ec44d4389eb686c08b044f8765"></a>
+template&lt;unsigned int S&gt; </td></tr>
+<tr class="memitem:aaf0249ec44d4389eb686c08b044f8765"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>AplaMBR</b> = std::array&lt;<a class="el" href="structapla__bounds_1_1Region.html">Region</a>, S&gt;</td></tr>
 <tr class="separator:aaf0249ec44d4389eb686c08b044f8765"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a87166e319f0d76d736e08677ee44903c" id="r_a87166e319f0d76d736e08677ee44903c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87166e319f0d76d736e08677ee44903c">region_area</a> (const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> &amp;r)</td></tr>
+<tr class="memdesc:a87166e319f0d76d736e08677ee44903c"><td class="mdescLeft">&#160;</td><td class="mdescRight">region_area calculates the sum of the area of the region in the plane  <br /></td></tr>
 <tr class="separator:a87166e319f0d76d736e08677ee44903c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdcc600dfae926c1bf68b7a068099a67" id="r_abdcc600dfae926c1bf68b7a068099a67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structapla__bounds_1_1Region.html">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdcc600dfae926c1bf68b7a068099a67">region_merge</a> (const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> &amp;r1, const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> &amp;r2)</td></tr>
+<tr class="memdesc:abdcc600dfae926c1bf68b7a068099a67"><td class="mdescLeft">&#160;</td><td class="mdescRight">region_merge calculates the merge of two segments (regions)  <br /></td></tr>
 <tr class="separator:abdcc600dfae926c1bf68b7a068099a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36a8e851dddf94226d6e5002586e2ed3" id="r_a36a8e851dddf94226d6e5002586e2ed3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36a8e851dddf94226d6e5002586e2ed3">dist_to_region_sqr</a> (const double &amp;qi, const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> &amp;r, unsigned int global_offset)</td></tr>
+<tr class="memdesc:a36a8e851dddf94226d6e5002586e2ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">dist_to_region_sqr takes a current point (global_offset, qi) and calcuates the distance to the region r  <br /></td></tr>
 <tr class="separator:a36a8e851dddf94226d6e5002586e2ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c2f80f1b1ed60089ce402fc04ca6fea" id="r_a1c2f80f1b1ed60089ce402fc04ca6fea"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c2f80f1b1ed60089ce402fc04ca6fea">dist_to_regions_sqr</a> (const double &amp;qi, const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> *const rstart, const <a class="el" href="structapla__bounds_1_1Region.html">Region</a> *const rend, unsigned int global_offset)</td></tr>
+<tr class="memdesc:a1c2f80f1b1ed60089ce402fc04ca6fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">dist_to_regions_sqr takes a current point (global_offset, qi) and calcuates the distance to the array of regions  <br /></td></tr>
 <tr class="separator:a1c2f80f1b1ed60089ce402fc04ca6fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab06dc8fad148ed5207e06767e0739bef" id="r_ab06dc8fad148ed5207e06767e0739bef"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:ab06dc8fad148ed5207e06767e0739bef"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab06dc8fad148ed5207e06767e0739bef">mbr_area</a> (const <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;mbr)</td></tr>
+<tr class="memitem:ab06dc8fad148ed5207e06767e0739bef"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab06dc8fad148ed5207e06767e0739bef">mbr_area</a> (const AplaMBR&lt; S &gt; &amp;mbr)</td></tr>
+<tr class="memdesc:ab06dc8fad148ed5207e06767e0739bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">mbr_area calculates the total area of the partition cover in the plane as the sum of area of regions  <br /></td></tr>
 <tr class="separator:ab06dc8fad148ed5207e06767e0739bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db27f8c06fecff0bd1a19cd95e1da9f" id="r_a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2db27f8c06fecff0bd1a19cd95e1da9f">mbr_merge</a> (const <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;mbr1, const <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;mbr2)</td></tr>
+<tr class="memitem:a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="memTemplItemLeft" align="right" valign="top">AplaMBR&lt; S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2db27f8c06fecff0bd1a19cd95e1da9f">mbr_merge</a> (const AplaMBR&lt; S &gt; &amp;mbr1, const AplaMBR&lt; S &gt; &amp;mbr2)</td></tr>
+<tr class="memdesc:a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">mbr_merge merges two partition covers by region wise merges  <br /></td></tr>
 <tr class="separator:a2db27f8c06fecff0bd1a19cd95e1da9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23bacc956ed90bf9e04bca707db17552" id="r_a23bacc956ed90bf9e04bca707db17552"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:a23bacc956ed90bf9e04bca707db17552"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a23bacc956ed90bf9e04bca707db17552">dist_to_mbr_sqr</a> (const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;q, const <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;mbr)</td></tr>
+<tr class="memitem:a23bacc956ed90bf9e04bca707db17552"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a23bacc956ed90bf9e04bca707db17552">dist_to_mbr_sqr</a> (const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;q, const AplaMBR&lt; S &gt; &amp;mbr)</td></tr>
+<tr class="memdesc:a23bacc956ed90bf9e04bca707db17552"><td class="mdescLeft">&#160;</td><td class="mdescRight">dist_to_mbr_sqr takes a time series q and Partition Cover mbr and returns the distance between the two  <br /></td></tr>
 <tr class="separator:a23bacc956ed90bf9e04bca707db17552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e5340b3e347dd10e79500532f961dd8" id="r_a3e5340b3e347dd10e79500532f961dd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structapla__bounds_1_1Region.html">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e5340b3e347dd10e79500532f961dd8">ptrs_to_region</a> (const double *const start, const double *const end, unsigned int g_start_i)</td></tr>
+<tr class="memdesc:a3e5340b3e347dd10e79500532f961dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ptrs_to_region converts an array of doubles into a region that bounds them  <br /></td></tr>
 <tr class="separator:a3e5340b3e347dd10e79500532f961dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18678a7d9d73451fe2cc8f9f8fa83478" id="r_a18678a7d9d73451fe2cc8f9f8fa83478"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:a18678a7d9d73451fe2cc8f9f8fa83478"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a18678a7d9d73451fe2cc8f9f8fa83478">vec_to_mbr</a> (const std::vector&lt; double &gt; &amp;q, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> f)</td></tr>
+<tr class="memitem:a18678a7d9d73451fe2cc8f9f8fa83478"><td class="memTemplItemLeft" align="right" valign="top">AplaMBR&lt; S &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a18678a7d9d73451fe2cc8f9f8fa83478">vec_to_mbr</a> (const std::vector&lt; double &gt; &amp;q, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> f)</td></tr>
+<tr class="memdesc:a18678a7d9d73451fe2cc8f9f8fa83478"><td class="mdescLeft">&#160;</td><td class="mdescRight">vec_to_mbr takes a series q and a Adaptive PLA algorithm and returns a Partition Cover that covers q using the algorithm  <br /></td></tr>
 <tr class="separator:a18678a7d9d73451fe2cc8f9f8fa83478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac47c3b7ea4820955ef0e1abdc019cf72" id="r_ac47c3b7ea4820955ef0e1abdc019cf72"><td class="memTemplParams" colspan="2">template&lt;unsigned int S&gt; </td></tr>
-<tr class="memitem:ac47c3b7ea4820955ef0e1abdc019cf72"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac47c3b7ea4820955ef0e1abdc019cf72">vec_to_subseq_mbrs</a> (const std::vector&lt; double &gt; &amp;q, unsigned int subseq_size, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> f)</td></tr>
+<tr class="memitem:ac47c3b7ea4820955ef0e1abdc019cf72"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; AplaMBR&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac47c3b7ea4820955ef0e1abdc019cf72">vec_to_subseq_mbrs</a> (const std::vector&lt; double &gt; &amp;q, unsigned int subseq_size, <a class="el" href="namespacepla.html#a6a3d8a0f973d3b199407f277870e4c00">pla::APLA_DRT</a> f)</td></tr>
+<tr class="memdesc:ac47c3b7ea4820955ef0e1abdc019cf72"><td class="mdescLeft">&#160;</td><td class="mdescRight">vec_to_subseq_mbrs takes a series q and a Adaptive PLA algorithm, returning an array of PC that cover the subsequences of q  <br /></td></tr>
 <tr class="separator:ac47c3b7ea4820955ef0e1abdc019cf72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="aaf0249ec44d4389eb686c08b044f8765" name="aaf0249ec44d4389eb686c08b044f8765"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf0249ec44d4389eb686c08b044f8765">&#9670;&#160;</a></span>AplaMBR</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;unsigned int S&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">apla_bounds::AplaMBR</a> = std::array&lt;<a class="el" href="structapla__bounds_1_1Region.html">Region</a>, S&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="namespaceapla__bounds.html" title="apla_bounds namespace holds the functions for creation and merging of Partition Covers">apla_bounds</a> namespace holds the functions for creation and merging of Partition Covers </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a23bacc956ed90bf9e04bca707db17552" name="a23bacc956ed90bf9e04bca707db17552"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23bacc956ed90bf9e04bca707db17552">&#9670;&#160;</a></span>dist_to_mbr_sqr()</h2>
 
@@ -148,15 +148,25 @@ template&lt;unsigned int S&gt; </div>
         <tr>
           <td class="memname">double apla_bounds::dist_to_mbr_sqr </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="apla__segment__and__merge_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="pla_8h.html#a5d3953cd3e75718fc534b351149f9f98">Seqd</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbr</em></span>&#160;)</td>
+          <td class="paramtype">const AplaMBR&lt; S &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbr</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>dist_to_mbr_sqr takes a time series q and Partition Cover mbr and returns the distance between the two </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>is a time series (uncompressed) </td></tr>
+    <tr><td class="paramname">mbr</td><td>is a constant reference to a Partition Cover </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>non negative number representing distance to the mbr </dd></dl>
 
 </div>
 </div>
@@ -191,6 +201,17 @@ template&lt;unsigned int S&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>dist_to_region_sqr takes a current point (global_offset, qi) and calcuates the distance to the region r </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">qi</td><td>is the value of the uncompressed time series at time global_offset </td></tr>
+    <tr><td class="paramname">r</td><td>is the region to measure the distance to </td></tr>
+    <tr><td class="paramname">global_offset</td><td>is the time index of qi from the time series </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>non negative number representing distance to the region </dd></dl>
 
 </div>
 </div>
@@ -231,6 +252,18 @@ template&lt;unsigned int S&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>dist_to_regions_sqr takes a current point (global_offset, qi) and calcuates the distance to the array of regions </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">qi</td><td>is the value of the uncompressed time series at time global_offset </td></tr>
+    <tr><td class="paramname">rstart</td><td>is a constant pointer to an array of regions (a partition cover) </td></tr>
+    <tr><td class="paramname">rend</td><td>is a constant pointer to an array of regions (a partition cover) </td></tr>
+    <tr><td class="paramname">global_offset</td><td>is the time index of qi from the time series </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>non negative number representing distance to the region </dd></dl>
+
 </div>
 </div>
 <a id="ab06dc8fad148ed5207e06767e0739bef" name="ab06dc8fad148ed5207e06767e0739bef"></a>
@@ -244,11 +277,19 @@ template&lt;unsigned int S&gt; </div>
         <tr>
           <td class="memname">double apla_bounds::mbr_area </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbr</em></span></td><td>)</td>
+          <td class="paramtype">const AplaMBR&lt; S &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbr</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>mbr_area calculates the total area of the partition cover in the plane as the sum of area of regions </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mbr</td><td>is a Partition Cover </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -261,17 +302,27 @@ template&lt;unsigned int S&gt; </div>
 template&lt;unsigned int S&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; apla_bounds::mbr_merge </td>
+          <td class="memname">AplaMBR&lt; S &gt; apla_bounds::mbr_merge </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbr1</em>, </span></td>
+          <td class="paramtype">const AplaMBR&lt; S &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbr1</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbr2</em></span>&#160;)</td>
+          <td class="paramtype">const AplaMBR&lt; S &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mbr2</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>mbr_merge merges two partition covers by region wise merges </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mbr1</td><td>is a Partition Cover </td></tr>
+    <tr><td class="paramname">mbr2</td><td>is a Partition Cover </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a Partition Cover that contains both Partition Covers </dd></dl>
 
 </div>
 </div>
@@ -307,6 +358,17 @@ template&lt;unsigned int S&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>ptrs_to_region converts an array of doubles into a region that bounds them </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>points to the array beginning </td></tr>
+    <tr><td class="paramname">end</td><td>points to the arrays end (final element) </td></tr>
+    <tr><td class="paramname">g_start_i</td><td>is the starting index of this in the larger time series being approximated </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>region that bounds the contiguous array of points </dd></dl>
+
 </div>
 </div>
 <a id="a87166e319f0d76d736e08677ee44903c" name="a87166e319f0d76d736e08677ee44903c"></a>
@@ -331,6 +393,15 @@ template&lt;unsigned int S&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>region_area calculates the sum of the area of the region in the plane </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>is the region to determine this area for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>non-negative number representing area of region in plane </dd></dl>
 
 </div>
 </div>
@@ -361,6 +432,16 @@ template&lt;unsigned int S&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>region_merge calculates the merge of two segments (regions) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r1</td><td>is the first region </td></tr>
+    <tr><td class="paramname">r2</td><td>is the second region </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>new region that contains the previous two </dd></dl>
+
 </div>
 </div>
 <a id="a18678a7d9d73451fe2cc8f9f8fa83478" name="a18678a7d9d73451fe2cc8f9f8fa83478"></a>
@@ -372,7 +453,7 @@ template&lt;unsigned int S&gt; </div>
 template&lt;unsigned int S&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; apla_bounds::vec_to_mbr </td>
+          <td class="memname">AplaMBR&lt; S &gt; apla_bounds::vec_to_mbr </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
         </tr>
@@ -383,6 +464,16 @@ template&lt;unsigned int S&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>vec_to_mbr takes a series q and a Adaptive PLA algorithm and returns a Partition Cover that covers q using the algorithm </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>is the uncompressed time series to cover </td></tr>
+    <tr><td class="paramname">f</td><td>is the DRT function to q to an approximation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Partition Cover that covers q </dd></dl>
 
 </div>
 </div>
@@ -395,7 +486,7 @@ template&lt;unsigned int S&gt; </div>
 template&lt;unsigned int S&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="#aaf0249ec44d4389eb686c08b044f8765">AplaMBR</a>&lt; S &gt; &gt; apla_bounds::vec_to_subseq_mbrs </td>
+          <td class="memname">std::vector&lt; AplaMBR&lt; S &gt; &gt; apla_bounds::vec_to_subseq_mbrs </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>q</em>, </span></td>
         </tr>
@@ -411,6 +502,17 @@ template&lt;unsigned int S&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>vec_to_subseq_mbrs takes a series q and a Adaptive PLA algorithm, returning an array of PC that cover the subsequences of q </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>is the uncompressed time series to cover </td></tr>
+    <tr><td class="paramname">subseq_size</td><td>is the desired size of the subsequence </td></tr>
+    <tr><td class="paramname">f</td><td>is the DRT function to q to an approximation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array of partition covers, the ith PC covers the ith subsequence </dd></dl>
 
 </div>
 </div>

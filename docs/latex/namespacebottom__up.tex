@@ -1,46 +1,78 @@
 \doxysection{bottom\+\_\+up Namespace Reference}
 \hypertarget{namespacebottom__up}{}\label{namespacebottom__up}\index{bottom\_up@{bottom\_up}}
+
+
+\doxylink{namespacebottom__up}{bottom\+\_\+up} namespace containts methods for bottom up  
+
+
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}} = double (\texorpdfstring{$\ast$}{*})(const double \texorpdfstring{$\ast$}{*}const, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}\&, unsigned int)
-\end{DoxyCompactItemize}
+\Hypertarget{namespacebottom__up_aad60b0215298e504984342391e3263a9}\label{namespacebottom__up_aad60b0215298e504984342391e3263a9} 
+using {\bfseries ERROR\+\_\+F} = double (\texorpdfstring{$\ast$}{*})(const double \texorpdfstring{$\ast$}{*}const, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}\&, unsigned int)
+\begin{DoxyCompactList}\small\item\em ERROR\+\_\+F is a function taking a pointer to an array, straight line and length of array and returning a distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{namespacebottom__up_a8cf79da540a5816497434ec4edb900ab}{se}} (const double \texorpdfstring{$\ast$}{*}const, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&, unsigned int)
-\item 
-\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \mbox{\hyperlink{namespacebottom__up_ab07fbdc3536386d35124eb176e4f9440}{bottom\+\_\+up}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&, double, \mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}})
-\item 
-\mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} \mbox{\hyperlink{namespacebottom__up_a8824af0bf9709ddc6a30444ab974a61f}{bottom\+\_\+up\+\_\+early\+\_\+cutoff}} (const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&, double, \mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}}, unsigned int)
-\end{DoxyCompactItemize}
+\Hypertarget{namespacebottom__up_a8cf79da540a5816497434ec4edb900ab}\label{namespacebottom__up_a8cf79da540a5816497434ec4edb900ab} 
+double {\bfseries se} (const double \texorpdfstring{$\ast$}{*}const, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&, unsigned int)
+\begin{DoxyCompactList}\small\item\em se is function returning squared error of approximation, se is an example of ERROR\+\_\+F \end{DoxyCompactList}\item 
+\Hypertarget{namespacebottom__up_aba91537fdb2e70e53ea6b151d231c0e4}\label{namespacebottom__up_aba91537fdb2e70e53ea6b151d231c0e4} 
+double {\bfseries maxdev} (const double \texorpdfstring{$\ast$}{*}const, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&, unsigned int)
+\begin{DoxyCompactList}\small\item\em maxdev is function returning maximum deviation of approximation, maxdev is an example of ERROR\+\_\+F \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespacebottom__up_ac88b367b84a73f6a64a14b3a2d0316cc}{bottom\+\_\+up}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double num\+\_\+params, \mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}} err)
+\begin{DoxyCompactList}\small\item\em \doxylink{namespacebottom__up}{bottom\+\_\+up} function calculates bottom up on a sequence using some measurement to assess error of segments \end{DoxyCompactList}\item 
+\mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} \mbox{\hyperlink{namespacebottom__up_a0e086e9f21c861b00744998c94f79e4c}{bottom\+\_\+up\+\_\+early\+\_\+cutoff}} (const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&s, double num\+\_\+params, \mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}} err, unsigned int k)
+\begin{DoxyCompactList}\small\item\em bottom\+\_\+up\+\_\+early\+\_\+cutoff function operates same as \doxylink{namespacebottom__up}{bottom\+\_\+up} but ends early if it reaches the target dimension \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Typedef Documentation}
-\Hypertarget{namespacebottom__up_aad60b0215298e504984342391e3263a9}\label{namespacebottom__up_aad60b0215298e504984342391e3263a9} 
-\index{bottom\_up@{bottom\_up}!ERROR\_F@{ERROR\_F}}
-\index{ERROR\_F@{ERROR\_F}!bottom\_up@{bottom\_up}}
-\doxysubsubsection{\texorpdfstring{ERROR\_F}{ERROR\_F}}
-{\footnotesize\ttfamily using \mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{bottom\+\_\+up\+::\+ERROR\+\_\+F}} = double (\texorpdfstring{$\ast$}{*})(const double \texorpdfstring{$\ast$}{*}const, const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}}\&, unsigned int)}
-
-
+\doxysubsection{Detailed Description}
+\doxylink{namespacebottom__up}{bottom\+\_\+up} namespace containts methods for bottom up 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespacebottom__up_ab07fbdc3536386d35124eb176e4f9440}\label{namespacebottom__up_ab07fbdc3536386d35124eb176e4f9440} 
+\Hypertarget{namespacebottom__up_ac88b367b84a73f6a64a14b3a2d0316cc}\label{namespacebottom__up_ac88b367b84a73f6a64a14b3a2d0316cc} 
 \index{bottom\_up@{bottom\_up}!bottom\_up@{bottom\_up}}
 \index{bottom\_up@{bottom\_up}!bottom\_up@{bottom\_up}}
 \doxysubsubsection{\texorpdfstring{bottom\_up()}{bottom\_up()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} bottom\+\_\+up\+::bottom\+\_\+up (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{eps,  }\item[{\mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}}}]{err }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} bottom\+\_\+up\+::bottom\+\_\+up (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{num\+\_\+params,  }\item[{\mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}}}]{err }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacebottom__up_a8824af0bf9709ddc6a30444ab974a61f}\label{namespacebottom__up_a8824af0bf9709ddc6a30444ab974a61f} 
+
+
+\doxylink{namespacebottom__up}{bottom\+\_\+up} function calculates bottom up on a sequence using some measurement to assess error of segments 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is series \\
+\hline
+{\em num\+\_\+params} & is target dimension of approximation \\
+\hline
+{\em err} & is method to assess error of linear approximation on a segment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sorted array of segments, each storing line and endpoint 
+\end{DoxyReturn}
+\Hypertarget{namespacebottom__up_a0e086e9f21c861b00744998c94f79e4c}\label{namespacebottom__up_a0e086e9f21c861b00744998c94f79e4c} 
 \index{bottom\_up@{bottom\_up}!bottom\_up\_early\_cutoff@{bottom\_up\_early\_cutoff}}
 \index{bottom\_up\_early\_cutoff@{bottom\_up\_early\_cutoff}!bottom\_up@{bottom\_up}}
 \doxysubsubsection{\texorpdfstring{bottom\_up\_early\_cutoff()}{bottom\_up\_early\_cutoff()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{apla__segment__and__merge_8h_a7adf2503e92395c0baa214b993c3bc95}{Seqddt}} bottom\+\_\+up\+::bottom\+\_\+up\+\_\+early\+\_\+cutoff (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{apla__segment__and__merge_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{eps,  }\item[{\mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}}}]{err,  }\item[{unsigned int}]{num\+\_\+seg }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{pla_8h_ad8b9cde7efeaabcc857cf363312e58fc}{Seqddt}} bottom\+\_\+up\+::bottom\+\_\+up\+\_\+early\+\_\+cutoff (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pla_8h_a5d3953cd3e75718fc534b351149f9f98}{Seqd}} \&}]{s,  }\item[{double}]{num\+\_\+params,  }\item[{\mbox{\hyperlink{namespacebottom__up_aad60b0215298e504984342391e3263a9}{ERROR\+\_\+F}}}]{err,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
 
-\Hypertarget{namespacebottom__up_a8cf79da540a5816497434ec4edb900ab}\label{namespacebottom__up_a8cf79da540a5816497434ec4edb900ab} 
-\index{bottom\_up@{bottom\_up}!se@{se}}
-\index{se@{se}!bottom\_up@{bottom\_up}}
-\doxysubsubsection{\texorpdfstring{se()}{se()}}
-{\footnotesize\ttfamily double bottom\+\_\+up\+::se (\begin{DoxyParamCaption}\item[{const double \texorpdfstring{$\ast$}{*} const}]{s,  }\item[{const \mbox{\hyperlink{pla_8h_a6718cbd537740aa7243c3b2c3cbd6786}{Double\+Pair}} \&}]{dp,  }\item[{unsigned int}]{len }\end{DoxyParamCaption})}
 
+
+bottom\+\_\+up\+\_\+early\+\_\+cutoff function operates same as \doxylink{namespacebottom__up}{bottom\+\_\+up} but ends early if it reaches the target dimension 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & is series \\
+\hline
+{\em num\+\_\+params} & is target dimension of approximation \\
+\hline
+{\em err} & is method to assess error of linear approximation on a segment \\
+\hline
+{\em k} & is target dimension the approximation ends early at if it reaches it \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sorted array of segments, each storing line and endpoint 
+\end{DoxyReturn}
